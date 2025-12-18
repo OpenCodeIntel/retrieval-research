@@ -1,0 +1,2459 @@
+{
+  "timestamp": "2025-12-18T11:14:42.861971",
+  "repo_path": "../opencodeintel-fork-new/backend",
+  "num_functions": 40,
+  "num_queries": 12,
+  "approaches": [
+    "RAW_CODE",
+    "NL_DESCRIPTION",
+    "HYBRID_V1",
+    "HYBRID_V2",
+    "CHUNKED"
+  ],
+  "summary": {
+    "RAW_CODE": {
+      "top1": 0.4166666666666667,
+      "top3": 0.5,
+      "top5": 0.5833333333333334,
+      "avg_score": 0.27735471584971944,
+      "avg_relevance": 0.2833333333333333
+    },
+    "NL_DESCRIPTION": {
+      "top1": 0.5,
+      "top3": 0.5833333333333334,
+      "top5": 0.5833333333333334,
+      "avg_score": 0.3012786161379791,
+      "avg_relevance": 0.31666666666666665
+    },
+    "HYBRID_V1": {
+      "top1": 0.5,
+      "top3": 0.5833333333333334,
+      "top5": 0.5833333333333334,
+      "avg_score": 0.2778155699409946,
+      "avg_relevance": 0.31666666666666665
+    },
+    "HYBRID_V2": {
+      "top1": 0.5,
+      "top3": 0.5833333333333334,
+      "top5": 0.5833333333333334,
+      "avg_score": 0.25998912923180323,
+      "avg_relevance": 0.31666666666666665
+    },
+    "CHUNKED": {
+      "top1": 0.4166666666666667,
+      "top3": 0.5833333333333334,
+      "top5": 0.5833333333333334,
+      "avg_score": 0.2571445965039855,
+      "avg_relevance": 0.31666666666666665
+    }
+  },
+  "descriptions": {
+    "251ce3ec7c35": "The provided Python code defines an asynchronous function `test_search_v2` that tests a semantic search functionality against a specified repository, with an option to re-index the repository using natural language descriptions. This functionality is particularly useful for developers or data scientists who want to validate the effectiveness of a new search algorithm or model in retrieving relevant code functions based on user queries.\n\nKey operations performed by the code include checking for the existence of the repository, optionally re-indexing it with natural language descriptions, and executing a series of predefined test queries to evaluate the search results. The function tracks the number of passed and failed tests, providing feedback on the search performance and accuracy.",
+    "cabf696f2fff": "The provided Python code defines a function `ch_test` that performs a semantic search on a specified repository using a given query, returning the top results along with their confidence scores and descriptions. This functionality is useful for developers or data scientists who need to quickly find relevant files or documentation within a codebase or dataset, enhancing their ability to navigate large repositories efficiently. Key operations include initializing a semantic search instance, executing the search with parameters like `repo_id` and `query`, and formatting the output to display the results, including file names and descriptions.",
+    "51660ab7fb89": "This Python code defines an asynchronous lifespan event for a FastAPI application, which is responsible for executing specific tasks during the application's startup and shutdown phases. During startup, it calls the `load_demo_repos()` function to presumably load demo repositories into the application, which could be useful for initializing data or setting up a testing environment. The key operations performed include awaiting the loading of demo data and yielding control to indicate the application is ready, with a provision for cleanup during shutdown if necessary.",
+    "7e3bf53fbb51": "This Python code defines a middleware class, `RequestSizeLimitMiddleware`, that limits the size of incoming HTTP request bodies to a maximum of 10MB to prevent abuse, such as denial-of-service attacks. It is particularly useful in web applications that handle file uploads or large data submissions, ensuring that requests exceeding the specified size are rejected with a 413 status code and an appropriate error message. The key operations performed include checking the `Content-Length` header of the request and returning a JSON response if the size exceeds the defined limit.",
+    "caf79aaf7779": "This Python code defines an asynchronous function `dispatch` that acts as middleware for handling HTTP requests in a web application, specifically checking the size of incoming requests. It is designed to reject requests with a method of \"POST,\" \"PUT,\" or \"PATCH\" if their content length exceeds a predefined maximum size, returning a 413 status code with a relevant error message. This functionality is useful for preventing excessively large payloads from overwhelming the server, ensuring efficient data processing and maintaining application performance.",
+    "203f471e4bc6": "This Python code defines an asynchronous exception handler for handling validation errors in a web application, specifically when using frameworks like FastAPI. It is used to provide clear and structured error messages in response to invalid input data, making it easier for clients to understand what went wrong during their request. The key operations performed include returning a JSON response with a 422 status code and including detailed information about the validation errors encountered.",
+    "798a9994ca78": "This Python code defines an asynchronous function, `rate_limit_handler`, which is designed to handle rate limit errors in a web application, typically within an API context. When a request exceeds the allowed rate limit, this function responds with a 429 status code and a JSON message indicating that the rate limit has been exceeded, prompting the user to try again later. Developers would use this function to manage and communicate rate limiting policies effectively, ensuring that users are informed when they have made too many requests in a given timeframe, thus protecting the server from overload and maintaining service quality.",
+    "1030147d8c9d": "This Python code defines an asynchronous exception handler for a web application, specifically designed to catch unhandled exceptions during HTTP requests. It captures the exception details and logs them to Sentry for monitoring and debugging purposes, while also returning a standardized JSON response with a 500 status code to indicate an internal server error. This functionality is crucial for maintaining application stability and providing developers with insights into issues that occur in production environments, making it particularly useful in API development and web services.",
+    "3db0fd919ec6": "This Python code defines a function `get_repo_or_404` that retrieves a repository associated with a specific user, ensuring that the user is the owner of the repository. It raises a 404 HTTP exception if the repository is not found or if the user does not have ownership, making it useful for API endpoints in applications that manage user repositories, such as version control systems or project management tools. Key operations include querying a repository manager for the user's repository and handling ownership verification through exception handling.",
+    "c6905c277699": "This Python code defines a function `verify_repo_access` that checks whether a specified user has access to a given repository by verifying ownership through a `repo_manager`. If the user does not have access, it raises an HTTP 404 exception, indicating that the repository is not found. This functionality is crucial in the domain of access control for version control systems or collaborative platforms, ensuring that only authorized users can interact with specific repositories, thereby enhancing security and data integrity.",
+    "5a175698645c": "This Python code defines an `AuthContext` class that encapsulates authentication-related information for route handlers in a web application, specifically for managing user identity and access control. It is useful for developers implementing authentication mechanisms, as it provides a structured way to handle user credentials, API keys, and rate limiting tiers, facilitating secure access to resources. Key operations include determining if a user is authenticated based on public access status and generating a unique identifier for rate limiting based on the user's ID, API key, or a default anonymous identifier.",
+    "f9a9fc5636d9": "This Python code defines a method `is_authenticated` that checks whether a user or resource is authenticated based on the attribute `is_public`. If `is_public` is `False`, the method returns `True`, indicating that the user or resource is authenticated; otherwise, it returns `False`. This functionality is useful in authentication systems where distinguishing between public and private access is essential, allowing developers to easily determine access rights for users or resources in web applications or APIs. Key operations include evaluating the `is_public` attribute and returning a boolean value based on its state.",
+    "beb1ca393734": "This Python code defines a method called `identifier` that generates a unique identifier for rate limiting purposes, which is crucial in managing API usage and preventing abuse. It returns the user's ID if available, falls back to the API key name if the user ID is not present, and defaults to \"anonymous\" if neither is provided. This functionality is particularly useful in API development, where tracking and limiting the number of requests from users or applications is essential for maintaining service stability and performance.",
+    "445f4238a4ab": "This Python code defines an asynchronous function `require_auth` that enforces authentication for incoming requests by requiring valid credentials, such as a JWT (JSON Web Token) or an API key. It raises a 401 Unauthorized error if the provided credentials are invalid, making it suitable for securing API endpoints in web applications. The key operations include dependency injection of the credentials and calling an authentication function to validate them, ensuring that only authenticated users can access protected resources.",
+    "799d5b3cc8ad": "This Python code defines an asynchronous function `public_auth` that handles optional authentication for public or demo routes in a web application, likely built using a framework like FastAPI. The function checks for provided HTTP authorization credentials; if valid credentials are present, it authenticates the user and returns an authenticated context; if no credentials are provided or if the credentials are invalid, it returns a public context indicating that the user is anonymous. This functionality is useful for applications that want to allow access to certain routes without requiring strict authentication, enabling a smoother user experience for public-facing features while still supporting authenticated access when needed.",
+    "41464ba57f25": "This Python code defines an asynchronous function, `get_current_user`, which retrieves the current user's information from a JSON Web Token (JWT) provided in the HTTP authorization credentials. It is primarily used in the context of authentication within web applications, allowing developers to verify user identity and access rights based on the JWT. The key operations performed include dependency injection to obtain the JWT credentials and calling an authentication service to validate the token and extract user details.",
+    "49baea7331c0": "This Python code defines an asynchronous function `get_optional_user` that attempts to authenticate a user using JSON Web Tokens (JWT) if provided; if no credentials are given, it returns `None`. It is primarily used in web applications for optional user authentication, allowing developers to handle authenticated and unauthenticated requests seamlessly. The key operations include checking for the presence of JWT credentials, verifying them through an authentication service, and returning the user information if the token is valid, or `None` in case of failure or absence of credentials.",
+    "0bb5be4365ea": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to a storage mechanism such as local storage or session storage in a web application. Someone would use this function to easily access and manipulate stored data, such as user preferences or session information, without directly referencing the storage object each time. The key operation it performs is the retrieval of the `storage` object, enabling further operations like setting, getting, or removing data from storage in a concise manner.",
+    "dea095b0c309": "The provided TypeScript code defines an anonymous arrow function that returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, such as restoring application state from local storage. Developers would use this code in the context of unit testing or integration testing to ensure that the storage rehydration logic behaves as expected, allowing them to validate that the correct data is being retrieved and utilized in the application.",
+    "77e4e9fb4d7b": "The provided TypeScript code defines an anonymous arrow function that, when invoked, returns the value of the `storage` variable. This functionality is typically used in contexts where a reference to a storage object (such as local storage, session storage, or a custom storage solution) is needed, allowing for easy access to stored data. A common use case for this code would be in an authentication or data management system where the application needs to retrieve or manipulate user session data or application state stored in a specific storage medium.",
+    "6cdf19003dfe": "The provided TypeScript code defines an anonymous arrow function that, when invoked, returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, such as restoring application state from local storage. Developers would use this code in the context of unit testing or integration testing to ensure that the storage rehydration logic behaves as expected, allowing them to validate that the correct data is being retrieved and utilized in their application.",
+    "4118f9c5c3ea": "This TypeScript code defines a functional React component called `Counter` that retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count value, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the UI, facilitating real-time updates as the state changes.",
+    "552dead110c0": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to the web storage API (like `localStorage` or `sessionStorage`). Someone would use this function to easily access and manipulate stored data in a web application, such as saving user preferences or session information. The key operation it performs is providing a straightforward way to retrieve the storage object for further data processing or retrieval tasks in the context of client-side web development.",
+    "0cccf1c40122": "The provided TypeScript code defines an anonymous arrow function that returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, commonly found in state management or persistence scenarios. Developers would use this code to ensure that the storage rehydration logic is functioning correctly and to track how often or in what manner the storage is accessed during application initialization or state restoration.",
+    "55480f48be1f": "This TypeScript code defines a functional React component called `Counter` that retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the UI, facilitating real-time updates as the state changes.",
+    "674065833952": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to a web storage API (like `localStorage` or `sessionStorage`). Someone would use this code in a web application to easily access and manipulate stored data, such as user preferences or session information, without needing to repeatedly reference the storage API directly. The key operation it performs is providing a simple way to retrieve the storage object, facilitating data persistence and retrieval in the context of client-side web development.",
+    "c20534b3d428": "The provided TypeScript code defines an anonymous arrow function that returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, commonly found in state management or persistence scenarios. Developers would use this code to ensure that the storage rehydration logic is functioning correctly and to track how often or in what manner the storage is accessed during application initialization or state restoration.",
+    "051c9aa096f2": "This TypeScript code defines a functional React component called `Counter` that retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count value, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the UI, facilitating real-time updates as the state changes.",
+    "f0088b2d7429": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to the web storage API (like `localStorage` or `sessionStorage`). Someone would use this function to easily access and manipulate stored data in a web application, such as saving user preferences or session information. The key operation it performs is providing a straightforward way to retrieve the storage object for further data processing or retrieval tasks in the context of client-side web development.",
+    "71e124ebb5be": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to the web storage API (like `localStorage` or `sessionStorage`). Someone would use this function to easily access and manipulate stored data in a web application, such as saving user preferences or session information. The key operation it performs is providing a straightforward way to retrieve the storage object for further data processing or retrieval tasks in the context of client-side web development.",
+    "77bf07e55acd": "The provided TypeScript code defines an anonymous arrow function that, when invoked, returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, such as restoring application state from local storage. Developers would use this code in the context of unit testing or integration testing to ensure that the storage rehydration logic behaves as expected, allowing them to validate that the application correctly retrieves and processes stored data.",
+    "29000f982416": "This TypeScript code defines a functional React component called `Counter` that retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the UI, facilitating real-time updates as the state changes.",
+    "621b9b7d7d82": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to the Web Storage API (localStorage or sessionStorage) in a browser context. Someone would use this function to easily access and manipulate stored data in the user's browser, such as saving user preferences or session information. The key operation it performs is providing a straightforward way to retrieve the storage object for further data processing or retrieval tasks in a web application.",
+    "62680805a094": "The provided TypeScript code defines an anonymous arrow function that, when invoked, returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, such as restoring application state from local storage. Developers would use this code in the context of unit testing or integration testing to ensure that the storage rehydration logic behaves as expected, allowing them to validate that the correct data is being retrieved and utilized in their application.",
+    "5f4e44391a23": "This TypeScript code defines a functional React component called `Counter` that retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the user interface.",
+    "aefbc5b6f672": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to the web storage API (like `localStorage` or `sessionStorage`). Someone would use this function to easily access and manipulate stored data in a web application, such as saving user preferences or session information. The key operation it performs is providing a straightforward way to retrieve the storage object for further data processing or retrieval tasks in the context of client-side web development.",
+    "0864fc31ef85": "This TypeScript code defines a functional React component called `Counter`, which retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the UI, facilitating real-time updates as the state changes.",
+    "def7388b4484": "This TypeScript code defines an anonymous arrow function that, when invoked, returns the `storage` object, which typically refers to the web storage API (like `localStorage` or `sessionStorage`). Someone would use this function to easily access and manipulate stored data in a web application, such as saving user preferences or session information. The key operation it performs is providing a straightforward way to retrieve the storage object for further data processing or retrieval tasks in the context of client-side web development.",
+    "ba1c896738bd": "The provided TypeScript code defines an anonymous arrow function that returns the value of `onRehydrateStorageSpy`. This functionality is likely part of a testing or debugging setup, where `onRehydrateStorageSpy` is a spy or mock function used to monitor or verify interactions with a storage rehydration process, commonly found in state management or persistence scenarios. Developers would use this code to ensure that the storage rehydration logic is functioning correctly and to track how often and in what manner the storage is accessed during application initialization or state restoration.",
+    "962858e05a02": "This TypeScript code defines a functional React component called `Counter` that retrieves a `count` value from a state management store (likely using a library like Zustand) and displays it within a `<div>`. Someone would use this component in a web application to dynamically show the current count, which could represent user interactions, such as the number of items in a cart or the number of clicks on a button. The key operations performed include accessing the state from the store and rendering the count value in the UI, facilitating real-time updates as the state changes."
+  },
+  "detailed_results": {
+    "RAW_CODE": [
+      {
+        "query": "how do users log in to the system",
+        "keywords": [
+          "auth",
+          "login",
+          "user",
+          "password",
+          "credential"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.27978094817912896
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.27631588574006566
+          ],
+          [
+            "AuthContext",
+            "middleware/auth.py",
+            0.24951242419397893
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.24690293548070072
+          ],
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.23588542281005398
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "verify if someone has permission to access this",
+        "keywords": [
+          "permission",
+          "access",
+          "authorize",
+          "role",
+          "check"
+        ],
+        "top_results": [
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.45468722012768675
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.31932101967624316
+          ],
+          [
+            "get_repo_or_404",
+            "dependencies.py",
+            0.2939812010150679
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.2829594081644684
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.2736223254265858
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.2
+      },
+      {
+        "query": "encrypt sensitive data before storing",
+        "keywords": [
+          "encrypt",
+          "hash",
+          "password",
+          "secure",
+          "crypto"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22744070339342704
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22744070339342704
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22738793041422378
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22738793041422378
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2273830334357496
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "check if the session is still valid",
+        "keywords": [
+          "session",
+          "token",
+          "expire",
+          "valid",
+          "jwt"
+        ],
+        "top_results": [
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.3050943974591748
+          ],
+          [
+            "lifespan",
+            "main.py",
+            0.2332185873363918
+          ],
+          [
+            "AuthContext",
+            "middleware/auth.py",
+            0.23009356678490878
+          ],
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.22274807384998108
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.20920245033651394
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "read data from external source and transform it",
+        "keywords": [
+          "fetch",
+          "load",
+          "parse",
+          "transform",
+          "import"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21221440359558097
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21221440359558097
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21216308416010993
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21214876981196504
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21214876981196504
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "filter and sort the results before returning",
+        "keywords": [
+          "filter",
+          "sort",
+          "query",
+          "results",
+          "list"
+        ],
+        "top_results": [
+          [
+            "quick_search_test",
+            "test_search_v2.py",
+            0.20792474217479054
+          ],
+          [
+            "test_search_v2",
+            "test_search_v2.py",
+            0.12433506766370904
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.10439508755617112
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.10434981158130142
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.10433719530472324
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "combine multiple data sources together",
+        "keywords": [
+          "merge",
+          "join",
+          "combine",
+          "aggregate",
+          "concat"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14758457144027895
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14756504581273389
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14756504581273389
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14756504581273389
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14755679083349071
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "save changes to persistent storage",
+        "keywords": [
+          "save",
+          "store",
+          "write",
+          "persist",
+          "database",
+          "update"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3412547402973042
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3412547402973042
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3412264706297938
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3412264706297938
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3411947610194945
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "handle incoming web requests",
+        "keywords": [
+          "request",
+          "handler",
+          "route",
+          "endpoint",
+          "api",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.28532813150634484
+          ],
+          [
+            "RequestSizeLimitMiddleware",
+            "main.py",
+            0.24823066442870972
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.2238932048018492
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.21310473730537327
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.20454664264166328
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "send data to external service",
+        "keywords": [
+          "send",
+          "post",
+          "request",
+          "api",
+          "client",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.2617773335041265
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21705592945345475
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21705592945345475
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21702882274069737
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21700993559219264
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.2
+      },
+      {
+        "query": "validate input from user before processing",
+        "keywords": [
+          "validate",
+          "input",
+          "check",
+          "sanitize",
+          "schema"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.24216568702498392
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.15599249247413352
+          ],
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.15536248592012544
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.1446212458131606
+          ],
+          [
+            "AuthContext",
+            "middleware/auth.py",
+            0.13937730595336387
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "return appropriate error response",
+        "keywords": [
+          "error",
+          "exception",
+          "response",
+          "handle",
+          "catch"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.3630037114938059
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.3528098400355516
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.2843513140188386
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.2821410731750924
+          ],
+          [
+            "RequestSizeLimitMiddleware",
+            "main.py",
+            0.22122670497973804
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      }
+    ],
+    "NL_DESCRIPTION": [
+      {
+        "query": "how do users log in to the system",
+        "keywords": [
+          "auth",
+          "login",
+          "user",
+          "password",
+          "credential"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.3429893207548343
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.30535541568011754
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.28671421737639347
+          ],
+          [
+            "identifier",
+            "middleware/auth.py",
+            0.26573656339105745
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.26521349498319313
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "verify if someone has permission to access this",
+        "keywords": [
+          "permission",
+          "access",
+          "authorize",
+          "role",
+          "check"
+        ],
+        "top_results": [
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.44721995138886006
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.33387322423144494
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.32683309640735386
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.3165083481537012
+          ],
+          [
+            "get_repo_or_404",
+            "dependencies.py",
+            0.2678452955495851
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.2
+      },
+      {
+        "query": "encrypt sensitive data before storing",
+        "keywords": [
+          "encrypt",
+          "hash",
+          "password",
+          "secure",
+          "crypto"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2748856414983072
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2624328385302783
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.26225424719887014
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.26225424719887014
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.26225424719887014
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "check if the session is still valid",
+        "keywords": [
+          "session",
+          "token",
+          "expire",
+          "valid",
+          "jwt"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.2710259096258865
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.24957331083962872
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.2456267136766546
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.24078443008775696
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.23225327874861393
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      },
+      {
+        "query": "read data from external source and transform it",
+        "keywords": [
+          "fetch",
+          "load",
+          "parse",
+          "transform",
+          "import"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22269746179420477
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21845430177859979
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21483542063476674
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21479445758434776
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21417920561887407
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "filter and sort the results before returning",
+        "keywords": [
+          "filter",
+          "sort",
+          "query",
+          "results",
+          "list"
+        ],
+        "top_results": [
+          [
+            "quick_search_test",
+            "test_search_v2.py",
+            0.17987402172519001
+          ],
+          [
+            "test_search_v2",
+            "test_search_v2.py",
+            0.1705391514045594
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.16057740062192496
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.1464048669429663
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.14552615191499477
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "combine multiple data sources together",
+        "keywords": [
+          "merge",
+          "join",
+          "combine",
+          "aggregate",
+          "concat"
+        ],
+        "top_results": [
+          [
+            "quick_search_test",
+            "test_search_v2.py",
+            0.17995883019750114
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.17182319950370684
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16974984743861612
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16971856906556554
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16792144712482282
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "save changes to persistent storage",
+        "keywords": [
+          "save",
+          "store",
+          "write",
+          "persist",
+          "database",
+          "update"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3537332229761594
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3480105395859237
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.34132146306534294
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.34132146306534294
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.34132146306534294
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "handle incoming web requests",
+        "keywords": [
+          "request",
+          "handler",
+          "route",
+          "endpoint",
+          "api",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.3887993576340066
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.3611524230157685
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.3107971629158869
+          ],
+          [
+            "RequestSizeLimitMiddleware",
+            "main.py",
+            0.3044989964406061
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.3020059543736511
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "send data to external service",
+        "keywords": [
+          "send",
+          "post",
+          "request",
+          "api",
+          "client",
+          "http"
+        ],
+        "top_results": [
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.2904747789390567
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.25891877070911967
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.2422961530118496
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.23718755706243275
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.23679745633233096
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "validate input from user before processing",
+        "keywords": [
+          "validate",
+          "input",
+          "check",
+          "sanitize",
+          "schema"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.24914334094260418
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.22209718603968207
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.21168165990481547
+          ],
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.18649143855389727
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.17363953853779923
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "return appropriate error response",
+        "keywords": [
+          "error",
+          "exception",
+          "response",
+          "handle",
+          "catch"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.41454155617913846
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.3993708659485314
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.3438380038741931
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.3158978233882467
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.2776660849969053
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      }
+    ],
+    "HYBRID_V1": [
+      {
+        "query": "how do users log in to the system",
+        "keywords": [
+          "auth",
+          "login",
+          "user",
+          "password",
+          "credential"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.3148737672394482
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.2951120668849894
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.27086276608570087
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.24647720036235043
+          ],
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.23868235670340618
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "verify if someone has permission to access this",
+        "keywords": [
+          "permission",
+          "access",
+          "authorize",
+          "role",
+          "check"
+        ],
+        "top_results": [
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.4268652310361902
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.3200482669088512
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.30692382378939764
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.2963927194466778
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.2556723719431871
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.2
+      },
+      {
+        "query": "encrypt sensitive data before storing",
+        "keywords": [
+          "encrypt",
+          "hash",
+          "password",
+          "secure",
+          "crypto"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.25742192127573965
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2501725861186283
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.24782507454521782
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2473484041914778
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2473484041914778
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "check if the session is still valid",
+        "keywords": [
+          "session",
+          "token",
+          "expire",
+          "valid",
+          "jwt"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.24408615404321754
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.24251477304770774
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.228655041722086
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.22659284587560394
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.207777942874894
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      },
+      {
+        "query": "read data from external source and transform it",
+        "keywords": [
+          "fetch",
+          "load",
+          "parse",
+          "transform",
+          "import"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.20053170323277753
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1990821635065941
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.19906795940487107
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.19852292202838764
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.19851700040839743
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "filter and sort the results before returning",
+        "keywords": [
+          "filter",
+          "sort",
+          "query",
+          "results",
+          "list"
+        ],
+        "top_results": [
+          [
+            "quick_search_test",
+            "test_search_v2.py",
+            0.1653451693413494
+          ],
+          [
+            "test_search_v2",
+            "test_search_v2.py",
+            0.14283175970310388
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.14050676956470734
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.12294201687929278
+          ],
+          [
+            "Counter",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.11053273888791103
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "combine multiple data sources together",
+        "keywords": [
+          "merge",
+          "join",
+          "combine",
+          "aggregate",
+          "concat"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14832806769971016
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1480529042287816
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14802798645185083
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1457921108790525
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.14573627455777913
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "save changes to persistent storage",
+        "keywords": [
+          "save",
+          "store",
+          "write",
+          "persist",
+          "database",
+          "update"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.33889646189988315
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3337314428063246
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3221816955434854
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3221816955434854
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3221816955434854
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "handle incoming web requests",
+        "keywords": [
+          "request",
+          "handler",
+          "route",
+          "endpoint",
+          "api",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.36475610675415565
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.33895713348319056
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.29401997398465507
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.2832355838040185
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.28309144948109916
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "send data to external service",
+        "keywords": [
+          "send",
+          "post",
+          "request",
+          "api",
+          "client",
+          "http"
+        ],
+        "top_results": [
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.2621122486581134
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.24252061280819134
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.2249114137126781
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.21932536276638345
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.21638114917648105
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "validate input from user before processing",
+        "keywords": [
+          "validate",
+          "input",
+          "check",
+          "sanitize",
+          "schema"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.24017652025477282
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.21240398610092856
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.20503714146504518
+          ],
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.16856156170615544
+          ],
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.1613840053969935
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "return appropriate error response",
+        "keywords": [
+          "error",
+          "exception",
+          "response",
+          "handle",
+          "catch"
+        ],
+        "top_results": [
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.370393487856578
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.3612341191371273
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.3305199767028868
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.2893800760650888
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.256626790950684
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      }
+    ],
+    "HYBRID_V2": [
+      {
+        "query": "how do users log in to the system",
+        "keywords": [
+          "auth",
+          "login",
+          "user",
+          "password",
+          "credential"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.2972911460964771
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.27772247974842146
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.24125612551027584
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.227945896509607
+          ],
+          [
+            "identifier",
+            "middleware/auth.py",
+            0.22747666951908904
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "verify if someone has permission to access this",
+        "keywords": [
+          "permission",
+          "access",
+          "authorize",
+          "role",
+          "check"
+        ],
+        "top_results": [
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.39118250932571674
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.29868484947677215
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.2862181752752268
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.2736306775396705
+          ],
+          [
+            "get_repo_or_404",
+            "dependencies.py",
+            0.2437364529200593
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.2
+      },
+      {
+        "query": "encrypt sensitive data before storing",
+        "keywords": [
+          "encrypt",
+          "hash",
+          "password",
+          "secure",
+          "crypto"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.23199001004090905
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22267723344701582
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22267723344701582
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2226278382630685
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22260792046460084
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "check if the session is still valid",
+        "keywords": [
+          "session",
+          "token",
+          "expire",
+          "valid",
+          "jwt"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.24642674099790055
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.24502166256606495
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.2094410288934368
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.19998264395521942
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.19463101513174066
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      },
+      {
+        "query": "read data from external source and transform it",
+        "keywords": [
+          "fetch",
+          "load",
+          "parse",
+          "transform",
+          "import"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1665283537789526
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16596778649326835
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16596778649326835
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16400859630471412
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.16399753202082012
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "filter and sort the results before returning",
+        "keywords": [
+          "filter",
+          "sort",
+          "query",
+          "results",
+          "list"
+        ],
+        "top_results": [
+          [
+            "quick_search_test",
+            "test_search_v2.py",
+            0.14913433853455396
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.13210267405243256
+          ],
+          [
+            "test_search_v2",
+            "test_search_v2.py",
+            0.13051181651588029
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.10011338027187287
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.09768207492956762
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "combine multiple data sources together",
+        "keywords": [
+          "merge",
+          "join",
+          "combine",
+          "aggregate",
+          "concat"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1216375230425435
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1216375230425435
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.11870086773057473
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.11869720531136767
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.11858040996106388
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "save changes to persistent storage",
+        "keywords": [
+          "save",
+          "store",
+          "write",
+          "persist",
+          "database",
+          "update"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.39047275990534763
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3853167128452361
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3827250820004603
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3827250820004603
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.382706020032052
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "handle incoming web requests",
+        "keywords": [
+          "request",
+          "handler",
+          "route",
+          "endpoint",
+          "api",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.3470283247906353
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.26889371311578725
+          ],
+          [
+            "RequestSizeLimitMiddleware",
+            "main.py",
+            0.2522962993058687
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.23968828567986872
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.23467043585946304
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "send data to external service",
+        "keywords": [
+          "send",
+          "post",
+          "request",
+          "api",
+          "client",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.2324125553942402
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.21728448859169586
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.19865505383728768
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.1968433155583774
+          ],
+          [
+            "lifespan",
+            "main.py",
+            0.19247128860346321
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "validate input from user before processing",
+        "keywords": [
+          "validate",
+          "input",
+          "check",
+          "sanitize",
+          "schema"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.22169430465855655
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.1776995274458066
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.16657620595851455
+          ],
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.14803393427776604
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.1278305885670577
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "return appropriate error response",
+        "keywords": [
+          "error",
+          "exception",
+          "response",
+          "handle",
+          "catch"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.32407098421580616
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.30013768923643264
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.2685847818406312
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.2541947058842346
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.2204348219445177
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      }
+    ],
+    "CHUNKED": [
+      {
+        "query": "how do users log in to the system",
+        "keywords": [
+          "auth",
+          "login",
+          "user",
+          "password",
+          "credential"
+        ],
+        "top_results": [
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.2665768445212454
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.24804296726112593
+          ],
+          [
+            "AuthContext",
+            "middleware/auth.py",
+            0.2179266048874337
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.21714319437616425
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.21066670231036835
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 1.0
+      },
+      {
+        "query": "verify if someone has permission to access this",
+        "keywords": [
+          "permission",
+          "access",
+          "authorize",
+          "role",
+          "check"
+        ],
+        "top_results": [
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.4116757503108878
+          ],
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.31737440272520023
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.2834552917985344
+          ],
+          [
+            "public_auth",
+            "middleware/auth.py",
+            0.2637743084730529
+          ],
+          [
+            "get_repo_or_404",
+            "dependencies.py",
+            0.2607438523207083
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.2
+      },
+      {
+        "query": "encrypt sensitive data before storing",
+        "keywords": [
+          "encrypt",
+          "hash",
+          "password",
+          "secure",
+          "crypto"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.22789517651555136
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2197146339406953
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21812420156903412
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.21812420156903412
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.2181028576764446
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "check if the session is still valid",
+        "keywords": [
+          "session",
+          "token",
+          "expire",
+          "valid",
+          "jwt"
+        ],
+        "top_results": [
+          [
+            "is_authenticated",
+            "middleware/auth.py",
+            0.2356700090360665
+          ],
+          [
+            "get_current_user",
+            "middleware/auth.py",
+            0.2218704323086759
+          ],
+          [
+            "AuthContext",
+            "middleware/auth.py",
+            0.20725987410305913
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.18772749534113087
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.18346239204884224
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "read data from external source and transform it",
+        "keywords": [
+          "fetch",
+          "load",
+          "parse",
+          "transform",
+          "import"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.18272031039507722
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1818662334917803
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.18175230735105735
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.18172712885661277
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.17898801765284167
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "filter and sort the results before returning",
+        "keywords": [
+          "filter",
+          "sort",
+          "query",
+          "results",
+          "list"
+        ],
+        "top_results": [
+          [
+            "quick_search_test",
+            "test_search_v2.py",
+            0.15587743161602963
+          ],
+          [
+            "test_search_v2",
+            "test_search_v2.py",
+            0.14325513553485414
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.12402517722513672
+          ],
+          [
+            "Counter",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.11606051085629135
+          ],
+          [
+            "Counter",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.11602766501724043
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "combine multiple data sources together",
+        "keywords": [
+          "merge",
+          "join",
+          "combine",
+          "aggregate",
+          "concat"
+        ],
+        "top_results": [
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.13613332467411984
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.13570162563601737
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.13560530108297736
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1355797127625917
+          ],
+          [
+            "onRehydrateStorageSpy",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.1355038780339563
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "save changes to persistent storage",
+        "keywords": [
+          "save",
+          "store",
+          "write",
+          "persist",
+          "database",
+          "update"
+        ],
+        "top_results": [
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.3189063724204211
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.31047205221464635
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.30135247270639276
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.30135247270639276
+          ],
+          [
+            "storage",
+            "repos/abaa9b8a-6427-463f-b0e1-52618caf61eb/tests/persistAsync.test.tsx",
+            0.30129447245589563
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "handle incoming web requests",
+        "keywords": [
+          "request",
+          "handler",
+          "route",
+          "endpoint",
+          "api",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.3540394060654412
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.2886701640427009
+          ],
+          [
+            "RequestSizeLimitMiddleware",
+            "main.py",
+            0.25937779656655086
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.2542509634727049
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.24980267487366356
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.8
+      },
+      {
+        "query": "send data to external service",
+        "keywords": [
+          "send",
+          "post",
+          "request",
+          "api",
+          "client",
+          "http"
+        ],
+        "top_results": [
+          [
+            "dispatch",
+            "main.py",
+            0.224917595176803
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.20474871109710913
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.19908285497296974
+          ],
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.1940186457217109
+          ],
+          [
+            "lifespan",
+            "main.py",
+            0.1797573629429112
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.4
+      },
+      {
+        "query": "validate input from user before processing",
+        "keywords": [
+          "validate",
+          "input",
+          "check",
+          "sanitize",
+          "schema"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.214260622850819
+          ],
+          [
+            "require_auth",
+            "middleware/auth.py",
+            0.15332255594516023
+          ],
+          [
+            "get_optional_user",
+            "middleware/auth.py",
+            0.1484774418496594
+          ],
+          [
+            "verify_repo_access",
+            "dependencies.py",
+            0.14158083011741388
+          ],
+          [
+            "identifier",
+            "middleware/auth.py",
+            0.13518546775398438
+          ]
+        ],
+        "hit_in_top1": false,
+        "relevance_score": 0.0
+      },
+      {
+        "query": "return appropriate error response",
+        "keywords": [
+          "error",
+          "exception",
+          "response",
+          "handle",
+          "catch"
+        ],
+        "top_results": [
+          [
+            "validation_exception_handler",
+            "main.py",
+            0.35706231446536435
+          ],
+          [
+            "rate_limit_handler",
+            "main.py",
+            0.34069194548047027
+          ],
+          [
+            "generic_exception_handler",
+            "main.py",
+            0.319403576953082
+          ],
+          [
+            "dispatch",
+            "main.py",
+            0.2834658902647431
+          ],
+          [
+            "RequestSizeLimitMiddleware",
+            "main.py",
+            0.22322030441463356
+          ]
+        ],
+        "hit_in_top1": true,
+        "relevance_score": 0.6
+      }
+    ]
+  }
+}

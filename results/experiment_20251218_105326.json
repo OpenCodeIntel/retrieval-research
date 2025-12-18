@@ -1,0 +1,663 @@
+{
+  "timestamp": "2025-12-18T10:53:26.439570",
+  "config": {
+    "embedding_model": "text-embedding-3-small",
+    "description_model": "gpt-4o-mini",
+    "num_functions": 10,
+    "num_queries": 20
+  },
+  "descriptions": {
+    "authenticate_user": "The `authenticate_user` function verifies a user's identity by checking their provided username and password against stored credentials in a database. It returns a `User` object if the authentication is successful, allowing applications to grant access to user-specific features, or `None` if the credentials are invalid, thereby enhancing security by preventing unauthorized access.",
+    "calculate_total_price": "The `calculate_total_price` function computes the total price of items in a shopping cart, factoring in an optional discount code that reduces the subtotal before tax is applied. Users would utilize this function to accurately determine the final amount due for their purchases, including any applicable discounts and taxes, ensuring they have a clear understanding of their total costs.",
+    "send_notification": "The `send_notification` function asynchronously sends a notification to a specified user through their preferred communication channel\u2014email, SMS, or push notification\u2014based on the provided `user_id` and `message`. This functionality is useful for applications that need to alert users or provide updates in real-time, ensuring that the message reaches them through their most accessible medium.",
+    "parse_csv_file": "The `parse_csv_file` function reads a specified CSV file and converts its contents into a list of dictionaries, where each dictionary represents a row with column headers as keys. This functionality is useful for users who need to easily manipulate or analyze structured data from CSV files in a programmatic way.",
+    "validate_email": "The `validate_email` function checks whether a given email address conforms to a standard format using a regular expression. Users would utilize this function to ensure that email inputs are valid before processing them further, such as during user registration or form submissions, thereby reducing errors and improving data integrity.",
+    "cache_response": "The `cache_response` function stores a given data object in a Redis cache under a specified key, with a time-to-live (TTL) parameter that determines how long the data remains accessible before expiring. This functionality is useful for improving application performance by reducing the need to repeatedly fetch or compute the same data, thereby enhancing response times and reducing load on backend systems.",
+    "retry_with_backoff": "The `retry_with_backoff` function asynchronously attempts to execute a given function up to a specified number of times (`max_retries`), implementing an exponential backoff strategy for delays between retries. This is useful for handling transient errors in network calls or other operations where temporary failures may occur, allowing the function to gracefully retry rather than failing immediately.",
+    "generate_jwt_token": "The `generate_jwt_token` function creates a JSON Web Token (JWT) for user authentication, embedding the user's ID and setting an expiration time for the token. This function is useful for securely managing user sessions in web applications, allowing for stateless authentication and ensuring that tokens are valid only for a specified duration.",
+    "paginate_results": "The `paginate_results` function takes a database query and returns a paginated set of results, including the current page's items, total item count, current page number, and total number of pages. This functionality is useful for efficiently managing large datasets by allowing users to retrieve and display a manageable subset of results at a time, enhancing performance and user experience in applications that require data browsing.",
+    "upload_to_s3": "The `upload_to_s3` function asynchronously uploads a given byte content to a specified AWS S3 bucket under a designated key, and it returns the publicly accessible URL of the uploaded file. This functionality is useful for developers who need to store files in the cloud and share them via a direct link, enabling efficient file management and access in web applications."
+  },
+  "results": [
+    {
+      "approach": "RAW_CODE",
+      "query": "user login authentication",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.4747130640401067,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "user login authentication",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.5315080081982876,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "user login authentication",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.4654374615414198,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "user login authentication",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.4701972496351327,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "how to verify password",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.40117664870666164,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "how to verify password",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.4290951070516036,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "how to verify password",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.38969388932995974,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "how to verify password",
+      "expected": "authenticate_user",
+      "top_match": "authenticate_user",
+      "top_score": 0.3799943153904877,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "calculate shopping cart total with discount",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.6058520099344187,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "calculate shopping cart total with discount",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.6948882700036295,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "calculate shopping cart total with discount",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.5577256843680863,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "calculate shopping cart total with discount",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.587816563336068,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "apply coupon code to order",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.2725445268673668,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "apply coupon code to order",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.34181605299764883,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "apply coupon code to order",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.24006172095230677,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "apply coupon code to order",
+      "expected": "calculate_total_price",
+      "top_match": "calculate_total_price",
+      "top_score": 0.27654717624743747,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "send email or SMS to user",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.47732566808988347,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "send email or SMS to user",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.5560858513425481,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "send email or SMS to user",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.4727752493690971,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "send email or SMS to user",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.4789670299493188,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "push notification system",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.4388683440453176,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "push notification system",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.4857894187368506,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "push notification system",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.4173020351972092,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "push notification system",
+      "expected": "send_notification",
+      "top_match": "send_notification",
+      "top_score": 0.4427302747624754,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "read CSV data from file",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.4700695922267631,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "read CSV data from file",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.5600528539644448,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "read CSV data from file",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.5083319907544701,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "read CSV data from file",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.5280858744293567,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "import spreadsheet data",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.2342363421121417,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "import spreadsheet data",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.329757074120084,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "import spreadsheet data",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.3008047163741231,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "import spreadsheet data",
+      "expected": "parse_csv_file",
+      "top_match": "parse_csv_file",
+      "top_score": 0.299841500331117,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "check if email is valid",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.6108567012488785,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "check if email is valid",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.6962779806327489,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "check if email is valid",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.5760153678873822,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "check if email is valid",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.5963827831210574,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "email format validation regex",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.6089175783851088,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "email format validation regex",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.6170762195653829,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "email format validation regex",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.5243132702779424,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "email format validation regex",
+      "expected": "validate_email",
+      "top_match": "validate_email",
+      "top_score": 0.49444581344973687,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "store data in redis",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.5256783756897826,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "store data in redis",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.5463191794532906,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "store data in redis",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.429461560042152,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "store data in redis",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.4468989609712268,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "caching with expiration",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.476634706459045,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "caching with expiration",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.5382430927636241,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "caching with expiration",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.4883368062923017,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "caching with expiration",
+      "expected": "cache_response",
+      "top_match": "cache_response",
+      "top_score": 0.47714079247906427,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "retry failed requests with delay",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.36249074568302075,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "retry failed requests with delay",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.46610362807419276,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "retry failed requests with delay",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.3888006137302742,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "retry failed requests with delay",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.39008313590766563,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "exponential backoff pattern",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.5206793593412878,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "exponential backoff pattern",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.5231548621366936,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "exponential backoff pattern",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.4482249839995091,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "exponential backoff pattern",
+      "expected": "retry_with_backoff",
+      "top_match": "retry_with_backoff",
+      "top_score": 0.4456213695229993,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "create authentication token",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.5060908821236744,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "create authentication token",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.5580660675441768,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "create authentication token",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.5025083389449132,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "create authentication token",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.4856221683600604,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "JWT token generation",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.5690042231166932,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "JWT token generation",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.6412253684668137,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "JWT token generation",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.5837035403303351,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "JWT token generation",
+      "expected": "generate_jwt_token",
+      "top_match": "generate_jwt_token",
+      "top_score": 0.5839515072117593,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "database pagination",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.5592152792552127,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "database pagination",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.6364912727965994,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "database pagination",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.5346514181552662,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "database pagination",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.5571036201771917,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "limit and offset query results",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.4143399475157098,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "limit and offset query results",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.4279488608943918,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "limit and offset query results",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.3455542066592092,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "limit and offset query results",
+      "expected": "paginate_results",
+      "top_match": "paginate_results",
+      "top_score": 0.3467096429518615,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "upload file to AWS",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.5725275457944902,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "upload file to AWS",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.6084761659336247,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "upload file to AWS",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.5043306242450549,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "upload file to AWS",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.5236175330270428,
+      "expected_rank": 1
+    },
+    {
+      "approach": "RAW_CODE",
+      "query": "S3 file storage",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.39602111842444904,
+      "expected_rank": 1
+    },
+    {
+      "approach": "NL_DESCRIPTION",
+      "query": "S3 file storage",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.47497367557947784,
+      "expected_rank": 1
+    },
+    {
+      "approach": "HYBRID",
+      "query": "S3 file storage",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.4047406700525613,
+      "expected_rank": 1
+    },
+    {
+      "approach": "ENHANCED_HYBRID",
+      "query": "S3 file storage",
+      "expected": "upload_to_s3",
+      "top_match": "upload_to_s3",
+      "top_score": 0.41238040643572,
+      "expected_rank": 1
+    }
+  ]
+}
