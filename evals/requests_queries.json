@@ -1,0 +1,347 @@
+[
+  {
+    "query": "send get request",
+    "expected": [
+      "get",
+      "request"
+    ]
+  },
+  {
+    "query": "send post request",
+    "expected": [
+      "post",
+      "request"
+    ]
+  },
+  {
+    "query": "send put request",
+    "expected": [
+      "put",
+      "request"
+    ]
+  },
+  {
+    "query": "send delete request",
+    "expected": [
+      "delete",
+      "request"
+    ]
+  },
+  {
+    "query": "send patch request",
+    "expected": [
+      "patch",
+      "request"
+    ]
+  },
+  {
+    "query": "send head request",
+    "expected": [
+      "head",
+      "request"
+    ]
+  },
+  {
+    "query": "send options request",
+    "expected": [
+      "options",
+      "request"
+    ]
+  },
+  {
+    "query": "make http request",
+    "expected": [
+      "request",
+      "send"
+    ]
+  },
+  {
+    "query": "prepare request",
+    "expected": [
+      "prepare",
+      "prepare_request",
+      "PreparedRequest"
+    ]
+  },
+  {
+    "query": "send prepared request",
+    "expected": [
+      "send",
+      "request"
+    ]
+  },
+  {
+    "query": "create session",
+    "expected": [
+      "Session",
+      "session"
+    ]
+  },
+  {
+    "query": "mount adapter",
+    "expected": [
+      "mount",
+      "get_adapter"
+    ]
+  },
+  {
+    "query": "get adapter for url",
+    "expected": [
+      "get_adapter",
+      "mount"
+    ]
+  },
+  {
+    "query": "close session",
+    "expected": [
+      "close"
+    ]
+  },
+  {
+    "query": "merge environment settings",
+    "expected": [
+      "merge_environment_settings",
+      "merge"
+    ]
+  },
+  {
+    "query": "resolve redirects",
+    "expected": [
+      "resolve_redirects",
+      "redirect"
+    ]
+  },
+  {
+    "query": "prepare request in session",
+    "expected": [
+      "prepare_request",
+      "prepare"
+    ]
+  },
+  {
+    "query": "get request from session",
+    "expected": [
+      "request",
+      "get"
+    ]
+  },
+  {
+    "query": "get response content",
+    "expected": [
+      "content",
+      "text",
+      "iter_content"
+    ]
+  },
+  {
+    "query": "get response json",
+    "expected": [
+      "json"
+    ]
+  },
+  {
+    "query": "iterate response content",
+    "expected": [
+      "iter_content",
+      "iter_lines"
+    ]
+  },
+  {
+    "query": "iterate response lines",
+    "expected": [
+      "iter_lines",
+      "iter_content"
+    ]
+  },
+  {
+    "query": "check response status",
+    "expected": [
+      "raise_for_status",
+      "ok",
+      "status_code"
+    ]
+  },
+  {
+    "query": "raise for bad status",
+    "expected": [
+      "raise_for_status"
+    ]
+  },
+  {
+    "query": "get response headers",
+    "expected": [
+      "headers"
+    ]
+  },
+  {
+    "query": "get response encoding",
+    "expected": [
+      "encoding",
+      "apparent_encoding"
+    ]
+  },
+  {
+    "query": "get cookies from response",
+    "expected": [
+      "extract_cookies_to_jar",
+      "cookies"
+    ]
+  },
+  {
+    "query": "set cookie value",
+    "expected": [
+      "set",
+      "set_cookie"
+    ]
+  },
+  {
+    "query": "get cookie value",
+    "expected": [
+      "get",
+      "get_dict"
+    ]
+  },
+  {
+    "query": "create cookie jar",
+    "expected": [
+      "cookiejar_from_dict",
+      "RequestsCookieJar"
+    ]
+  },
+  {
+    "query": "merge cookies",
+    "expected": [
+      "merge_cookies",
+      "add_dict_to_cookiejar"
+    ]
+  },
+  {
+    "query": "clear cookies",
+    "expected": [
+      "clear"
+    ]
+  },
+  {
+    "query": "http basic auth",
+    "expected": [
+      "HTTPBasicAuth",
+      "_basic_auth_str"
+    ]
+  },
+  {
+    "query": "http digest auth",
+    "expected": [
+      "HTTPDigestAuth",
+      "build_digest_header"
+    ]
+  },
+  {
+    "query": "http proxy auth",
+    "expected": [
+      "HTTPProxyAuth"
+    ]
+  },
+  {
+    "query": "build auth header",
+    "expected": [
+      "build_digest_header",
+      "_basic_auth_str"
+    ]
+  },
+  {
+    "query": "handle auth challenge",
+    "expected": [
+      "handle_401",
+      "handle_407"
+    ]
+  },
+  {
+    "query": "parse digest challenge",
+    "expected": [
+      "parse_dict_header"
+    ]
+  },
+  {
+    "query": "encode url parameters",
+    "expected": [
+      "urlencode",
+      "encode_params"
+    ]
+  },
+  {
+    "query": "parse url",
+    "expected": [
+      "urlparse",
+      "parse_url",
+      "requote_uri"
+    ]
+  },
+  {
+    "query": "get encoding from headers",
+    "expected": [
+      "get_encoding_from_headers",
+      "encoding"
+    ]
+  },
+  {
+    "query": "guess content type",
+    "expected": [
+      "guess_filename",
+      "guess_json_utf"
+    ]
+  },
+  {
+    "query": "check if url is absolute",
+    "expected": [
+      "is_valid_cidr",
+      "urlparse"
+    ]
+  },
+  {
+    "query": "prepare url",
+    "expected": [
+      "prepare_url",
+      "requote_uri"
+    ]
+  },
+  {
+    "query": "stream decompress",
+    "expected": [
+      "stream_decode_response_unicode",
+      "iter_slices"
+    ]
+  },
+  {
+    "query": "select proxy",
+    "expected": [
+      "select_proxy",
+      "prepend_scheme_if_needed"
+    ]
+  },
+  {
+    "query": "create http adapter",
+    "expected": [
+      "HTTPAdapter",
+      "BaseAdapter"
+    ]
+  },
+  {
+    "query": "send through adapter",
+    "expected": [
+      "send"
+    ]
+  },
+  {
+    "query": "build response from urllib",
+    "expected": [
+      "build_response"
+    ]
+  },
+  {
+    "query": "get connection from pool",
+    "expected": [
+      "get_connection",
+      "poolmanager"
+    ]
+  }
+]

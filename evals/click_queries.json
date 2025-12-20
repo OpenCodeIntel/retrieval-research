@@ -1,0 +1,355 @@
+[
+  {
+    "query": "create cli command",
+    "expected": [
+      "command",
+      "add_command",
+      "Command"
+    ]
+  },
+  {
+    "query": "add command to group",
+    "expected": [
+      "add_command",
+      "command"
+    ]
+  },
+  {
+    "query": "get command by name",
+    "expected": [
+      "get_command",
+      "resolve_command"
+    ]
+  },
+  {
+    "query": "list all commands",
+    "expected": [
+      "list_commands",
+      "format_commands"
+    ]
+  },
+  {
+    "query": "invoke command",
+    "expected": [
+      "invoke",
+      "main",
+      "__call__"
+    ]
+  },
+  {
+    "query": "get command path",
+    "expected": [
+      "command_path",
+      "info_name"
+    ]
+  },
+  {
+    "query": "format command help",
+    "expected": [
+      "format_help",
+      "format_commands",
+      "get_help"
+    ]
+  },
+  {
+    "query": "resolve command name",
+    "expected": [
+      "resolve_command",
+      "get_command"
+    ]
+  },
+  {
+    "query": "create command decorator",
+    "expected": [
+      "command",
+      "decorators"
+    ]
+  },
+  {
+    "query": "pass context to command",
+    "expected": [
+      "pass_context",
+      "make_pass_decorator"
+    ]
+  },
+  {
+    "query": "add option to command",
+    "expected": [
+      "add_option",
+      "option"
+    ]
+  },
+  {
+    "query": "create option decorator",
+    "expected": [
+      "option",
+      "Option"
+    ]
+  },
+  {
+    "query": "parse option value",
+    "expected": [
+      "_process_opts",
+      "_match_long_opt"
+    ]
+  },
+  {
+    "query": "handle boolean flag",
+    "expected": [
+      "flag_value",
+      "is_flag"
+    ]
+  },
+  {
+    "query": "set option default",
+    "expected": [
+      "default",
+      "_format_default"
+    ]
+  },
+  {
+    "query": "validate option",
+    "expected": [
+      "_process_opts",
+      "type_cast_value"
+    ]
+  },
+  {
+    "query": "get option from state",
+    "expected": [
+      "_get_value_from_state"
+    ]
+  },
+  {
+    "query": "normalize option name",
+    "expected": [
+      "_normalize_opt",
+      "_split_opt"
+    ]
+  },
+  {
+    "query": "add argument to command",
+    "expected": [
+      "add_argument",
+      "argument"
+    ]
+  },
+  {
+    "query": "create argument decorator",
+    "expected": [
+      "argument",
+      "Argument"
+    ]
+  },
+  {
+    "query": "parse arguments",
+    "expected": [
+      "parse_args",
+      "_process_args_for_args"
+    ]
+  },
+  {
+    "query": "unpack argument values",
+    "expected": [
+      "_unpack_args",
+      "_expand_args"
+    ]
+  },
+  {
+    "query": "handle multiple arguments",
+    "expected": [
+      "nargs",
+      "_process_args_for_args"
+    ]
+  },
+  {
+    "query": "get argument encoding",
+    "expected": [
+      "_get_argv_encoding"
+    ]
+  },
+  {
+    "query": "print to terminal",
+    "expected": [
+      "echo",
+      "secho",
+      "_echo"
+    ]
+  },
+  {
+    "query": "print styled text",
+    "expected": [
+      "secho",
+      "style",
+      "echo"
+    ]
+  },
+  {
+    "query": "apply text style",
+    "expected": [
+      "style",
+      "_interpret_color"
+    ]
+  },
+  {
+    "query": "remove text style",
+    "expected": [
+      "unstyle"
+    ]
+  },
+  {
+    "query": "print via pager",
+    "expected": [
+      "echo_via_pager",
+      "_echo"
+    ]
+  },
+  {
+    "query": "clear terminal screen",
+    "expected": [
+      "clear"
+    ]
+  },
+  {
+    "query": "format output",
+    "expected": [
+      "format_help",
+      "format_usage"
+    ]
+  },
+  {
+    "query": "wrap text output",
+    "expected": [
+      "wrap_text",
+      "_flush_par"
+    ]
+  },
+  {
+    "query": "prompt user for input",
+    "expected": [
+      "prompt",
+      "prompt_func",
+      "_build_prompt"
+    ]
+  },
+  {
+    "query": "confirm user action",
+    "expected": [
+      "confirm"
+    ]
+  },
+  {
+    "query": "hidden password input",
+    "expected": [
+      "hidden_prompt_func",
+      "prompt"
+    ]
+  },
+  {
+    "query": "get single character",
+    "expected": [
+      "_getchar",
+      "getchar"
+    ]
+  },
+  {
+    "query": "pause for user",
+    "expected": [
+      "pause",
+      "_pause_echo"
+    ]
+  },
+  {
+    "query": "edit in external editor",
+    "expected": [
+      "edit",
+      "editor"
+    ]
+  },
+  {
+    "query": "create command group",
+    "expected": [
+      "group",
+      "Group",
+      "MultiCommand"
+    ]
+  },
+  {
+    "query": "invoke group command",
+    "expected": [
+      "invoke",
+      "result_callback"
+    ]
+  },
+  {
+    "query": "chain commands together",
+    "expected": [
+      "_check_nested_chain",
+      "chain"
+    ]
+  },
+  {
+    "query": "get group context",
+    "expected": [
+      "make_context",
+      "Context"
+    ]
+  },
+  {
+    "query": "format group help",
+    "expected": [
+      "format_help",
+      "format_commands"
+    ]
+  },
+  {
+    "query": "pass group obj",
+    "expected": [
+      "pass_obj",
+      "make_pass_decorator"
+    ]
+  },
+  {
+    "query": "convert parameter type",
+    "expected": [
+      "convert",
+      "type_cast_value"
+    ]
+  },
+  {
+    "query": "create choice type",
+    "expected": [
+      "Choice",
+      "convert"
+    ]
+  },
+  {
+    "query": "create path type",
+    "expected": [
+      "Path",
+      "resolve_path"
+    ]
+  },
+  {
+    "query": "create file type",
+    "expected": [
+      "File",
+      "_FileType"
+    ]
+  },
+  {
+    "query": "validate range type",
+    "expected": [
+      "IntRange",
+      "FloatRange",
+      "_clamp"
+    ]
+  },
+  {
+    "query": "create tuple type",
+    "expected": [
+      "Tuple",
+      "convert"
+    ]
+  }
+]
