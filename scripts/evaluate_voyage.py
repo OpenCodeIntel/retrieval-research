@@ -194,13 +194,14 @@ def main():
     
     # Evaluate
     print(f"\n🎯 Running evaluation...")
+    print(f"   ⚠️  Rate limited - will take ~25 minutes for queries")
     print("-" * 60)
     
     hits = 0
     bm25_weight = 0.4
     semantic_weight = 0.6
     
-    for item in queries:
+    for idx, item in enumerate(queries):
         query = item['query']
         expected = item['expected']
         expected_list = expected if isinstance(expected, list) else [expected]
@@ -211,12 +212,21 @@ def main():
         if bm25_scores.max() > 0:
             bm25_scores = bm25_scores / bm25_scores.max()
         
-        # Voyage semantic scores
-        query_emb = voyage_client.embed(
-            [query],
-            model="voyage-code-3",
-            input_type="query"
-        ).embeddings[0]
+        # Voyage semantic scores - with rate limit handling
+        try:
+            query_emb = voyage_client.embed(
+                [query],
+                model="voyage-code-3",
+                input_type="query"
+            ).embeddings[0]
+        except Exception as e:
+            print(f"      ⚠️ Rate limit hit, waiting 60s...")
+            time.sleep(60)
+            query_emb = voyage_client.embed(
+                [query],
+                model="voyage-code-3",
+                input_type="query"
+            ).embeddings[0]
         
         semantic_scores = np.dot(embeddings, query_emb)
         semantic_scores = (semantic_scores - semantic_scores.min()) / (semantic_scores.max() - semantic_scores.min() + 1e-8)
@@ -242,11 +252,12 @@ def main():
         else:
             status = "❌"
         
-        print(f"{status} {query[:45]}")
+        print(f"{status} [{idx+1}/{len(queries)}] {query[:40]}")
         print(f"   Expected: {expected_list[0]} | Got: {top_func.qualified_name}")
         
-        # Small delay for query embedding rate limit
-        time.sleep(0.5)
+        # Rate limit: 3 RPM = 1 query per 20 seconds to be safe
+        if idx + 1 < len(queries):
+            time.sleep(21)
     
     # Results
     hit_rate = hits / len(queries)
