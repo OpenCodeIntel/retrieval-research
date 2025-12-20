@@ -158,18 +158,19 @@ class RRFSearchEngine:
         contexts = [func.full_context for func in self.functions]
         
         embeddings = []
-        batch_size = 50 if self.embedding_provider == "voyage" else 100
+        # Voyage: very small batches due to 3 RPM limit
+        batch_size = 10 if self.embedding_provider == "voyage" else 100
         
         for i in range(0, len(contexts), batch_size):
+            # Wait BEFORE each batch for Voyage (except first)
+            if self.embedding_provider == "voyage" and i > 0:
+                print(f"      ⏳ Waiting 25s for rate limit...")
+                time.sleep(25)
+            
             batch = contexts[i:i+batch_size]
             batch_emb = self._embed_batch(batch, "document")
             embeddings.extend(batch_emb)
             print(f"      Code: {min(i+batch_size, len(contexts))}/{len(contexts)}")
-            
-            # Rate limit delay for Voyage
-            if self.embedding_provider == "voyage" and i + batch_size < len(contexts):
-                print(f"      ⏳ Waiting 25s for rate limit...")
-                time.sleep(25)
         
         self.code_embeddings = np.array(embeddings)
     
@@ -184,18 +185,19 @@ class RRFSearchEngine:
                 summaries.append(func.signature)
         
         embeddings = []
-        batch_size = 50 if self.embedding_provider == "voyage" else 100
+        # Voyage: very small batches due to 3 RPM limit
+        batch_size = 10 if self.embedding_provider == "voyage" else 100
         
         for i in range(0, len(summaries), batch_size):
+            # Wait BEFORE each batch for Voyage (except first)
+            if self.embedding_provider == "voyage" and i > 0:
+                print(f"      ⏳ Waiting 25s for rate limit...")
+                time.sleep(25)
+            
             batch = summaries[i:i+batch_size]
             batch_emb = self._embed_batch(batch, "document")
             embeddings.extend(batch_emb)
             print(f"      Summary: {min(i+batch_size, len(summaries))}/{len(summaries)}")
-            
-            # Rate limit delay for Voyage
-            if self.embedding_provider == "voyage" and i + batch_size < len(summaries):
-                print(f"      ⏳ Waiting 25s for rate limit...")
-                time.sleep(25)
         
         self.summary_embeddings = np.array(embeddings)
     
