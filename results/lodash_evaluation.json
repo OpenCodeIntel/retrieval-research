@@ -1,885 +1,150 @@
 {
-  "codebase": "lodash",
-  "total_queries": 50,
-  "hit@1": 0.62,
-  "hit@3": 0.76,
-  "hit@5": 0.82,
-  "all_results": [
+  "hit@1": 0.74,
+  "hit@3": 0.84,
+  "hit@5": 0.88,
+  "failures": [
     {
-      "query": "split array into chunks",
-      "expected": [
-        "chunk",
-        "splitAt"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "split",
-      "top_3": [
+      "q": "split array into chunks",
+      "exp": "chunk",
+      "got": "split",
+      "t3": [
         "split",
-        "asciiToArray",
-        "chunk"
-      ]
+        "chunk",
+        "asciiToArray"
+      ],
+      "h3": true
     },
     {
-      "query": "remove falsy values from array",
-      "expected": [
-        "compact",
-        "filter"
-      ],
-      "category": "array",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "remove",
-      "top_3": [
+      "q": "remove falsy values from array",
+      "exp": "compact",
+      "got": "remove",
+      "t3": [
         "remove",
         "values",
-        "arrayPush"
-      ]
-    },
-    {
-      "query": "flatten nested array",
-      "expected": [
-        "flatten",
-        "flattenDeep",
-        "flattenDepth"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "flatten",
-      "top_3": [
-        "flatten",
-        "baseFlatten",
-        "flattenDepth"
-      ]
-    },
-    {
-      "query": "get first element of array",
-      "expected": [
-        "head",
-        "first",
-        "nth"
-      ],
-      "category": "array",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "get",
-      "top_3": [
-        "get",
-        "arrayReduce",
-        "createCaseFirst"
-      ]
-    },
-    {
-      "query": "get last element of array",
-      "expected": [
-        "last",
-        "nth",
-        "tail"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "last",
-      "top_3": [
-        "last",
-        "get",
-        "arrayReduceRight"
-      ]
-    },
-    {
-      "query": "get unique values from array",
-      "expected": [
-        "uniq",
-        "uniqBy",
-        "uniqWith",
-        "sortedUniq"
-      ],
-      "category": "array",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "get",
-      "top_3": [
-        "get",
-        "values",
-        "uniq"
-      ]
-    },
-    {
-      "query": "reverse array order",
-      "expected": [
-        "reverse"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "reverse",
-      "top_3": [
-        "reverse",
-        "arrayEachRight",
-        "lazyReverse"
-      ]
-    },
-    {
-      "query": "slice array elements",
-      "expected": [
-        "slice",
-        "take",
-        "drop"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "slice",
-      "top_3": [
-        "slice",
-        "castSlice",
-        "baseSlice"
-      ]
-    },
-    {
-      "query": "take first n elements",
-      "expected": [
-        "take",
-        "takeWhile",
-        "head"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "take",
-      "top_3": [
-        "take",
-        "baseWrapperValue",
-        "createCaseFirst"
-      ]
-    },
-    {
-      "query": "drop first n elements",
-      "expected": [
-        "drop",
-        "dropWhile",
-        "tail"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "drop",
-      "top_3": [
-        "drop",
-        "baseWhile",
-        "dropRightWhile"
-      ]
-    },
-    {
-      "query": "fill array with value",
-      "expected": [
-        "fill"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "fill",
-      "top_3": [
-        "fill",
-        "baseFill",
-        "castArrayLikeObject"
-      ]
-    },
-    {
-      "query": "zip multiple arrays together",
-      "expected": [
-        "zip",
-        "zipWith",
-        "zipObject"
-      ],
-      "category": "array",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "zip",
-      "top_3": [
-        "zip",
-        "compareMultiple",
-        "get"
-      ]
-    },
-    {
-      "query": "iterate over collection",
-      "expected": [
-        "forEach",
-        "each",
-        "forEachRight",
-        "eachRight"
-      ],
-      "category": "collection",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "baseForOwnRight",
-      "top_3": [
-        "baseForOwnRight",
-        "baseMap",
-        "baseFilter"
-      ]
-    },
-    {
-      "query": "filter collection elements",
-      "expected": [
-        "filter",
-        "reject",
         "compact"
       ],
-      "category": "collection",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "filter",
-      "top_3": [
-        "filter",
-        "baseFilter",
-        "arrayFilter"
-      ]
+      "h3": true
     },
     {
-      "query": "transform collection elements",
-      "expected": [
-        "map",
-        "flatMap",
-        "transform"
+      "q": "get first element of array",
+      "exp": "head",
+      "got": "get",
+      "t3": [
+        "get",
+        "createFind",
+        "getMatchData"
       ],
-      "category": "collection",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "transform",
-      "top_3": [
+      "h3": false
+    },
+    {
+      "q": "iterate over collection",
+      "exp": "forEach",
+      "got": "baseForOwnRight",
+      "t3": [
+        "baseForOwnRight",
+        "findLastKey",
+        "baseMap"
+      ],
+      "h3": false
+    },
+    {
+      "q": "transform collection elements",
+      "exp": "map",
+      "got": "transform",
+      "t3": [
         "transform",
-        "baseSampleSize",
-        "baseEvery"
-      ]
+        "getIteratee",
+        "overArg"
+      ],
+      "h3": false
     },
     {
-      "query": "find element in collection",
-      "expected": [
-        "find",
-        "findLast",
-        "findIndex"
+      "q": "check if all elements match",
+      "exp": "every",
+      "got": "pullAllBy",
+      "t3": [
+        "pullAllBy",
+        "pullAll",
+        "basePullAll"
       ],
-      "category": "collection",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "baseFindKey",
-      "top_3": [
-        "baseFindKey",
-        "baseFindIndex",
-        "createFind"
-      ]
+      "h3": false
     },
     {
-      "query": "check if all elements match",
-      "expected": [
-        "every",
-        "some"
-      ],
-      "category": "collection",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "basePullAll",
-      "top_3": [
-        "basePullAll",
-        "baseIsMatch",
-        "arrayEvery"
-      ]
-    },
-    {
-      "query": "check if any element matches",
-      "expected": [
-        "some",
-        "every",
-        "includes"
-      ],
-      "category": "collection",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "matches",
-      "top_3": [
+      "q": "check if any element matches",
+      "exp": "some",
+      "got": "matches",
+      "t3": [
         "matches",
         "arrayEvery",
         "arraySome"
-      ]
+      ],
+      "h3": true
     },
     {
-      "query": "reduce collection to value",
-      "expected": [
-        "reduce",
-        "reduceRight",
-        "transform"
-      ],
-      "category": "collection",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "reduce",
-      "top_3": [
-        "reduce",
-        "baseReduce",
-        "arrayReduce"
-      ]
-    },
-    {
-      "query": "group elements by key",
-      "expected": [
-        "groupBy",
-        "keyBy",
-        "countBy"
-      ],
-      "category": "collection",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "baseFindKey",
-      "top_3": [
-        "baseFindKey",
-        "baseZipObject",
-        "findKey"
-      ]
-    },
-    {
-      "query": "sort collection elements",
-      "expected": [
-        "sortBy",
-        "orderBy"
-      ],
-      "category": "collection",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "baseSortBy",
-      "top_3": [
-        "baseSortBy",
-        "baseOrderBy",
-        "baseSampleSize"
-      ]
-    },
-    {
-      "query": "get random element",
-      "expected": [
-        "sample",
-        "sampleSize",
-        "shuffle"
-      ],
-      "category": "collection",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": true,
-      "top_result": "random",
-      "top_3": [
+      "q": "get random element",
+      "exp": "sample",
+      "got": "random",
+      "t3": [
         "random",
         "get",
         "baseRandom"
-      ]
-    },
-    {
-      "query": "get nested object value",
-      "expected": [
-        "get",
-        "result",
-        "at"
       ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "getValue",
-      "top_3": [
-        "getValue",
-        "get",
-        "object"
-      ]
+      "h3": false
     },
     {
-      "query": "set nested object value",
-      "expected": [
-        "set",
-        "setWith",
-        "update"
-      ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "set",
-      "top_3": [
-        "set",
-        "object",
-        "baseIsSet"
-      ]
-    },
-    {
-      "query": "check if object has key",
-      "expected": [
-        "has",
-        "hasIn"
-      ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "baseHas",
-      "top_3": [
-        "baseHas",
-        "cacheHas",
-        "object"
-      ]
-    },
-    {
-      "query": "get object keys",
-      "expected": [
+      "q": "pick specific keys",
+      "exp": "pick",
+      "got": "keys",
+      "t3": [
         "keys",
-        "keysIn"
+        "basePick",
+        "basePickBy"
       ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "baseGetAllKeys",
-      "top_3": [
-        "baseGetAllKeys",
-        "keys",
-        "object"
-      ]
+      "h3": true
     },
     {
-      "query": "get object values",
-      "expected": [
-        "values",
-        "valuesIn"
-      ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "values",
-      "top_3": [
-        "values",
-        "object",
-        "get"
-      ]
-    },
-    {
-      "query": "merge multiple objects",
-      "expected": [
-        "merge",
-        "mergeWith",
-        "assign",
-        "defaults"
-      ],
-      "category": "object",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "compareMultiple",
-      "top_3": [
-        "compareMultiple",
-        "baseMergeDeep",
-        "object"
-      ]
-    },
-    {
-      "query": "clone object deeply",
-      "expected": [
-        "cloneDeep",
-        "cloneDeepWith",
-        "clone"
-      ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "clone",
-      "top_3": [
-        "clone",
-        "object",
-        "cloneSymbol"
-      ]
-    },
-    {
-      "query": "pick specific keys",
-      "expected": [
-        "pick",
-        "pickBy",
-        "at"
-      ],
-      "category": "object",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "keys",
-      "top_3": [
-        "keys",
-        "basePickBy",
-        "basePick"
-      ]
-    },
-    {
-      "query": "omit specific keys",
-      "expected": [
-        "omit",
-        "omitBy"
-      ],
-      "category": "object",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "omit",
-      "top_3": [
-        "omit",
-        "keys",
-        "keysIn"
-      ]
-    },
-    {
-      "query": "iterate over object",
-      "expected": [
-        "forIn",
-        "forOwn",
-        "forInRight"
-      ],
-      "category": "object",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": true,
-      "top_result": "object",
-      "top_3": [
+      "q": "iterate over object",
+      "exp": "forIn",
+      "got": "object",
+      "t3": [
         "object",
         "createBaseFor",
         "baseValues"
-      ]
+      ],
+      "h3": true
     },
     {
-      "query": "convert to camel case",
-      "expected": [
-        "camelCase"
-      ],
-      "category": "string",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "createCaseFirst",
-      "top_3": [
+      "q": "convert to snake case",
+      "exp": "snakeCase",
+      "got": "createCaseFirst",
+      "t3": [
         "createCaseFirst",
         "browserConvert",
         "convertLib"
-      ]
+      ],
+      "h3": false
     },
     {
-      "query": "convert to snake case",
-      "expected": [
-        "snakeCase"
-      ],
-      "category": "string",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "createCaseFirst",
-      "top_3": [
+      "q": "convert to kebab case",
+      "exp": "kebabCase",
+      "got": "createCaseFirst",
+      "t3": [
         "createCaseFirst",
         "browserConvert",
         "convertLib"
-      ]
+      ],
+      "h3": false
     },
     {
-      "query": "convert to kebab case",
-      "expected": [
-        "kebabCase"
-      ],
-      "category": "string",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "createCaseFirst",
-      "top_3": [
-        "createCaseFirst",
-        "browserConvert",
-        "convertLib"
-      ]
-    },
-    {
-      "query": "capitalize first letter",
-      "expected": [
-        "capitalize",
-        "upperFirst"
-      ],
-      "category": "string",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "capitalize",
-      "top_3": [
-        "capitalize",
-        "createCaseFirst",
-        "zipObject"
-      ]
-    },
-    {
-      "query": "trim whitespace from string",
-      "expected": [
-        "trim",
-        "trimStart",
-        "trimEnd"
-      ],
-      "category": "string",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "trim",
-      "top_3": [
-        "trim",
-        "baseTrim",
-        "stringToArray"
-      ]
-    },
-    {
-      "query": "truncate long string",
-      "expected": [
-        "truncate",
-        "slice"
-      ],
-      "category": "string",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "truncate",
-      "top_3": [
-        "truncate",
-        "run",
-        "stringSize"
-      ]
-    },
-    {
-      "query": "debounce function calls",
-      "expected": [
-        "debounce",
-        "throttle"
-      ],
-      "category": "function",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "debounce",
-      "top_3": [
-        "debounce",
-        "func",
-        "conforms"
-      ]
-    },
-    {
-      "query": "throttle function execution",
-      "expected": [
-        "throttle",
-        "debounce"
-      ],
-      "category": "function",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "throttle",
-      "top_3": [
-        "throttle",
-        "func",
-        "baseDelay"
-      ]
-    },
-    {
-      "query": "memoize function results",
-      "expected": [
-        "memoize"
-      ],
-      "category": "function",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "memoize",
-      "top_3": [
-        "memoize",
-        "memoizeCapped",
-        "func"
-      ]
-    },
-    {
-      "query": "call function only once",
-      "expected": [
-        "once",
-        "before",
-        "after"
-      ],
-      "category": "function",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "once",
-      "top_3": [
-        "once",
-        "isIterateeCall",
-        "func"
-      ]
-    },
-    {
-      "query": "delay function execution",
-      "expected": [
-        "delay",
-        "defer"
-      ],
-      "category": "function",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "baseDelay",
-      "top_3": [
-        "baseDelay",
-        "func",
-        "conforms"
-      ]
-    },
-    {
-      "query": "curry function arguments",
-      "expected": [
-        "curry",
-        "curryRight",
-        "partial"
-      ],
-      "category": "function",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "curry",
-      "top_3": [
-        "curry",
-        "createCurry",
-        "func"
-      ]
-    },
-    {
-      "query": "check if value is array",
-      "expected": [
-        "isArray",
-        "isArrayLike",
-        "isArrayLikeObject"
-      ],
-      "category": "type",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": true,
-      "top_result": "arrayEvery",
-      "top_3": [
+      "q": "check if value is array",
+      "exp": "isArray",
+      "got": "arrayEvery",
+      "t3": [
         "arrayEvery",
         "castArrayLikeObject",
         "baseIsTypedArray"
-      ]
-    },
-    {
-      "query": "check if value is object",
-      "expected": [
-        "isObject",
-        "isPlainObject",
-        "isObjectLike"
       ],
-      "category": "type",
-      "hit@1": true,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "object",
-      "top_3": [
-        "object",
-        "castArrayLikeObject",
-        "assignMergeValue"
-      ]
-    },
-    {
-      "query": "check if value is string",
-      "expected": [
-        "isString"
-      ],
-      "category": "type",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "baseToString",
-      "top_3": [
-        "baseToString",
-        "stringSize",
-        "baseGetTag"
-      ]
-    },
-    {
-      "query": "check if value is number",
-      "expected": [
-        "isNumber",
-        "isFinite",
-        "isInteger"
-      ],
-      "category": "type",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "baseToNumber",
-      "top_3": [
-        "baseToNumber",
-        "baseInRange",
-        "baseIsNaN"
-      ]
-    },
-    {
-      "query": "check if value is empty",
-      "expected": [
-        "isEmpty",
-        "isNil",
-        "isNull"
-      ],
-      "category": "type",
-      "hit@1": false,
-      "hit@3": false,
-      "hit@5": false,
-      "top_result": "castArrayLikeObject",
-      "top_3": [
-        "castArrayLikeObject",
-        "arrayEvery",
-        "baseNth"
-      ]
-    },
-    {
-      "query": "check if values are equal",
-      "expected": [
-        "isEqual",
-        "isEqualWith",
-        "eq"
-      ],
-      "category": "type",
-      "hit@1": false,
-      "hit@3": true,
-      "hit@5": true,
-      "top_result": "values",
-      "top_3": [
-        "values",
-        "baseIsEqual",
-        "baseIsEqualDeep"
-      ]
+      "h3": false
     }
   ]
 }
