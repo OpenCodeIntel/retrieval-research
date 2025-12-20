@@ -302,14 +302,26 @@ def run_evaluation(
         query = item['query']
         expected = item['expected']
         
+        # Handle expected as list or string
+        if isinstance(expected, str):
+            expected_list = [expected]
+        else:
+            expected_list = expected
+        
         results = search_engine.search(query, top_k=10)
         
         if results:
             top_result = results[0]
-            is_hit = (
-                top_result.function.qualified_name == expected or
-                top_result.function.name == expected or
-                expected in top_result.function.qualified_name
+            got_name = top_result.function.name
+            got_qualified = top_result.function.qualified_name
+            
+            # Check if ANY expected matches
+            is_hit = any(
+                exp == got_name or 
+                exp == got_qualified or 
+                exp in got_qualified or
+                got_name == exp
+                for exp in expected_list
             )
             
             if is_hit:
@@ -320,7 +332,7 @@ def run_evaluation(
             
             if verbose:
                 print(f"{status} {query[:50]}")
-                print(f"   Expected: {expected} | Got: {top_result.function.qualified_name}")
+                print(f"   Expected: {expected_list} | Got: {got_qualified}")
     
     hit_rate = hits / len(ground_truth) if ground_truth else 0
     

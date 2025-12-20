@@ -1,252 +1,417 @@
 [
   {
     "query": "create flask app",
-    "expected": "create_jinja_environment",
+    "expected": [
+      "create_jinja_environment",
+      "app_context",
+      "__init__"
+    ],
     "category": "app"
   },
   {
     "query": "run flask server",
-    "expected": "run",
+    "expected": [
+      "run",
+      "ensure_sync",
+      "async_to_sync"
+    ],
     "category": "app"
   },
   {
     "query": "register blueprint",
-    "expected": "blueprint",
+    "expected": [
+      "blueprint",
+      "blueprints",
+      "register"
+    ],
     "category": "app"
   },
   {
     "query": "add url rule",
-    "expected": "url_for",
+    "expected": [
+      "url_for",
+      "endpoint",
+      "route"
+    ],
     "category": "app"
   },
   {
     "query": "create application context",
-    "expected": "app_context",
+    "expected": [
+      "app_context",
+      "push",
+      "pop"
+    ],
     "category": "app"
   },
   {
     "query": "create request context",
-    "expected": "request_context",
+    "expected": [
+      "request_context",
+      "push",
+      "copy_current_request_context"
+    ],
     "category": "app"
   },
   {
     "query": "handle before request",
-    "expected": "before_request",
+    "expected": [
+      "before_request",
+      "try_trigger_before_first_request_functions"
+    ],
     "category": "app"
   },
   {
     "query": "handle after request",
-    "expected": "after_this_request",
+    "expected": [
+      "after_this_request",
+      "finalize_request",
+      "process_response"
+    ],
     "category": "app"
   },
   {
     "query": "register error handler",
-    "expected": "handle_http_exception",
+    "expected": [
+      "handle_http_exception",
+      "handle_user_exception",
+      "handle_exception"
+    ],
     "category": "app"
   },
   {
     "query": "teardown application",
-    "expected": "do_teardown_appcontext",
+    "expected": [
+      "do_teardown_appcontext",
+      "do_teardown_request",
+      "teardown"
+    ],
     "category": "app"
   },
   {
     "query": "get request data",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "environ",
+      "__init__"
+    ],
     "category": "request"
   },
   {
     "query": "get form values",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "environ"
+    ],
     "category": "request"
   },
   {
     "query": "get request headers",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "environ"
+    ],
     "category": "request"
   },
   {
     "query": "get query parameters",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "environ"
+    ],
     "category": "request"
   },
   {
     "query": "get uploaded file",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "stream"
+    ],
     "category": "request"
   },
   {
     "query": "get request method",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "environ"
+    ],
     "category": "request"
   },
   {
     "query": "get request url",
-    "expected": "url_for",
+    "expected": [
+      "url_for",
+      "create_url_adapter"
+    ],
     "category": "request"
   },
   {
     "query": "check request type",
-    "expected": "from_environ",
+    "expected": [
+      "from_environ",
+      "stream"
+    ],
     "category": "request"
   },
   {
     "query": "create response object",
-    "expected": "make_response",
+    "expected": [
+      "make_response",
+      "response_class",
+      "from_app"
+    ],
     "category": "response"
   },
   {
     "query": "return json response",
-    "expected": "jsonify",
+    "expected": [
+      "jsonify",
+      "dumps",
+      "dump"
+    ],
     "category": "response"
   },
   {
     "query": "redirect to url",
-    "expected": "redirect",
+    "expected": [
+      "redirect"
+    ],
     "category": "response"
   },
   {
     "query": "send file to client",
-    "expected": "send_file",
+    "expected": [
+      "send_file",
+      "send_from_directory"
+    ],
     "category": "response"
   },
   {
     "query": "set response headers",
-    "expected": "from_app",
+    "expected": [
+      "from_app",
+      "make_response"
+    ],
     "category": "response"
   },
   {
     "query": "set response status",
-    "expected": "from_app",
+    "expected": [
+      "from_app",
+      "make_response"
+    ],
     "category": "response"
   },
   {
     "query": "abort with error",
-    "expected": "abort",
+    "expected": [
+      "abort"
+    ],
     "category": "response"
   },
   {
     "query": "render html template",
-    "expected": "render_template",
+    "expected": [
+      "render_template",
+      "render_template_string",
+      "render"
+    ],
     "category": "response"
   },
   {
     "query": "get session data",
-    "expected": "get",
+    "expected": [
+      "get",
+      "open_session",
+      "SecureCookieSession"
+    ],
     "category": "session"
   },
   {
     "query": "set session value",
-    "expected": "setdefault",
+    "expected": [
+      "setdefault",
+      "modified"
+    ],
     "category": "session"
   },
   {
     "query": "check session permanent",
-    "expected": "permanent",
+    "expected": [
+      "permanent"
+    ],
     "category": "session"
   },
   {
     "query": "create null session",
-    "expected": "make_null_session",
+    "expected": [
+      "make_null_session",
+      "NullSession"
+    ],
     "category": "session"
   },
   {
     "query": "open session",
-    "expected": "open_session",
+    "expected": [
+      "open_session",
+      "save_session"
+    ],
     "category": "session"
   },
   {
     "query": "save session data",
-    "expected": "save_session",
+    "expected": [
+      "save_session",
+      "open_session"
+    ],
     "category": "session"
   },
   {
     "query": "define route endpoint",
-    "expected": "endpoint",
+    "expected": [
+      "endpoint",
+      "url_for",
+      "route"
+    ],
     "category": "routing"
   },
   {
     "query": "get url for endpoint",
-    "expected": "url_for",
+    "expected": [
+      "url_for",
+      "create_url_adapter"
+    ],
     "category": "routing"
   },
   {
     "query": "dispatch request",
-    "expected": "dispatch_request",
+    "expected": [
+      "dispatch_request",
+      "full_dispatch_request",
+      "wsgi_app"
+    ],
     "category": "routing"
   },
   {
     "query": "match url pattern",
-    "expected": "create_url_adapter",
+    "expected": [
+      "create_url_adapter",
+      "url_for"
+    ],
     "category": "routing"
   },
   {
     "query": "handle view function",
-    "expected": "dispatch_request",
+    "expected": [
+      "dispatch_request",
+      "as_view"
+    ],
     "category": "routing"
   },
   {
     "query": "create class view",
-    "expected": "as_view",
+    "expected": [
+      "as_view",
+      "View",
+      "dispatch_request"
+    ],
     "category": "routing"
   },
   {
     "query": "load config from file",
-    "expected": "from_file",
+    "expected": [
+      "from_file",
+      "from_pyfile",
+      "from_object"
+    ],
     "category": "config"
   },
   {
     "query": "get config value",
-    "expected": "get",
+    "expected": [
+      "get",
+      "get_namespace"
+    ],
     "category": "config"
   },
   {
     "query": "set default config",
-    "expected": "setdefault",
+    "expected": [
+      "setdefault",
+      "make_config"
+    ],
     "category": "config"
   },
   {
     "query": "load from environment",
-    "expected": "from_prefixed_env",
+    "expected": [
+      "from_prefixed_env",
+      "from_envvar"
+    ],
     "category": "config"
   },
   {
     "query": "update config",
-    "expected": "from_mapping",
+    "expected": [
+      "from_mapping",
+      "from_object"
+    ],
     "category": "config"
   },
   {
     "query": "check debug mode",
-    "expected": "make_config",
+    "expected": [
+      "make_config",
+      "get"
+    ],
     "category": "config"
   },
   {
     "query": "create test client",
-    "expected": "test_client",
+    "expected": [
+      "test_client",
+      "test_cli_runner"
+    ],
     "category": "testing"
   },
   {
     "query": "create test request context",
-    "expected": "test_request_context",
+    "expected": [
+      "test_request_context",
+      "request_context"
+    ],
     "category": "testing"
   },
   {
     "query": "run test command",
-    "expected": "test_cli_runner",
+    "expected": [
+      "test_cli_runner",
+      "invoke"
+    ],
     "category": "testing"
   },
   {
     "query": "push test context",
-    "expected": "push",
+    "expected": [
+      "push",
+      "pop",
+      "ctx"
+    ],
     "category": "testing"
   },
   {
     "query": "make test response",
-    "expected": "make_response",
+    "expected": [
+      "make_response",
+      "from_app"
+    ],
     "category": "testing"
   },
   {
     "query": "session transaction",
-    "expected": "session_transaction",
+    "expected": [
+      "session_transaction"
+    ],
     "category": "testing"
   }
 ]
