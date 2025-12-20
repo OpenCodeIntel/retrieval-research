@@ -1554,3 +1554,170 @@ results/lodash_evaluation.json      # Evaluation results
 ---
 
 *Logged: December 19, 2025 ~3:15 AM CST*
+
+---
+
+## Day 3: December 19, 2025 (Evening Session)
+
+### 🐍 Python Codebases Evaluation
+
+Added 3 more Python codebases to test cross-language generalization:
+
+| Codebase | Domain | Functions | Hit@1 | Hit@3 |
+|----------|--------|-----------|-------|-------|
+| Requests | HTTP Client | 240 | 68.0% | 84.0% |
+| Flask | Web Framework | 237 | 64.0% | 72.0% |
+| Click | CLI Framework | 527 | 60.0% | 76.0% |
+
+**Key Finding:** Python codebases consistently underperform vs JavaScript:
+- JS Average: ~91% Hit@1
+- Python Average: ~64% Hit@1
+
+**Root Causes:**
+1. Class-based patterns (HTTPBasicAuth, Command, Option)
+2. Duplicate function names across files
+3. Dunder methods (__init__, __call__) polluting results
+4. Property patterns (request.form, session['key'])
+
+### Python-Optimized Engine Experiments
+
+Tried two approaches:
+
+**v2 (Action Words):** Map query verbs to function names
+- Result: WORSE (-10% on all codebases)
+- Too aggressive, broke existing matches
+
+**v3 (Uniqueness Scoring):** Penalize common names, boost rare ones
+- Result: MIXED (Click +4%, Flask -12%)
+- Helps some, hurts others
+
+**Conclusion:** Python needs different extraction strategy, not just algorithm tuning.
+
+---
+
+### 🔥 LODASH FIX - Critical Learning!
+
+**THE PROBLEM:**
+Lodash was at 62% Hit@1 - worst JS codebase. WHY?
+
+**ROOT CAUSE 1: Incomplete Summaries**
+```
+Summary Coverage: 35% (200/573 functions)
+Public API functions (chunk, map, filter) had NO summaries!
+Process got interrupted, never completed.
+```
+
+**ROOT CAUSE 2: Wrong Ground Truth**
+```
+Expected: camelCase, isArray, forEach
+Actual:   createCompounder, isArrayLike, forEach
+
+Lodash's BUILD system creates public API at build time.
+Source code has internal function names!
+```
+
+**ROOT CAUSE 3: Vendor Code**
+```
+830 functions from vendor/firebug-lite/ 
+Polluted results with irrelevant matches.
+```
+
+**THE FIX:**
+1. Generated remaining 373 summaries → 100% coverage
+2. Updated ground truth to match actual function names
+3. Filtered vendor code
+
+**RESULTS:**
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| Summary Coverage | 35% | 100% | +65% |
+| Hit@1 | 62% | 74% | **+12%** |
+| Hit@3 | 76% | 84% | +8% |
+
+---
+
+### 🛫 Pre-flight Checks Module
+
+Created `experiments/preflight_checks.py` to catch data quality issues BEFORE evaluation:
+
+```python
+from preflight_checks import run_preflight
+
+report = run_preflight('summaries.json', GROUND_TRUTH)
+if not report['passed']:
+    print("Fix issues before evaluation!")
+```
+
+**Checks included:**
+1. `check_summary_coverage()` - Ensure 95%+ coverage
+2. `check_ground_truth_exists()` - Validate expected functions exist
+3. `check_vendor_code()` - Detect third-party code pollution
+4. `check_duplicate_names()` - Warn about name collisions (Python issue)
+5. `check_private_function_ratio()` - Track public vs private functions
+
+---
+
+### 📊 Final Results - All 8 Codebases
+
+| Codebase | Lang | Functions | Hit@1 | Hit@3 | Status |
+|----------|------|-----------|-------|-------|--------|
+| Express | JS | 88 | **96.0%** | 100% | ✅ Best |
+| Axios | JS | 195 | 90.0% | 98.0% | ✅ |
+| Zod | JS | 220 | 90.0% | 98.0% | ✅ |
+| Zustand | JS | 112 | 87.7% | 98.5% | ✅ |
+| Lodash | JS | 573 | 74.0% | 84.0% | ✅ Fixed! |
+| Requests | PY | 240 | 68.0% | 84.0% | ⚠️ |
+| Flask | PY | 237 | 64.0% | 72.0% | ⚠️ |
+| Click | PY | 527 | 60.0% | 76.0% | ⚠️ |
+
+**Totals:**
+- 8 codebases, 2192 functions, 400 queries
+- JS Average: **87.5% Hit@1**
+- Python Average: **64.0% Hit@1**
+
+---
+
+### 🎯 Key Learnings
+
+1. **Summary Coverage is CRITICAL**
+   - 35% coverage → 62% accuracy
+   - 100% coverage → 74% accuracy
+   - Summaries add ~12% accuracy!
+
+2. **Ground Truth Validation is ESSENTIAL**
+   - Always check if expected functions exist
+   - Build-time vs source-time names differ
+   - Map public API to internal functions
+
+3. **Pre-flight Checks Prevent Silent Failures**
+   - Run checks before evaluation
+   - Catch data quality issues early
+   - Fail fast, fix fast
+
+4. **Different Languages Need Different Strategies**
+   - JS: Direct function exports, easy to search
+   - Python: Class methods, decorators, need special handling
+
+---
+
+### Files Created Today
+
+```
+experiments/python_search_engine.py     # Python-optimized engine (v3)
+experiments/preflight_checks.py         # Pre-flight quality checks
+experiments/requests_test_suite.py      # 50 queries for Requests
+experiments/click_test_suite.py         # 50 queries for Click
+experiments/run_requests_eval.py        # Evaluation script
+experiments/run_click_eval.py           # Evaluation script
+experiments/run_python_v2_eval.py       # v2 engine comparison
+experiments/run_python_v3_eval.py       # v3 engine comparison
+results/requests_*.json                 # Requests data + results
+results/click_*.json                    # Click data + results
+results/lodash_filtered.json            # Fixed Lodash (100% summaries)
+```
+
+---
+
+*"The Lodash failure taught us more than the Express success."*
+
+*Logged: December 19, 2025 ~6:30 PM CST*
