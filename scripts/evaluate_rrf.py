@@ -134,12 +134,23 @@ class RRFSearchEngine:
             )
             return [e.embedding for e in response.data]
         else:
-            result = self.client.embed(
-                texts,
-                model=self.model,
-                input_type=input_type
-            )
-            return result.embeddings
+            # Voyage with rate limit handling
+            try:
+                result = self.client.embed(
+                    texts,
+                    model=self.model,
+                    input_type=input_type
+                )
+                return result.embeddings
+            except Exception as e:
+                print(f"      ⚠️ Rate limit hit, waiting 60s...")
+                time.sleep(60)
+                result = self.client.embed(
+                    texts,
+                    model=self.model,
+                    input_type=input_type
+                )
+                return result.embeddings
     
     def _build_code_embeddings(self):
         """Build embeddings on code content."""
@@ -147,12 +158,18 @@ class RRFSearchEngine:
         contexts = [func.full_context for func in self.functions]
         
         embeddings = []
-        batch_size = 100
+        batch_size = 50 if self.embedding_provider == "voyage" else 100
+        
         for i in range(0, len(contexts), batch_size):
             batch = contexts[i:i+batch_size]
             batch_emb = self._embed_batch(batch, "document")
             embeddings.extend(batch_emb)
             print(f"      Code: {min(i+batch_size, len(contexts))}/{len(contexts)}")
+            
+            # Rate limit delay for Voyage
+            if self.embedding_provider == "voyage" and i + batch_size < len(contexts):
+                print(f"      ⏳ Waiting 25s for rate limit...")
+                time.sleep(25)
         
         self.code_embeddings = np.array(embeddings)
     
@@ -167,12 +184,18 @@ class RRFSearchEngine:
                 summaries.append(func.signature)
         
         embeddings = []
-        batch_size = 100
+        batch_size = 50 if self.embedding_provider == "voyage" else 100
+        
         for i in range(0, len(summaries), batch_size):
             batch = summaries[i:i+batch_size]
             batch_emb = self._embed_batch(batch, "document")
             embeddings.extend(batch_emb)
             print(f"      Summary: {min(i+batch_size, len(summaries))}/{len(summaries)}")
+            
+            # Rate limit delay for Voyage
+            if self.embedding_provider == "voyage" and i + batch_size < len(summaries):
+                print(f"      ⏳ Waiting 25s for rate limit...")
+                time.sleep(25)
         
         self.summary_embeddings = np.array(embeddings)
     
@@ -185,12 +208,23 @@ class RRFSearchEngine:
             )
             return response.data[0].embedding
         else:
-            result = self.client.embed(
-                [query],
-                model=self.model,
-                input_type="query"
-            )
-            return result.embeddings[0]
+            # Voyage with rate limit handling
+            try:
+                result = self.client.embed(
+                    [query],
+                    model=self.model,
+                    input_type="query"
+                )
+                return result.embeddings[0]
+            except Exception as e:
+                print(f"      ⚠️ Rate limit, waiting 30s...")
+                time.sleep(30)
+                result = self.client.embed(
+                    [query],
+                    model=self.model,
+                    input_type="query"
+                )
+                return result.embeddings[0]
     
     def _get_rankings(self, query: str) -> tuple:
         """Get rankings from all three methods."""
@@ -303,6 +337,7 @@ def run_evaluation(
 ) -> Dict[str, Any]:
     """Run evaluation with RRF search."""
     hits = 0
+    is_voyage = search_engine.embedding_provider == "voyage"
     
     for idx, item in enumerate(queries):
         query = item['query']
@@ -330,6 +365,10 @@ def run_evaluation(
                 print(f"{status} [{idx+1}/{len(queries)}] {query[:40]}")
                 print(f"   Expected: {expected_list[0]} | Got: {top.function.qualified_name}")
                 print(f"   Ranks: BM25={top.bm25_rank}, Code={top.semantic_rank}, Summary={top.summary_rank}")
+        
+        # Rate limit delay for Voyage queries
+        if is_voyage and idx + 1 < len(queries):
+            time.sleep(21)
     
     hit_rate = hits / len(queries)
     return {'hit_at_1': hit_rate, 'hits': hits, 'total': len(queries)}
