@@ -134,23 +134,13 @@ class RRFSearchEngine:
             )
             return [e.embedding for e in response.data]
         else:
-            # Voyage with rate limit handling
-            try:
-                result = self.client.embed(
-                    texts,
-                    model=self.model,
-                    input_type=input_type
-                )
-                return result.embeddings
-            except Exception as e:
-                print(f"      ⚠️ Rate limit hit, waiting 60s...")
-                time.sleep(60)
-                result = self.client.embed(
-                    texts,
-                    model=self.model,
-                    input_type=input_type
-                )
-                return result.embeddings
+            # Voyage - with paid tier, no rate limit issues
+            result = self.client.embed(
+                texts,
+                model=self.model,
+                input_type=input_type
+            )
+            return result.embeddings
     
     def _build_code_embeddings(self):
         """Build embeddings on code content."""
@@ -158,15 +148,9 @@ class RRFSearchEngine:
         contexts = [func.full_context for func in self.functions]
         
         embeddings = []
-        # Voyage: very small batches due to 3 RPM limit
-        batch_size = 10 if self.embedding_provider == "voyage" else 100
+        batch_size = 100  # Large batches - we have good rate limits now
         
         for i in range(0, len(contexts), batch_size):
-            # Wait BEFORE each batch for Voyage (except first)
-            if self.embedding_provider == "voyage" and i > 0:
-                print(f"      ⏳ Waiting 25s for rate limit...")
-                time.sleep(25)
-            
             batch = contexts[i:i+batch_size]
             batch_emb = self._embed_batch(batch, "document")
             embeddings.extend(batch_emb)
@@ -185,15 +169,9 @@ class RRFSearchEngine:
                 summaries.append(func.signature)
         
         embeddings = []
-        # Voyage: very small batches due to 3 RPM limit
-        batch_size = 10 if self.embedding_provider == "voyage" else 100
+        batch_size = 100  # Large batches - we have good rate limits now
         
         for i in range(0, len(summaries), batch_size):
-            # Wait BEFORE each batch for Voyage (except first)
-            if self.embedding_provider == "voyage" and i > 0:
-                print(f"      ⏳ Waiting 25s for rate limit...")
-                time.sleep(25)
-            
             batch = summaries[i:i+batch_size]
             batch_emb = self._embed_batch(batch, "document")
             embeddings.extend(batch_emb)
@@ -210,23 +188,13 @@ class RRFSearchEngine:
             )
             return response.data[0].embedding
         else:
-            # Voyage with rate limit handling
-            try:
-                result = self.client.embed(
-                    [query],
-                    model=self.model,
-                    input_type="query"
-                )
-                return result.embeddings[0]
-            except Exception as e:
-                print(f"      ⚠️ Rate limit, waiting 30s...")
-                time.sleep(30)
-                result = self.client.embed(
-                    [query],
-                    model=self.model,
-                    input_type="query"
-                )
-                return result.embeddings[0]
+            # Voyage - no rate limit issues with paid tier
+            result = self.client.embed(
+                [query],
+                model=self.model,
+                input_type="query"
+            )
+            return result.embeddings[0]
     
     def _get_rankings(self, query: str) -> tuple:
         """Get rankings from all three methods."""
@@ -339,7 +307,6 @@ def run_evaluation(
 ) -> Dict[str, Any]:
     """Run evaluation with RRF search."""
     hits = 0
-    is_voyage = search_engine.embedding_provider == "voyage"
     
     for idx, item in enumerate(queries):
         query = item['query']
@@ -367,10 +334,6 @@ def run_evaluation(
                 print(f"{status} [{idx+1}/{len(queries)}] {query[:40]}")
                 print(f"   Expected: {expected_list[0]} | Got: {top.function.qualified_name}")
                 print(f"   Ranks: BM25={top.bm25_rank}, Code={top.semantic_rank}, Summary={top.summary_rank}")
-        
-        # Rate limit delay for Voyage queries
-        if is_voyage and idx + 1 < len(queries):
-            time.sleep(21)
     
     hit_rate = hits / len(queries)
     return {'hit_at_1': hit_rate, 'hits': hits, 'total': len(queries)}
