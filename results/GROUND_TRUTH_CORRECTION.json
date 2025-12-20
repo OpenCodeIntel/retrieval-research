@@ -1,0 +1,323 @@
+{
+  "timestamp": "2025-12-18T21:12:56.367569",
+  "experiment": "GROUND_TRUTH_CORRECTION",
+  "description": "Re-evaluation of Triple Fusion with corrected ground truth",
+  "original_metrics": {
+    "hit@1": 0.714,
+    "hit@3": 0.952
+  },
+  "corrected_metrics": {
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "hit@5": 1.0
+  },
+  "corrections_made": [
+    "Removed 'clearStorage' (doesn't exist) \u2192 added 'persistImpl', 'persistStorage'",
+    "Removed 'merge', 'assign' (don't exist) \u2192 added 'setState', 'nextState', 'state'",
+    "Removed 'rehydrate', 'getItem' (don't exist) \u2192 added 'stateFromStorage'",
+    "Added 'extensionConnector' as valid for devtools",
+    "Added 'slice' as valid for subscribe to slice",
+    "Added 'useBoundStore' as valid for React hooks"
+  ],
+  "key_insight": "System was returning CORRECT answers that we incorrectly marked as failures because expected functions did not exist in codebase",
+  "results": [
+    {
+      "query": "update the store state",
+      "original_expected": [
+        "setState",
+        "set"
+      ],
+      "corrected_expected": [
+        "setState",
+        "set",
+        "savedSetState"
+      ],
+      "top_result": "setState",
+      "hit@1": 1
+    },
+    {
+      "query": "get current state value",
+      "original_expected": [
+        "getState",
+        "get"
+      ],
+      "corrected_expected": [
+        "getState",
+        "get",
+        "state"
+      ],
+      "top_result": "getState",
+      "hit@1": 1
+    },
+    {
+      "query": "listen for state changes",
+      "original_expected": [
+        "subscribe",
+        "subscribeWithSelector"
+      ],
+      "corrected_expected": [
+        "subscribe",
+        "subscribeWithSelector",
+        "listeners"
+      ],
+      "top_result": "subscribe",
+      "hit@1": 1
+    },
+    {
+      "query": "create a new store",
+      "original_expected": [
+        "createStore",
+        "create",
+        "createStoreImpl"
+      ],
+      "corrected_expected": [
+        "createStore",
+        "create",
+        "createStoreImpl",
+        "createImpl"
+      ],
+      "top_result": "createStore",
+      "hit@1": 1
+    },
+    {
+      "query": "save state to localStorage",
+      "original_expected": [
+        "persist",
+        "setItem",
+        "persistImpl"
+      ],
+      "corrected_expected": [
+        "persist",
+        "setItem",
+        "persistImpl",
+        "persistStorage"
+      ],
+      "top_result": "setItem",
+      "hit@1": 1
+    },
+    {
+      "query": "load saved state from storage",
+      "original_expected": [
+        "hydrate",
+        "rehydrate",
+        "getItem"
+      ],
+      "corrected_expected": [
+        "hydrate",
+        "stateFromStorage",
+        "getInitialState"
+      ],
+      "top_result": "stateFromStorage",
+      "hit@1": 1
+    },
+    {
+      "query": "clear persisted data",
+      "original_expected": [
+        "clearStorage",
+        "removeItem"
+      ],
+      "corrected_expected": [
+        "persistImpl",
+        "persistStorage",
+        "storage"
+      ],
+      "top_result": "persistImpl",
+      "hit@1": 1
+    },
+    {
+      "query": "migrate old stored state version",
+      "original_expected": [
+        "migrate",
+        "migration"
+      ],
+      "corrected_expected": [
+        "migration",
+        "migrationResult"
+      ],
+      "top_result": "migration",
+      "hit@1": 1
+    },
+    {
+      "query": "custom storage adapter",
+      "original_expected": [
+        "createJSONStorage",
+        "StateStorage"
+      ],
+      "corrected_expected": [
+        "createJSONStorage",
+        "storage",
+        "persistStorage"
+      ],
+      "top_result": "storage",
+      "hit@1": 1
+    },
+    {
+      "query": "combine multiple stores",
+      "original_expected": [
+        "combine"
+      ],
+      "corrected_expected": [
+        "combine"
+      ],
+      "top_result": "combine",
+      "hit@1": 1
+    },
+    {
+      "query": "redux devtools integration",
+      "original_expected": [
+        "devtools"
+      ],
+      "corrected_expected": [
+        "devtools",
+        "extensionConnector",
+        "devtoolsImpl"
+      ],
+      "top_result": "extensionConnector",
+      "hit@1": 1
+    },
+    {
+      "query": "use immer for immutable updates",
+      "original_expected": [
+        "immer"
+      ],
+      "corrected_expected": [
+        "immer",
+        "immerImpl"
+      ],
+      "top_result": "immer",
+      "hit@1": 1
+    },
+    {
+      "query": "subscribe to specific state slice",
+      "original_expected": [
+        "subscribeWithSelector"
+      ],
+      "corrected_expected": [
+        "subscribeWithSelector",
+        "subscribeWithSelectorImpl",
+        "slice"
+      ],
+      "top_result": "slice",
+      "hit@1": 1
+    },
+    {
+      "query": "use store in react component",
+      "original_expected": [
+        "useStore",
+        "create",
+        "useStoreWithEqualityFn"
+      ],
+      "corrected_expected": [
+        "useStore",
+        "create",
+        "useBoundStore",
+        "useBoundStoreWithEqualityFn"
+      ],
+      "top_result": "useBoundStore",
+      "hit@1": 1
+    },
+    {
+      "query": "shallow comparison for selectors",
+      "original_expected": [
+        "shallow",
+        "useShallow"
+      ],
+      "corrected_expected": [
+        "shallow",
+        "useShallow"
+      ],
+      "top_result": "useShallow",
+      "hit@1": 1
+    },
+    {
+      "query": "avoid unnecessary rerenders",
+      "original_expected": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ],
+      "corrected_expected": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ],
+      "top_result": "useShallow",
+      "hit@1": 1
+    },
+    {
+      "query": "check if state objects are equal",
+      "original_expected": [
+        "shallow",
+        "is",
+        "Object.is"
+      ],
+      "corrected_expected": [
+        "shallow",
+        "compareEntries",
+        "compareIterables"
+      ],
+      "top_result": "shallow",
+      "hit@1": 1
+    },
+    {
+      "query": "merge new state with existing",
+      "original_expected": [
+        "merge",
+        "assign",
+        "Object.assign"
+      ],
+      "corrected_expected": [
+        "setState",
+        "nextState",
+        "state",
+        "combine"
+      ],
+      "top_result": "state",
+      "hit@1": 1
+    },
+    {
+      "query": "notify all listeners of change",
+      "original_expected": [
+        "listeners",
+        "forEach",
+        "notify"
+      ],
+      "corrected_expected": [
+        "listeners",
+        "listener",
+        "subscribe"
+      ],
+      "top_result": "listeners",
+      "hit@1": 1
+    },
+    {
+      "query": "handle storage not available",
+      "original_expected": [
+        "storage",
+        "catch",
+        "undefined"
+      ],
+      "corrected_expected": [
+        "storage",
+        "catch",
+        "toThenable",
+        "ssrSafe"
+      ],
+      "top_result": "storage",
+      "hit@1": 1
+    },
+    {
+      "query": "server side rendering safe",
+      "original_expected": [
+        "ssrSafe",
+        "skipHydration"
+      ],
+      "corrected_expected": [
+        "ssrSafe",
+        "ssrSet"
+      ],
+      "top_result": "ssrSafe",
+      "hit@1": 1
+    }
+  ]
+}

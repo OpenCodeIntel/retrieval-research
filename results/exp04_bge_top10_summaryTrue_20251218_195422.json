@@ -1,0 +1,395 @@
+{
+  "experiment": "04_bge_top10_summaryTrue",
+  "timestamp": "2025-12-18T19:54:22.145827",
+  "metrics": {
+    "hit@1": 0.47619047619047616,
+    "hit@3": 0.9523809523809523,
+    "hit@5": 0.9523809523809523,
+    "mrr": 0.697278911564626
+  },
+  "details": [
+    {
+      "query": "update the store state",
+      "expected": [
+        "setState",
+        "set"
+      ],
+      "category": "state",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "state",
+        "savedSetState"
+      ]
+    },
+    {
+      "query": "get current state value",
+      "expected": [
+        "getState",
+        "get"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "getState",
+      "top_3": [
+        "getState",
+        "parsed",
+        "state"
+      ]
+    },
+    {
+      "query": "listen for state changes",
+      "expected": [
+        "subscribe",
+        "subscribeWithSelector"
+      ],
+      "category": "state",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 3,
+      "top_result": "listener",
+      "top_3": [
+        "listener",
+        "listeners",
+        "origSubscribe"
+      ]
+    },
+    {
+      "query": "create a new store",
+      "expected": [
+        "createStore",
+        "create",
+        "createStoreImpl"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "createStore",
+      "top_3": [
+        "createStore",
+        "create",
+        "combine"
+      ]
+    },
+    {
+      "query": "save state to localStorage",
+      "expected": [
+        "persist",
+        "setItem",
+        "persistImpl"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 3,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "stateFromStorage",
+        "setItem"
+      ]
+    },
+    {
+      "query": "load saved state from storage",
+      "expected": [
+        "hydrate",
+        "rehydrate",
+        "getItem"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "stateFromStorage",
+      "top_3": [
+        "stateFromStorage",
+        "hydrate",
+        "storage"
+      ]
+    },
+    {
+      "query": "clear persisted data",
+      "expected": [
+        "clearStorage",
+        "removeItem"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "rank": 7,
+      "top_result": "persist",
+      "top_3": [
+        "persist",
+        "postRehydrationCallback",
+        "str"
+      ]
+    },
+    {
+      "query": "migrate old stored state version",
+      "expected": [
+        "migrate",
+        "migration"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "migration",
+      "top_3": [
+        "migration",
+        "hydrate",
+        "previousState"
+      ]
+    },
+    {
+      "query": "custom storage adapter",
+      "expected": [
+        "createJSONStorage",
+        "StateStorage"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "storage",
+        "persistImpl"
+      ]
+    },
+    {
+      "query": "combine multiple stores",
+      "expected": [
+        "combine"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "combine",
+      "top_3": [
+        "combine",
+        "devtoolsOptions",
+        "extractConnectionInformation"
+      ]
+    },
+    {
+      "query": "redux devtools integration",
+      "expected": [
+        "devtools"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "devtoolsImpl",
+        "reduxImpl"
+      ]
+    },
+    {
+      "query": "use immer for immutable updates",
+      "expected": [
+        "immer"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "immer",
+      "top_3": [
+        "immer",
+        "immerImpl",
+        "nextState"
+      ]
+    },
+    {
+      "query": "subscribe to specific state slice",
+      "expected": [
+        "subscribeWithSelector"
+      ],
+      "category": "middleware",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "slice",
+      "top_3": [
+        "slice",
+        "subscribeWithSelector",
+        "subscribeWithSelectorImpl"
+      ]
+    },
+    {
+      "query": "use store in react component",
+      "expected": [
+        "useStore",
+        "create",
+        "useStoreWithEqualityFn"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "useStore",
+      "top_3": [
+        "useStore",
+        "useBoundStore",
+        "useSyncExternalStoreExports"
+      ]
+    },
+    {
+      "query": "shallow comparison for selectors",
+      "expected": [
+        "shallow",
+        "useShallow"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "useShallow",
+      "top_3": [
+        "useShallow",
+        "shallow",
+        "createWithEqualityFnImpl"
+      ]
+    },
+    {
+      "query": "avoid unnecessary rerenders",
+      "expected": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "subscribeWithSelector",
+      "top_3": [
+        "subscribeWithSelector",
+        "useShallow",
+        "useBoundStore"
+      ]
+    },
+    {
+      "query": "check if state objects are equal",
+      "expected": [
+        "shallow",
+        "is",
+        "Object.is"
+      ],
+      "category": "comparison",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 3,
+      "top_result": "compareEntries",
+      "top_3": [
+        "compareEntries",
+        "useStoreWithEqualityFn",
+        "shallow"
+      ]
+    },
+    {
+      "query": "merge new state with existing",
+      "expected": [
+        "merge",
+        "assign",
+        "Object.assign"
+      ],
+      "category": "state",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "r",
+        "migrationResult"
+      ]
+    },
+    {
+      "query": "notify all listeners of change",
+      "expected": [
+        "listeners",
+        "forEach",
+        "notify"
+      ],
+      "category": "state",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "setState",
+      "top_3": [
+        "setState",
+        "listeners",
+        "subscribe"
+      ]
+    },
+    {
+      "query": "handle storage not available",
+      "expected": [
+        "storage",
+        "catch",
+        "undefined"
+      ],
+      "category": "error",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 2,
+      "top_result": "parsed",
+      "top_3": [
+        "parsed",
+        "createJSONStorage",
+        "hydrate"
+      ]
+    },
+    {
+      "query": "server side rendering safe",
+      "expected": [
+        "ssrSafe",
+        "skipHydration"
+      ],
+      "category": "ssr",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "rank": 1,
+      "top_result": "ssrSafe",
+      "top_3": [
+        "ssrSafe",
+        "ssrSet",
+        "str"
+      ]
+    }
+  ]
+}

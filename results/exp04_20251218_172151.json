@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-12-18T17:21:51.242482",
+  "experiment": "04_reranking",
+  "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "results": {
+    "no_rerank": {
+      "config": {
+        "name": "no_rerank",
+        "candidates": 10,
+        "use_summary": 0,
+        "use_code": 0,
+        "skip_rerank": 1
+      },
+      "hit@1": 0.47619047619047616,
+      "hit@3": 0.8095238095238095
+    },
+    "rerank_summary_only": {
+      "config": {
+        "name": "rerank_summary_only",
+        "candidates": 10,
+        "use_summary": 1,
+        "use_code": 0
+      },
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.7619047619047619
+    },
+    "rerank_code_only": {
+      "config": {
+        "name": "rerank_code_only",
+        "candidates": 10,
+        "use_summary": 0,
+        "use_code": 1
+      },
+      "hit@1": 0.42857142857142855,
+      "hit@3": 0.6666666666666666
+    },
+    "rerank_both": {
+      "config": {
+        "name": "rerank_both",
+        "candidates": 10,
+        "use_summary": 1,
+        "use_code": 1
+      },
+      "hit@1": 0.5238095238095238,
+      "hit@3": 0.7619047619047619
+    },
+    "rerank_both_top20": {
+      "config": {
+        "name": "rerank_both_top20",
+        "candidates": 20,
+        "use_summary": 1,
+        "use_code": 1
+      },
+      "hit@1": 0.5714285714285714,
+      "hit@3": 0.8095238095238095
+    }
+  },
+  "best": "rerank_summary_only",
+  "best_hit1": 0.6666666666666666
+}

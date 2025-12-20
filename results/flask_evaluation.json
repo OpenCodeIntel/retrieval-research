@@ -1,0 +1,906 @@
+{
+  "codebase": "flask",
+  "language": "python",
+  "total_queries": 50,
+  "total_functions": 237,
+  "hit@1": 0.64,
+  "hit@3": 0.72,
+  "hit@5": 0.8,
+  "by_category": {
+    "app": {
+      "hit@1": 0.9,
+      "count": 10
+    },
+    "request": {
+      "hit@1": 0.0,
+      "count": 8
+    },
+    "response": {
+      "hit@1": 0.75,
+      "count": 8
+    },
+    "session": {
+      "hit@1": 0.8333333333333334,
+      "count": 6
+    },
+    "routing": {
+      "hit@1": 0.6666666666666666,
+      "count": 6
+    },
+    "config": {
+      "hit@1": 0.3333333333333333,
+      "count": 6
+    },
+    "testing": {
+      "hit@1": 1.0,
+      "count": 6
+    }
+  },
+  "all_results": [
+    {
+      "query": "create flask app",
+      "expected": [
+        "create_jinja_environment",
+        "app_context",
+        "__init__"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "app_context",
+      "top_3": [
+        "app_context",
+        "app_context",
+        "create_jinja_environment"
+      ]
+    },
+    {
+      "query": "run flask server",
+      "expected": [
+        "run",
+        "ensure_sync",
+        "async_to_sync"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "run",
+      "top_3": [
+        "run",
+        "run",
+        "ensure_sync"
+      ]
+    },
+    {
+      "query": "register blueprint",
+      "expected": [
+        "blueprint",
+        "blueprints",
+        "register"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "blueprint",
+      "top_3": [
+        "blueprint",
+        "blueprint",
+        "blueprints"
+      ]
+    },
+    {
+      "query": "add url rule",
+      "expected": [
+        "url_for",
+        "endpoint",
+        "route"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "url_for",
+      "top_3": [
+        "url_for",
+        "url_for",
+        "url_for"
+      ]
+    },
+    {
+      "query": "create application context",
+      "expected": [
+        "app_context",
+        "push",
+        "pop"
+      ],
+      "category": "app",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "request_context",
+      "top_3": [
+        "request_context",
+        "request_context",
+        "app_context"
+      ]
+    },
+    {
+      "query": "create request context",
+      "expected": [
+        "request_context",
+        "push",
+        "copy_current_request_context"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "request",
+      "top_3": [
+        "request",
+        "request",
+        "request_context"
+      ]
+    },
+    {
+      "query": "handle before request",
+      "expected": [
+        "before_request",
+        "try_trigger_before_first_request_functions"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "request",
+      "top_3": [
+        "request",
+        "request",
+        "handle_user_exception"
+      ]
+    },
+    {
+      "query": "handle after request",
+      "expected": [
+        "after_this_request",
+        "finalize_request",
+        "process_response"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "after_this_request",
+      "top_3": [
+        "after_this_request",
+        "request",
+        "request"
+      ]
+    },
+    {
+      "query": "register error handler",
+      "expected": [
+        "handle_http_exception",
+        "handle_user_exception",
+        "handle_exception"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handle_http_exception",
+      "top_3": [
+        "handle_http_exception",
+        "handle_http_exception",
+        "handle_exception"
+      ]
+    },
+    {
+      "query": "teardown application",
+      "expected": [
+        "do_teardown_appcontext",
+        "do_teardown_request",
+        "teardown"
+      ],
+      "category": "app",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "do_teardown_appcontext",
+      "top_3": [
+        "do_teardown_appcontext",
+        "do_teardown_appcontext",
+        "do_teardown_request"
+      ]
+    },
+    {
+      "query": "get request data",
+      "expected": [
+        "from_environ",
+        "environ",
+        "__init__"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "request",
+      "top_3": [
+        "request",
+        "request",
+        "get"
+      ]
+    },
+    {
+      "query": "get form values",
+      "expected": [
+        "from_environ",
+        "environ"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get request headers",
+      "expected": [
+        "from_environ",
+        "environ"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get query parameters",
+      "expected": [
+        "from_environ",
+        "environ"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get uploaded file",
+      "expected": [
+        "from_environ",
+        "stream"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get request method",
+      "expected": [
+        "from_environ",
+        "environ"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get request url",
+      "expected": [
+        "url_for",
+        "create_url_adapter"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "check request type",
+      "expected": [
+        "from_environ",
+        "stream"
+      ],
+      "category": "request",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "request",
+      "top_3": [
+        "request",
+        "request",
+        "dispatch_request"
+      ]
+    },
+    {
+      "query": "create response object",
+      "expected": [
+        "make_response",
+        "response_class",
+        "from_app"
+      ],
+      "category": "response",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "process_response",
+      "top_3": [
+        "process_response",
+        "process_response",
+        "redirect"
+      ]
+    },
+    {
+      "query": "return json response",
+      "expected": [
+        "jsonify",
+        "dumps",
+        "dump"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "json_dumps",
+      "top_3": [
+        "json_dumps",
+        "json_dumps",
+        "on_json_loading_failed"
+      ]
+    },
+    {
+      "query": "redirect to url",
+      "expected": [
+        "redirect"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "redirect",
+      "top_3": [
+        "redirect",
+        "raise_routing_exception",
+        "url_for"
+      ]
+    },
+    {
+      "query": "send file to client",
+      "expected": [
+        "send_file",
+        "send_from_directory"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "send_file",
+      "top_3": [
+        "send_file",
+        "get_send_file_max_age",
+        "get_send_file_max_age"
+      ]
+    },
+    {
+      "query": "set response headers",
+      "expected": [
+        "from_app",
+        "make_response"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "make_response",
+      "top_3": [
+        "make_response",
+        "should_set_cookie",
+        "should_set_cookie"
+      ]
+    },
+    {
+      "query": "set response status",
+      "expected": [
+        "from_app",
+        "make_response"
+      ],
+      "category": "response",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "should_set_cookie",
+      "top_3": [
+        "should_set_cookie",
+        "should_set_cookie",
+        "make_response"
+      ]
+    },
+    {
+      "query": "abort with error",
+      "expected": [
+        "abort"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "abort",
+      "top_3": [
+        "abort",
+        "handle_exception",
+        "handle_exception"
+      ]
+    },
+    {
+      "query": "render html template",
+      "expected": [
+        "render_template",
+        "render_template_string",
+        "render"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "render_template_string",
+      "top_3": [
+        "render_template_string",
+        "render_template",
+        "stream_template"
+      ]
+    },
+    {
+      "query": "get session data",
+      "expected": [
+        "get",
+        "open_session",
+        "SecureCookieSession"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "session"
+      ]
+    },
+    {
+      "query": "set session value",
+      "expected": [
+        "setdefault",
+        "modified"
+      ],
+      "category": "session",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "session",
+      "top_3": [
+        "session",
+        "session",
+        "should_set_cookie"
+      ]
+    },
+    {
+      "query": "check session permanent",
+      "expected": [
+        "permanent"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "permanent",
+      "top_3": [
+        "permanent",
+        "permanent",
+        "permanent"
+      ]
+    },
+    {
+      "query": "create null session",
+      "expected": [
+        "make_null_session",
+        "NullSession"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "session",
+      "top_3": [
+        "session",
+        "session",
+        "make_null_session"
+      ]
+    },
+    {
+      "query": "open session",
+      "expected": [
+        "open_session",
+        "save_session"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "session",
+      "top_3": [
+        "session",
+        "session",
+        "open"
+      ]
+    },
+    {
+      "query": "save session data",
+      "expected": [
+        "save_session",
+        "open_session"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "save_session",
+      "top_3": [
+        "save_session",
+        "save_session",
+        "save_session"
+      ]
+    },
+    {
+      "query": "define route endpoint",
+      "expected": [
+        "endpoint",
+        "url_for",
+        "route"
+      ],
+      "category": "routing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "endpoint",
+      "top_3": [
+        "endpoint",
+        "endpoint",
+        "url_for"
+      ]
+    },
+    {
+      "query": "get url for endpoint",
+      "expected": [
+        "url_for",
+        "create_url_adapter"
+      ],
+      "category": "routing",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "endpoint",
+      "top_3": [
+        "endpoint",
+        "endpoint",
+        "get"
+      ]
+    },
+    {
+      "query": "dispatch request",
+      "expected": [
+        "dispatch_request",
+        "full_dispatch_request",
+        "wsgi_app"
+      ],
+      "category": "routing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "full_dispatch_request",
+      "top_3": [
+        "full_dispatch_request",
+        "full_dispatch_request",
+        "dispatch_request"
+      ]
+    },
+    {
+      "query": "match url pattern",
+      "expected": [
+        "create_url_adapter",
+        "url_for"
+      ],
+      "category": "routing",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "match_request",
+      "top_3": [
+        "match_request",
+        "match_request",
+        "endpoint"
+      ]
+    },
+    {
+      "query": "handle view function",
+      "expected": [
+        "dispatch_request",
+        "as_view"
+      ],
+      "category": "routing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "view",
+      "top_3": [
+        "view",
+        "view",
+        "as_view"
+      ]
+    },
+    {
+      "query": "create class view",
+      "expected": [
+        "as_view",
+        "View",
+        "dispatch_request"
+      ],
+      "category": "routing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "view",
+      "top_3": [
+        "view",
+        "view",
+        "as_view"
+      ]
+    },
+    {
+      "query": "load config from file",
+      "expected": [
+        "from_file",
+        "from_pyfile",
+        "from_object"
+      ],
+      "category": "config",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "load",
+      "top_3": [
+        "load",
+        "from_file",
+        "from_file"
+      ]
+    },
+    {
+      "query": "get config value",
+      "expected": [
+        "get",
+        "get_namespace"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "set default config",
+      "expected": [
+        "setdefault",
+        "make_config"
+      ],
+      "category": "config",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "get_cookie_path",
+      "top_3": [
+        "get_cookie_path",
+        "get_cookie_path",
+        "should_set_cookie"
+      ]
+    },
+    {
+      "query": "load from environment",
+      "expected": [
+        "from_prefixed_env",
+        "from_envvar"
+      ],
+      "category": "config",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "load",
+      "top_3": [
+        "load",
+        "get_load_dotenv",
+        "from_prefixed_env"
+      ]
+    },
+    {
+      "query": "update config",
+      "expected": [
+        "from_mapping",
+        "from_object"
+      ],
+      "category": "config",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "update_template_context",
+      "top_3": [
+        "update_template_context",
+        "update_template_context",
+        "on_update"
+      ]
+    },
+    {
+      "query": "check debug mode",
+      "expected": [
+        "make_config",
+        "get"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get_debug_flag",
+      "top_3": [
+        "get_debug_flag",
+        "run",
+        "raise_routing_exception"
+      ]
+    },
+    {
+      "query": "create test client",
+      "expected": [
+        "test_client",
+        "test_cli_runner"
+      ],
+      "category": "testing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "test_client",
+      "top_3": [
+        "test_client",
+        "test_client",
+        "test_cli_runner"
+      ]
+    },
+    {
+      "query": "create test request context",
+      "expected": [
+        "test_request_context",
+        "request_context"
+      ],
+      "category": "testing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "test_request_context",
+      "top_3": [
+        "test_request_context",
+        "test_request_context",
+        "request"
+      ]
+    },
+    {
+      "query": "run test command",
+      "expected": [
+        "test_cli_runner",
+        "invoke"
+      ],
+      "category": "testing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "run",
+      "top_3": [
+        "run",
+        "run",
+        "test_cli_runner"
+      ]
+    },
+    {
+      "query": "push test context",
+      "expected": [
+        "push",
+        "pop",
+        "ctx"
+      ],
+      "category": "testing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "push",
+      "top_3": [
+        "push",
+        "push",
+        "test_request_context"
+      ]
+    },
+    {
+      "query": "make test response",
+      "expected": [
+        "make_response",
+        "from_app"
+      ],
+      "category": "testing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "make_response",
+      "top_3": [
+        "make_response",
+        "make_default_options_response",
+        "make_default_options_response"
+      ]
+    },
+    {
+      "query": "session transaction",
+      "expected": [
+        "session_transaction"
+      ],
+      "category": "testing",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "session_transaction",
+      "top_3": [
+        "session_transaction",
+        "session_transaction",
+        "session"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1349 @@
+{
+  "total_queries": 65,
+  "hit@1": 0.8769230769230769,
+  "hit@3": 0.9846153846153847,
+  "hit@5": 1.0,
+  "by_category": {
+    "state": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "count": 15
+    },
+    "persist": {
+      "hit@1": 0.8333333333333334,
+      "hit@3": 1.0,
+      "count": 12
+    },
+    "middleware": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "count": 8
+    },
+    "react": {
+      "hit@1": 0.6,
+      "hit@3": 1.0,
+      "count": 10
+    },
+    "devtools": {
+      "hit@1": 0.875,
+      "hit@3": 1.0,
+      "count": 8
+    },
+    "utils": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "count": 8
+    },
+    "error": {
+      "hit@1": 0.75,
+      "hit@3": 0.75,
+      "count": 4
+    }
+  },
+  "failures": [
+    {
+      "query": "handle state rehydration",
+      "expected": [
+        "hydrate",
+        "hydrationListeners",
+        "finishHydrationListeners"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "postRehydrationCallback",
+        "r"
+      ]
+    },
+    {
+      "query": "serialize state to string",
+      "expected": [
+        "str",
+        "parse",
+        "setItem"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "getTrackedConnectionState",
+        "parse"
+      ]
+    },
+    {
+      "query": "use store in react component",
+      "expected": [
+        "useStore",
+        "create",
+        "useBoundStore",
+        "useBoundStoreWithEqualityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "useSyncExternalStoreExports",
+      "top_3": [
+        "useSyncExternalStoreExports",
+        "useBoundStore",
+        "useStore"
+      ]
+    },
+    {
+      "query": "bind store to react component",
+      "expected": [
+        "useBoundStore",
+        "useBoundStoreWithEqualityFn",
+        "useStore"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "useSyncExternalStoreExports",
+      "top_3": [
+        "useSyncExternalStoreExports",
+        "useBoundStore",
+        "useStore"
+      ]
+    },
+    {
+      "query": "avoid unnecessary rerenders",
+      "expected": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "subscribeWithSelector",
+        "useBoundStoreWithEqualityFn"
+      ]
+    },
+    {
+      "query": "optimize react performance",
+      "expected": [
+        "useShallow",
+        "shallow",
+        "equalityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "useShallow",
+        "subscribeWithSelectorImpl"
+      ]
+    },
+    {
+      "query": "remove store from devtools",
+      "expected": [
+        "removeStoreFromTrackedConnections",
+        "trackedConnections"
+      ],
+      "category": "devtools",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "removeStoreFromTrackedConnections",
+        "devtoolsImpl"
+      ]
+    },
+    {
+      "query": "handle async state updates",
+      "expected": [
+        "then",
+        "toThenable",
+        "catch"
+      ],
+      "category": "error",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "nextB",
+        "reduxImpl"
+      ]
+    }
+  ],
+  "all_results": [
+    {
+      "query": "update the store state",
+      "expected": [
+        "setState",
+        "set",
+        "savedSetState",
+        "state"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "previousState",
+        "savedSetState"
+      ]
+    },
+    {
+      "query": "get current state value",
+      "expected": [
+        "getState",
+        "get",
+        "state"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "getState",
+        "r"
+      ]
+    },
+    {
+      "query": "create a new zustand store",
+      "expected": [
+        "createStore",
+        "create",
+        "createStoreImpl",
+        "createImpl"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "create",
+      "top_3": [
+        "create",
+        "createStore",
+        "r"
+      ]
+    },
+    {
+      "query": "initialize store with default values",
+      "expected": [
+        "initialState",
+        "createStore",
+        "create"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "combine",
+        "useBoundStoreWithEqualityFn"
+      ]
+    },
+    {
+      "query": "listen for state changes",
+      "expected": [
+        "subscribe",
+        "subscribeWithSelector",
+        "listeners",
+        "listener"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "state",
+        "listener"
+      ]
+    },
+    {
+      "query": "subscribe to store updates",
+      "expected": [
+        "subscribe",
+        "origSubscribe",
+        "listener"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "subscribe",
+      "top_3": [
+        "subscribe",
+        "origSubscribe",
+        "r"
+      ]
+    },
+    {
+      "query": "notify all listeners of change",
+      "expected": [
+        "listeners",
+        "listener",
+        "subscribe"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "listeners",
+      "top_3": [
+        "listeners",
+        "finishHydrationListeners",
+        "hydrationListeners"
+      ]
+    },
+    {
+      "query": "unsubscribe from store",
+      "expected": [
+        "subscribe",
+        "listeners"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "subscribe",
+      "top_3": [
+        "subscribe",
+        "r",
+        "createStoreImpl"
+      ]
+    },
+    {
+      "query": "get previous state before update",
+      "expected": [
+        "previousState",
+        "prev",
+        "previousSlice"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "previousState",
+        "prev"
+      ]
+    },
+    {
+      "query": "calculate next state value",
+      "expected": [
+        "nextState",
+        "next",
+        "nextSlice"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "next",
+      "top_3": [
+        "next",
+        "nextA",
+        "nextB"
+      ]
+    },
+    {
+      "query": "get a slice of state",
+      "expected": [
+        "slice",
+        "currentSlice",
+        "nextSlice"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "slice",
+      "top_3": [
+        "slice",
+        "slice",
+        "state"
+      ]
+    },
+    {
+      "query": "select specific part of state",
+      "expected": [
+        "slice",
+        "currentSlice",
+        "useStore"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "state",
+        "slice"
+      ]
+    },
+    {
+      "query": "merge new state with existing",
+      "expected": [
+        "setState",
+        "nextState",
+        "state",
+        "combine"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "r",
+        "existingConnection"
+      ]
+    },
+    {
+      "query": "replace entire state",
+      "expected": [
+        "setState",
+        "state",
+        "r"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "state",
+        "setState"
+      ]
+    },
+    {
+      "query": "partial state update",
+      "expected": [
+        "setState",
+        "state",
+        "nextState"
+      ],
+      "category": "state",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "nextState",
+        "nextState"
+      ]
+    },
+    {
+      "query": "save state to localStorage",
+      "expected": [
+        "persist",
+        "setItem",
+        "persistImpl",
+        "persistStorage"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "storage",
+        "stateFromStorage"
+      ]
+    },
+    {
+      "query": "load saved state from storage",
+      "expected": [
+        "hydrate",
+        "stateFromStorage",
+        "getInitialState"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "storage",
+        "stateFromStorage"
+      ]
+    },
+    {
+      "query": "persist store data across sessions",
+      "expected": [
+        "persist",
+        "persistImpl",
+        "persistStorage"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "persist",
+      "top_3": [
+        "persist",
+        "configResult",
+        "persistStorage"
+      ]
+    },
+    {
+      "query": "create custom storage adapter",
+      "expected": [
+        "createJSONStorage",
+        "storage",
+        "persistStorage"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "create",
+        "storage"
+      ]
+    },
+    {
+      "query": "configure storage options",
+      "expected": [
+        "storage",
+        "options",
+        "persistStorage"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "options",
+        "storage"
+      ]
+    },
+    {
+      "query": "migrate old stored state version",
+      "expected": [
+        "migration",
+        "migrationResult"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "migration",
+      "top_3": [
+        "migration",
+        "state",
+        "r"
+      ]
+    },
+    {
+      "query": "handle state rehydration",
+      "expected": [
+        "hydrate",
+        "hydrationListeners",
+        "finishHydrationListeners"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "postRehydrationCallback",
+        "r"
+      ]
+    },
+    {
+      "query": "callback after rehydration completes",
+      "expected": [
+        "postRehydrationCallback",
+        "finishHydrationListeners"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "postRehydrationCallback",
+      "top_3": [
+        "postRehydrationCallback",
+        "r",
+        "hydrate"
+      ]
+    },
+    {
+      "query": "parse stored JSON data",
+      "expected": [
+        "parse",
+        "parseJsonThen",
+        "parsed"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "parse",
+      "top_3": [
+        "parse",
+        "parseJsonThen",
+        "createJSONStorage"
+      ]
+    },
+    {
+      "query": "serialize state to string",
+      "expected": [
+        "str",
+        "parse",
+        "setItem"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "getTrackedConnectionState",
+        "parse"
+      ]
+    },
+    {
+      "query": "get item from storage",
+      "expected": [
+        "str",
+        "stateFromStorage",
+        "storage"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "storage",
+        "createJSONStorage"
+      ]
+    },
+    {
+      "query": "configure persistence settings",
+      "expected": [
+        "options",
+        "configResult",
+        "persistImpl"
+      ],
+      "category": "persist",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "persist",
+      "top_3": [
+        "persist",
+        "configResult",
+        "r"
+      ]
+    },
+    {
+      "query": "combine multiple stores",
+      "expected": [
+        "combine"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "combine",
+      "top_3": [
+        "combine",
+        "r",
+        "trackedConnections"
+      ]
+    },
+    {
+      "query": "use immer for immutable updates",
+      "expected": [
+        "immer",
+        "immerImpl"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "immer",
+      "top_3": [
+        "immer",
+        "r",
+        "immerImpl"
+      ]
+    },
+    {
+      "query": "redux style state management",
+      "expected": [
+        "redux",
+        "reduxImpl"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "redux",
+      "top_3": [
+        "redux",
+        "reduxImpl",
+        "state"
+      ]
+    },
+    {
+      "query": "dispatch actions like redux",
+      "expected": [
+        "redux",
+        "reduxImpl",
+        "originalDispatch"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "redux",
+      "top_3": [
+        "redux",
+        "reduxImpl",
+        "originalDispatch"
+      ]
+    },
+    {
+      "query": "subscribe to specific state slice",
+      "expected": [
+        "subscribeWithSelector",
+        "subscribeWithSelectorImpl",
+        "slice"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "slice",
+      "top_3": [
+        "slice",
+        "subscribe",
+        "slice"
+      ]
+    },
+    {
+      "query": "middleware for state updates",
+      "expected": [
+        "immer",
+        "redux",
+        "subscribeWithSelector"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "state",
+        "arg"
+      ]
+    },
+    {
+      "query": "combine initial state with creator",
+      "expected": [
+        "combine",
+        "initialState"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "combine",
+      "top_3": [
+        "combine",
+        "state",
+        "r"
+      ]
+    },
+    {
+      "query": "implement reducer pattern",
+      "expected": [
+        "redux",
+        "reduxImpl",
+        "originalDispatch"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "reduxImpl",
+        "prev"
+      ]
+    },
+    {
+      "query": "use store in react component",
+      "expected": [
+        "useStore",
+        "create",
+        "useBoundStore",
+        "useBoundStoreWithEqualityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "useSyncExternalStoreExports",
+      "top_3": [
+        "useSyncExternalStoreExports",
+        "useBoundStore",
+        "useStore"
+      ]
+    },
+    {
+      "query": "create react hook for store",
+      "expected": [
+        "useStore",
+        "useBoundStore",
+        "create"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "create",
+      "top_3": [
+        "create",
+        "useSyncExternalStoreExports",
+        "createImpl"
+      ]
+    },
+    {
+      "query": "bind store to react component",
+      "expected": [
+        "useBoundStore",
+        "useBoundStoreWithEqualityFn",
+        "useStore"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "useSyncExternalStoreExports",
+      "top_3": [
+        "useSyncExternalStoreExports",
+        "useBoundStore",
+        "useStore"
+      ]
+    },
+    {
+      "query": "custom equality function for hooks",
+      "expected": [
+        "useStoreWithEqualityFn",
+        "useBoundStoreWithEqualityFn",
+        "createWithEqualityFn"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "createWithEqualityFn",
+      "top_3": [
+        "createWithEqualityFn",
+        "equalityFn",
+        "useBoundStoreWithEqualityFn"
+      ]
+    },
+    {
+      "query": "sync external store with react",
+      "expected": [
+        "useSyncExternalStoreExports",
+        "useStore"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "useSyncExternalStoreExports",
+      "top_3": [
+        "useSyncExternalStoreExports",
+        "slice",
+        "r"
+      ]
+    },
+    {
+      "query": "shallow comparison for selectors",
+      "expected": [
+        "shallow",
+        "useShallow"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "shallow",
+      "top_3": [
+        "shallow",
+        "useShallow",
+        "r"
+      ]
+    },
+    {
+      "query": "avoid unnecessary rerenders",
+      "expected": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "subscribeWithSelector",
+        "useBoundStoreWithEqualityFn"
+      ]
+    },
+    {
+      "query": "optimize react performance",
+      "expected": [
+        "useShallow",
+        "shallow",
+        "equalityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "r",
+      "top_3": [
+        "r",
+        "useShallow",
+        "subscribeWithSelectorImpl"
+      ]
+    },
+    {
+      "query": "server side rendering safe",
+      "expected": [
+        "ssrSafe",
+        "ssrSet"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "ssrSafe",
+      "top_3": [
+        "ssrSafe",
+        "ssrSet",
+        "r"
+      ]
+    },
+    {
+      "query": "prevent state modification during ssr",
+      "expected": [
+        "ssrSafe",
+        "ssrSet"
+      ],
+      "category": "react",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "ssrSet",
+      "top_3": [
+        "ssrSet",
+        "ssrSafe",
+        "state"
+      ]
+    },
+    {
+      "query": "redux devtools integration",
+      "expected": [
+        "devtools",
+        "extensionConnector",
+        "devtoolsImpl"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "redux",
+        "stateFromDevtools"
+      ]
+    },
+    {
+      "query": "connect to browser devtools",
+      "expected": [
+        "extensionConnector",
+        "devtools",
+        "newConnection"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "extractConnectionInformation",
+        "newConnection"
+      ]
+    },
+    {
+      "query": "configure devtools options",
+      "expected": [
+        "devtoolsOptions",
+        "devtools",
+        "devtoolsImpl"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "options",
+        "devtoolsOptions"
+      ]
+    },
+    {
+      "query": "track store connections",
+      "expected": [
+        "trackedConnections",
+        "getTrackedConnectionState",
+        "connectionInfo"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "removeStoreFromTrackedConnections",
+      "top_3": [
+        "removeStoreFromTrackedConnections",
+        "r",
+        "trackedConnections"
+      ]
+    },
+    {
+      "query": "remove store from devtools",
+      "expected": [
+        "removeStoreFromTrackedConnections",
+        "trackedConnections"
+      ],
+      "category": "devtools",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "removeStoreFromTrackedConnections",
+        "devtoolsImpl"
+      ]
+    },
+    {
+      "query": "get state from devtools",
+      "expected": [
+        "stateFromDevtools",
+        "setStateFromDevtools",
+        "lastComputedState"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "devtools",
+      "top_3": [
+        "devtools",
+        "state",
+        "getTrackedConnectionState"
+      ]
+    },
+    {
+      "query": "debug action names",
+      "expected": [
+        "action",
+        "findCallerName",
+        "callerLine"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "action",
+      "top_3": [
+        "action",
+        "didWarnAboutReservedActionType",
+        "devtoolsOptions"
+      ]
+    },
+    {
+      "query": "extract connection info",
+      "expected": [
+        "extractConnectionInformation",
+        "connectionInfo",
+        "existingConnection"
+      ],
+      "category": "devtools",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "connectionInfo",
+      "top_3": [
+        "connectionInfo",
+        "extractConnectionInformation",
+        "r"
+      ]
+    },
+    {
+      "query": "check if state objects are equal",
+      "expected": [
+        "shallow",
+        "compareEntries",
+        "compareIterables"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "compareIterables",
+      "top_3": [
+        "compareIterables",
+        "state",
+        "r"
+      ]
+    },
+    {
+      "query": "shallow equality comparison",
+      "expected": [
+        "shallow",
+        "compareEntries"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "shallow",
+      "top_3": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ]
+    },
+    {
+      "query": "deep compare iterables",
+      "expected": [
+        "compareIterables",
+        "compareEntries",
+        "isIterable"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "compareIterables",
+      "top_3": [
+        "compareIterables",
+        "compareEntries",
+        "r"
+      ]
+    },
+    {
+      "query": "check if value is iterable",
+      "expected": [
+        "isIterable",
+        "hasIterableEntries"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "hasIterableEntries",
+      "top_3": [
+        "hasIterableEntries",
+        "r",
+        "compareIterables"
+      ]
+    },
+    {
+      "query": "identity function pass through",
+      "expected": [
+        "identity",
+        "arg"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "identity",
+      "top_3": [
+        "identity",
+        "identity",
+        "r"
+      ]
+    },
+    {
+      "query": "convert to map structure",
+      "expected": [
+        "mapA",
+        "mapB"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "mapB",
+      "top_3": [
+        "mapB",
+        "mapA",
+        "r"
+      ]
+    },
+    {
+      "query": "get iterator from value",
+      "expected": [
+        "iteratorA",
+        "iteratorB"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "iteratorB",
+      "top_3": [
+        "iteratorB",
+        "iteratorA",
+        "r"
+      ]
+    },
+    {
+      "query": "define custom equality function",
+      "expected": [
+        "equalityFn",
+        "createWithEqualityFn"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "equalityFn",
+      "top_3": [
+        "equalityFn",
+        "createWithEqualityFn",
+        "useBoundStoreWithEqualityFn"
+      ]
+    },
+    {
+      "query": "handle storage not available",
+      "expected": [
+        "storage",
+        "catch",
+        "toThenable",
+        "ssrSafe"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "storage",
+      "top_3": [
+        "storage",
+        "storage",
+        "persist"
+      ]
+    },
+    {
+      "query": "catch promise rejection",
+      "expected": [
+        "catch",
+        "then",
+        "toThenable"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "catch",
+      "top_3": [
+        "catch",
+        "catch",
+        "toThenable"
+      ]
+    },
+    {
+      "query": "convert to thenable promise",
+      "expected": [
+        "toThenable",
+        "then",
+        "catch"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "then",
+      "top_3": [
+        "then",
+        "then",
+        "toThenable"
+      ]
+    },
+    {
+      "query": "handle async state updates",
+      "expected": [
+        "then",
+        "toThenable",
+        "catch"
+      ],
+      "category": "error",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "state",
+      "top_3": [
+        "state",
+        "nextB",
+        "reduxImpl"
+      ]
+    }
+  ]
+}

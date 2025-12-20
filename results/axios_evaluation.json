@@ -1,0 +1,940 @@
+{
+  "codebase": "axios",
+  "total_queries": 50,
+  "hit@1": 0.9,
+  "hit@3": 0.98,
+  "hit@5": 1.0,
+  "by_category": {
+    "requests": {
+      "hit@1": 0.5,
+      "count": 10
+    },
+    "response": {
+      "hit@1": 1.0,
+      "count": 8
+    },
+    "interceptors": {
+      "hit@1": 1.0,
+      "count": 6
+    },
+    "cancel": {
+      "hit@1": 1.0,
+      "count": 5
+    },
+    "config": {
+      "hit@1": 1.0,
+      "count": 6
+    },
+    "url": {
+      "hit@1": 1.0,
+      "count": 6
+    },
+    "transform": {
+      "hit@1": 1.0,
+      "count": 5
+    },
+    "error": {
+      "hit@1": 1.0,
+      "count": 4
+    }
+  },
+  "all_results": [
+    {
+      "query": "make http get request",
+      "expected": [
+        "httpMethod",
+        "forEachMethodNoData",
+        "generateHTTPMethod",
+        "dispatchRequest"
+      ],
+      "category": "requests",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "httpMethod",
+      "top_3": [
+        "httpMethod",
+        "getFetch",
+        "getBodyLength"
+      ]
+    },
+    {
+      "query": "send post request with data",
+      "expected": [
+        "httpMethod",
+        "forEachMethodWithData",
+        "generateHTTPMethod",
+        "dispatchRequest"
+      ],
+      "category": "requests",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "forEachMethodNoData",
+      "top_3": [
+        "forEachMethodNoData",
+        "dispatchRequest",
+        "forEachMethodWithData"
+      ]
+    },
+    {
+      "query": "make put request to update",
+      "expected": [
+        "httpMethod",
+        "forEachMethodWithData",
+        "generateHTTPMethod",
+        "dispatchRequest"
+      ],
+      "category": "requests",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "forEachMethodNoData",
+      "top_3": [
+        "forEachMethodNoData",
+        "dispatchRequest",
+        "setRequestHeader"
+      ]
+    },
+    {
+      "query": "make patch request",
+      "expected": [
+        "httpMethod",
+        "forEachMethodWithData",
+        "generateHTTPMethod",
+        "dispatchRequest"
+      ],
+      "category": "requests",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "forEachMethodNoData",
+      "top_3": [
+        "forEachMethodNoData",
+        "dispatchRequest",
+        "dispatchXhrRequest"
+      ]
+    },
+    {
+      "query": "delete http request",
+      "expected": [
+        "httpMethod",
+        "forEachMethodNoData",
+        "generateHTTPMethod",
+        "dispatchRequest"
+      ],
+      "category": "requests",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "deleteHeader",
+      "top_3": [
+        "deleteHeader",
+        "dispatchHttpRequest",
+        "setRequestHeader"
+      ]
+    },
+    {
+      "query": "create axios instance",
+      "expected": [
+        "createInstance",
+        "create"
+      ],
+      "category": "requests",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "create",
+      "top_3": [
+        "create",
+        "createInstance",
+        "defineAccessor"
+      ]
+    },
+    {
+      "query": "dispatch http request",
+      "expected": [
+        "dispatchRequest",
+        "dispatchHttpRequest",
+        "dispatchXhrRequest"
+      ],
+      "category": "requests",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "dispatchHttpRequest",
+      "top_3": [
+        "dispatchHttpRequest",
+        "dispatchRequest",
+        "dispatchXhrRequest"
+      ]
+    },
+    {
+      "query": "send xhr request",
+      "expected": [
+        "dispatchXhrRequest",
+        "dispatchRequest",
+        "setRequestHeader"
+      ],
+      "category": "requests",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "dispatchXhrRequest",
+      "top_3": [
+        "dispatchXhrRequest",
+        "dispatchHttpRequest",
+        "httpMethod"
+      ]
+    },
+    {
+      "query": "send fetch request",
+      "expected": [
+        "getFetch",
+        "globalFetchAPI",
+        "getBodyLength",
+        "factory"
+      ],
+      "category": "requests",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "globalFetchAPI",
+      "top_3": [
+        "globalFetchAPI",
+        "getFetch",
+        "f"
+      ]
+    },
+    {
+      "query": "make multiple requests",
+      "expected": [
+        "all",
+        "spread"
+      ],
+      "category": "requests",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "httpMethod",
+      "top_3": [
+        "httpMethod",
+        "forEachMethodNoData",
+        "all"
+      ]
+    },
+    {
+      "query": "handle http response",
+      "expected": [
+        "handleResponse",
+        "handleLoad",
+        "onAdapterResolution"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleResponse",
+      "top_3": [
+        "handleResponse",
+        "handleStreamError",
+        "handleStreamEnd"
+      ]
+    },
+    {
+      "query": "get response headers",
+      "expected": [
+        "headersToObject",
+        "AxiosHeaders",
+        "normalizeHeader",
+        "onloadend"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "onloadend",
+      "top_3": [
+        "onloadend",
+        "getFetch",
+        "headersToObject"
+      ]
+    },
+    {
+      "query": "resolve or reject response",
+      "expected": [
+        "settle",
+        "_resolve",
+        "_reject"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "reject",
+      "top_3": [
+        "reject",
+        "_resolve",
+        "settle"
+      ]
+    },
+    {
+      "query": "handle response error",
+      "expected": [
+        "handleStreamError",
+        "handleRequestError",
+        "onAdapterRejection"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleStreamError",
+      "top_3": [
+        "handleStreamError",
+        "handleLoad",
+        "handleResponse"
+      ]
+    },
+    {
+      "query": "transform response data",
+      "expected": [
+        "transformResponse",
+        "transformData",
+        "transform"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "transform",
+      "top_3": [
+        "transform",
+        "transformData",
+        "transformResponse"
+      ]
+    },
+    {
+      "query": "validate response status",
+      "expected": [
+        "validateStatus",
+        "settle"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "validateStatus",
+      "top_3": [
+        "validateStatus",
+        "settle",
+        "handleLoad"
+      ]
+    },
+    {
+      "query": "handle load complete",
+      "expected": [
+        "handleLoad",
+        "onloadend",
+        "done"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleLoad",
+      "top_3": [
+        "handleLoad",
+        "handleTimeout",
+        "_reject"
+      ]
+    },
+    {
+      "query": "stream response data",
+      "expected": [
+        "handleStreamData",
+        "handleStreamEnd",
+        "readStream",
+        "trackStream"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleStreamData",
+      "top_3": [
+        "handleStreamData",
+        "handleStreamEnd",
+        "handleResponse"
+      ]
+    },
+    {
+      "query": "add request interceptor",
+      "expected": [
+        "unshiftRequestInterceptors",
+        "forEachHandler"
+      ],
+      "category": "interceptors",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "unshiftRequestInterceptors",
+      "top_3": [
+        "unshiftRequestInterceptors",
+        "setRequestHeader",
+        "pushResponseInterceptors"
+      ]
+    },
+    {
+      "query": "add response interceptor",
+      "expected": [
+        "pushResponseInterceptors",
+        "forEachHandler"
+      ],
+      "category": "interceptors",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "pushResponseInterceptors",
+      "top_3": [
+        "pushResponseInterceptors",
+        "unshiftRequestInterceptors",
+        "transformResponse"
+      ]
+    },
+    {
+      "query": "run interceptor handler",
+      "expected": [
+        "forEachHandler",
+        "unshiftRequestInterceptors"
+      ],
+      "category": "interceptors",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "forEachHandler",
+      "top_3": [
+        "forEachHandler",
+        "unshiftRequestInterceptors",
+        "handlerStreamAborted"
+      ]
+    },
+    {
+      "query": "use interceptor middleware",
+      "expected": [
+        "forEachHandler",
+        "unshiftRequestInterceptors",
+        "pushResponseInterceptors"
+      ],
+      "category": "interceptors",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "unshiftRequestInterceptors",
+      "top_3": [
+        "unshiftRequestInterceptors",
+        "pushResponseInterceptors",
+        "forEachHandler"
+      ]
+    },
+    {
+      "query": "chain request interceptors",
+      "expected": [
+        "unshiftRequestInterceptors",
+        "dispatchRequest"
+      ],
+      "category": "interceptors",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "unshiftRequestInterceptors",
+      "top_3": [
+        "unshiftRequestInterceptors",
+        "pushResponseInterceptors",
+        "setRequestHeader"
+      ]
+    },
+    {
+      "query": "chain response interceptors",
+      "expected": [
+        "pushResponseInterceptors",
+        "dispatchRequest"
+      ],
+      "category": "interceptors",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "pushResponseInterceptors",
+      "top_3": [
+        "pushResponseInterceptors",
+        "unshiftRequestInterceptors",
+        "transformResponse"
+      ]
+    },
+    {
+      "query": "cancel http request",
+      "expected": [
+        "cancel",
+        "abort",
+        "CancelToken"
+      ],
+      "category": "cancel",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "cancel",
+      "top_3": [
+        "cancel",
+        "executor",
+        "abort"
+      ]
+    },
+    {
+      "query": "create cancel token",
+      "expected": [
+        "executor",
+        "promiseExecutor",
+        "cancel",
+        "create"
+      ],
+      "category": "cancel",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "create",
+      "top_3": [
+        "create",
+        "cancel",
+        "isCancel"
+      ]
+    },
+    {
+      "query": "check if cancelled",
+      "expected": [
+        "isCancel",
+        "throwIfCancellationRequested"
+      ],
+      "category": "cancel",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "f",
+      "top_3": [
+        "f",
+        "cancel",
+        "toObjectSet"
+      ]
+    },
+    {
+      "query": "abort request",
+      "expected": [
+        "abort",
+        "cancel",
+        "handleAbort"
+      ],
+      "category": "cancel",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "abort",
+      "top_3": [
+        "abort",
+        "abort",
+        "handleAbort"
+      ]
+    },
+    {
+      "query": "handle request abort",
+      "expected": [
+        "handleAbort",
+        "handlerStreamAborted",
+        "abort"
+      ],
+      "category": "cancel",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "abort",
+      "top_3": [
+        "abort",
+        "abort",
+        "handleAbort"
+      ]
+    },
+    {
+      "query": "merge request config",
+      "expected": [
+        "mergeConfig",
+        "getMergedValue",
+        "computeConfigValue"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "merge",
+      "top_3": [
+        "merge",
+        "mergeConfig",
+        "computeConfigValue"
+      ]
+    },
+    {
+      "query": "set default config",
+      "expected": [
+        "mergeConfig",
+        "defaultToConfig2",
+        "mergeDeepProperties",
+        "setRequestHeader"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "setRequestHeader",
+      "top_3": [
+        "setRequestHeader",
+        "setProxy",
+        "setHeaders"
+      ]
+    },
+    {
+      "query": "set base url",
+      "expected": [
+        "buildFullPath",
+        "combineURLs",
+        "isAbsoluteURL",
+        "setProxy"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "setProxy",
+      "top_3": [
+        "setProxy",
+        "buildFullPath",
+        "combineURLs"
+      ]
+    },
+    {
+      "query": "compute config value",
+      "expected": [
+        "computeConfigValue",
+        "getMergedValue",
+        "mergeConfig"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "computeConfigValue",
+      "top_3": [
+        "computeConfigValue",
+        "value",
+        "f"
+      ]
+    },
+    {
+      "query": "merge deep properties",
+      "expected": [
+        "mergeDeepProperties",
+        "mergeConfig",
+        "getMergedValue"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "mergeDeepProperties",
+      "top_3": [
+        "mergeDeepProperties",
+        "merge",
+        "computeConfigValue"
+      ]
+    },
+    {
+      "query": "validate config options",
+      "expected": [
+        "assertOptions",
+        "validator",
+        "transitional"
+      ],
+      "category": "config",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "assertOptions",
+      "top_3": [
+        "assertOptions",
+        "defined",
+        "f"
+      ]
+    },
+    {
+      "query": "build request url",
+      "expected": [
+        "buildURL",
+        "encode",
+        "buildFullPath"
+      ],
+      "category": "url",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "build",
+      "top_3": [
+        "build",
+        "buildFullPath",
+        "buildURL"
+      ]
+    },
+    {
+      "query": "combine urls together",
+      "expected": [
+        "combineURLs",
+        "buildFullPath"
+      ],
+      "category": "url",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "combineURLs",
+      "top_3": [
+        "combineURLs",
+        "buildFullPath",
+        "each"
+      ]
+    },
+    {
+      "query": "check absolute url",
+      "expected": [
+        "isAbsoluteURL",
+        "parseProtocol"
+      ],
+      "category": "url",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "isAbsoluteURL",
+      "top_3": [
+        "isAbsoluteURL",
+        "buildFullPath",
+        "tailIsPct3D"
+      ]
+    },
+    {
+      "query": "encode url parameters",
+      "expected": [
+        "encode",
+        "buildURL",
+        "AxiosURLSearchParams"
+      ],
+      "category": "url",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "encode",
+      "top_3": [
+        "encode",
+        "encode",
+        "append"
+      ]
+    },
+    {
+      "query": "parse url protocol",
+      "expected": [
+        "parseProtocol",
+        "isAbsoluteURL"
+      ],
+      "category": "url",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "parseProtocol",
+      "top_3": [
+        "parseProtocol",
+        "isAbsoluteURL",
+        "parsePropPath"
+      ]
+    },
+    {
+      "query": "build full path url",
+      "expected": [
+        "buildFullPath",
+        "combineURLs",
+        "isAbsoluteURL"
+      ],
+      "category": "url",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "buildFullPath",
+      "top_3": [
+        "buildFullPath",
+        "build",
+        "buildPath"
+      ]
+    },
+    {
+      "query": "transform request data",
+      "expected": [
+        "transformRequest",
+        "transformData",
+        "transform"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "transform",
+      "top_3": [
+        "transform",
+        "transformData",
+        "transformRequest"
+      ]
+    },
+    {
+      "query": "stringify request body",
+      "expected": [
+        "stringifySafely",
+        "transformRequest",
+        "getBodyLength"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "getBodyLength",
+      "top_3": [
+        "getBodyLength",
+        "resolveBodyLength",
+        "f"
+      ]
+    },
+    {
+      "query": "convert to form data",
+      "expected": [
+        "toFormData",
+        "formDataToStream",
+        "convertValue",
+        "build"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "formDataToStream",
+      "top_3": [
+        "formDataToStream",
+        "toFormData",
+        "formDataToJSON"
+      ]
+    },
+    {
+      "query": "convert form data to json",
+      "expected": [
+        "formDataToJSON",
+        "parsePropPath",
+        "buildPath"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "formDataToJSON",
+      "top_3": [
+        "formDataToJSON",
+        "arrayToObject",
+        "formDataToStream"
+      ]
+    },
+    {
+      "query": "serialize url params",
+      "expected": [
+        "toURLEncodedForm",
+        "AxiosURLSearchParams",
+        "encode"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "AxiosURLSearchParams",
+      "top_3": [
+        "AxiosURLSearchParams",
+        "toURLEncodedForm",
+        "buildURL"
+      ]
+    },
+    {
+      "query": "handle request error",
+      "expected": [
+        "handleRequestError",
+        "handleError",
+        "_reject"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleRequestError",
+      "top_3": [
+        "handleRequestError",
+        "handleRequestTimeout",
+        "handleError"
+      ]
+    },
+    {
+      "query": "check axios error",
+      "expected": [
+        "isAxiosError"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "isAxiosError",
+      "top_3": [
+        "isAxiosError",
+        "handleError",
+        "handleStreamError"
+      ]
+    },
+    {
+      "query": "handle timeout error",
+      "expected": [
+        "handleTimeout",
+        "handleRequestTimeout"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleRequestTimeout",
+      "top_3": [
+        "handleRequestTimeout",
+        "handleTimeout",
+        "handleRequestError"
+      ]
+    },
+    {
+      "query": "reject with error",
+      "expected": [
+        "_reject",
+        "reject",
+        "onAdapterRejection"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "reject",
+      "top_3": [
+        "reject",
+        "_reject",
+        "_reject"
+      ]
+    }
+  ]
+}

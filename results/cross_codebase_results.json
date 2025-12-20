@@ -1,0 +1,399 @@
+{
+  "express": {
+    "hit@1": 0.7333333333333333,
+    "hit@3": 0.8,
+    "hit@5": 0.9333333333333333,
+    "failures": [
+      {
+        "query": "handle GET request",
+        "expected": [
+          "get",
+          "route"
+        ],
+        "got": "request",
+        "top_3": [
+          "request",
+          "handle",
+          "get"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "handle POST request",
+        "expected": [
+          "post",
+          "route"
+        ],
+        "got": "request",
+        "top_3": [
+          "request",
+          "handle",
+          "mounted_app"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "add middleware to app",
+        "expected": [
+          "use",
+          "middleware"
+        ],
+        "got": "app",
+        "top_3": [
+          "app",
+          "set",
+          "default"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "get request parameters",
+        "expected": [
+          "param",
+          "params"
+        ],
+        "got": "request",
+        "top_3": [
+          "request",
+          "get",
+          "setCharset"
+        ],
+        "hit@3": false
+      }
+    ]
+  },
+  "lodash": {
+    "hit@1": 0.75,
+    "hit@3": 0.8,
+    "hit@5": 0.8,
+    "failures": [
+      {
+        "query": "remove duplicates from array",
+        "expected": [
+          "uniq",
+          "unique",
+          "uniqBy"
+        ],
+        "got": "remove",
+        "top_3": [
+          "remove",
+          "duplicate",
+          "removeListener"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "find element in array",
+        "expected": [
+          "find",
+          "findIndex"
+        ],
+        "got": "baseNth",
+        "top_3": [
+          "baseNth",
+          "duplicate",
+          "arraySample"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "pick specific properties",
+        "expected": [
+          "pick"
+        ],
+        "got": "keyInObj",
+        "top_3": [
+          "keyInObj",
+          "installer",
+          "Chrome"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "get nested property value",
+        "expected": [
+          "get"
+        ],
+        "got": "property",
+        "top_3": [
+          "property",
+          "get",
+          "cb"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "convert to camel case",
+        "expected": [
+          "camelCase"
+        ],
+        "got": "replaceChars",
+        "top_3": [
+          "replaceChars",
+          "escapeHTMLAttribute",
+          "addMethod"
+        ],
+        "hit@3": false
+      }
+    ]
+  },
+  "zustand": {
+    "hit@1": 0.7384615384615385,
+    "hit@3": 0.9076923076923077,
+    "hit@5": 0.9538461538461539,
+    "failures": [
+      {
+        "query": "listen for state changes",
+        "expected": [
+          "subscribe",
+          "subscribeWithSelector",
+          "listeners",
+          "listener"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "useShallow"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "get a slice of state",
+        "expected": [
+          "slice",
+          "currentSlice",
+          "nextSlice"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "slice",
+          "slice"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "select specific part of state",
+        "expected": [
+          "slice",
+          "currentSlice",
+          "useStore"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "useShallow"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "save state to localStorage",
+        "expected": [
+          "persist",
+          "setItem",
+          "persistImpl",
+          "persistStorage"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "storage",
+          "options"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "migrate old stored state version",
+        "expected": [
+          "migration",
+          "migrationResult"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "migration"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "handle state rehydration",
+        "expected": [
+          "hydrate",
+          "hydrationListeners",
+          "finishHydrationListeners"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "useShallow"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "serialize state to string",
+        "expected": [
+          "str",
+          "parse",
+          "setItem"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "action"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "middleware for state updates",
+        "expected": [
+          "immer",
+          "redux",
+          "subscribeWithSelector"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "parseJsonThen"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "avoid unnecessary rerenders",
+        "expected": [
+          "shallow",
+          "useShallow",
+          "equalityFn"
+        ],
+        "got": "r",
+        "top_3": [
+          "r",
+          "hasIterableEntries",
+          "hydrate"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "optimize react performance",
+        "expected": [
+          "useShallow",
+          "shallow",
+          "equalityFn"
+        ],
+        "got": "r",
+        "top_3": [
+          "r",
+          "slice",
+          "useStore"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "prevent state modification during ssr",
+        "expected": [
+          "ssrSafe",
+          "ssrSet"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "ssrSet"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "redux devtools integration",
+        "expected": [
+          "devtools",
+          "extensionConnector",
+          "devtoolsImpl"
+        ],
+        "got": "redux",
+        "top_3": [
+          "redux",
+          "devtools",
+          "r"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "remove store from devtools",
+        "expected": [
+          "removeStoreFromTrackedConnections",
+          "trackedConnections"
+        ],
+        "got": "devtools",
+        "top_3": [
+          "devtools",
+          "devtoolsImpl",
+          "immerImpl"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "check if state objects are equal",
+        "expected": [
+          "shallow",
+          "compareEntries",
+          "compareIterables"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "r",
+          "useShallow"
+        ],
+        "hit@3": true
+      },
+      {
+        "query": "convert to map structure",
+        "expected": [
+          "mapA",
+          "mapB"
+        ],
+        "got": "r",
+        "top_3": [
+          "r",
+          "str",
+          "trackedConnections"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "define custom equality function",
+        "expected": [
+          "equalityFn",
+          "createWithEqualityFn"
+        ],
+        "got": "next",
+        "top_3": [
+          "next",
+          "prev",
+          "subscribeWithSelectorImpl"
+        ],
+        "hit@3": false
+      },
+      {
+        "query": "handle async state updates",
+        "expected": [
+          "then",
+          "toThenable",
+          "catch"
+        ],
+        "got": "state",
+        "top_3": [
+          "state",
+          "useShallow",
+          "nextState"
+        ],
+        "hit@3": false
+      }
+    ]
+  }
+}

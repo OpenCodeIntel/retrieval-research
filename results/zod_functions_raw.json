@@ -1,0 +1,1106 @@
+{
+  "codebase": "zod",
+  "total": 220,
+  "functions": [
+    {
+      "name": "registry",
+      "file": "test_repos/zod/packages/zod/src/v4/core/registries.ts",
+      "code": "obalMeta extends JSONSchemaMeta {}\n\n// registries\nexport function registry<T extends MetadataType = MetadataType, S extends $ZodType = $ZodType>(): $ZodRegistry<T, S> {\n  return new $ZodRegistry<T, S>();\n}\n\ninterface GlobalThisWithRegistry {\n  /**\n   * The globalRegistry instance shared across both CommonJS and ESM builds.\n   * By attaching the registry to `globalThis`, th"
+    },
+    {
+      "name": "flattenError",
+      "file": "test_repos/zod/packages/zod/src/v4/core/errors.ts",
+      "code": "fieldErrors: {\n    [P in keyof T]?: U[];\n  };\n};\n\nexport function flattenError<T>(error: $ZodError<T>): _FlattenedError<T>;\nexport function flattenError<T, U>(error: $ZodError<T>, mapper?: (issue: $ZodIssue) => U): _FlattenedError<T, U>;\nexport function flattenError<T, U>(error: $ZodError<T>, mapper = (issue: $ZodIssue) => issue.message as U) {\n  const fieldErrors: Record<Prop"
+    },
+    {
+      "name": "formatError",
+      "file": "test_repos/zod/packages/zod/src/v4/core/errors.ts",
+      "code": "U[];\n} & util.Flatten<_ZodFormattedError<T, U>>;\n\nexport function formatError<T>(error: $ZodError<T>): $ZodFormattedError<T>;\nexport function formatError<T, U>(error: $ZodError<T>, mapper?: (issue: $ZodIssue) => U): $ZodFormattedError<T, U>;\nexport function formatError<T, U>(error: $ZodError<T>, mapper = (issue: $ZodIssue) => issue.message as U) {\n  const fieldErrors: $ZodFor"
+    },
+    {
+      "name": "treeifyError",
+      "file": "test_repos/zod/packages/zod/src/v4/core/errors.ts",
+      "code": "rrorTree<T[K], U> } }\n        : { errors: U[] };\n\nexport function treeifyError<T>(error: $ZodError<T>): $ZodErrorTree<T>;\nexport function treeifyError<T, U>(error: $ZodError<T>, mapper?: (issue: $ZodIssue) => U): $ZodErrorTree<T, U>;\nexport function treeifyError<T, U>(error: $ZodError<T>, mapper = (issue: $ZodIssue) => issue.message as U) {\n  const result: $ZodErrorTree<T, U>"
+    },
+    {
+      "name": "toDotPath",
+      "file": "test_repos/zod/packages/zod/src/v4/core/errors.ts",
+      "code": "*   \u2716 Invalid input: expected number\n * ```\n */\nexport function toDotPath(_path: readonly (string | number | symbol | StandardSchemaV1.PathSegment)[]): string {\n  const segs: string[] = [];\n  const path: PropertyKey[] = _path.map((seg: any) => (typeof seg === \"object\" ? seg.key : seg));\n  for (const seg of path) {\n    if (typeof seg === \"number\") segs.push(`[${seg}]`);"
+    },
+    {
+      "name": "prettifyError",
+      "file": "test_repos/zod/packages/zod/src/v4/core/errors.ts",
+      "code": ".push(seg);\n    }\n  }\n\n  return segs.join(\"\");\n}\n\nexport function prettifyError(error: StandardSchemaV1.FailureResult): string {\n  const lines: string[] = [];\n  // sort by path length\n  const issues = [...error.issues].sort((a, b) => (a.path ?? []).length - (b.path ?? []).length);\n\n  // Process each issue\n  for (const issue of issues) {\n    lines.push(`\u2716 ${issue.message}`);"
+    },
+    {
+      "name": "processError",
+      "file": "test_repos/zod/packages/zod/src/v4/core/errors.ts",
+      "code": "$ZodFormattedError<T> = { _errors: [] } as any;\n  const processError = (error: { issues: $ZodIssue[] }) => {\n    for (const issue of error.issues) {\n      if (issue.code === \"invalid_union\" && issue.errors.length) {\n        issue.errors.map((issues) => processError({ issues }));\n      } else if (issue.code === \"invalid_key\") {\n        processError({ issues: issue.issues });\n      } else if (issue.code ="
+    },
+    {
+      "name": "emoji",
+      "file": "test_repos/zod/packages/zod/src/v4/core/regexes.ts",
+      "code": "{Extended_Pictographic}|\\\\p{Emoji_Component})+$`;\nexport function emoji(): RegExp {\n  return new RegExp(_emoji, \"u\");\n}\n\nexport const ipv4: RegExp =\n  /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/;\nexport const ipv6: RegExp =\n  /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-"
+    },
+    {
+      "name": "timeSource",
+      "file": "test_repos/zod/packages/zod/src/v4/core/regexes.ts",
+      "code": "p = /*@__PURE__*/ new RegExp(`^${dateSource}$`);\n\nfunction timeSource(args: { precision?: number | null | undefined }) {\n  const hhmm = `(?:[01]\\\\d|2[0-3]):[0-5]\\\\d`;\n  const regex =\n    typeof args.precision === \"number\"\n      ? args.precision === -1\n        ? `${hhmm}`\n        : args.precision === 0\n          ? `${hhmm}:[0-5]\\\\d`\n          : `${hhmm}:[0-5]\\\\d\\\\.\\\\d{"
+    },
+    {
+      "name": "time",
+      "file": "test_repos/zod/packages/zod/src/v4/core/regexes.ts",
+      "code": "mm}(?::[0-5]\\\\d(?:\\\\.\\\\d+)?)?`;\n  return regex;\n}\nexport function time(args: {\n  precision?: number | null;\n  // local?: boolean;\n}): RegExp {\n  return new RegExp(`^${timeSource(args)}$`);\n}\n\n// Adapted from https://stackoverflow.com/a/3143231\nexport function datetime(args: {\n  precision?: number | null;\n  offset?: boolean;\n  local?: boolean;\n}): RegExp {\n  const time"
+    },
+    {
+      "name": "datetime",
+      "file": "test_repos/zod/packages/zod/src/v4/core/regexes.ts",
+      "code": "Adapted from https://stackoverflow.com/a/3143231\nexport function datetime(args: {\n  precision?: number | null;\n  offset?: boolean;\n  local?: boolean;\n}): RegExp {\n  const time = timeSource({ precision: args.precision });\n  const opts = [\"Z\"];\n  if (args.local) opts.push(\"\");\n  // if (args.offset) opts.push(`([+-]\\\\d{2}:\\\\d{2})`);\n  if (args.offset) opts.push(`([+-](?:[01]"
+    },
+    {
+      "name": "fixedBase64",
+      "file": "test_repos/zod/packages/zod/src/v4/core/regexes.ts",
+      "code": "create base64 regex with exact length and padding\nfunction fixedBase64(bodyLength: number, padding: \"\" | \"=\" | \"==\"): RegExp {\n  return new RegExp(`^[A-Za-z0-9+/]{${bodyLength}}${padding}$`);\n}\n\n// Helper function to create base64url regex with exact length (no padding)\nfunction fixedBase64url(length: number): RegExp {\n  return new RegExp(`^[A-Za-z0-9_-]{${length}}$`);"
+    },
+    {
+      "name": "fixedBase64url",
+      "file": "test_repos/zod/packages/zod/src/v4/core/regexes.ts",
+      "code": "te base64url regex with exact length (no padding)\nfunction fixedBase64url(length: number): RegExp {\n  return new RegExp(`^[A-Za-z0-9_-]{${length}}$`);\n}\n\n// MD5 (16 bytes): base64 = 24 chars total (22 + \"==\")\nexport const md5_hex: RegExp = /^[0-9a-fA-F]{32}$/;\nexport const md5_base64: RegExp = /*@__PURE__*/ fixedBase64(22, \"==\");\nexport const md5_base64url: RegExp = /*@__"
+    },
+    {
+      "name": "isValidBase64",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "////   ZodBase64   //////////////////////////////\nexport function isValidBase64(data: string): boolean {\n  if (data === \"\") return true;\n  if (data.length % 4 !== 0) return false;\n  try {\n    // @ts-ignore\n    atob(data);\n    return true;\n  } catch {\n    return false;\n  }\n}\n\nexport interface $ZodBase64Def extends $ZodStringFormatDef<\"base64\"> {}\nexport interface $ZodBase64Inter"
+    },
+    {
+      "name": "isValidBase64URL",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "////   ZodBase64   //////////////////////////////\nexport function isValidBase64URL(data: string): boolean {\n  if (!regexes.base64url.test(data)) return false;\n  const base64 = data.replace(/[-_]/g, (c) => (c === \"-\" ? \"+\" : \"/\"));\n  const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, \"=\");\n  return isValidBase64(padded);\n}\n\nexport interface $ZodBase64URLDef extends $Zod"
+    },
+    {
+      "name": "isValidJWT",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "//////   ZodJWT   //////////////////////////////\n\nexport function isValidJWT(token: string, algorithm: util.JWTAlgorithm | null = null): boolean {\n  try {\n    const tokensParts = token.split(\".\");\n    if (tokensParts.length !== 3) return false;\n    const [header] = tokensParts;\n    if (!header) return false;\n    // @ts-ignore\n    const parsedHeader = JSON.parse(atob(header))"
+    },
+    {
+      "name": "handleArrayResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "nds $ZodType<any, any, $ZodArrayInternals<T>> {}\n\nfunction handleArrayResult(result: ParsePayload<any>, final: ParsePayload<any[]>, index: number) {\n  if (result.issues.length) {\n    final.issues.push(...util.prefixIssues(index, result.issues));\n  }\n  final.value[index] = result.value;\n}\n\nexport const $ZodArray: core.$constructor<$ZodArray> = /*@__PURE__*/ core.$constructor("
+    },
+    {
+      "name": "handlePropertyResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "[k][\"_zod\"][\"input\"];\n        } & Extra\n      >;\n\nfunction handlePropertyResult(result: ParsePayload, final: ParsePayload, key: PropertyKey, input: any) {\n  if (result.issues.length) {\n    final.issues.push(...util.prefixIssues(key, result.issues));\n  }\n\n  if (result.value === undefined) {\n    if (key in input) {\n      (final.value as any)[key] = undefined;\n    }\n  } else {"
+    },
+    {
+      "name": "normalizeDef",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "any, any, $ZodObjectInternals<Shape, Params>> {}\n\nfunction normalizeDef(def: $ZodObjectDef) {\n  const keys = Object.keys(def.shape);\n  for (const k of keys) {\n    if (!def.shape?.[k]?._zod?.traits?.has(\"$ZodType\")) {\n      throw new Error(`Invalid element at key \"${k}\": expected a Zod schema`);\n    }\n  }\n  const okeys = util.optionalKeys(def.shape);\n\n  return {\n    ...d"
+    },
+    {
+      "name": "handleCatchall",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "length,\n    optionalKeys: new Set(okeys),\n  };\n}\n\nfunction handleCatchall(\n  proms: Promise<any>[],\n  input: any,\n  payload: ParsePayload,\n  ctx: ParseContext,\n  def: ReturnType<typeof normalizeDef>,\n  inst: $ZodObject\n) {\n  const unrecognized: string[] = [];\n  // iterate over input keys\n  const keySet = def.keySet;\n  const _catchall = def.catchall!._zod;\n  const t = _cat"
+    },
+    {
+      "name": "handleUnionResults",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "Internals<T>> {\n  _zod: $ZodUnionInternals<T>;\n}\n\nfunction handleUnionResults(results: ParsePayload[], final: ParsePayload, inst: $ZodUnion, ctx?: ParseContext) {\n  for (const result of results) {\n    if (result.issues.length === 0) {\n      final.value = result.value;\n      return final;\n    }\n  }\n\n  const nonaborted = results.filter((r) => !util.aborted(r));\n  if (nonaborted"
+    },
+    {
+      "name": "handleExclusiveUnionResults",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "Payload[], payload, inst, ctx);\n    });\n  };\n});\n\nfunction handleExclusiveUnionResults(\n  results: ParsePayload[],\n  final: ParsePayload,\n  inst: $ZodUnion,\n  ctx?: ParseContext\n) {\n  const successes = results.filter((r) => r.issues.length === 0);\n\n  if (successes.length === 1) {\n    final.value = successes[0].value;\n    return final;\n  }\n\n  if (successes.length === 0) {\n    // No mat"
+    },
+    {
+      "name": "mergeValues",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "tionResults(payload, left, right);\n    };\n  }\n);\n\nfunction mergeValues(\n  a: any,\n  b: any\n): { valid: true; data: any } | { valid: false; mergeErrorPath: (string | number)[] } {\n  // const aType = parse.t(a);\n  // const bType = parse.t(b);\n\n  if (a === b) {\n    return { valid: true, data: a };\n  }\n  if (a instanceof Date && b instanceof Date && +a === +b) {\n    return"
+    },
+    {
+      "name": "handleIntersectionResults",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "return { valid: false, mergeErrorPath: [] };\n}\n\nfunction handleIntersectionResults(result: ParsePayload, left: ParsePayload, right: ParsePayload): ParsePayload {\n  if (left.issues.length) {\n    result.issues.push(...left.issues);\n  }\n  if (right.issues.length) {\n    result.issues.push(...right.issues);\n  }\n  if (util.aborted(result)) return result;\n\n  const merged = mergeValues(le"
+    },
+    {
+      "name": "handleTupleResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "hen(() => payload);\n    return payload;\n  };\n});\n\nfunction handleTupleResult(result: ParsePayload, final: ParsePayload<any[]>, index: number) {\n  if (result.issues.length) {\n    final.issues.push(...util.prefixIssues(index, result.issues));\n  }\n  final.value[index] = result.value;\n}\n\n//////////////////////////////////////////\n//////////////////////////////////////////\n//////"
+    },
+    {
+      "name": "handleMapResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "hen(() => payload);\n    return payload;\n  };\n});\n\nfunction handleMapResult(\n  keyResult: ParsePayload,\n  valueResult: ParsePayload,\n  final: ParsePayload<Map<unknown, unknown>>,\n  key: unknown,\n  input: Map<any, any>,\n  inst: $ZodMap,\n  ctx?: ParseContext | undefined\n): void {\n  if (keyResult.issues.length) {\n    if (util.propertyKeyTypes.has(typeof key)) {\n      final.iss"
+    },
+    {
+      "name": "handleSetResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "hen(() => payload);\n    return payload;\n  };\n});\n\nfunction handleSetResult(result: ParsePayload, final: ParsePayload<Set<any>>) {\n  if (result.issues.length) {\n    final.issues.push(...result.issues);\n  }\n  final.value.add(result.value);\n}\n\n////////////////////////////////////////\n////////////////////////////////////////\n//////////                    //////////\n//////////"
+    },
+    {
+      "name": "handleOptionalResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "s $ZodType {\n  _zod: $ZodOptionalInternals<T>;\n}\n\nfunction handleOptionalResult(result: ParsePayload, input: unknown) {\n  if (result.issues.length && input === undefined) {\n    return { issues: [], value: undefined };\n  }\n  return result;\n}\n\nexport const $ZodOptional: core.$constructor<$ZodOptional> = /*@__PURE__*/ core.$constructor(\n  \"$ZodOptional\",\n  (inst, def) => {\n    $Zo"
+    },
+    {
+      "name": "handleDefaultResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "handleDefaultResult(result, def);\n    };\n  }\n);\n\nfunction handleDefaultResult(payload: ParsePayload, def: $ZodDefaultDef) {\n  if (payload.value === undefined) {\n    payload.value = def.defaultValue;\n  }\n  return payload;\n}\n\n////////////////////////////////////////////\n////////////////////////////////////////////\n//////////                        //////////\n//////////      $Zo"
+    },
+    {
+      "name": "handleNonOptionalResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "leNonOptionalResult(result, inst);\n    };\n  }\n);\n\nfunction handleNonOptionalResult(payload: ParsePayload, inst: $ZodNonOptional) {\n  if (!payload.issues.length && payload.value === undefined) {\n    payload.issues.push({\n      code: \"invalid_type\",\n      expected: \"nonoptional\",\n      input: payload.value,\n      inst,\n    });\n  }\n  return payload;\n}\n\n///////////////////////////////"
+    },
+    {
+      "name": "handleCoalesceResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "$ZodIssueInvalidType;\n//   _qin: \"true\";\n// }\n\n// function handleCoalesceResult(payload: ParsePayload, def: $ZodCoalesceDef) {\n//   payload.value ??= def.defaultValue();\n//   return payload;\n// }\n\n// export const $ZodCoalesce: core.$constructor<{_zod: $ZodCoalesceInternals}> = /*@__PURE__*/ core.$constructor(\n//   \"$ZodCoalesce\",\n//   (inst, def) => {\n//     $ZodType.init(inst,"
+    },
+    {
+      "name": "handlePipeResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "n handlePipeResult(left, def.out, ctx);\n  };\n});\n\nfunction handlePipeResult(left: ParsePayload, next: $ZodType, ctx: ParseContextInternal) {\n  if (left.issues.length) {\n    // prevent further checks\n    left.aborted = true;\n    return left;\n  }\n  return next._zod.run({ value: left.value, issues: left.issues }, ctx);\n}\n\n////////////////////////////////////////////\n//////////"
+    },
+    {
+      "name": "handleCodecAResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "dleCodecAResult(right, def, ctx);\n    }\n  };\n});\n\nfunction handleCodecAResult(result: ParsePayload, def: $ZodCodecDef, ctx: ParseContextInternal) {\n  if (result.issues.length) {\n    // prevent further checks\n    result.aborted = true;\n    return result;\n  }\n\n  const direction = ctx.direction || \"forward\";\n\n  if (direction === \"forward\") {\n    const transformed = def.transform"
+    },
+    {
+      "name": "handleCodecTxResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "xResult(result, transformed, def.in, ctx);\n  }\n}\n\nfunction handleCodecTxResult(left: ParsePayload, value: any, nextSchema: SomeType, ctx: ParseContextInternal) {\n  // Check if transform added any issues\n  if (left.issues.length) {\n    left.aborted = true;\n    return left;\n  }\n\n  return nextSchema._zod.run({ value, issues: left.issues }, ctx);\n}\n\n///////////////////////////////"
+    },
+    {
+      "name": "handleReadonlyResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "turn handleReadonlyResult(result);\n    };\n  }\n);\n\nfunction handleReadonlyResult(payload: ParsePayload): ParsePayload {\n  payload.value = Object.freeze(payload.value);\n  return payload;\n}\n\n/////////////////////////////////////////////\n/////////////////////////////////////////////\n//////////                         //////////\n//////////   $ZodTemplateLiteral   //////////\n////////"
+    },
+    {
+      "name": "handleRefineResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "t(r, payload, input, inst);\n    return;\n  };\n});\n\nfunction handleRefineResult(result: unknown, payload: ParsePayload, input: unknown, inst: $ZodCustom): void {\n  if (!result) {\n    const _iss: any = {\n      code: \"custom\",\n      input,\n      inst, // incorporates params.error into issue reporting\n      path: [...(inst._zod.def.path ?? [])], // incorporates params.error into i"
+    },
+    {
+      "name": "handleCanaryResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "});\n      }\n      return payload;\n    };\n\n    const handleCanaryResult = (canary: ParsePayload, payload: ParsePayload, ctx: ParseContextInternal) => {\n      // abort if the canary is aborted\n      if (util.aborted(canary)) {\n        canary.aborted = true;\n        return canary;\n      }\n\n      // run checks first, then\n      const checkResult = runChecks(payload, checks, ctx);\n      if (checkResult instanceof Promise) {\n        if (ctx.async ==="
+    },
+    {
+      "name": "generateFastpass",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "ized = util.cached(() => normalizeDef(def));\n\n    const generateFastpass = (shape: any) => {\n      const doc = new Doc([\"shape\", \"payload\", \"ctx\"]);\n      const normalized = _normalized.value;\n\n      const parseStr = (key: string) => {\n        const k = util.esc(key);\n        return `shape[${k}]._zod.run({ value: input[${k}], issues: [] }, ctx)`;\n      };\n\n      doc.write(`const input ="
+    },
+    {
+      "name": "parseStr",
+      "file": "test_repos/zod/packages/zod/src/v4/core/schemas.ts",
+      "code": "const normalized = _normalized.value;\n\n      const parseStr = (key: string) => {\n        const k = util.esc(key);\n        return `shape[${k}]._zod.run({ value: input[${k}], issues: [] }, ctx)`;\n      };\n\n      doc.write(`const input = payload.value;`);\n\n      const ids: any = Object.create(null);\n      let counter = 0;\n      for (const key of normalized.keys) {\n        ids[ke"
+    },
+    {
+      "name": "describe",
+      "file": "test_repos/zod/packages/zod/src/v4/core/api.ts",
+      "code": "ms),\n  });\n\n  ch._zod.check = fn;\n  return ch;\n}\n\nexport function describe<T>(description: string): checks.$ZodCheck<T> {\n  const ch = new checks.$ZodCheck({ check: \"describe\" });\n  ch._zod.onattach = [\n    (inst) => {\n      const existing = registries.globalRegistry.get(inst) ?? {};\n      registries.globalRegistry.add(inst, { ...existing, description });\n    },\n  ];\n  ch."
+    },
+    {
+      "name": "meta",
+      "file": "test_repos/zod/packages/zod/src/v4/core/api.ts",
+      "code": ".check = () => {}; // no-op check\n  return ch;\n}\n\nexport function meta<T>(metadata: registries.GlobalMeta): checks.$ZodCheck<T> {\n  const ch = new checks.$ZodCheck({ check: \"meta\" });\n  ch._zod.onattach = [\n    (inst) => {\n      const existing = registries.globalRegistry.get(inst) ?? {};\n      registries.globalRegistry.add(inst, { ...existing, ...metadata });\n    },"
+    },
+    {
+      "name": "initializeContext",
+      "file": "test_repos/zod/packages/zod/src/v4/core/to-json-schema.ts",
+      "code": "chema.BaseSchema>;\n      }\n    | undefined;\n}\n\n// function initializeContext<T extends schemas.$ZodType>(inputs: JSONSchemaGeneratorParams<T>): ToJSONSchemaContext<T> {\n//   return {\n//     processor: inputs.processor,\n//     metadataRegistry: inputs.metadata ?? globalRegistry,\n//     target: inputs.target ?? \"draft-2020-12\",\n//     unrepresentable: inputs.unrepresentable ??"
+    },
+    {
+      "name": "process",
+      "file": "test_repos/zod/packages/zod/src/v4/core/to-json-schema.ts",
+      "code": "external: params?.external ?? undefined,\n  };\n}\n\nexport function process<T extends schemas.$ZodType>(\n  schema: T,\n  ctx: ToJSONSchemaContext,\n  _params: ProcessParams = { path: [], schemaPath: [] }\n): JSONSchema.BaseSchema {\n  const def = schema._zod.def as schemas.$ZodTypes[\"_zod\"][\"def\"];\n\n  // check for schema in seens\n  const seen = ctx.seen.get(schema);\n\n  if (seen"
+    },
+    {
+      "name": "extractDefs",
+      "file": "test_repos/zod/packages/zod/src/v4/core/to-json-schema.ts",
+      "code": "x.seen.get(schema)!;\n\n  return _result.schema;\n}\n\nexport function extractDefs<T extends schemas.$ZodType>(\n  ctx: ToJSONSchemaContext,\n  schema: T\n  // params: EmitParams\n): void {\n  // iterate over seen map;\n  const root = ctx.seen.get(schema);\n\n  if (!root) throw new Error(\"Unprocessed schema. This is a bug in Zod.\");\n\n  // returns a ref to the schema\n  // defId will be emp"
+    },
+    {
+      "name": "finalize",
+      "file": "test_repos/zod/packages/zod/src/v4/core/to-json-schema.ts",
+      "code": "nore lint:\n        continue;\n      }\n    }\n  }\n}\n\nexport function finalize<T extends schemas.$ZodType>(\n  ctx: ToJSONSchemaContext,\n  schema: T\n): ZodStandardJSONSchemaPayload<T> {\n  //\n\n  // iterate over seen map;\n  const root = ctx.seen.get(schema);\n\n  if (!root) throw new Error(\"Unprocessed schema. This is a bug in Zod.\");\n\n  // flatten _refs\n  const flattenRef = (zodSc"
+    },
+    {
+      "name": "isTransforming",
+      "file": "test_repos/zod/packages/zod/src/v4/core/to-json-schema.ts",
+      "code": "Error(\"Error converting schema to JSON.\");\n  }\n}\n\nfunction isTransforming(\n  _schema: schemas.$ZodType,\n  _ctx?: {\n    seen: Set<schemas.$ZodType>;\n  }\n): boolean {\n  const ctx = _ctx ?? { seen: new Set() };\n\n  if (ctx.seen.has(_schema)) return false;\n  ctx.seen.add(_schema);\n\n  const def = (_schema as schemas.$ZodTypes)._zod.def;\n\n  if (def.type === \"transform\") return t"
+    },
+    {
+      "name": "flattenRef",
+      "file": "test_repos/zod/packages/zod/src/v4/core/to-json-schema.ts",
+      "code": "a. This is a bug in Zod.\");\n\n  // flatten _refs\n  const flattenRef = (zodSchema: schemas.$ZodType) => {\n    const seen = ctx.seen.get(zodSchema)!;\n    const schema = seen.def ?? seen.schema;\n\n    const _cached = { ...schema };\n\n    // already seen\n    if (seen.ref === null) {\n      return;\n    }\n\n    // flatten ref if defined\n    const ref = seen.ref;\n    seen.ref = null; // prevent recursion\n    i"
+    },
+    {
+      "name": "init",
+      "file": "test_repos/zod/packages/zod/src/v4/core/core.ts",
+      "code": "Parent?: typeof Class }\n): $constructor<T, D> {\n  function init(inst: T, def: D) {\n    if (!inst._zod) {\n      Object.defineProperty(inst, \"_zod\", {\n        value: {\n          def,\n          constr: _,\n          traits: new Set(),\n        },\n        enumerable: false,\n      });\n    }\n\n    if (inst._zod.traits.has(name)) {\n      return;\n    }\n\n    inst._zod.trait"
+    },
+    {
+      "name": "config",
+      "file": "test_repos/zod/packages/zod/src/v4/core/core.ts",
+      "code": ";\n}\n\nexport const globalConfig: $ZodConfig = {};\n\nexport function config(newConfig?: Partial<$ZodConfig>): $ZodConfig {\n  if (newConfig) Object.assign(globalConfig, newConfig);\n  return globalConfig;\n}"
+    },
+    {
+      "name": "handleCheckPropertyResult",
+      "file": "test_repos/zod/packages/zod/src/v4/core/checks.ts",
+      "code": "erty    /////\n///////////////////////////////////\nfunction handleCheckPropertyResult(\n  result: schemas.ParsePayload<unknown>,\n  payload: schemas.ParsePayload<unknown>,\n  property: string\n) {\n  if (result.issues.length) {\n    payload.issues.push(...util.prefixIssues(property, result.issues));\n  }\n}\nexport interface $ZodCheckPropertyDef extends $ZodCheckDef {\n  check: \"property\";\n  p"
+    },
+    {
+      "name": "toJSONSchema",
+      "file": "test_repos/zod/packages/zod/src/v4/core/json-schema-processors.ts",
+      "code": "==== TOP-LEVEL toJSONSchema ====================\n\nexport function toJSONSchema<T extends schemas.$ZodType>(\n  schema: T,\n  params?: ToJSONSchemaParams\n): ZodStandardJSONSchemaPayload<T>;\nexport function toJSONSchema(\n  registry: $ZodRegistry<{ id?: string | undefined }>,\n  params?: RegistryToJSONSchemaParams\n): { schemas: Record<string, ZodStandardJSONSchemaPayload<schemas.$Zo"
+    },
+    {
+      "name": "isSimpleIntersection",
+      "file": "test_repos/zod/packages/zod/src/v4/core/json-schema-processors.ts",
+      "code": "path: [...params.path, \"allOf\", 1],\n  });\n\n  const isSimpleIntersection = (val: any) => \"allOf\" in val && Object.keys(val).length === 1;\n  const allOf = [\n    ...(isSimpleIntersection(a) ? (a.allOf as any[]) : [a]),\n    ...(isSimpleIntersection(b) ? (b.allOf as any[]) : [b]),\n  ];\n  json.allOf = allOf;\n};\n\nexport const tupleProcessor: Processor<schemas.$ZodTuple> = (schema, ctx, _json"
+    },
+    {
+      "name": "assertEqual",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "type PrimitiveSet = Set<Primitive>;\n\n// functions\nexport function assertEqual<A, B>(val: AssertEqual<A, B>): AssertEqual<A, B> {\n  return val;\n}\n\nexport function assertNotEqual<A, B>(val: AssertNotEqual<A, B>): AssertNotEqual<A, B> {\n  return val;\n}\n\nexport function assertIs<T>(_arg: T): void {}\n\nexport function assertNever(_x: never): never {\n  throw new Error(\"Unexpected va"
+    },
+    {
+      "name": "assertNotEqual",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "qual<A, B>): AssertEqual<A, B> {\n  return val;\n}\n\nexport function assertNotEqual<A, B>(val: AssertNotEqual<A, B>): AssertNotEqual<A, B> {\n  return val;\n}\n\nexport function assertIs<T>(_arg: T): void {}\n\nexport function assertNever(_x: never): never {\n  throw new Error(\"Unexpected value in exhaustive check\");\n}\nexport function assert<T>(_: any): asserts _ is T {}\n\nexport function"
+    },
+    {
+      "name": "assertIs",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "l<A, B>): AssertNotEqual<A, B> {\n  return val;\n}\n\nexport function assertIs<T>(_arg: T): void {}\n\nexport function assertNever(_x: never): never {\n  throw new Error(\"Unexpected value in exhaustive check\");\n}\nexport function assert<T>(_: any): asserts _ is T {}\n\nexport function getEnumValues(entries: EnumLike): EnumValue[] {\n  const numericValues = Object.values(entries).filt"
+    },
+    {
+      "name": "assertNever",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "}\n\nexport function assertIs<T>(_arg: T): void {}\n\nexport function assertNever(_x: never): never {\n  throw new Error(\"Unexpected value in exhaustive check\");\n}\nexport function assert<T>(_: any): asserts _ is T {}\n\nexport function getEnumValues(entries: EnumLike): EnumValue[] {\n  const numericValues = Object.values(entries).filter((v) => typeof v === \"number\");\n  const values ="
+    },
+    {
+      "name": "assert",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "Error(\"Unexpected value in exhaustive check\");\n}\nexport function assert<T>(_: any): asserts _ is T {}\n\nexport function getEnumValues(entries: EnumLike): EnumValue[] {\n  const numericValues = Object.values(entries).filter((v) => typeof v === \"number\");\n  const values = Object.entries(entries)\n    .filter(([k, _]) => numericValues.indexOf(+k) === -1)\n    .map(([_, v]) =>"
+    },
+    {
+      "name": "getEnumValues",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "rt function assert<T>(_: any): asserts _ is T {}\n\nexport function getEnumValues(entries: EnumLike): EnumValue[] {\n  const numericValues = Object.values(entries).filter((v) => typeof v === \"number\");\n  const values = Object.entries(entries)\n    .filter(([k, _]) => numericValues.indexOf(+k) === -1)\n    .map(([_, v]) => v);\n  return values;\n}\n\nexport function joinValues<T extends"
+    },
+    {
+      "name": "joinValues",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "-1)\n    .map(([_, v]) => v);\n  return values;\n}\n\nexport function joinValues<T extends Primitive[]>(array: T, separator = \"|\"): string {\n  return array.map((val) => stringifyPrimitive(val)).join(separator);\n}\n\nexport function jsonStringifyReplacer(_: string, value: any): any {\n  if (typeof value === \"bigint\") return value.toString();\n  return value;\n}\n\nexport function cached"
+    },
+    {
+      "name": "jsonStringifyReplacer",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": ") => stringifyPrimitive(val)).join(separator);\n}\n\nexport function jsonStringifyReplacer(_: string, value: any): any {\n  if (typeof value === \"bigint\") return value.toString();\n  return value;\n}\n\nexport function cached<T>(getter: () => T): { value: T } {\n  const set = false;\n  return {\n    get value() {\n      if (!set) {\n        const value = getter();\n        Object.defineProperty(this"
+    },
+    {
+      "name": "cached",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "int\") return value.toString();\n  return value;\n}\n\nexport function cached<T>(getter: () => T): { value: T } {\n  const set = false;\n  return {\n    get value() {\n      if (!set) {\n        const value = getter();\n        Object.defineProperty(this, \"value\", { value });\n        return value;\n      }\n      throw new Error(\"cached value already set\");\n    },\n  };\n}\n\nexport func"
+    },
+    {
+      "name": "nullish",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "Error(\"cached value already set\");\n    },\n  };\n}\n\nexport function nullish(input: any): boolean {\n  return input === null || input === undefined;\n}\n\nexport function cleanRegex(source: string): string {\n  const start = source.startsWith(\"^\") ? 1 : 0;\n  const end = source.endsWith(\"$\") ? source.length - 1 : source.length;\n  return source.slice(start, end);\n}\n\nexport function"
+    },
+    {
+      "name": "cleanRegex",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "return input === null || input === undefined;\n}\n\nexport function cleanRegex(source: string): string {\n  const start = source.startsWith(\"^\") ? 1 : 0;\n  const end = source.endsWith(\"$\") ? source.length - 1 : source.length;\n  return source.slice(start, end);\n}\n\nexport function floatSafeRemainder(val: number, step: number): number {\n  const valDecCount = (val.toString().split("
+    },
+    {
+      "name": "floatSafeRemainder",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "rce.length;\n  return source.slice(start, end);\n}\n\nexport function floatSafeRemainder(val: number, step: number): number {\n  const valDecCount = (val.toString().split(\".\")[1] || \"\").length;\n  const stepString = step.toString();\n  let stepDecCount = (stepString.split(\".\")[1] || \"\").length;\n  if (stepDecCount === 0 && /\\d?e-\\d?/.test(stepString)) {\n    const match = stepString.match(/\\"
+    },
+    {
+      "name": "defineLazy",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "unt;\n}\n\nconst EVALUATING = Symbol(\"evaluating\");\n\nexport function defineLazy<T, K extends keyof T>(object: T, key: K, getter: () => T[K]): void {\n  let value: T[K] | typeof EVALUATING | undefined = undefined;\n  Object.defineProperty(object, key, {\n    get() {\n      if (value === EVALUATING) {\n        // Circular reference detected, return undefined to break the cycle"
+    },
+    {
+      "name": "objectClone",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "key] = v;\n    },\n    configurable: true,\n  });\n}\n\nexport function objectClone(obj: object) {\n  return Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));\n}\n\nexport function assignProp<T extends object, K extends PropertyKey>(\n  target: T,\n  prop: K,\n  value: K extends keyof T ? T[K] : any\n): void {\n  Object.defineProperty(target, prop, {\n    valu"
+    },
+    {
+      "name": "assignProp",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "(obj), Object.getOwnPropertyDescriptors(obj));\n}\n\nexport function assignProp<T extends object, K extends PropertyKey>(\n  target: T,\n  prop: K,\n  value: K extends keyof T ? T[K] : any\n): void {\n  Object.defineProperty(target, prop, {\n    value,\n    writable: true,\n    enumerable: true,\n    configurable: true,\n  });\n}\n\nexport function mergeDefs(...defs: Record<string, any>[]):"
+    },
+    {
+      "name": "mergeDefs",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "numerable: true,\n    configurable: true,\n  });\n}\n\nexport function mergeDefs(...defs: Record<string, any>[]): any {\n  const mergedDescriptors: Record<string, PropertyDescriptor> = {};\n\n  for (const def of defs) {\n    const descriptors = Object.getOwnPropertyDescriptors(def);\n    Object.assign(mergedDescriptors, descriptors);\n  }\n\n  return Object.defineProperties({}, mergedDe"
+    },
+    {
+      "name": "cloneDef",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "bject.defineProperties({}, mergedDescriptors);\n}\n\nexport function cloneDef(schema: schemas.$ZodType): any {\n  return mergeDefs(schema._zod.def);\n}\n\nexport function getElementAtPath(obj: any, path: (string | number)[] | null | undefined): any {\n  if (!path) return obj;\n  return path.reduce((acc, key) => acc?.[key], obj);\n}\n\nexport function promiseAllObject<T extends object>"
+    },
+    {
+      "name": "getElementAtPath",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "e): any {\n  return mergeDefs(schema._zod.def);\n}\n\nexport function getElementAtPath(obj: any, path: (string | number)[] | null | undefined): any {\n  if (!path) return obj;\n  return path.reduce((acc, key) => acc?.[key], obj);\n}\n\nexport function promiseAllObject<T extends object>(promisesObj: T): Promise<{ [k in keyof T]: Awaited<T[k]> }> {\n  const keys = Object.keys(promisesObj);"
+    },
+    {
+      "name": "promiseAllObject",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "rn path.reduce((acc, key) => acc?.[key], obj);\n}\n\nexport function promiseAllObject<T extends object>(promisesObj: T): Promise<{ [k in keyof T]: Awaited<T[k]> }> {\n  const keys = Object.keys(promisesObj);\n  const promises = keys.map((key) => (promisesObj as any)[key]);\n\n  return Promise.all(promises).then((results) => {\n    const resolvedObj: any = {};\n    for (let i = 0; i < keys."
+    },
+    {
+      "name": "randomString",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "esults[i];\n    }\n    return resolvedObj;\n  });\n}\n\nexport function randomString(length = 10): string {\n  const chars = \"abcdefghijklmnopqrstuvwxyz\";\n  let str = \"\";\n  for (let i = 0; i < length; i++) {\n    str += chars[Math.floor(Math.random() * chars.length)];\n  }\n  return str;\n}\n\nexport function esc(str: string): string {\n  return JSON.stringify(str);\n}\n\nexport function slugi"
+    },
+    {
+      "name": "esc",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "h.random() * chars.length)];\n  }\n  return str;\n}\n\nexport function esc(str: string): string {\n  return JSON.stringify(str);\n}\n\nexport function slugify(input: string): string {\n  return input\n    .toLowerCase()\n    .trim()\n    .replace(/[^\\w\\s-]/g, \"\")\n    .replace(/[\\s_-]+/g, \"-\")\n    .replace(/^-+|-+$/g, \"\");\n}\n\nexport const captureStackTrace: (targetObject: object, c"
+    },
+    {
+      "name": "slugify",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "tring): string {\n  return JSON.stringify(str);\n}\n\nexport function slugify(input: string): string {\n  return input\n    .toLowerCase()\n    .trim()\n    .replace(/[^\\w\\s-]/g, \"\")\n    .replace(/[\\s_-]+/g, \"-\")\n    .replace(/^-+|-+$/g, \"\");\n}\n\nexport const captureStackTrace: (targetObject: object, constructorOpt?: Function) => void = (\n  \"captureStackTrace\" in Error ? Error.cap"
+    },
+    {
+      "name": "isObject",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "reStackTrace : (..._args: any[]) => {}\n) as any;\n\nexport function isObject(data: any): data is Record<PropertyKey, unknown> {\n  return typeof data === \"object\" && data !== null && !Array.isArray(data);\n}\n\nexport const allowsEval: { value: boolean } = cached(() => {\n  // @ts-ignore\n  if (typeof navigator !== \"undefined\" && navigator?.userAgent?.includes(\"Cloudflare\")) {"
+    },
+    {
+      "name": "isPlainObject",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "true;\n  } catch (_) {\n    return false;\n  }\n});\n\nexport function isPlainObject(o: any): o is Record<PropertyKey, unknown> {\n  if (isObject(o) === false) return false;\n\n  // modified constructor\n  const ctor = o.constructor;\n  if (ctor === undefined) return true;\n\n  if (typeof ctor !== \"function\") return true;\n\n  // modified prototype\n  const prot = ctor.prototype;\n  if (isObje"
+    },
+    {
+      "name": "shallowClone",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "false) {\n    return false;\n  }\n\n  return true;\n}\n\nexport function shallowClone(o: any): any {\n  if (isPlainObject(o)) return { ...o };\n  if (Array.isArray(o)) return [...o];\n  return o;\n}\n\nexport function numKeys(data: any): number {\n  let keyCount = 0;\n  for (const key in data) {\n    if (Object.prototype.hasOwnProperty.call(data, key)) {\n      keyCount++;\n    }\n  }\n  return k"
+    },
+    {
+      "name": "numKeys",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "(Array.isArray(o)) return [...o];\n  return o;\n}\n\nexport function numKeys(data: any): number {\n  let keyCount = 0;\n  for (const key in data) {\n    if (Object.prototype.hasOwnProperty.call(data, key)) {\n      keyCount++;\n    }\n  }\n  return keyCount;\n}\n\nexport const getParsedType = (data: any): ParsedTypes => {\n  const t = typeof data;\n\n  switch (t) {\n    case \"undefined\":"
+    },
+    {
+      "name": "escapeRegex",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "r\", \"bigint\", \"boolean\", \"symbol\", \"undefined\"]);\nexport function escapeRegex(str: string): string {\n  return str.replace(/[.*+?^${}()|[\\]\\\\]/g, \"\\\\$&\");\n}\n\n// zod-specific utils\nexport function clone<T extends schemas.$ZodType>(inst: T, def?: T[\"_zod\"][\"def\"], params?: { parent: boolean }): T {\n  const cl = new inst._zod.constr(def ?? inst._zod.def);\n  if (!def || params?.pa"
+    },
+    {
+      "name": "clone",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "${}()|[\\]\\\\]/g, \"\\\\$&\");\n}\n\n// zod-specific utils\nexport function clone<T extends schemas.$ZodType>(inst: T, def?: T[\"_zod\"][\"def\"], params?: { parent: boolean }): T {\n  const cl = new inst._zod.constr(def ?? inst._zod.def);\n  if (!def || params?.parent) cl._zod.parent = inst;\n  return cl as any;\n}\n\nexport type EmptyToNever<T> = keyof T extends never ? never : T;\n\nexpor"
+    },
+    {
+      "name": "normalizeParams",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "}\n          : unknown)\n      >\n    : never;\n\nexport function normalizeParams<T>(_params: T): Normalize<T> {\n  const params: any = _params;\n\n  if (!params) return {} as any;\n  if (typeof params === \"string\") return { error: () => params } as any;\n  if (params?.message !== undefined) {\n    if (params?.error !== undefined) throw new Error(\"Cannot specify both `message` and `err"
+    },
+    {
+      "name": "createTransparentProxy",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "() => params.error } as any;\n  return params;\n}\n\nexport function createTransparentProxy<T extends object>(getter: () => T): T {\n  let target: T;\n  return new Proxy(\n    {},\n    {\n      get(_, prop, receiver) {\n        target ??= getter();\n        return Reflect.get(target, prop, receiver);\n      },\n      set(_, prop, value, receiver) {\n        target ??= getter();\n        return Reflec"
+    },
+    {
+      "name": "stringifyPrimitive",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "t, prop, descriptor);\n      },\n    }\n  ) as T;\n}\n\nexport function stringifyPrimitive(value: any): string {\n  if (typeof value === \"bigint\") return value.toString() + \"n\";\n  if (typeof value === \"string\") return `\"${value}\"`;\n  return `${value}`;\n}\n\nexport function optionalKeys(shape: schemas.$ZodShape): string[] {\n  return Object.keys(shape).filter((k) => {\n    return shape[k]!._zod"
+    },
+    {
+      "name": "optionalKeys",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "ng\") return `\"${value}\"`;\n  return `${value}`;\n}\n\nexport function optionalKeys(shape: schemas.$ZodShape): string[] {\n  return Object.keys(shape).filter((k) => {\n    return shape[k]!._zod.optin === \"optional\" && shape[k]!._zod.optout === \"optional\";\n  });\n}\n\nexport type CleanKey<T extends PropertyKey> = T extends `?${infer K}` ? K : T extends `${infer K}?` ? K : T;\nexport type"
+    },
+    {
+      "name": "pick",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "@__PURE__*/ BigInt(\"18446744073709551615\")],\n};\n\nexport function pick(schema: schemas.$ZodObject, mask: Record<string, unknown>): any {\n  const currDef = schema._zod.def;\n\n  const def = mergeDefs(schema._zod.def, {\n    get shape() {\n      const newShape: Writeable<schemas.$ZodShape> = {};\n      for (const key in mask) {\n        if (!(key in currDef.shape)) {"
+    },
+    {
+      "name": "omit",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "[],\n  });\n\n  return clone(schema, def) as any;\n}\n\nexport function omit(schema: schemas.$ZodObject, mask: object): any {\n  const currDef = schema._zod.def;\n\n  const def = mergeDefs(schema._zod.def, {\n    get shape() {\n      const newShape: Writeable<schemas.$ZodShape> = { ...schema._zod.def.shape };\n      for (const key in mask) {\n        if (!(key in currDef.shape)) {"
+    },
+    {
+      "name": "extend",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "hecks: [],\n  });\n\n  return clone(schema, def);\n}\n\nexport function extend(schema: schemas.$ZodObject, shape: schemas.$ZodShape): any {\n  if (!isPlainObject(shape)) {\n    throw new Error(\"Invalid input to extend: expected a plain object\");\n  }\n\n  const checks = schema._zod.def.checks;\n  const hasChecks = checks && checks.length > 0;\n  if (hasChecks) {\n    throw new Error(\""
+    },
+    {
+      "name": "safeExtend",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "[],\n  });\n  return clone(schema, def) as any;\n}\n\nexport function safeExtend(schema: schemas.$ZodObject, shape: schemas.$ZodShape): any {\n  if (!isPlainObject(shape)) {\n    throw new Error(\"Invalid input to safeExtend: expected a plain object\");\n  }\n  const def = {\n    ...schema._zod.def,\n    get shape() {\n      const _shape = { ...schema._zod.def.shape, ...shape };\n      as"
+    },
+    {
+      "name": "merge",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "} as any;\n  return clone(schema, def) as any;\n}\n\nexport function merge(a: schemas.$ZodObject, b: schemas.$ZodObject): any {\n  const def = mergeDefs(a._zod.def, {\n    get shape() {\n      const _shape = { ...a._zod.def.shape, ...b._zod.def.shape };\n      assignProp(this, \"shape\", _shape); // self-caching\n      return _shape;\n    },\n    get catchall() {\n      return b._zo"
+    },
+    {
+      "name": "partial",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "g checks\n  });\n\n  return clone(a, def) as any;\n}\n\nexport function partial(\n  Class: SchemaClass<schemas.$ZodOptional> | null,\n  schema: schemas.$ZodObject,\n  mask: object | undefined\n): any {\n  const def = mergeDefs(schema._zod.def, {\n    get shape() {\n      const oldShape = schema._zod.def.shape;\n      const shape: Writeable<schemas.$ZodShape> = { ...oldShape };\n\n      i"
+    },
+    {
+      "name": "required",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "[],\n  });\n\n  return clone(schema, def) as any;\n}\n\nexport function required(\n  Class: SchemaClass<schemas.$ZodNonOptional>,\n  schema: schemas.$ZodObject,\n  mask: object | undefined\n): any {\n  const def = mergeDefs(schema._zod.def, {\n    get shape() {\n      const oldShape = schema._zod.def.shape;\n      const shape: Writeable<schemas.$ZodShape> = { ...oldShape };\n\n      if (m"
+    },
+    {
+      "name": "aborted",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "id_key | invalid_element | invalid_value | custom\nexport function aborted(x: schemas.ParsePayload, startIndex = 0): boolean {\n  if (x.aborted === true) return true;\n  for (let i = startIndex; i < x.issues.length; i++) {\n    if (x.issues[i]?.continue !== true) {\n      return true;\n    }\n  }\n  return false;\n}\n\nexport function prefixIssues(path: PropertyKey, issues: errors.$"
+    },
+    {
+      "name": "prefixIssues",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "{\n      return true;\n    }\n  }\n  return false;\n}\n\nexport function prefixIssues(path: PropertyKey, issues: errors.$ZodRawIssue[]): errors.$ZodRawIssue[] {\n  return issues.map((iss) => {\n    (iss as any).path ??= [];\n    (iss as any).path.unshift(path);\n    return iss;\n  });\n}\n\nexport function unwrapMessage(message: string | { message: string } | undefined | null): string | unde"
+    },
+    {
+      "name": "unwrapMessage",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "any).path.unshift(path);\n    return iss;\n  });\n}\n\nexport function unwrapMessage(message: string | { message: string } | undefined | null): string | undefined {\n  return typeof message === \"string\" ? message : message?.message;\n}\n\nexport function finalizeIssue(\n  iss: errors.$ZodRawIssue,\n  ctx: schemas.ParseContextInternal | undefined,\n  config: $ZodConfig\n): errors.$ZodIssue {"
+    },
+    {
+      "name": "finalizeIssue",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "age === \"string\" ? message : message?.message;\n}\n\nexport function finalizeIssue(\n  iss: errors.$ZodRawIssue,\n  ctx: schemas.ParseContextInternal | undefined,\n  config: $ZodConfig\n): errors.$ZodIssue {\n  const full = { ...iss, path: iss.path ?? [] } as errors.$ZodIssue;\n\n  // for backwards compatibility\n  if (!iss.message) {\n    const message =\n      unwrapMessage(iss.inst?._zod"
+    },
+    {
+      "name": "getSizableOrigin",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "elete (full as any).input;\n  }\n\n  return full;\n}\n\nexport function getSizableOrigin(input: any): \"set\" | \"map\" | \"file\" | \"unknown\" {\n  if (input instanceof Set) return \"set\";\n  if (input instanceof Map) return \"map\";\n  // @ts-ignore\n  if (input instanceof File) return \"file\";\n  return \"unknown\";\n}\n\nexport function getLengthableOrigin(input: any): \"array\" | \"string\" | \"unknown\" {"
+    },
+    {
+      "name": "getLengthableOrigin",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "nceof File) return \"file\";\n  return \"unknown\";\n}\n\nexport function getLengthableOrigin(input: any): \"array\" | \"string\" | \"unknown\" {\n  if (Array.isArray(input)) return \"array\";\n  if (typeof input === \"string\") return \"string\";\n  return \"unknown\";\n}\n\n//////////    REFINES     //////////\nexport function issue(_iss: string, input: any, inst: any): errors.$ZodRawIssue;\nexport function iss"
+    },
+    {
+      "name": "issue",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "unknown\";\n}\n\n//////////    REFINES     //////////\nexport function issue(_iss: string, input: any, inst: any): errors.$ZodRawIssue;\nexport function issue(_iss: errors.$ZodRawIssue): errors.$ZodRawIssue;\nexport function issue(...args: [string | errors.$ZodRawIssue, any?, any?]): errors.$ZodRawIssue {\n  const [iss, input, inst] = args;\n  if (typeof iss === \"string\") {"
+    },
+    {
+      "name": "cleanEnum",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": ",\n      inst,\n    };\n  }\n\n  return { ...iss };\n}\n\nexport function cleanEnum(obj: Record<string, EnumValue>): EnumValue[] {\n  return Object.entries(obj)\n    .filter(([k, _]) => {\n      // return true if NaN, meaning it's not a number, thus a string key\n      return Number.isNaN(Number.parseInt(k, 10));\n    })\n    .map((el) => el[1]);\n}\n\n// Codec utility functions\nexport func"
+    },
+    {
+      "name": "base64ToUint8Array",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "map((el) => el[1]);\n}\n\n// Codec utility functions\nexport function base64ToUint8Array(base64: string): InstanceType<typeof Uint8Array> {\n  const binaryString = atob(base64);\n  const bytes = new Uint8Array(binaryString.length);\n  for (let i = 0; i < binaryString.length; i++) {\n    bytes[i] = binaryString.charCodeAt(i);\n  }\n  return bytes;\n}\n\nexport function uint8ArrayToBase64(bytes: U"
+    },
+    {
+      "name": "uint8ArrayToBase64",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "inaryString.charCodeAt(i);\n  }\n  return bytes;\n}\n\nexport function uint8ArrayToBase64(bytes: Uint8Array): string {\n  let binaryString = \"\";\n  for (let i = 0; i < bytes.length; i++) {\n    binaryString += String.fromCharCode(bytes[i]);\n  }\n  return btoa(binaryString);\n}\n\nexport function base64urlToUint8Array(base64url: string): InstanceType<typeof Uint8Array> {\n  const base64 = base64u"
+    },
+    {
+      "name": "base64urlToUint8Array",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "de(bytes[i]);\n  }\n  return btoa(binaryString);\n}\n\nexport function base64urlToUint8Array(base64url: string): InstanceType<typeof Uint8Array> {\n  const base64 = base64url.replace(/-/g, \"+\").replace(/_/g, \"/\");\n  const padding = \"=\".repeat((4 - (base64.length % 4)) % 4);\n  return base64ToUint8Array(base64 + padding);\n}\n\nexport function uint8ArrayToBase64url(bytes: Uint8Array): string {"
+    },
+    {
+      "name": "uint8ArrayToBase64url",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "return base64ToUint8Array(base64 + padding);\n}\n\nexport function uint8ArrayToBase64url(bytes: Uint8Array): string {\n  return uint8ArrayToBase64(bytes).replace(/\\+/g, \"-\").replace(/\\//g, \"_\").replace(/=/g, \"\");\n}\n\nexport function hexToUint8Array(hex: string): InstanceType<typeof Uint8Array> {\n  const cleanHex = hex.replace(/^0x/, \"\");\n  if (cleanHex.length % 2 !== 0) {\n    throw new Er"
+    },
+    {
+      "name": "hexToUint8Array",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "g, \"-\").replace(/\\//g, \"_\").replace(/=/g, \"\");\n}\n\nexport function hexToUint8Array(hex: string): InstanceType<typeof Uint8Array> {\n  const cleanHex = hex.replace(/^0x/, \"\");\n  if (cleanHex.length % 2 !== 0) {\n    throw new Error(\"Invalid hex string length\");\n  }\n  const bytes = new Uint8Array(cleanHex.length / 2);\n  for (let i = 0; i < cleanHex.length; i += 2) {\n    bytes[i / 2] ="
+    },
+    {
+      "name": "uint8ArrayToHex",
+      "file": "test_repos/zod/packages/zod/src/v4/core/util.ts",
+      "code": "nHex.slice(i, i + 2), 16);\n  }\n  return bytes;\n}\n\nexport function uint8ArrayToHex(bytes: Uint8Array): string {\n  return Array.from(bytes)\n    .map((b) => b.toString(16).padStart(2, \"0\"))\n    .join(\"\");\n}\n\n// instanceof\nexport abstract class Class {\n  constructor(..._args: any[]) {}\n}"
+    },
+    {
+      "name": "date",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/iso.ts",
+      "code": "hemas.ZodMiniStringFormat.init(inst, def);\n  }\n);\nexport function date(params?: string | core.$ZodISODateParams): ZodMiniISODate {\n  return core._isoDate(ZodMiniISODate, params);\n}\n\n// iso time\nexport interface ZodMiniISOTime extends schemas.ZodMiniStringFormat<\"time\"> {\n  _zod: core.$ZodISOTimeInternals;\n}\nexport const ZodMiniISOTime: core.$constructor<ZodMiniISOTime>"
+    },
+    {
+      "name": "duration",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/iso.ts",
+      "code": "hemas.ZodMiniStringFormat.init(inst, def);\n  }\n);\nexport function duration(params?: string | core.$ZodISODurationParams): ZodMiniISODuration {\n  return core._isoDuration(ZodMiniISODuration, params);\n}"
+    },
+    {
+      "name": "string",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function string(params?: string | core.$ZodStringParams): ZodMiniString<string> {\n  return core._string(ZodMiniString, params) as any;\n}\n\n// ZodMiniStringFormat\nexport interface ZodMiniStringFormat<Format extends string = string>\n  extends _ZodMiniString<core.$ZodStringFormatInternals<Format>>,\n    core.$ZodStringF"
+    },
+    {
+      "name": "email",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function email(params?: string | core.$ZodEmailParams): ZodMiniEmail {\n  return core._email(ZodMiniEmail, params);\n}\n\n// ZodMiniGUID\nexport interface ZodMiniGUID extends _ZodMiniString<core.$ZodGUIDInternals> {\n  // _zod: core.$ZodGUIDInternals;\n}\nexport const ZodMiniGUID: core.$constructor<ZodMiniGUID> = /*@__PUR"
+    },
+    {
+      "name": "guid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function guid(params?: string | core.$ZodGUIDParams): ZodMiniGUID {\n  return core._guid(ZodMiniGUID, params);\n}\n\n// ZodMiniUUID\nexport interface ZodMiniUUID extends _ZodMiniString<core.$ZodUUIDInternals> {\n  // _zod: core.$ZodUUIDInternals;\n}\nexport const ZodMiniUUID: core.$constructor<ZodMiniUUID> = /*@__PURE__*"
+    },
+    {
+      "name": "uuid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function uuid(params?: string | core.$ZodUUIDParams): ZodMiniUUID {\n  return core._uuid(ZodMiniUUID, params);\n}\n\nexport function uuidv4(params?: string | core.$ZodUUIDv4Params): ZodMiniUUID {\n  return core._uuidv4(ZodMiniUUID, params);\n}\n\n// ZodMiniUUIDv6\n\nexport function uuidv6(params?: string | core.$ZodUUIDv6P"
+    },
+    {
+      "name": "uuidv4",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ID {\n  return core._uuid(ZodMiniUUID, params);\n}\n\nexport function uuidv4(params?: string | core.$ZodUUIDv4Params): ZodMiniUUID {\n  return core._uuidv4(ZodMiniUUID, params);\n}\n\n// ZodMiniUUIDv6\n\nexport function uuidv6(params?: string | core.$ZodUUIDv6Params): ZodMiniUUID {\n  return core._uuidv6(ZodMiniUUID, params);\n}\n\n// ZodMiniUUIDv7\n\nexport function uuidv7(params?: str"
+    },
+    {
+      "name": "uuidv6",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "uuidv4(ZodMiniUUID, params);\n}\n\n// ZodMiniUUIDv6\n\nexport function uuidv6(params?: string | core.$ZodUUIDv6Params): ZodMiniUUID {\n  return core._uuidv6(ZodMiniUUID, params);\n}\n\n// ZodMiniUUIDv7\n\nexport function uuidv7(params?: string | core.$ZodUUIDv7Params): ZodMiniUUID {\n  return core._uuidv7(ZodMiniUUID, params);\n}\n\n// ZodMiniURL\nexport interface ZodMiniURL extends _Zo"
+    },
+    {
+      "name": "uuidv7",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "uuidv6(ZodMiniUUID, params);\n}\n\n// ZodMiniUUIDv7\n\nexport function uuidv7(params?: string | core.$ZodUUIDv7Params): ZodMiniUUID {\n  return core._uuidv7(ZodMiniUUID, params);\n}\n\n// ZodMiniURL\nexport interface ZodMiniURL extends _ZodMiniString<core.$ZodURLInternals> {\n  // _zod: core.$ZodURLInternals;\n}\nexport const ZodMiniURL: core.$constructor<ZodMiniURL> = /*@__PURE__*/"
+    },
+    {
+      "name": "url",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "def);\n  ZodMiniStringFormat.init(inst, def);\n});\n\nexport function url(params?: string | core.$ZodURLParams): ZodMiniURL {\n  return core._url(ZodMiniURL, params);\n}\n\nexport function httpUrl(params?: string | Omit<core.$ZodURLParams, \"protocol\" | \"hostname\">): ZodMiniURL {\n  return core._url(ZodMiniURL, {\n    protocol: /^https?$/,\n    hostname: core.regexes.domain,"
+    },
+    {
+      "name": "httpUrl",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "iURL {\n  return core._url(ZodMiniURL, params);\n}\n\nexport function httpUrl(params?: string | Omit<core.$ZodURLParams, \"protocol\" | \"hostname\">): ZodMiniURL {\n  return core._url(ZodMiniURL, {\n    protocol: /^https?$/,\n    hostname: core.regexes.domain,\n    ...util.normalizeParams(params),\n  });\n}\n\n// ZodMiniEmoji\nexport interface ZodMiniEmoji extends _ZodMiniString<core.$Zo"
+    },
+    {
+      "name": "nanoid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function nanoid(params?: string | core.$ZodNanoIDParams): ZodMiniNanoID {\n  return core._nanoid(ZodMiniNanoID, params);\n}\n\n// ZodMiniCUID\nexport interface ZodMiniCUID extends _ZodMiniString<core.$ZodCUIDInternals> {\n  // _zod: core.$ZodCUIDInternals;\n}\nexport const ZodMiniCUID: core.$constructor<ZodMiniCUID> = /*@_"
+    },
+    {
+      "name": "cuid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function cuid(params?: string | core.$ZodCUIDParams): ZodMiniCUID {\n  return core._cuid(ZodMiniCUID, params);\n}\n\n// ZodMiniCUID2\nexport interface ZodMiniCUID2 extends _ZodMiniString<core.$ZodCUID2Internals> {\n  // _zod: core.$ZodCUID2Internals;\n}\nexport const ZodMiniCUID2: core.$constructor<ZodMiniCUID2> = /*@__P"
+    },
+    {
+      "name": "cuid2",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function cuid2(params?: string | core.$ZodCUID2Params): ZodMiniCUID2 {\n  return core._cuid2(ZodMiniCUID2, params);\n}\n\n// ZodMiniULID\nexport interface ZodMiniULID extends _ZodMiniString<core.$ZodULIDInternals> {\n  // _zod: core.$ZodULIDInternals;\n}\nexport const ZodMiniULID: core.$constructor<ZodMiniULID> = /*@__PUR"
+    },
+    {
+      "name": "ulid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function ulid(params?: string | core.$ZodULIDParams): ZodMiniULID {\n  return core._ulid(ZodMiniULID, params);\n}\n\n// ZodMiniXID\nexport interface ZodMiniXID extends _ZodMiniString<core.$ZodXIDInternals> {\n  // _zod: core.$ZodXIDInternals;\n}\nexport const ZodMiniXID: core.$constructor<ZodMiniXID> = /*@__PURE__*/ core"
+    },
+    {
+      "name": "xid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "def);\n  ZodMiniStringFormat.init(inst, def);\n});\n\nexport function xid(params?: string | core.$ZodXIDParams): ZodMiniXID {\n  return core._xid(ZodMiniXID, params);\n}\n\n// ZodMiniKSUID\nexport interface ZodMiniKSUID extends _ZodMiniString<core.$ZodKSUIDInternals> {\n  // _zod: core.$ZodKSUIDInternals;\n}\nexport const ZodMiniKSUID: core.$constructor<ZodMiniKSUID> = /*@__PURE_"
+    },
+    {
+      "name": "ksuid",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function ksuid(params?: string | core.$ZodKSUIDParams): ZodMiniKSUID {\n  return core._ksuid(ZodMiniKSUID, params);\n}\n\n// ZodMiniIPv4\nexport interface ZodMiniIPv4 extends _ZodMiniString<core.$ZodIPv4Internals> {\n  // _zod: core.$ZodIPv4Internals;\n}\nexport const ZodMiniIPv4: core.$constructor<ZodMiniIPv4> = /*@__PUR"
+    },
+    {
+      "name": "ipv4",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function ipv4(params?: string | core.$ZodIPv4Params): ZodMiniIPv4 {\n  return core._ipv4(ZodMiniIPv4, params);\n}\n\n// ZodMiniIPv6\nexport interface ZodMiniIPv6 extends _ZodMiniString<core.$ZodIPv6Internals> {\n  // _zod: core.$ZodIPv6Internals;\n}\nexport const ZodMiniIPv6: core.$constructor<ZodMiniIPv6> = /*@__PURE__*"
+    },
+    {
+      "name": "ipv6",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function ipv6(params?: string | core.$ZodIPv6Params): ZodMiniIPv6 {\n  return core._ipv6(ZodMiniIPv6, params);\n}\n\n// ZodMiniCIDRv4\nexport interface ZodMiniCIDRv4 extends _ZodMiniString<core.$ZodCIDRv4Internals> {\n  // _zod: core.$ZodCIDRv4Internals;\n}\nexport const ZodMiniCIDRv4: core.$constructor<ZodMiniCIDRv4> ="
+    },
+    {
+      "name": "cidrv4",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function cidrv4(params?: string | core.$ZodCIDRv4Params): ZodMiniCIDRv4 {\n  return core._cidrv4(ZodMiniCIDRv4, params);\n}\n\n// ZodMiniCIDRv6\nexport interface ZodMiniCIDRv6 extends _ZodMiniString<core.$ZodCIDRv6Internals> {\n  // _zod: core.$ZodCIDRv6Internals;\n}\nexport const ZodMiniCIDRv6: core.$constructor<ZodMiniCI"
+    },
+    {
+      "name": "cidrv6",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function cidrv6(params?: string | core.$ZodCIDRv6Params): ZodMiniCIDRv6 {\n  return core._cidrv6(ZodMiniCIDRv6, params);\n}\n\n// ZodMiniMAC\nexport interface ZodMiniMAC extends _ZodMiniString<core.$ZodMACInternals> {\n  // _zod: core.$ZodMACInternals;\n}\nexport const ZodMiniMAC: core.$constructor<ZodMiniMAC> = /*@__PURE_"
+    },
+    {
+      "name": "mac",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "def);\n  ZodMiniStringFormat.init(inst, def);\n});\n\nexport function mac(params?: string | core.$ZodMACParams): ZodMiniMAC {\n  return core._mac(ZodMiniMAC, params);\n}\n\n// ZodMiniBase64\nexport interface ZodMiniBase64 extends _ZodMiniString<core.$ZodBase64Internals> {\n  // _zod: core.$ZodBase64Internals;\n}\nexport const ZodMiniBase64: core.$constructor<ZodMiniBase64> = /*@_"
+    },
+    {
+      "name": "base64",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": ";\n    ZodMiniStringFormat.init(inst, def);\n  }\n);\nexport function base64(params?: string | core.$ZodBase64Params): ZodMiniBase64 {\n  return core._base64(ZodMiniBase64, params);\n}\n\n// ZodMiniBase64URL\nexport interface ZodMiniBase64URL extends _ZodMiniString<core.$ZodBase64URLInternals> {\n  // _zod: core.$ZodBase64URLInternals;\n}\nexport const ZodMiniBase64URL: core.$constr"
+    },
+    {
+      "name": "base64url",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": ";\n    ZodMiniStringFormat.init(inst, def);\n  }\n);\nexport function base64url(params?: string | core.$ZodBase64URLParams): ZodMiniBase64URL {\n  return core._base64url(ZodMiniBase64URL, params);\n}\n\n// ZodMiniE164\nexport interface ZodMiniE164 extends _ZodMiniString<core.$ZodE164Internals> {\n  // _zod: core.$ZodE164Internals;\n}\nexport const ZodMiniE164: core.$constructor<ZodMini"
+    },
+    {
+      "name": "e164",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function e164(params?: string | core.$ZodE164Params): ZodMiniE164 {\n  return core._e164(ZodMiniE164, params);\n}\n\n// ZodMiniJWT\nexport interface ZodMiniJWT extends _ZodMiniString<core.$ZodJWTInternals> {\n  // _zod: core.$ZodJWTInternals;\n}\nexport const ZodMiniJWT: core.$constructor<ZodMiniJWT> = /*@__PURE__*/ core"
+    },
+    {
+      "name": "jwt",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "def);\n  ZodMiniStringFormat.init(inst, def);\n});\n\nexport function jwt(params?: string | core.$ZodJWTParams): ZodMiniJWT {\n  return core._jwt(ZodMiniJWT, params);\n}\n\n// ZodMiniCustomStringFormat\nexport interface ZodMiniCustomStringFormat<Format extends string = string>\n  extends ZodMiniStringFormat<Format>,\n    core.$ZodCustomStringFormat<Format> {\n  _zod: core.$ZodCus"
+    },
+    {
+      "name": "stringFormat",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniStringFormat.init(inst, def);\n  }\n);\n\nexport function stringFormat<Format extends string>(\n  format: Format,\n  fnOrRegex: ((arg: string) => util.MaybeAsync<unknown>) | RegExp,\n  _params: string | core.$ZodStringFormatParams = {}\n): ZodMiniCustomStringFormat<Format> {\n  return core._stringFormat(ZodMiniCustomStringFormat, format, fnOrRegex, _params) as any;\n}\n\nexpor"
+    },
+    {
+      "name": "hostname",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ingFormat, format, fnOrRegex, _params) as any;\n}\n\nexport function hostname(_params?: string | core.$ZodStringFormatParams): ZodMiniCustomStringFormat<\"hostname\"> {\n  return core._stringFormat(ZodMiniCustomStringFormat, \"hostname\", core.regexes.hostname, _params) as any;\n}\n\nexport function hex(_params?: string | core.$ZodStringFormatParams): ZodMiniCustomStringFormat<\"hex\">"
+    },
+    {
+      "name": "hex",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "name\", core.regexes.hostname, _params) as any;\n}\n\nexport function hex(_params?: string | core.$ZodStringFormatParams): ZodMiniCustomStringFormat<\"hex\"> {\n  return core._stringFormat(ZodMiniCustomStringFormat, \"hex\", core.regexes.hex, _params) as any;\n}\n\nexport function hash<Alg extends util.HashAlgorithm, Enc extends util.HashEncoding = \"hex\">(\n  alg: Alg,\n  params?:"
+    },
+    {
+      "name": "hash",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "mat, \"hex\", core.regexes.hex, _params) as any;\n}\n\nexport function hash<Alg extends util.HashAlgorithm, Enc extends util.HashEncoding = \"hex\">(\n  alg: Alg,\n  params?: {\n    enc?: Enc;\n  } & core.$ZodStringFormatParams\n): ZodMiniCustomStringFormat<`${Alg}_${Enc}`> {\n  const enc = params?.enc ?? \"hex\";\n  const format = `${alg}_${enc}` as const;\n  const regex = core.regexe"
+    },
+    {
+      "name": "number",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function number(params?: string | core.$ZodNumberParams): ZodMiniNumber<number> {\n  return core._number(ZodMiniNumber, params) as any;\n}\n\n// ZodMiniNumberFormat\nexport interface ZodMiniNumberFormat extends _ZodMiniNumber<core.$ZodNumberFormatInternals>, core.$ZodNumberFormat {}\nexport const ZodMiniNumberFormat: cor"
+    },
+    {
+      "name": "int",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniNumber.init(inst, def);\n  }\n);\n\n// int\n\nexport function int(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._int(ZodMiniNumberFormat, params);\n}\n\n// float32\n\nexport function float32(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._float32(ZodMiniNumberFormat, params);\n}\n\n// flo"
+    },
+    {
+      "name": "float32",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "_int(ZodMiniNumberFormat, params);\n}\n\n// float32\n\nexport function float32(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._float32(ZodMiniNumberFormat, params);\n}\n\n// float64\n\nexport function float64(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._float64(ZodMiniNumberFormat, params);\n}\n\n//"
+    },
+    {
+      "name": "float64",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "at32(ZodMiniNumberFormat, params);\n}\n\n// float64\n\nexport function float64(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._float64(ZodMiniNumberFormat, params);\n}\n\n// int32\n\nexport function int32(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._int32(ZodMiniNumberFormat, params);\n}\n\n// uint3"
+    },
+    {
+      "name": "int32",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "loat64(ZodMiniNumberFormat, params);\n}\n\n// int32\n\nexport function int32(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._int32(ZodMiniNumberFormat, params);\n}\n\n// uint32\n\nexport function uint32(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._uint32(ZodMiniNumberFormat, params);\n}\n\n// ZodM"
+    },
+    {
+      "name": "uint32",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "int32(ZodMiniNumberFormat, params);\n}\n\n// uint32\n\nexport function uint32(params?: string | core.$ZodCheckNumberFormatParams): ZodMiniNumberFormat {\n  return core._uint32(ZodMiniNumberFormat, params);\n}\n\n// ZodMiniBoolean\nexport interface ZodMiniBoolean<T = unknown> extends _ZodMiniType<core.$ZodBooleanInternals<T>> {\n  // _zod: core.$ZodBooleanInternals<T>;\n}\nexport cons"
+    },
+    {
+      "name": "boolean",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function boolean(params?: string | core.$ZodBooleanParams): ZodMiniBoolean<boolean> {\n  return core._boolean(ZodMiniBoolean, params) as any;\n}\n\n// ZodMiniBigInt\nexport interface ZodMiniBigInt<T = unknown> extends _ZodMiniType<core.$ZodBigIntInternals<T>>, core.$ZodBigInt<T> {\n  // _zod: core.$ZodBigIntInternals<T>;"
+    },
+    {
+      "name": "bigint",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function bigint(params?: string | core.$ZodBigIntParams): ZodMiniBigInt<bigint> {\n  return core._bigint(ZodMiniBigInt, params) as any;\n}\n\n// bigint formats\n\n// ZodMiniBigIntFormat\nexport interface ZodMiniBigIntFormat extends _ZodMiniType<core.$ZodBigIntFormatInternals> {\n  // _zod: core.$ZodBigIntFormatInternals;\n}"
+    },
+    {
+      "name": "int64",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ZodMiniBigInt.init(inst, def);\n  }\n);\n\n// int64\n\nexport function int64(params?: string | core.$ZodBigIntFormatParams): ZodMiniBigIntFormat {\n  return core._int64(ZodMiniBigIntFormat, params);\n}\n\n// uint64\n\nexport function uint64(params?: string | core.$ZodBigIntFormatParams): ZodMiniBigIntFormat {\n  return core._uint64(ZodMiniBigIntFormat, params);\n}\n\n// ZodMiniSymbol"
+    },
+    {
+      "name": "uint64",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "int64(ZodMiniBigIntFormat, params);\n}\n\n// uint64\n\nexport function uint64(params?: string | core.$ZodBigIntFormatParams): ZodMiniBigIntFormat {\n  return core._uint64(ZodMiniBigIntFormat, params);\n}\n\n// ZodMiniSymbol\nexport interface ZodMiniSymbol extends _ZodMiniType<core.$ZodSymbolInternals> {\n  // _zod: core.$ZodSymbolInternals;\n}\nexport const ZodMiniSymbol: core.$const"
+    },
+    {
+      "name": "symbol",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function symbol(params?: string | core.$ZodSymbolParams): ZodMiniSymbol {\n  return core._symbol(ZodMiniSymbol, params) as any;\n}\n\n// ZodMiniUndefined\nexport interface ZodMiniUndefined extends _ZodMiniType<core.$ZodUndefinedInternals> {\n  // _zod: core.$ZodUndefinedInternals;\n}\nexport const ZodMiniUndefined: core.$c"
+    },
+    {
+      "name": "any",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t(inst, def);\n  ZodMiniType.init(inst, def);\n});\n\nexport function any(): ZodMiniAny {\n  return core._any(ZodMiniAny) as any;\n}\n\n// ZodMiniUnknown\nexport interface ZodMiniUnknown extends _ZodMiniType<core.$ZodUnknownInternals> {\n  // _zod: core.$ZodUnknownInternals;\n}\nexport const ZodMiniUnknown: core.$constructor<ZodMiniUnknown> = /*@__PURE__*/ core.$constructor(\n  \"Z"
+    },
+    {
+      "name": "unknown",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function unknown(): ZodMiniUnknown {\n  return core._unknown(ZodMiniUnknown) as any;\n}\n\n// ZodMiniNever\nexport interface ZodMiniNever extends _ZodMiniType<core.$ZodNeverInternals> {\n  // _zod: core.$ZodNeverInternals;\n}\nexport const ZodMiniNever: core.$constructor<ZodMiniNever> = /*@__PURE__*/ core.$constructor(\n  \"Z"
+    },
+    {
+      "name": "never",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function never(params?: string | core.$ZodNeverParams): ZodMiniNever {\n  return core._never(ZodMiniNever, params) as any;\n}\n\n// ZodMiniVoid\nexport interface ZodMiniVoid extends _ZodMiniType<core.$ZodVoidInternals> {\n  // _zod: core.$ZodVoidInternals;\n}\nexport const ZodMiniVoid: core.$constructor<ZodMiniVoid> = /*@"
+    },
+    {
+      "name": "array",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function array<T extends SomeType>(element: T, params?: string | core.$ZodArrayParams): ZodMiniArray<T>;\nexport function array<T extends SomeType>(element: SomeType, params?: any): ZodMiniArray<T> {\n  return new ZodMiniArray({\n    type: \"array\",\n    element: element as core.$ZodType,\n    ...util.normalizeParams(pa"
+    },
+    {
+      "name": "keyof",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ormalizeParams(params),\n  }) as any;\n}\n\n// .keyof\nexport function keyof<T extends ZodMiniObject>(schema: T): ZodMiniEnum<util.KeysEnum<T[\"shape\"]>> {\n  const shape = schema._zod.def.shape;\n  return _enum(Object.keys(shape)) as any;\n}\n\n// ZodMiniObject\nexport interface ZodMiniObject<\n  /** @ts-ignore Cast variance */\n  out Shape extends core.$ZodShape = core.$ZodShape,"
+    },
+    {
+      "name": "object",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "efineLazy(inst, \"shape\", () => def.shape);\n  }\n);\nexport function object<T extends core.$ZodLooseShape = Record<never, SomeType>>(\n  shape?: T,\n  params?: string | core.$ZodObjectParams\n): ZodMiniObject<T, core.$strip> {\n  const def: core.$ZodObjectDef = {\n    type: \"object\",\n    shape: shape ?? {},\n    ...util.normalizeParams(params),\n  };\n  return new ZodMiniObject(def"
+    },
+    {
+      "name": "strictObject",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "new ZodMiniObject(def) as any;\n}\n\n// strictObject\nexport function strictObject<T extends core.$ZodLooseShape>(\n  shape: T,\n  params?: string | core.$ZodObjectParams\n): ZodMiniObject<T, core.$strict> {\n  return new ZodMiniObject({\n    type: \"object\",\n    shape,\n    catchall: never(),\n    ...util.normalizeParams(params),\n  }) as any;\n}\n\n// looseObject\nexport function looseObject"
+    },
+    {
+      "name": "looseObject",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "izeParams(params),\n  }) as any;\n}\n\n// looseObject\nexport function looseObject<T extends core.$ZodLooseShape>(\n  shape: T,\n  params?: string | core.$ZodObjectParams\n): ZodMiniObject<T, core.$loose> {\n  return new ZodMiniObject({\n    type: \"object\",\n    shape,\n    catchall: unknown(),\n    ...util.normalizeParams(params),\n  }) as any;\n}\n\n// object methods\nexport function extend<"
+    },
+    {
+      "name": "catchall",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "il.required(ZodMiniNonOptional, schema, mask);\n}\n\nexport function catchall<T extends ZodMiniObject, U extends SomeType>(\n  inst: T,\n  catchall: U\n): ZodMiniObject<T[\"shape\"], core.$catchall<U>> {\n  return inst.clone({ ...inst._zod.def, catchall: catchall as any }) as any;\n}\n\n// ZodMiniUnion\nexport interface ZodMiniUnion<T extends readonly SomeType[] = readonly core.$ZodTyp"
+    },
+    {
+      "name": "union",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function union<const T extends readonly SomeType[]>(\n  options: T,\n  params?: string | core.$ZodUnionParams\n): ZodMiniUnion<T> {\n  return new ZodMiniUnion({\n    type: \"union\",\n    options: options as any as core.$ZodType[],\n    ...util.normalizeParams(params),\n  }) as any;\n}\n\n// ZodMiniXor\nexport interface ZodMini"
+    },
+    {
+      "name": "xor",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ero or more than one option matches the input. */\nexport function xor<const T extends readonly SomeType[]>(\n  options: T,\n  params?: string | core.$ZodXorParams\n): ZodMiniXor<T> {\n  return new ZodMiniXor({\n    type: \"union\",\n    options: options as any as core.$ZodType[],\n    inclusive: false,\n    ...util.normalizeParams(params),\n  }) as any;\n}\n\n// ZodMiniDiscriminate"
+    },
+    {
+      "name": "discriminatedUnion",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function discriminatedUnion<\n  Types extends readonly [core.$ZodTypeDiscriminable, ...core.$ZodTypeDiscriminable[]],\n  Disc extends string,\n>(\n  discriminator: Disc,\n  options: Types,\n  params?: string | core.$ZodDiscriminatedUnionParams\n): ZodMiniDiscriminatedUnion<Types, Disc> {\n  return new ZodMiniDiscriminatedUnion({\n    t"
+    },
+    {
+      "name": "intersection",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function intersection<T extends SomeType, U extends SomeType>(left: T, right: U): ZodMiniIntersection<T, U> {\n  return new ZodMiniIntersection({\n    type: \"intersection\",\n    left: left as any as core.$ZodType,\n    right: right as any as core.$ZodType,\n  }) as any;\n}\n\n// ZodMiniTuple\nexport interface ZodMiniTuple<\n  T ex"
+    },
+    {
+      "name": "tuple",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function tuple<const T extends readonly [SomeType, ...SomeType[]]>(\n  items: T,\n  params?: string | core.$ZodTupleParams\n): ZodMiniTuple<T, null>;\nexport function tuple<const T extends readonly [SomeType, ...SomeType[]], Rest extends SomeType>(\n  items: T,\n  rest: Rest,\n  params?: string | core.$ZodTupleParams\n):"
+    },
+    {
+      "name": "record",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function record<Key extends core.$ZodRecordKey, Value extends SomeType>(\n  keyType: Key,\n  valueType: Value,\n  params?: string | core.$ZodRecordParams\n): ZodMiniRecord<Key, Value> {\n  return new ZodMiniRecord({\n    type: \"record\",\n    keyType,\n    valueType: valueType as any as core.$ZodType,\n    ...util.normalizeP"
+    },
+    {
+      "name": "partialRecord",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "...util.normalizeParams(params),\n  }) as any;\n}\nexport function partialRecord<Key extends core.$ZodRecordKey, Value extends SomeType>(\n  keyType: Key,\n  valueType: Value,\n  params?: string | core.$ZodRecordParams\n): ZodMiniRecord<Key & core.$partial, Value> {\n  const k = core.clone(keyType);\n  k._zod.values = undefined;\n  return new ZodMiniRecord({\n    type: \"record\",\n    key"
+    },
+    {
+      "name": "looseRecord",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "...util.normalizeParams(params),\n  }) as any;\n}\n\nexport function looseRecord<Key extends core.$ZodRecordKey, Value extends SomeType>(\n  keyType: Key,\n  valueType: Value,\n  params?: string | core.$ZodRecordParams\n): ZodMiniRecord<Key, Value> {\n  return new ZodMiniRecord({\n    type: \"record\",\n    keyType,\n    valueType: valueType as any as core.$ZodType,\n    mode: \"loose\","
+    },
+    {
+      "name": "map",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t(inst, def);\n  ZodMiniType.init(inst, def);\n});\n\nexport function map<Key extends SomeType, Value extends SomeType>(\n  keyType: Key,\n  valueType: Value,\n  params?: string | core.$ZodMapParams\n): ZodMiniMap<Key, Value> {\n  return new ZodMiniMap({\n    type: \"map\",\n    keyType: keyType as any as core.$ZodType,\n    valueType: valueType as any as core.$ZodType,\n    ...util"
+    },
+    {
+      "name": "set",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t(inst, def);\n  ZodMiniType.init(inst, def);\n});\n\nexport function set<Value extends SomeType>(valueType: Value, params?: string | core.$ZodSetParams): ZodMiniSet<Value> {\n  return new ZodMiniSet({\n    type: \"set\",\n    valueType: valueType as any as core.$ZodType,\n    ...util.normalizeParams(params),\n  }) as any;\n}\n\n// ZodMiniEnum\nexport interface ZodMiniEnum<T extends"
+    },
+    {
+      "name": "nativeEnum",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "red, green, blue }\n * z.enum(Colors);\n * ```\n */\nexport function nativeEnum<T extends util.EnumLike>(entries: T, params?: string | core.$ZodEnumParams): ZodMiniEnum<T> {\n  return new ZodMiniEnum({\n    type: \"enum\",\n    entries,\n    ...util.normalizeParams(params),\n  }) as any as ZodMiniEnum<T>;\n}\n\n// ZodMiniLiteral\nexport interface ZodMiniLiteral<T extends util.Literal = ut"
+    },
+    {
+      "name": "literal",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function literal<const T extends ReadonlyArray<util.Literal>>(\n  value: T,\n  params?: string | core.$ZodLiteralParams\n): ZodMiniLiteral<T[number]>;\nexport function literal<const T extends util.Literal>(\n  value: T,\n  params?: string | core.$ZodLiteralParams\n): ZodMiniLiteral<T>;\nexport function literal(value: any, p"
+    },
+    {
+      "name": "file",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function file(params?: string | core.$ZodFileParams): ZodMiniFile {\n  return core._file(ZodMiniFile, params) as any;\n}\n\n// ZodMiniTransform\nexport interface ZodMiniTransform<O = unknown, I = unknown> extends _ZodMiniType<core.$ZodTransformInternals<O, I>> {\n  // _zod: core.$ZodTransformInternals<O, I>;\n}\nexport c"
+    },
+    {
+      "name": "transform",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function transform<I = unknown, O = I>(\n  fn: (input: I, ctx: core.ParsePayload) => O\n): ZodMiniTransform<Awaited<O>, I> {\n  return new ZodMiniTransform({\n    type: \"transform\",\n    transform: fn as any,\n  }) as any;\n}\n\n// ZodMiniOptional\nexport interface ZodMiniOptional<T extends SomeType = core.$ZodType>\n  extends _"
+    },
+    {
+      "name": "optional",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function optional<T extends SomeType>(innerType: T): ZodMiniOptional<T> {\n  return new ZodMiniOptional({\n    type: \"optional\",\n    innerType: innerType as any as core.$ZodType,\n  }) as any;\n}\n\n// ZodMiniNullable\nexport interface ZodMiniNullable<T extends SomeType = core.$ZodType>\n  extends _ZodMiniType<core.$ZodNulla"
+    },
+    {
+      "name": "nullable",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function nullable<T extends SomeType>(innerType: T): ZodMiniNullable<T> {\n  return new ZodMiniNullable({\n    type: \"nullable\",\n    innerType: innerType as any as core.$ZodType,\n  }) as any;\n}\n\n// nullish\nexport function nullish<T extends SomeType>(innerType: T): ZodMiniOptional<ZodMiniNullable<T>> {\n  return optional"
+    },
+    {
+      "name": "prefault",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "st, def);\n    ZodMiniType.init(inst, def);\n  }\n);\nexport function prefault<T extends SomeType>(\n  innerType: T,\n  defaultValue: util.NoUndefined<core.input<T>> | (() => util.NoUndefined<core.input<T>>)\n): ZodMiniPrefault<T> {\n  return new ZodMiniPrefault({\n    type: \"prefault\",\n    innerType: innerType as any as core.$ZodType,\n    get defaultValue() {\n      return typeof d"
+    },
+    {
+      "name": "nonoptional",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function nonoptional<T extends SomeType>(\n  innerType: T,\n  params?: string | core.$ZodNonOptionalParams\n): ZodMiniNonOptional<T> {\n  return new ZodMiniNonOptional({\n    type: \"nonoptional\",\n    innerType: innerType as any as core.$ZodType,\n    ...util.normalizeParams(params),\n  }) as any;\n}\n\n// ZodMiniSuccess\nexport in"
+    },
+    {
+      "name": "success",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function success<T extends SomeType>(innerType: T): ZodMiniSuccess<T> {\n  return new ZodMiniSuccess({\n    type: \"success\",\n    innerType: innerType as any as core.$ZodType,\n  }) as any;\n}\n\n// ZodMiniCatch\nexport interface ZodMiniCatch<T extends SomeType = core.$ZodType> extends _ZodMiniType<core.$ZodCatchInternals<T"
+    },
+    {
+      "name": "nan",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t(inst, def);\n  ZodMiniType.init(inst, def);\n});\n\nexport function nan(params?: string | core.$ZodNaNParams): ZodMiniNaN {\n  return core._nan(ZodMiniNaN, params) as any;\n}\n\n// ZodMiniPipe\nexport interface ZodMiniPipe<A extends SomeType = core.$ZodType, B extends SomeType = core.$ZodType>\n  extends _ZodMiniType<core.$ZodPipeInternals<A, B>> {\n  // _zod: core.$ZodPipeInt"
+    },
+    {
+      "name": "pipe",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function pipe<\n  const A extends SomeType,\n  B extends core.$ZodType<unknown, core.output<A>> = core.$ZodType<unknown, core.output<A>>,\n>(in_: A, out: B | core.$ZodType<unknown, core.output<A>>): ZodMiniPipe<A, B> {\n  return new ZodMiniPipe({\n    type: \"pipe\",\n    in: in_ as any as core.$ZodType,\n    out: out as"
+    },
+    {
+      "name": "codec",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "def);\n    core.$ZodCodec.init(inst, def);\n  }\n);\n\nexport function codec<const A extends SomeType, B extends core.SomeType = core.$ZodType>(\n  in_: A,\n  out: B,\n  params: {\n    decode: (value: core.output<A>, payload: core.ParsePayload<core.output<A>>) => core.util.MaybeAsync<core.input<B>>;\n    encode: (value: core.input<B>, payload: core.ParsePayload<core.input<B>>) =>"
+    },
+    {
+      "name": "preprocess",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "Use `z.pipe()` and `z.transform()` instead. */\n// export function preprocess<A, U extends core.$ZodType>(\n//   fn: (arg: unknown, ctx: core.ParsePayload) => A,\n//   schema: U,\n//   params?: ZodPreprocessParams\n// ): ZodPipe<ZodTransform<A, unknown>, U> {\n//   return pipe(transform(fn as any, params), schema as any, params);\n// }\n\n// ZodMiniReadonly\nexport interface ZodMiniRe"
+    },
+    {
+      "name": "readonly",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function readonly<T extends SomeType>(innerType: T): ZodMiniReadonly<T> {\n  return new ZodMiniReadonly({\n    type: \"readonly\",\n    innerType: innerType as any as core.$ZodType,\n  }) as any;\n}\n\n// ZodMiniTemplateLiteral\nexport interface ZodMiniTemplateLiteral<Template extends string = string>\n  extends _ZodMiniType<co"
+    },
+    {
+      "name": "templateLiteral",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function templateLiteral<const Parts extends core.$ZodTemplateLiteralPart[]>(\n  parts: Parts,\n  params?: string | core.$ZodTemplateLiteralParams\n): ZodMiniTemplateLiteral<core.$PartsToTemplateLiteral<Parts>> {\n  return new ZodMiniTemplateLiteral({\n    type: \"template_literal\",\n    parts,\n    ...util.normalizeParams(params),"
+    },
+    {
+      "name": "lazy",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\n// export function lazy<T extends object>(getter: () => T): T {\n//   return util.createTransparentProxy<T>(getter);\n// }\nfunction _lazy<T extends SomeType>(getter: () => T): ZodMiniLazy<T> {\n  return new ZodMiniLazy({\n    type: \"lazy\",\n    getter: getter as any,\n  }) as any;\n}\nexport { _lazy as lazy };\n\n// ZodMiniPromise\ne"
+    },
+    {
+      "name": "promise",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "t, def);\n    ZodMiniType.init(inst, def);\n  }\n);\n\nexport function promise<T extends SomeType>(innerType: T): ZodMiniPromise<T> {\n  return new ZodMiniPromise({\n    type: \"promise\",\n    innerType: innerType as any as core.$ZodType,\n  }) as any;\n}\n\n// ZodMiniCustom\nexport interface ZodMiniCustom<O = unknown, I = unknown> extends _ZodMiniType<core.$ZodCustomInternals<O, I>> {"
+    },
+    {
+      "name": "check",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "iniType.init(inst, def);\n  }\n);\n\n// custom checks\nexport function check<O = unknown>(fn: core.CheckFn<O>, params?: string | core.$ZodCustomParams): core.$ZodCheck<O> {\n  const ch = new core.$ZodCheck({\n    check: \"custom\",\n    ...util.normalizeParams(params),\n  });\n\n  ch._zod.check = fn;\n  return ch;\n}\n\n// ZodCustom\n// custom schema\nexport function custom<O = unknown, I"
+    },
+    {
+      "name": "custom",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "fn;\n  return ch;\n}\n\n// ZodCustom\n// custom schema\nexport function custom<O = unknown, I = O>(\n  fn?: (data: O) => unknown,\n  _params?: string | core.$ZodCustomParams | undefined\n): ZodMiniCustom<O, I> {\n  return core._custom(ZodMiniCustom, fn ?? (() => true), _params) as any;\n}\n\n// refine\nexport function refine<T>(\n  fn: (arg: NoInfer<T>) => util.MaybeAsync<unknown>,\n  _"
+    },
+    {
+      "name": "refine",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "fn ?? (() => true), _params) as any;\n}\n\n// refine\nexport function refine<T>(\n  fn: (arg: NoInfer<T>) => util.MaybeAsync<unknown>,\n  _params: string | core.$ZodCustomParams = {}\n): core.$ZodCheck<T> {\n  return core._refine(ZodMiniCustom, fn, _params);\n}\n\n// superRefine\nexport function superRefine<T>(\n  fn: (arg: T, payload: core.$RefinementCtx<T>) => void | Promise<void>"
+    },
+    {
+      "name": "superRefine",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ne(ZodMiniCustom, fn, _params);\n}\n\n// superRefine\nexport function superRefine<T>(\n  fn: (arg: T, payload: core.$RefinementCtx<T>) => void | Promise<void>\n): core.$ZodCheck<T> {\n  return core._superRefine(fn);\n}\n\n// Re-export describe and meta from core\nexport const describe = core.describe;\nexport const meta = core.meta;\n\n// instanceof\nabstract class Class {\n  constructor(..."
+    },
+    {
+      "name": "json",
+      "file": "test_repos/zod/packages/zod/src/v4/mini/schemas.ts",
+      "code": "ONSchema {\n  _zod: ZodMiniJSONSchemaInternals;\n}\n\nexport function json(): ZodMiniJSONSchema {\n  const jsonSchema: any = _lazy(() => {\n    return union([string(), number(), boolean(), _null(), array(jsonSchema), record(string(), jsonSchema)]);\n  });\n  return jsonSchema;\n}\n\n// ZodMiniFunction\nexport interface ZodMiniFunction<\n  Args extends core.$ZodFunctionIn = core.$Zo"
+    },
+    {
+      "name": "initializer",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/errors.ts",
+      "code": ".length === 0` instead. */\n  isEmpty: boolean;\n}\n\nconst initializer = (inst: ZodError, issues: core.$ZodIssue[]) => {\n  $ZodError.init(inst, issues);\n  inst.name = \"ZodError\";\n  Object.defineProperties(inst, {\n    format: {\n      value: (mapper: any) => core.formatError(inst, mapper),\n      // enumerable: false,\n    },\n    flatten: {\n      value: (mapper: any) => core.flattenError(inst, mapper),\n      // enumera"
+    },
+    {
+      "name": "detectVersion",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/from-json-schema.ts",
+      "code": "<string>;\n  rootSchema: JSONSchema.JSONSchema;\n}\n\nfunction detectVersion(schema: JSONSchema.JSONSchema, defaultTarget?: JSONSchemaVersion): JSONSchemaVersion {\n  const $schema = schema.$schema;\n\n  if ($schema === \"https://json-schema.org/draft/2020-12/schema\") {\n    return \"draft-2020-12\";\n  }\n  if ($schema === \"http://json-schema.org/draft-07/schema#\") {\n    return \"dra"
+    },
+    {
+      "name": "resolveRef",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/from-json-schema.ts",
+      "code": "-12\n  return defaultTarget ?? \"draft-2020-12\";\n}\n\nfunction resolveRef(ref: string, ctx: ConversionContext): JSONSchema.JSONSchema {\n  if (!ref.startsWith(\"#\")) {\n    throw new Error(\"External $ref is not supported, only local refs (#/...) are allowed\");\n  }\n\n  const path = ref.slice(1).split(\"/\").filter(Boolean);\n\n  // Handle root reference \"#\"\n  if (path.length === 0"
+    },
+    {
+      "name": "convertBaseSchema",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/from-json-schema.ts",
+      "code": "hrow new Error(`Reference not found: ${ref}`);\n}\n\nfunction convertBaseSchema(schema: JSONSchema.JSONSchema, ctx: ConversionContext): ZodType {\n  // Handle unsupported features\n  if (schema.not !== undefined) {\n    // Special case: { not: {} } represents never\n    if (typeof schema.not === \"object\" && Object.keys(schema.not).length === 0) {\n      return z.never();\n    }\n    t"
+    },
+    {
+      "name": "convertSchema",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/from-json-schema.ts",
+      "code": "ault(schema.default);\n  }\n\n  return zodSchema;\n}\n\nfunction convertSchema(schema: JSONSchema.JSONSchema | boolean, ctx: ConversionContext): ZodType {\n  if (typeof schema === \"boolean\") {\n    return schema ? z.any() : z.never();\n  }\n\n  // Convert base schema first (ignoring composition keywords)\n  let baseSchema = convertBaseSchema(schema, ctx);\n  const hasExplicitType = s"
+    },
+    {
+      "name": "fromJSONSchema",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/from-json-schema.ts",
+      "code": "perimental. It's behavior is liable to change. */\nexport function fromJSONSchema(schema: JSONSchema.JSONSchema | boolean, params?: FromJSONSchemaParams): ZodType {\n  // Handle boolean schemas\n  if (typeof schema === \"boolean\") {\n    return schema ? z.any() : z.never();\n  }\n\n  const version = detectVersion(schema, params?.defaultTarget);\n  const defs = (schema.$defs || schema.def"
+    },
+    {
+      "name": "ip",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/schemas.ts",
+      "code": "//   ZodStringFormat.init(inst, def);\n// });\n\n// export function ip(params?: string | core.$ZodIPParams): ZodIP {\n//   return core._ip(ZodIP, params);\n// }\n\n// ZodIPv4\nexport interface ZodIPv4 extends ZodStringFormat<\"ipv4\"> {\n  _zod: core.$ZodIPv4Internals;\n}\nexport const ZodIPv4: core.$constructor<ZodIPv4> = /*@__PURE__*/ core.$constructor(\"ZodIPv4\", (inst, def) ="
+    },
+    {
+      "name": "setErrorMap",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/compat.ts",
+      "code": "** @deprecated Use `z.config(params)` instead. */\nexport function setErrorMap(map: core.$ZodErrorMap): void {\n  core.config({\n    customError: map,\n  });\n}\n\n/** @deprecated Use `z.config()` instead. */\nexport function getErrorMap(): core.$ZodErrorMap<core.$ZodIssue> | undefined {\n  return core.config().customError;\n}\n\nexport type {\n  /** @deprecated Use z.ZodType (without gen"
+    },
+    {
+      "name": "getErrorMap",
+      "file": "test_repos/zod/packages/zod/src/v4/classic/compat.ts",
+      "code": ";\n}\n\n/** @deprecated Use `z.config()` instead. */\nexport function getErrorMap(): core.$ZodErrorMap<core.$ZodIssue> | undefined {\n  return core.config().customError;\n}\n\nexport type {\n  /** @deprecated Use z.ZodType (without generics) instead. */\n  ZodType as ZodTypeAny,\n  /** @deprecated Use `z.ZodType` */\n  ZodType as ZodSchema,\n  /** @deprecated Use `z.ZodType` */\n  ZodType"
+    },
+    {
+      "name": "processCreateParams",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "undefined;\n  description?: string | undefined;\n};\nfunction processCreateParams(params: RawCreateParams): ProcessedCreateParams {\n  if (!params) return {};\n  const { errorMap, invalid_type_error, required_error, description } = params;\n  if (errorMap && (invalid_type_error || required_error)) {\n    throw new Error(`Can't use \"invalid_type_error\" or \"required_error\" in conjuncti"
+    },
+    {
+      "name": "timeRegexSource",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "dateRegex = new RegExp(`^${dateRegexSource}$`);\n\nfunction timeRegexSource(args: { precision?: number | null }) {\n  let secondsRegexSource = `[0-5]\\\\d`;\n  if (args.precision) {\n    secondsRegexSource = `${secondsRegexSource}\\\\.\\\\d{${args.precision}}`;\n  } else if (args.precision == null) {\n    secondsRegexSource = `${secondsRegexSource}(\\\\.\\\\d+)?`;\n  }\n\n  const secondsQuan"
+    },
+    {
+      "name": "timeRegex",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "(:${secondsRegexSource})${secondsQuantifier}`;\n}\n\nfunction timeRegex(args: {\n  offset?: boolean;\n  local?: boolean;\n  precision?: number | null;\n}) {\n  return new RegExp(`^${timeRegexSource(args)}$`);\n}\n\n// Adapted from https://stackoverflow.com/a/3143231\nexport function datetimeRegex(args: {\n  precision?: number | null;\n  offset?: boolean;\n  local?: boolean;\n}) {"
+    },
+    {
+      "name": "datetimeRegex",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "Adapted from https://stackoverflow.com/a/3143231\nexport function datetimeRegex(args: {\n  precision?: number | null;\n  offset?: boolean;\n  local?: boolean;\n}) {\n  let regex = `${dateRegexSource}T${timeRegexSource(args)}`;\n\n  const opts: string[] = [];\n  opts.push(args.local ? `Z?` : `Z`);\n  if (args.offset) opts.push(`([+-]\\\\d{2}:?\\\\d{2})`);\n  regex = `${regex}(${opts.join(\"|\")"
+    },
+    {
+      "name": "isValidIP",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "in(\"|\")})`;\n  return new RegExp(`^${regex}$`);\n}\n\nfunction isValidIP(ip: string, version?: IpVersion) {\n  if ((version === \"v4\" || !version) && ipv4Regex.test(ip)) {\n    return true;\n  }\n  if ((version === \"v6\" || !version) && ipv6Regex.test(ip)) {\n    return true;\n  }\n\n  return false;\n}\n\nfunction isValidJWT(jwt: string, alg?: string): boolean {\n  if (!jwtRegex.test("
+    },
+    {
+      "name": "isValidCidr",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "return true;\n  } catch {\n    return false;\n  }\n}\n\nfunction isValidCidr(ip: string, version?: IpVersion) {\n  if ((version === \"v4\" || !version) && ipv4CidrRegex.test(ip)) {\n    return true;\n  }\n  if ((version === \"v6\" || !version) && ipv6CidrRegex.test(ip)) {\n    return true;\n  }\n\n  return false;\n}\n\nexport class ZodString extends ZodType<string, ZodStringDef, string> {"
+    },
+    {
+      "name": "deepPartialify",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "Obj]: k extends keyof Shape ? Obj[k] : never;\n};\n\nfunction deepPartialify(schema: ZodTypeAny): any {\n  if (schema instanceof ZodObject) {\n    const newShape: any = {};\n\n    for (const key in schema.shape) {\n      const fieldSchema = schema.shape[key];\n      newShape[key] = ZodOptional.create(deepPartialify(fieldSchema));\n    }\n    return new ZodObject({\n      ...schema._d"
+    },
+    {
+      "name": "handleResults",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "put);\n    const options = this._def.options;\n\n    function handleResults(results: { ctx: ParseContext; result: SyncParseReturnType<any> }[]) {\n      // return first issue-free validation if it exists\n      for (const result of results) {\n        if (result.result.status === \"valid\") {\n          return result.result;\n        }\n      }\n\n      for (const result of results)"
+    },
+    {
+      "name": "finalizeSet",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "const valueType = this._def.valueType;\n\n    function finalizeSet(elements: SyncParseReturnType<any>[]) {\n      const parsedSet = new Set();\n      for (const element of elements) {\n        if (element.status === \"aborted\") return INVALID;\n        if (element.status === \"dirty\") status.dirty();\n        parsedSet.add(element.value);\n      }\n      return { status: st"
+    },
+    {
+      "name": "makeArgsIssue",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "dType,\n      });\n      return INVALID;\n    }\n\n    function makeArgsIssue(args: any, error: ZodError): ZodIssue {\n      return makeIssue({\n        data: args,\n        path: ctx.path,\n        errorMaps: [ctx.common.contextualErrorMap, ctx.schemaErrorMap, getErrorMap(), defaultErrorMap].filter(\n          (x) => !!x\n        ),\n        issueData: {\n          code: ZodIssueCod"
+    },
+    {
+      "name": "makeReturnsIssue",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "entsError: error,\n        },\n      });\n    }\n\n    function makeReturnsIssue(returns: any, error: ZodError): ZodIssue {\n      return makeIssue({\n        data: returns,\n        path: ctx.path,\n        errorMaps: [ctx.common.contextualErrorMap, ctx.schemaErrorMap, getErrorMap(), defaultErrorMap].filter(\n          (x) => !!x\n        ),\n        issueData: {\n          code: ZodIs"
+    },
+    {
+      "name": "createZodEnum",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "t type typecast<A, T> = A extends T ? A : never;\n\nfunction createZodEnum<U extends string, T extends Readonly<[U, ...U[]]>>(\n  values: T,\n  params?: RawCreateParams\n): ZodEnum<Writeable<T>>;\nfunction createZodEnum<U extends string, T extends [U, ...U[]]>(values: T, params?: RawCreateParams): ZodEnum<T>;\nfunction createZodEnum(values: [string, ...string[]], params?: RawCr"
+    },
+    {
+      "name": "cleanParams",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "////////\n////////////////////////////////////////\nfunction cleanParams(params: unknown, data: unknown) {\n  const p = typeof params === \"function\" ? params(data) : typeof params === \"string\" ? { message: params } : params;\n\n  const p2 = typeof p === \"string\" ? { message: p } : p;\n  return p2;\n}\ntype CustomParams = CustomErrorParams & { fatal?: boolean };\nexport function"
+    },
+    {
+      "name": "getIssueProperties",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "arams)\n  ): ZodEffects<this, Output, Input> {\n    const getIssueProperties = (val: Output) => {\n      if (typeof message === \"string\" || typeof message === \"undefined\") {\n        return { message };\n      } else if (typeof message === \"function\") {\n        return message(val);\n      } else {\n        return message;\n      }\n    };\n    return this._refinement((val, ctx) => {\n      const resul"
+    },
+    {
+      "name": "setError",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "ctx) => {\n      const result = check(val);\n      const setError = () =>\n        ctx.addIssue({\n          code: ZodIssueCode.custom,\n          ...getIssueProperties(val),\n        });\n      if (typeof Promise !== \"undefined\" && result instanceof Promise) {\n        return result.then((data) => {\n          if (!data) {\n            setError();\n            return false;"
+    },
+    {
+      "name": "freeze",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "t result = this._def.innerType._parse(input);\n    const freeze = (data: ParseReturnType<this[\"_output\"]>) => {\n      if (isValid(data)) {\n        data.value = Object.freeze(data.value);\n      }\n      return data;\n    };\n    return isAsync(result) ? result.then((data) => freeze(data)) : freeze(result);\n  }\n\n  static create = <Inner extends ZodTypeAny>(type: Inner, params?: RawCreateParams): ZodReadonly<Inn"
+    },
+    {
+      "name": "ostring",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "process;\nconst pipelineType = ZodPipeline.create;\nconst ostring = () => stringType().optional();\nconst onumber = () => numberType().optional();\nconst oboolean = () => booleanType().optional();\n\nexport const coerce = {\n  string: ((arg) => ZodString.create({ ...arg, coerce: true })) as (typeof ZodString)[\"create\"],\n  number: ((arg) => ZodNumber.create({ ...arg, coerce: t"
+    },
+    {
+      "name": "onumber",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": "e;\nconst ostring = () => stringType().optional();\nconst onumber = () => numberType().optional();\nconst oboolean = () => booleanType().optional();\n\nexport const coerce = {\n  string: ((arg) => ZodString.create({ ...arg, coerce: true })) as (typeof ZodString)[\"create\"],\n  number: ((arg) => ZodNumber.create({ ...arg, coerce: true })) as (typeof ZodNumber)[\"create\"],\n  bool"
+    },
+    {
+      "name": "oboolean",
+      "file": "test_repos/zod/packages/zod/src/v3/types.ts",
+      "code": ");\nconst onumber = () => numberType().optional();\nconst oboolean = () => booleanType().optional();\n\nexport const coerce = {\n  string: ((arg) => ZodString.create({ ...arg, coerce: true })) as (typeof ZodString)[\"create\"],\n  number: ((arg) => ZodNumber.create({ ...arg, coerce: true })) as (typeof ZodNumber)[\"create\"],\n  boolean: ((arg) =>\n    ZodBoolean.create({\n      ..."
+    },
+    {
+      "name": "quotelessJson",
+      "file": "test_repos/zod/packages/zod/src/v3/ZodError.ts",
+      "code": "tal?: boolean | undefined;\n  message: string;\n};\n\nexport const quotelessJson = (obj: any) => {\n  const json = JSON.stringify(obj, null, 2);\n  return json.replace(/\"([^\"]+)\":/g, \"$1:\");\n};\n\ntype recursiveZodFormattedError<T> = T extends [any, ...any[]]\n  ? { [K in keyof T]?: ZodFormattedError<T[K]> }\n  : T extends any[]\n    ? { [k: number]: ZodFormattedError<T[number]> }\n    : T extends obj"
+    },
+    {
+      "name": "manual",
+      "file": "test_repos/zod/packages/zod/src/v3/benchmarks/string.ts",
+      "code": "short = \"short\";\nconst long = \"long\".repeat(256);\nconst manual = (str: unknown) => {\n  if (typeof str !== \"string\") {\n    throw new Error(\"Not a string\");\n  }\n\n  return str;\n};\nconst stringSchema = z.string();\nconst optionalStringSchema = z.string().optional();\nconst optionalNullableStringSchema = z.string().optional().nullable();\n\nsuite\n  .add(\"empty string\", () => {\n    stringS"
+    },
+    {
+      "name": "num",
+      "file": "test_repos/zod/packages/zod/src/v3/benchmarks/realworld.ts",
+      "code": "country: z.string(),\n    }),\n  })\n);\n\nlet i = 0;\n\nfunction num() {\n  return ++i;\n}\n\nfunction str() {\n  return (++i % 100).toString(16);\n}\n\nfunction array<T>(fn: () => T): T[] {\n  return Array.from({ length: ++i % 10 }, () => fn());\n}\n\nconst people = Array.from({ length: 100 }, () => {\n  return {\n    type: \"person\",\n    hair: i % 2 ? \"blue\" : \"brown\",\n    active"
+    },
+    {
+      "name": "str",
+      "file": "test_repos/zod/packages/zod/src/v3/benchmarks/realworld.ts",
+      "code": ");\n\nlet i = 0;\n\nfunction num() {\n  return ++i;\n}\n\nfunction str() {\n  return (++i % 100).toString(16);\n}\n\nfunction array<T>(fn: () => T): T[] {\n  return Array.from({ length: ++i % 10 }, () => fn());\n}\n\nconst people = Array.from({ length: 100 }, () => {\n  return {\n    type: \"person\",\n    hair: i % 2 ? \"blue\" : \"brown\",\n    active: !!(i % 2),\n    name: str(),"
+    },
+    {
+      "name": "addIssueToContext",
+      "file": "test_repos/zod/packages/zod/src/v3/helpers/parseUtil.ts",
+      "code": "(string | number)[];\n  parent: ParseContext;\n};\n\nexport function addIssueToContext(ctx: ParseContext, issueData: IssueData): void {\n  const overrideMap = getErrorMap();\n  const issue = makeIssue({\n    issueData: issueData,\n    data: ctx.data,\n    path: ctx.path,\n    errorMaps: [\n      ctx.common.contextualErrorMap, // contextual error map is first priority\n      ctx.schemaErrorMap"
+    }
+  ]
+}

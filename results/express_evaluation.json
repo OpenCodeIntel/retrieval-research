@@ -1,0 +1,916 @@
+{
+  "codebase": "express",
+  "total_queries": 50,
+  "hit@1": 0.96,
+  "hit@3": 1.0,
+  "hit@5": 1.0,
+  "by_category": {
+    "response": {
+      "hit@1": 0.9166666666666666,
+      "count": 12
+    },
+    "request": {
+      "hit@1": 1.0,
+      "count": 10
+    },
+    "application": {
+      "hit@1": 1.0,
+      "count": 8
+    },
+    "middleware": {
+      "hit@1": 0.8333333333333334,
+      "count": 6
+    },
+    "cookies": {
+      "hit@1": 1.0,
+      "count": 4
+    },
+    "files": {
+      "hit@1": 1.0,
+      "count": 4
+    },
+    "views": {
+      "hit@1": 1.0,
+      "count": 6
+    }
+  },
+  "all_results": [
+    {
+      "query": "send response to client",
+      "expected": [
+        "send",
+        "json",
+        "render"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "send",
+      "top_3": [
+        "send",
+        "sendStatus",
+        "sendFile"
+      ]
+    },
+    {
+      "query": "return json data from api",
+      "expected": [
+        "json",
+        "jsonp",
+        "send"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "json",
+      "top_3": [
+        "json",
+        "jsonp",
+        "stringify"
+      ]
+    },
+    {
+      "query": "send json with callback jsonp",
+      "expected": [
+        "jsonp",
+        "json"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "jsonp",
+      "top_3": [
+        "jsonp",
+        "json",
+        "send"
+      ]
+    },
+    {
+      "query": "redirect user to another url",
+      "expected": [
+        "redirect",
+        "location"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "redirect",
+      "top_3": [
+        "redirect",
+        "location",
+        "use"
+      ]
+    },
+    {
+      "query": "set http status code",
+      "expected": [
+        "status",
+        "sendStatus"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "status",
+      "top_3": [
+        "status",
+        "sendStatus",
+        "set"
+      ]
+    },
+    {
+      "query": "send only status code no body",
+      "expected": [
+        "sendStatus",
+        "status"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "status",
+      "top_3": [
+        "status",
+        "send",
+        "sendStatus"
+      ]
+    },
+    {
+      "query": "set response content type",
+      "expected": [
+        "contentType",
+        "type",
+        "header"
+      ],
+      "category": "response",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "set",
+      "top_3": [
+        "set",
+        "contentType",
+        "header"
+      ]
+    },
+    {
+      "query": "add header to response",
+      "expected": [
+        "header",
+        "set",
+        "append",
+        "headers"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "header",
+      "top_3": [
+        "header",
+        "header",
+        "vary"
+      ]
+    },
+    {
+      "query": "append value to existing header",
+      "expected": [
+        "append",
+        "header",
+        "vary"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "append",
+      "top_3": [
+        "append",
+        "header",
+        "header"
+      ]
+    },
+    {
+      "query": "set vary header for caching",
+      "expected": [
+        "vary",
+        "append"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "vary",
+      "top_3": [
+        "vary",
+        "header",
+        "header"
+      ]
+    },
+    {
+      "query": "get response header value",
+      "expected": [
+        "get",
+        "header"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "header",
+        "header"
+      ]
+    },
+    {
+      "query": "format response based on accept header",
+      "expected": [
+        "format",
+        "accepts"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "format",
+      "top_3": [
+        "format",
+        "header",
+        "header"
+      ]
+    },
+    {
+      "query": "get request header value",
+      "expected": [
+        "header",
+        "get"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "header",
+      "top_3": [
+        "header",
+        "get",
+        "header"
+      ]
+    },
+    {
+      "query": "check content type of request",
+      "expected": [
+        "is",
+        "header",
+        "accepts"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "accepts",
+      "top_3": [
+        "accepts",
+        "acceptsEncodings",
+        "acceptsLanguages"
+      ]
+    },
+    {
+      "query": "check accepted content types",
+      "expected": [
+        "accepts",
+        "format"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "accepts",
+      "top_3": [
+        "accepts",
+        "format",
+        "acceptsEncodings"
+      ]
+    },
+    {
+      "query": "check accepted encodings",
+      "expected": [
+        "acceptsEncodings",
+        "accepts"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "acceptsEncodings",
+      "top_3": [
+        "acceptsEncodings",
+        "accepts",
+        "format"
+      ]
+    },
+    {
+      "query": "check accepted languages",
+      "expected": [
+        "acceptsLanguages",
+        "accepts"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "acceptsLanguages",
+      "top_3": [
+        "acceptsLanguages",
+        "accepts",
+        "acceptsEncodings"
+      ]
+    },
+    {
+      "query": "check accepted charsets",
+      "expected": [
+        "acceptsCharsets",
+        "accepts"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "acceptsCharsets",
+      "top_3": [
+        "acceptsCharsets",
+        "set",
+        "acceptsEncodings"
+      ]
+    },
+    {
+      "query": "get client ip address",
+      "expected": [
+        "ip",
+        "ips"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "ip",
+      "top_3": [
+        "ip",
+        "get",
+        "ips"
+      ]
+    },
+    {
+      "query": "get all client ip addresses proxy",
+      "expected": [
+        "ips",
+        "ip"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "ip",
+      "top_3": [
+        "ip",
+        "get",
+        "ips"
+      ]
+    },
+    {
+      "query": "check if request is secure https",
+      "expected": [
+        "secure",
+        "protocol"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "secure",
+      "top_3": [
+        "secure",
+        "is",
+        "protocol"
+      ]
+    },
+    {
+      "query": "get request protocol http or https",
+      "expected": [
+        "protocol",
+        "secure"
+      ],
+      "category": "request",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "protocol",
+      "top_3": [
+        "protocol",
+        "get",
+        "secure"
+      ]
+    },
+    {
+      "query": "start server listen on port",
+      "expected": [
+        "listen",
+        "createApplication"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "listen",
+      "top_3": [
+        "listen",
+        "is",
+        "disable"
+      ]
+    },
+    {
+      "query": "create new express application",
+      "expected": [
+        "createApplication",
+        "init"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "createApplication",
+      "top_3": [
+        "createApplication",
+        "createETagGenerator",
+        "route"
+      ]
+    },
+    {
+      "query": "initialize express app",
+      "expected": [
+        "init",
+        "defaultConfiguration",
+        "createApplication"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "init",
+      "top_3": [
+        "init",
+        "getrouter",
+        "mounted_app"
+      ]
+    },
+    {
+      "query": "configure app settings",
+      "expected": [
+        "set",
+        "enable",
+        "disable"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "set",
+      "top_3": [
+        "set",
+        "compileTrust",
+        "defaultConfiguration"
+      ]
+    },
+    {
+      "query": "enable app setting",
+      "expected": [
+        "enable",
+        "enabled",
+        "set"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "enable",
+      "top_3": [
+        "enable",
+        "set",
+        "enabled"
+      ]
+    },
+    {
+      "query": "disable app setting",
+      "expected": [
+        "disable",
+        "disabled",
+        "set"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "disable",
+      "top_3": [
+        "disable",
+        "set",
+        "disabled"
+      ]
+    },
+    {
+      "query": "check if setting is enabled",
+      "expected": [
+        "enabled",
+        "disabled",
+        "set"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "enabled",
+      "top_3": [
+        "enabled",
+        "enable",
+        "set"
+      ]
+    },
+    {
+      "query": "get app setting value",
+      "expected": [
+        "set",
+        "enabled",
+        "disabled"
+      ],
+      "category": "application",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "set",
+      "top_3": [
+        "set",
+        "get",
+        "enabled"
+      ]
+    },
+    {
+      "query": "add middleware to app",
+      "expected": [
+        "use",
+        "handle",
+        "param"
+      ],
+      "category": "middleware",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "mounted_app",
+      "top_3": [
+        "mounted_app",
+        "use",
+        "enable"
+      ]
+    },
+    {
+      "query": "handle incoming requests",
+      "expected": [
+        "handle",
+        "use",
+        "route"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handle",
+      "top_3": [
+        "handle",
+        "mounted_app",
+        "range"
+      ]
+    },
+    {
+      "query": "create route for path",
+      "expected": [
+        "route",
+        "use",
+        "all"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "route",
+      "top_3": [
+        "route",
+        "path",
+        "path"
+      ]
+    },
+    {
+      "query": "handle all http methods",
+      "expected": [
+        "all",
+        "route",
+        "use"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "all",
+      "top_3": [
+        "all",
+        "handle",
+        "route"
+      ]
+    },
+    {
+      "query": "add route parameter handler",
+      "expected": [
+        "param",
+        "route"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "route",
+      "top_3": [
+        "route",
+        "param",
+        "handle"
+      ]
+    },
+    {
+      "query": "get current request path",
+      "expected": [
+        "path",
+        "route"
+      ],
+      "category": "middleware",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "path",
+      "top_3": [
+        "path",
+        "get",
+        "path"
+      ]
+    },
+    {
+      "query": "set cookie in response",
+      "expected": [
+        "cookie",
+        "clearCookie"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "cookie",
+      "top_3": [
+        "cookie",
+        "set",
+        "get"
+      ]
+    },
+    {
+      "query": "clear delete cookie",
+      "expected": [
+        "clearCookie",
+        "cookie"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "clearCookie",
+      "top_3": [
+        "clearCookie",
+        "cookie",
+        "get"
+      ]
+    },
+    {
+      "query": "set link header",
+      "expected": [
+        "links",
+        "header",
+        "append"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "header",
+      "top_3": [
+        "header",
+        "header",
+        "set"
+      ]
+    },
+    {
+      "query": "set location header",
+      "expected": [
+        "location",
+        "redirect",
+        "header"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "location",
+      "top_3": [
+        "location",
+        "header",
+        "header"
+      ]
+    },
+    {
+      "query": "send file to client",
+      "expected": [
+        "sendFile",
+        "sendfile",
+        "download"
+      ],
+      "category": "files",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "send",
+      "top_3": [
+        "send",
+        "sendFile",
+        "sendStatus"
+      ]
+    },
+    {
+      "query": "download file attachment",
+      "expected": [
+        "download",
+        "attachment",
+        "sendFile"
+      ],
+      "category": "files",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "attachment",
+      "top_3": [
+        "attachment",
+        "download",
+        "sendFile"
+      ]
+    },
+    {
+      "query": "set content disposition attachment",
+      "expected": [
+        "attachment",
+        "download"
+      ],
+      "category": "files",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "attachment",
+      "top_3": [
+        "attachment",
+        "set",
+        "is"
+      ]
+    },
+    {
+      "query": "stream file response",
+      "expected": [
+        "sendFile",
+        "sendfile",
+        "onstream"
+      ],
+      "category": "files",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "sendFile",
+      "top_3": [
+        "sendFile",
+        "onstream",
+        "contentType"
+      ]
+    },
+    {
+      "query": "render view template",
+      "expected": [
+        "render",
+        "View"
+      ],
+      "category": "views",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "render",
+      "top_3": [
+        "render",
+        "render",
+        "render"
+      ]
+    },
+    {
+      "query": "set template engine",
+      "expected": [
+        "engine",
+        "set",
+        "render"
+      ],
+      "category": "views",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "engine",
+      "top_3": [
+        "engine",
+        "set",
+        "route"
+      ]
+    },
+    {
+      "query": "lookup view file path",
+      "expected": [
+        "lookup",
+        "resolve",
+        "View"
+      ],
+      "category": "views",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "lookup",
+      "top_3": [
+        "lookup",
+        "View",
+        "path"
+      ]
+    },
+    {
+      "query": "resolve view template path",
+      "expected": [
+        "resolve",
+        "lookup",
+        "View"
+      ],
+      "category": "views",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "resolve",
+      "top_3": [
+        "resolve",
+        "View",
+        "lookup"
+      ]
+    },
+    {
+      "query": "render html template response",
+      "expected": [
+        "render",
+        "send",
+        "View"
+      ],
+      "category": "views",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "render",
+      "top_3": [
+        "render",
+        "render",
+        "render"
+      ]
+    },
+    {
+      "query": "configure view settings",
+      "expected": [
+        "set",
+        "engine",
+        "View"
+      ],
+      "category": "views",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "set",
+      "top_3": [
+        "set",
+        "View",
+        "compileTrust"
+      ]
+    }
+  ]
+}

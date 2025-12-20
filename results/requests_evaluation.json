@@ -1,0 +1,854 @@
+{
+  "codebase": "requests",
+  "language": "python",
+  "hit@1": 0.68,
+  "hit@3": 0.84,
+  "hit@5": 0.86,
+  "all_results": [
+    {
+      "query": "send get request",
+      "expected": [
+        "get",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "send",
+        "request"
+      ]
+    },
+    {
+      "query": "send post request",
+      "expected": [
+        "post",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "post",
+      "top_3": [
+        "post",
+        "post",
+        "request"
+      ]
+    },
+    {
+      "query": "send put request",
+      "expected": [
+        "put",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "put",
+      "top_3": [
+        "put",
+        "put",
+        "request"
+      ]
+    },
+    {
+      "query": "send delete request",
+      "expected": [
+        "delete",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "delete",
+      "top_3": [
+        "delete",
+        "delete",
+        "request"
+      ]
+    },
+    {
+      "query": "send patch request",
+      "expected": [
+        "patch",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "patch",
+      "top_3": [
+        "patch",
+        "patch",
+        "request"
+      ]
+    },
+    {
+      "query": "send head request",
+      "expected": [
+        "head",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "head",
+      "top_3": [
+        "head",
+        "head",
+        "request"
+      ]
+    },
+    {
+      "query": "send options request",
+      "expected": [
+        "options",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "send",
+      "top_3": [
+        "send",
+        "options",
+        "send"
+      ]
+    },
+    {
+      "query": "make http request",
+      "expected": [
+        "request",
+        "send"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "request",
+      "top_3": [
+        "request",
+        "request",
+        "request_url"
+      ]
+    },
+    {
+      "query": "prepare request",
+      "expected": [
+        "prepare",
+        "prepare_request",
+        "PreparedRequest"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "prepare",
+      "top_3": [
+        "prepare",
+        "prepare",
+        "request"
+      ]
+    },
+    {
+      "query": "send prepared request",
+      "expected": [
+        "send",
+        "request"
+      ],
+      "category": "http",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "send",
+      "top_3": [
+        "send",
+        "send",
+        "send"
+      ]
+    },
+    {
+      "query": "create session",
+      "expected": [
+        "Session",
+        "session"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "session",
+      "top_3": [
+        "session",
+        "merge_hooks",
+        "create_cookie"
+      ]
+    },
+    {
+      "query": "mount adapter",
+      "expected": [
+        "mount",
+        "get_adapter"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "mount",
+      "top_3": [
+        "mount",
+        "get_adapter",
+        "close"
+      ]
+    },
+    {
+      "query": "get adapter for url",
+      "expected": [
+        "get_adapter",
+        "mount"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get_adapter"
+      ]
+    },
+    {
+      "query": "close session",
+      "expected": [
+        "close"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "close",
+      "top_3": [
+        "close",
+        "session",
+        "close"
+      ]
+    },
+    {
+      "query": "merge environment settings",
+      "expected": [
+        "merge_environment_settings",
+        "merge"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "merge_environment_settings",
+      "top_3": [
+        "merge_environment_settings",
+        "set",
+        "merge_setting"
+      ]
+    },
+    {
+      "query": "resolve redirects",
+      "expected": [
+        "resolve_redirects",
+        "redirect"
+      ],
+      "category": "session",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "resolve_redirects",
+      "top_3": [
+        "resolve_redirects",
+        "_resolve_char_detection",
+        "resolve_proxies"
+      ]
+    },
+    {
+      "query": "prepare request in session",
+      "expected": [
+        "prepare_request",
+        "prepare"
+      ],
+      "category": "session",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "session",
+      "top_3": [
+        "session",
+        "prepare",
+        "prepare"
+      ]
+    },
+    {
+      "query": "get request from session",
+      "expected": [
+        "request",
+        "get"
+      ],
+      "category": "session",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "session",
+      "top_3": [
+        "session",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get response content",
+      "expected": [
+        "content",
+        "text",
+        "iter_content"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "content",
+      "top_3": [
+        "content",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "get response json",
+      "expected": [
+        "json"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "json",
+      "top_3": [
+        "json",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "iterate response content",
+      "expected": [
+        "iter_content",
+        "iter_lines"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "content",
+      "top_3": [
+        "content",
+        "iter_content",
+        "iter_lines"
+      ]
+    },
+    {
+      "query": "iterate response lines",
+      "expected": [
+        "iter_lines",
+        "iter_content"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "iter_lines",
+      "top_3": [
+        "iter_lines",
+        "build_response",
+        "get_unicode_from_response"
+      ]
+    },
+    {
+      "query": "check response status",
+      "expected": [
+        "raise_for_status",
+        "ok",
+        "status_code"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "raise_for_status",
+      "top_3": [
+        "raise_for_status",
+        "ok",
+        "is_redirect"
+      ]
+    },
+    {
+      "query": "raise for bad status",
+      "expected": [
+        "raise_for_status"
+      ],
+      "category": "response",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "raise_for_status",
+      "top_3": [
+        "raise_for_status",
+        "ok",
+        "content"
+      ]
+    },
+    {
+      "query": "get response headers",
+      "expected": [
+        "headers"
+      ],
+      "category": "response",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "head"
+      ]
+    },
+    {
+      "query": "get response encoding",
+      "expected": [
+        "encoding",
+        "apparent_encoding"
+      ],
+      "category": "response",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get_unicode_from_response"
+      ]
+    },
+    {
+      "query": "get cookies from response",
+      "expected": [
+        "extract_cookies_to_jar",
+        "cookies"
+      ],
+      "category": "cookies",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "set cookie value",
+      "expected": [
+        "set",
+        "set_cookie"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "set",
+      "top_3": [
+        "set",
+        "set_cookie",
+        "create_cookie"
+      ]
+    },
+    {
+      "query": "get cookie value",
+      "expected": [
+        "get",
+        "get_dict"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get",
+      "top_3": [
+        "get",
+        "get",
+        "get_dict"
+      ]
+    },
+    {
+      "query": "create cookie jar",
+      "expected": [
+        "cookiejar_from_dict",
+        "RequestsCookieJar"
+      ],
+      "category": "cookies",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "_copy_cookie_jar",
+      "top_3": [
+        "_copy_cookie_jar",
+        "create_cookie",
+        "cookiejar_from_dict"
+      ]
+    },
+    {
+      "query": "merge cookies",
+      "expected": [
+        "merge_cookies",
+        "add_dict_to_cookiejar"
+      ],
+      "category": "cookies",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "merge_cookies",
+      "top_3": [
+        "merge_cookies",
+        "ok",
+        "merge_environment_settings"
+      ]
+    },
+    {
+      "query": "clear cookies",
+      "expected": [
+        "clear"
+      ],
+      "category": "cookies",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "ok",
+      "top_3": [
+        "ok",
+        "remove_cookie_by_name",
+        "_copy_cookie_jar"
+      ]
+    },
+    {
+      "query": "http basic auth",
+      "expected": [
+        "HTTPBasicAuth",
+        "_basic_auth_str"
+      ],
+      "category": "auth",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "prepare_auth",
+      "top_3": [
+        "prepare_auth",
+        "_basic_auth_str",
+        "__call__"
+      ]
+    },
+    {
+      "query": "http digest auth",
+      "expected": [
+        "HTTPDigestAuth",
+        "build_digest_header"
+      ],
+      "category": "auth",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "build_digest_header",
+      "top_3": [
+        "build_digest_header",
+        "handle_401",
+        "prepare_auth"
+      ]
+    },
+    {
+      "query": "http proxy auth",
+      "expected": [
+        "HTTPProxyAuth"
+      ],
+      "category": "auth",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "proxy_headers",
+      "top_3": [
+        "proxy_headers",
+        "prepare_auth",
+        "proxy_manager_for"
+      ]
+    },
+    {
+      "query": "build auth header",
+      "expected": [
+        "build_digest_header",
+        "_basic_auth_str"
+      ],
+      "category": "auth",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "build_digest_header",
+      "top_3": [
+        "build_digest_header",
+        "head",
+        "head"
+      ]
+    },
+    {
+      "query": "handle auth challenge",
+      "expected": [
+        "handle_401",
+        "handle_407"
+      ],
+      "category": "auth",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handle_401",
+      "top_3": [
+        "handle_401",
+        "handle_redirect",
+        "prepare_auth"
+      ]
+    },
+    {
+      "query": "parse digest challenge",
+      "expected": [
+        "parse_dict_header"
+      ],
+      "category": "auth",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "build_digest_header",
+      "top_3": [
+        "build_digest_header",
+        "parse_list_header",
+        "parse_dict_header"
+      ]
+    },
+    {
+      "query": "encode url parameters",
+      "expected": [
+        "urlencode",
+        "encode_params"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "_encode_params",
+      "top_3": [
+        "_encode_params",
+        "prepare_url",
+        "_encode_files"
+      ]
+    },
+    {
+      "query": "parse url",
+      "expected": [
+        "urlparse",
+        "parse_url",
+        "requote_uri"
+      ],
+      "category": "utils",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "parse_header_links",
+      "top_3": [
+        "parse_header_links",
+        "prepare_url",
+        "parse_list_header"
+      ]
+    },
+    {
+      "query": "get encoding from headers",
+      "expected": [
+        "get_encoding_from_headers",
+        "encoding"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "get_encoding_from_headers",
+      "top_3": [
+        "get_encoding_from_headers",
+        "get",
+        "get"
+      ]
+    },
+    {
+      "query": "guess content type",
+      "expected": [
+        "guess_filename",
+        "guess_json_utf"
+      ],
+      "category": "utils",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "content",
+      "top_3": [
+        "content",
+        "_parse_content_type_header",
+        "get_encoding_from_headers"
+      ]
+    },
+    {
+      "query": "check if url is absolute",
+      "expected": [
+        "is_valid_cidr",
+        "urlparse"
+      ],
+      "category": "utils",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "check_compatibility",
+      "top_3": [
+        "check_compatibility",
+        "_check_cryptography",
+        "check_header_validity"
+      ]
+    },
+    {
+      "query": "prepare url",
+      "expected": [
+        "prepare_url",
+        "requote_uri"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "prepare",
+      "top_3": [
+        "prepare",
+        "prepare",
+        "prepare_url"
+      ]
+    },
+    {
+      "query": "stream decompress",
+      "expected": [
+        "stream_decode_response_unicode",
+        "iter_slices"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "stream_decode_response_unicode",
+      "top_3": [
+        "stream_decode_response_unicode",
+        "generate",
+        "send"
+      ]
+    },
+    {
+      "query": "select proxy",
+      "expected": [
+        "select_proxy",
+        "prepend_scheme_if_needed"
+      ],
+      "category": "utils",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "select_proxy",
+      "top_3": [
+        "select_proxy",
+        "proxy_manager_for",
+        "proxy_bypass"
+      ]
+    },
+    {
+      "query": "create http adapter",
+      "expected": [
+        "HTTPAdapter",
+        "BaseAdapter"
+      ],
+      "category": "adapter",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "create_cookie",
+      "top_3": [
+        "create_cookie",
+        "get_adapter",
+        "get_connection_with_tls_context"
+      ]
+    },
+    {
+      "query": "send through adapter",
+      "expected": [
+        "send"
+      ],
+      "category": "adapter",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "send",
+      "top_3": [
+        "send",
+        "send",
+        "send"
+      ]
+    },
+    {
+      "query": "build response from urllib",
+      "expected": [
+        "build_response"
+      ],
+      "category": "adapter",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "build_response",
+      "top_3": [
+        "build_response",
+        "build_connection_pool_key_attributes",
+        "build_digest_header"
+      ]
+    },
+    {
+      "query": "get connection from pool",
+      "expected": [
+        "get_connection",
+        "poolmanager"
+      ],
+      "category": "adapter",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "build_connection_pool_key_attributes",
+      "top_3": [
+        "build_connection_pool_key_attributes",
+        "get_connection_with_tls_context",
+        "get"
+      ]
+    }
+  ]
+}

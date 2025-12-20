@@ -1,0 +1,719 @@
+{
+  "repo": "express",
+  "functions": [
+    {
+      "name": "pets",
+      "file": "test_repos/express/examples/mvc/db.js",
+      "code": "'use strict'\n\n// faux database\n\nvar pets = exports.pets = [];\n\npets.push({ name: 'Tobi', id: 0 });\npets.push({ name: 'Loki', id: 1 });\npets.push({ name: 'Jane', id: 2 });\npets.push({ name: 'Raul', id: 3 });\n\nvar users = exports.users = ",
+      "summary": "The `pets` function initializes a faux database by creating an array of pet objects, each with a unique name and ID. A developer would use this function when they need to simulate a data storage system for pets in a testing environment or during the development of an application that manages pet-related information."
+    },
+    {
+      "name": "users",
+      "file": "test_repos/express/examples/mvc/db.js",
+      "code": "d: 2 });\npets.push({ name: 'Raul', id: 3 });\n\nvar users = exports.users = [];\n\nusers.push({ name: 'TJ', pets: [pets[0], pets[1], pets[2]], id: 0  });\nusers.push({ name: 'Guillermo', pets: [pets[3]], id: 1 });\nusers.push({ name: 'Nathan', pets: [], id",
+      "summary": "The `users` function initializes an array of user objects, each containing a name, an array of associated pets, and a unique ID. A developer would use this function to manage and organize user data along with their pet associations in applications such as pet management systems or user profiles."
+    },
+    {
+      "name": "name",
+      "file": "test_repos/express/examples/mvc/controllers/user-pet/index.js",
+      "code": "cies.\n */\n\nvar db = require('../../db');\n\nexports.name = 'pet';\nexports.prefix = '/user/:user_id';\n\nexports.create = function(req, res, next){\n  var id = req.params.user_id;\n  var user = db.users[id];\n  var body = req.body;\n  if (!user) return next('",
+      "summary": "The `create` function is part of an Express.js route handler that retrieves a user from a database using the `user_id` parameter from the request URL and processes the request body; it is designed to be used when a developer needs to create or update user-related data in a web application. If the specified user does not exist in the database, the function passes an error to the next middleware in the stack."
+    },
+    {
+      "name": "prefix",
+      "file": "test_repos/express/examples/mvc/controllers/user-pet/index.js",
+      "code": "quire('../../db');\n\nexports.name = 'pet';\nexports.prefix = '/user/:user_id';\n\nexports.create = function(req, res, next){\n  var id = req.params.user_id;\n  var user = db.users[id];\n  var body = req.body;\n  if (!user) return next('route');\n  var pet = {",
+      "summary": "The `prefix` function defines a route for handling pet-related requests associated with a specific user, identified by `user_id`, and retrieves the corresponding user from a database. A developer would use this function in a web application to manage pet data for users, ensuring that operations are scoped to the correct user context based on the provided user ID in the URL."
+    },
+    {
+      "name": "create",
+      "file": "test_repos/express/examples/mvc/controllers/user-pet/index.js",
+      "code": "pet';\nexports.prefix = '/user/:user_id';\n\nexports.create = function(req, res, next){\n  var id = req.params.user_id;\n  var user = db.users[id];\n  var body = req.body;\n  if (!user) return next('route');\n  var pet = { name: body.pet.name };\n  pet.id = d",
+      "summary": "The `create` function is an Express.js middleware that retrieves a user by their ID from the request parameters and creates a new pet object based on the data provided in the request body; if the user is not found, it passes control to the next route. A developer would use this function when handling requests to create a new pet for a specific user, ensuring that the user exists before proceeding with the pet creation logic."
+    },
+    {
+      "name": "engine",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "cies.\n */\n\nvar db = require('../../db');\n\nexports.engine = 'hbs';\n\nexports.before = function(req, res, next){\n  var id = req.params.user_id;\n  if (!id) return next();\n  // pretend to query a database...\n  process.nextTick(function(){\n    req.user = d",
+      "summary": "The `engine` function is part of a middleware setup that retrieves a user ID from the request parameters and, if present, simulates a database query to attach user information to the request object before passing control to the next middleware. A developer would use this function in an Express.js application to preprocess requests by adding user data based on the provided user ID, enabling subsequent middleware or route handlers to access this information."
+    },
+    {
+      "name": "before",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "re('../../db');\n\nexports.engine = 'hbs';\n\nexports.before = function(req, res, next){\n  var id = req.params.user_id;\n  if (!id) return next();\n  // pretend to query a database...\n  process.nextTick(function(){\n    req.user = db.users[id];\n    // cant ",
+      "summary": "The `before` function is a middleware that retrieves a user from a database based on the `user_id` parameter in the request, and attaches the user object to the `req` object for further processing. A developer would use this function in a web application to ensure that user-related data is available in subsequent middleware or route handlers, particularly when handling requests that require user-specific information."
+    },
+    {
+      "name": "list",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "ve on to the routes\n    next();\n  });\n};\n\nexports.list = function(req, res, next){\n  res.render('list', { users: db.users });\n};\n\nexports.edit = function(req, res, next){\n  res.render('edit', { user: req.user });\n};\n\nexports.show = function(req, res,",
+      "summary": "The `list` function is an Express.js route handler that renders a 'list' view, passing an array of users from the database to the template. A developer would use this function when they want to display a list of users on a webpage, typically in a user management or administration interface."
+    },
+    {
+      "name": "edit",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": ".render('list', { users: db.users });\n};\n\nexports.edit = function(req, res, next){\n  res.render('edit', { user: req.user });\n};\n\nexports.show = function(req, res, next){\n  res.render('show', { user: req.user });\n};\n\nexports.update = function(req, res",
+      "summary": "The `edit` function is a server-side JavaScript function that renders an 'edit' view template, passing the currently authenticated user (`req.user`) as data to the template. A developer would use this function when they need to display a form or interface for editing user details in a web application."
+    },
+    {
+      "name": "show",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "s.render('edit', { user: req.user });\n};\n\nexports.show = function(req, res, next){\n  res.render('show', { user: req.user });\n};\n\nexports.update = function(req, res, next){\n  var body = req.body;\n  req.user.name = body.user.name;\n  res.message('Inform",
+      "summary": "The `show` function renders a 'show' view template, passing the current user object from the request as context. A developer would use this function in a web application to display user-specific information on a page after retrieving the user's data from a request."
+    },
+    {
+      "name": "update",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "s.render('show', { user: req.user });\n};\n\nexports.update = function(req, res, next){\n  var body = req.body;\n  req.user.name = body.user.name;\n  res.message('Information updated!');\n  res.redirect('/user/' + req.user.id);\n};\n",
+      "summary": "The `update` function updates a user's name based on the data received in the request body and then sends a success message before redirecting to the user's profile page. A developer would use this function in a web application to handle user profile updates, ensuring that changes are processed and the user is redirected appropriately after the update."
+    },
+    {
+      "name": "index",
+      "file": "test_repos/express/examples/mvc/controllers/main/index.js",
+      "code": "'use strict'\n\nexports.index = function(req, res){\n  res.redirect('/users');\n};\n",
+      "summary": "The `index` function is an Express.js route handler that redirects incoming requests to the `/users` endpoint. A developer would use this function to streamline navigation within a web application, directing users to a specific resource or page when they access the root route."
+    },
+    {
+      "name": "authenticate",
+      "file": "test_repos/express/examples/auth/index.js",
+      "code": "sing our plain-object database of doom!\n\nfunction authenticate(name, pass, fn) {\n  if (!module.parent) console.log('authenticating %s:%s', name, pass);\n  var user = users[name];\n  // query the db for the given username\n  if (!user) return fn(null, nu",
+      "summary": "The `authenticate` function checks a user's credentials against a plain-object database, logging the authentication attempt if the module is not a parent module. A developer would use this function when implementing user authentication in an application, particularly when validating user login information against a simple in-memory data structure."
+    },
+    {
+      "name": "restrict",
+      "file": "test_repos/express/examples/auth/index.js",
+      "code": "(null, user)\n    fn(null, null)\n  });\n}\n\nfunction restrict(req, res, next) {\n  if (req.session.user) {\n    next();\n  } else {\n    req.session.error = 'Access denied!';\n    res.redirect('/login');\n  }\n}\n\napp.get('/', function(req, res){\n  res.redirect",
+      "summary": "The `restrict` function is a middleware that checks if a user is authenticated by verifying the presence of a `user` object in the session; if the user is authenticated, it allows the request to proceed to the next middleware or route handler, otherwise, it sets an error message and redirects the user to the login page. A developer would use this function in a web application to protect certain routes from unauthorized access, ensuring that only logged-in users can access specific resources or pages."
+    },
+    {
+      "name": "User",
+      "file": "test_repos/express/examples/view-locals/user.js",
+      "code": "'use strict'\n\nmodule.exports = User;\n\n// faux model\n\nfunction User(name, age, species) {\n  this.name = name;\n  this.age = age;\n  this.species = species;\n}\n\nUser.all = function(fn){\n  // process.nextTick makes sure this function API",
+      "summary": "The `User` function is a constructor that creates user objects with properties for `name`, `age`, and `species`, and it includes a static method `User.all` that is likely intended to retrieve all user instances asynchronously. A developer would use this function when they need to model user data in an application, especially when managing multiple user instances and potentially fetching them from a database or other data source."
+    },
+    {
+      "name": "ferrets",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "ews'));\napp.set('view engine', 'ejs');\n\n// filter ferrets only\n\nfunction ferrets(user) {\n  return user.species === 'ferret'\n}\n\n// naive nesting approach,\n// delegating errors to next(err)\n// in order to expose the \"count\"\n// and \"users\" locals\n\napp.g",
+      "summary": "The `ferrets` function checks if a given user object has the species property set to 'ferret' and returns a boolean value accordingly. A developer would use this function when filtering a list of user objects to identify and work with only those that are ferrets, such as in a web application that manages different species of animals."
+    },
+    {
+      "name": "count",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "ng errors to next(err)\n// in order to expose the \"count\"\n// and \"users\" locals\n\napp.get('/', function(req, res, next){\n  User.count(function(err, count){\n    if (err) return next(err);\n    User.all(function(err, users){\n      if (err) return next(err",
+      "summary": "The `count` function retrieves the total number of user records from a database and, if successful, also fetches all user details to be used in the response. A developer would use this function in a web application to display the total number of users alongside their information on the homepage, handling any potential errors in the process."
+    },
+    {
+      "name": "count2",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "e\n// is more flexible with `req.users`.\n\nfunction count2(req, res, next) {\n  User.count(function(err, count){\n    if (err) return next(err);\n    res.locals.count = count;\n    next();\n  })\n}\n\nfunction users2(req, res, next) {\n  User.all(function(err, ",
+      "summary": "The `count2` function retrieves the total number of users from a database and stores this count in `res.locals.count`, allowing it to be accessed in subsequent middleware or route handlers. A developer would use this function when they need to obtain and utilize the user count in a web application, particularly when rendering views or making decisions based on the number of users."
+    },
+    {
+      "name": "users2",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "ocals.count = count;\n    next();\n  })\n}\n\nfunction users2(req, res, next) {\n  User.all(function(err, users){\n    if (err) return next(err);\n    res.locals.users = users.filter(ferrets);\n    next();\n  })\n}\n\napp.get('/middleware-locals', count2, users2,",
+      "summary": "The `users2` function is a middleware in a Node.js application that retrieves all user records from a database, filters them using a specified condition (in this case, the `ferrets` function), and then makes the filtered list available in the `res.locals` object for use in subsequent middleware or route handlers. A developer would use this function when they need to preprocess user data before rendering a response, ensuring that only relevant users are passed along in the request lifecycle."
+    },
+    {
+      "name": "GithubView",
+      "file": "test_repos/express/examples/view-constructor/github-view.js",
+      "code": "th');\nvar extname = path.extname;\n\n/**\n * Expose `GithubView`.\n */\n\nmodule.exports = GithubView;\n\n/**\n * Custom view that fetches and renders\n * remove github templates. You could\n * render templates from a database etc.\n */\n\nfunction GithubView(name",
+      "summary": "The `GithubView` function is a custom view renderer designed to fetch and render GitHub templates, allowing developers to dynamically display templates stored in a database or other sources. A developer would use this function when they need to create a web application that requires the integration of templates from GitHub or similar repositories for rendering dynamic content."
+    },
+    {
+      "name": "load",
+      "file": "test_repos/express/examples/route-separation/user.js",
+      "code": "', { title: 'Users', users: users });\n};\n\nexports.load = function(req, res, next){\n  var id = req.params.id;\n  req.user = users[id];\n  if (req.user) {\n    next();\n  } else {\n    var err = new Error('cannot find user ' + id);\n    err.status = 404;\n   ",
+      "summary": "The `load` function is a middleware for an Express.js application that retrieves a user from a predefined list based on the user ID provided in the request parameters and attaches it to the request object; if the user is not found, it generates a 404 error. A developer would use this function to ensure that user data is available for subsequent middleware or route handlers, while also handling cases where the user does not exist."
+    },
+    {
+      "name": "view",
+      "file": "test_repos/express/examples/route-separation/user.js",
+      "code": " err.status = 404;\n    next(err);\n  }\n};\n\nexports.view = function(req, res){\n  res.render('users/view', {\n    title: 'Viewing user ' + req.user.name,\n    user: req.user\n  });\n};\n\nexports.edit = function(req, res){\n  res.render('users/edit', {\n    tit",
+      "summary": "The `view` function in this JavaScript code is an Express.js route handler that renders a user-specific view template, displaying the user's name in the title and passing the user object to the template. A developer would use this function when they need to present detailed information about a specific user in a web application, typically after retrieving the user's data from a database or session."
+    },
+    {
+      "name": "error",
+      "file": "test_repos/express/examples/web-service/index.js",
+      "code": "r app = module.exports = express();\n\n// create an error with .status. we\n// can then use the property in our\n// custom error handler (Connect respects this prop as well)\n\nfunction error(status, msg) {\n  var err = new Error(msg);\n  err.status = status",
+      "summary": "The `error` function creates a new Error object with a specified status code and message, allowing developers to easily generate and manage custom error responses in an Express.js application. It is particularly useful when implementing custom error handling middleware to provide meaningful feedback to clients based on different error conditions."
+    },
+    {
+      "name": "html",
+      "file": "test_repos/express/examples/error-pages/index.js",
+      "code": "es, next){\n  res.status(404);\n\n  res.format({\n    html: function () {\n      res.render('404', { url: req.url })\n    },\n    json: function () {\n      res.json({ error: 'Not found' })\n    },\n    default: function () {\n      res.type('txt').send('Not fo",
+      "summary": "The `html` function handles HTTP responses for a 404 Not Found error, providing different formats based on the request's accepted content type: it renders an HTML page for web browsers and returns a JSON error message for API clients. A developer would use this function in an Express.js application to ensure that users receive appropriate feedback when they attempt to access a non-existent resource."
+    },
+    {
+      "name": "json",
+      "file": "test_repos/express/examples/error-pages/index.js",
+      "code": "//localhost:3000/notfound -H \"Accept: application/json\"\n// $ curl http://localhost:3000/notfound -H \"Accept: text/plain\"\n\napp.use(function(req, res, next){\n  res.status(404);\n\n  res.format({\n    html: function () {\n      res.render('404', { url: req.",
+      "summary": "The `json` function in this context is part of an Express.js middleware that handles 404 errors by setting the response status to 404 and formatting the response based on the `Accept` header; it can return an HTML page or a JSON response depending on the request. A developer would use this function to provide a user-friendly error message for clients requesting resources that are not found, while also supporting different content types for various client needs."
+    },
+    {
+      "name": "default",
+      "file": "test_repos/express/examples/error-pages/index.js",
+      "code": "      res.json({ error: 'Not found' })\n    },\n    default: function () {\n      res.type('txt').send('Not found')\n    }\n  })\n});\n\n// error-handling middleware, take the same form\n// as regular middleware, however they require an\n// arity of 4, aka the",
+      "summary": "The `default` function is an error-handling middleware in a JavaScript application that sends a plain text response with the message \"Not found\" when invoked. A developer would use this function to handle cases where a requested resource is not found, ensuring that users receive a clear and consistent error message."
+    },
+    {
+      "name": "get",
+      "file": "test_repos/express/examples/route-map/index.js",
+      "code": "map(a[key], route + key);\n        break;\n      // get: function(){ ... }\n      case 'function':\n        if (verbose) console.log('%s %s', key, route);\n        app[key](route, a[key]);\n        break;\n    }\n  }\n};\n\nvar users = {\n  list: function(req, r",
+      "summary": "The `get` function is designed to handle HTTP GET requests by mapping a specified route to a corresponding handler function, allowing developers to define how to respond to requests for specific resources. A developer would use this function when setting up a web server to manage routes and their associated actions, ensuring that incoming requests are processed correctly."
+    },
+    {
+      "name": "delete",
+      "file": "test_repos/express/examples/route-map/index.js",
+      "code": "nd('user ' +  escapeHtml(req.params.uid))\n  },\n\n  delete: function(req, res){\n    res.send('delete users');\n  }\n};\n\nvar pets = {\n  list: function(req, res){\n    res.send('user ' + escapeHtml(req.params.uid) + '\\'s pets')\n  },\n\n  delete: function(req,",
+      "summary": "The `delete` function in this JavaScript code is designed to handle HTTP DELETE requests by sending a response indicating that user deletion is being processed, specifically responding with the message 'delete users'. A developer would use this function in a web application to implement the functionality for removing user accounts or data when a DELETE request is made to the server."
+    },
+    {
+      "name": "destroy",
+      "file": "test_repos/express/examples/resource/index.js",
+      "code": "    var id = parseInt(req.params.id, 10);\n    obj.destroy(req, res, id);\n  });\n};\n\n// Fake records\n\nvar users = [\n  { name: 'tj' }\n  , { name: 'ciaran' }\n  , { name: 'aaron' }\n  , { name: 'guillermo' }\n  , { name: 'simon' }\n  , { name: 'tobi' }\n];\n\n/",
+      "summary": "The `destroy` function is designed to delete a specific record identified by an ID from a collection of users, typically in a web application context. A developer would use this function when implementing a feature that allows users to remove entries from a database or data structure, such as user accounts or profiles."
+    },
+    {
+      "name": "range",
+      "file": "test_repos/express/examples/resource/index.js",
+      "code": " 10);\n    var format = req.params.format;\n    obj.range(req, res, a, b, format);\n  });\n  this.get(path + '/:id', obj.show);\n  this.delete(path + '/:id', function(req, res){\n    var id = parseInt(req.params.id, 10);\n    obj.destroy(req, res, id);\n  })",
+      "summary": "The `range` function generates a range of values between two specified endpoints, `a` and `b`, and formats the output based on the provided `format` parameter. A developer would use this function when they need to retrieve or display a sequence of numbers or items within a specified range, particularly in scenarios involving pagination or data slicing in a web application."
+    },
+    {
+      "name": "loadUser",
+      "file": "test_repos/express/examples/route-middleware/index.js",
+      "code": "n+github@gmail.com', role: 'admin' }\n];\n\nfunction loadUser(req, res, next) {\n  // You would fetch your user from the db\n  var user = users[req.params.id];\n  if (user) {\n    req.user = user;\n    next();\n  } else {\n    next(new Error('Failed to load us",
+      "summary": "The `loadUser` function retrieves a user object from a predefined list based on the user ID provided in the request parameters, attaching it to the request object for further processing. A developer would use this function in a middleware context within an Express.js application to ensure that user data is available for subsequent route handlers, facilitating user-specific operations."
+    },
+    {
+      "name": "andRestrictToSelf",
+      "file": "test_repos/express/examples/route-middleware/index.js",
+      "code": "to load user ' + req.params.id));\n  }\n}\n\nfunction andRestrictToSelf(req, res, next) {\n  // If our authenticated user is the user we are viewing\n  // then everything is fine :)\n  if (req.authenticatedUser.id === req.user.id) {\n    next();\n  } else {\n ",
+      "summary": "The `andRestrictToSelf` function checks if the authenticated user is the same as the user being accessed (identified by `req.params.id`); if they match, it allows the request to proceed by calling `next()`. A developer would use this function to enforce access control, ensuring that users can only access their own data and not that of others."
+    },
+    {
+      "name": "andRestrictTo",
+      "file": "test_repos/express/examples/route-middleware/index.js",
+      "code": "to load user ' + req.params.id));\n  }\n}\n\nfunction andRestrictToSelf(req, res, next) {\n  // If our authenticated user is the user we are viewing\n  // then everything is fine :)\n  if (req.authenticatedUser.id === req.user.id) {\n    next();\n  } else {\n ",
+      "summary": "The `andRestrictToSelf` function is a middleware that checks if the authenticated user is the same as the user being accessed; if they match, it allows the request to proceed by calling the `next()` function. A developer would use this function to enforce access control in a web application, ensuring that users can only view or modify their own data."
+    },
+    {
+      "name": "text",
+      "file": "test_repos/express/examples/content-negotiation/users.js",
+      "code": " + '</li>';\n  }).join('') + '</ul>');\n};\n\nexports.text = function(req, res){\n  res.send(users.map(function(user){\n    return ' - ' + user.name + '\\n';\n  }).join(''));\n};\n\nexports.json = function(req, res){\n  res.json(users);\n};\n",
+      "summary": "The `text` function generates a plain text response containing a list of user names, each prefixed with a dash and followed by a newline, and sends it to the client. A developer would use this function when they need to provide a simple text representation of user data, typically for debugging or when a text-based response format is preferred over JSON or HTML."
+    },
+    {
+      "name": "format",
+      "file": "test_repos/express/examples/content-negotiation/index.js",
+      "code": "// so either you can deal with different types of formatting\n// for expected response in index.js\napp.get('/', function(req, res){\n  res.format({\n    html: function(){\n      res.send('<ul>' + users.map(function(user){\n        return '<li>' + user.nam",
+      "summary": "The `format` function in this JavaScript code allows the server to respond to requests with different content types, specifically HTML in this case, by dynamically generating a list of users. A developer would use this function when they want to serve different formats of a response based on the client's request, ensuring that the appropriate content type is delivered based on the client's needs."
+    },
+    {
+      "name": "status",
+      "file": "test_repos/express/lib/response.js",
+      "code": "IsAbsolute = require('node:path').isAbsolute;\nvar statuses = require('statuses')\nvar sign = require('cookie-signature').sign;\nvar normalizeType = require('./utils').normalizeType;\nvar normalizeTypes = require('./utils').normalizeTypes;\nvar setCharset",
+      "summary": "The `status` function is designed to manage HTTP response statuses and their associated functionalities, such as setting the appropriate content type and charset for responses. A developer would use this function when building web applications or APIs to ensure that responses are correctly formatted and compliant with HTTP standards."
+    },
+    {
+      "name": "send",
+      "file": "test_repos/express/lib/response.js",
+      "code": ").setCharset;\nvar cookie = require('cookie');\nvar send = require('send');\nvar extname = path.extname;\nvar resolve = path.resolve;\nvar vary = require('vary');\nconst { Buffer } = require('node:buffer');\n\n/**\n * Response prototype.\n * @public\n */\n\nvar r",
+      "summary": "The `send` function is part of a module that facilitates the sending of files over HTTP responses, handling aspects like content negotiation and setting appropriate headers. A developer would use it when they need to serve static files (like images, stylesheets, or scripts) efficiently in a web application."
+    },
+    {
+      "name": "jsonp",
+      "file": "test_repos/express/lib/response.js",
+      "code": "P callback support.\n *\n * Examples:\n *\n *     res.jsonp(null);\n *     res.jsonp({ user: 'tj' });\n *\n * @param {string|number|boolean|object} obj\n * @public\n */\n\nres.jsonp = function jsonp(obj) {\n  // settings\n  var app = this.app;\n  var escape = app.",
+      "summary": "The `jsonp` function is designed to send a JSONP response, allowing data to be returned to the client in a format that can be executed as a script, thus enabling cross-domain requests. A developer would use this function when they need to support client-side requests for data from a different origin, particularly in scenarios where CORS (Cross-Origin Resource Sharing) is not available."
+    },
+    {
+      "name": "sendStatus",
+      "file": "test_repos/express/lib/response.js",
+      "code": " if no description.\n *\n * Examples:\n *\n *     res.sendStatus(200);\n *\n * @param {number} statusCode\n * @public\n */\n\nres.sendStatus = function sendStatus(statusCode) {\n  var body = statuses.message[statusCode] || String(statusCode)\n\n  this.status(stat",
+      "summary": "The `sendStatus` function is a method that sends an HTTP response with a specified status code and an optional message associated with that code. A developer would use this function when they want to quickly send a response to a client indicating the outcome of a request, such as success (200) or error (404), without needing to manually construct the response body."
+    },
+    {
+      "name": "sendFile",
+      "file": "test_repos/express/lib/response.js",
+      "code": " *\n *  The following example illustrates how `res.sendFile()` may\n *  be used as an alternative for the `static()` middleware for\n *  dynamic situations. The code backing `res.sendFile()` is actually\n *  the same code, so HTTP cache support etc is id",
+      "summary": "The `sendFile` function in JavaScript is used to send a file as a response to an HTTP request, allowing developers to serve files dynamically rather than relying solely on static middleware. A developer would use this function when they need to send files based on certain conditions or parameters, such as user input or application state, while still benefiting from features like HTTP caching."
+    },
+    {
+      "name": "download",
+      "file": "test_repos/express/lib/response.js",
+      "code": "hod uses `res.sendFile()`.\n *\n * @public\n */\n\nres.download = function download (path, filename, options, callback) {\n  var done = callback;\n  var name = filename;\n  var opts = options || null\n\n  // support function as second or third arg\n  if (typeof",
+      "summary": "The `download` function in this context is designed to facilitate the downloading of files by sending them as a response to a client, allowing developers to specify the file path, an optional filename, and any additional options or a callback function. A developer would use this function when they want to enable users to download files from a web application, ensuring that the file is served correctly with appropriate headers."
+    },
+    {
+      "name": "contentType",
+      "file": "test_repos/express/lib/response.js",
+      "code": "t-Type_ response header with `type` through `mime.contentType()`\n * when it does not contain \"/\", or set the Content-Type to `type` otherwise.\n * When no mapping is found though `mime.contentType()`, the type is set to\n * \"application/octet-stream\".\n",
+      "summary": "The `contentType` function determines the appropriate Content-Type header for a response based on the provided `type`, using the `mime.contentType()` method; if the `type` does not include a \"/\", it sets the Content-Type to the specified `type`, and if no mapping is found, it defaults to \"application/octet-stream\". A developer would use this function when handling HTTP responses to ensure that the correct MIME type is set for various file types being served."
+    },
+    {
+      "name": "attachment",
+      "file": "test_repos/express/lib/response.js",
+      "code": "**\n * Transfer the file at the given `path` as an attachment.\n *\n * Optionally providing an alternate attachment `filename`,\n * and optional callback `callback(err)`. The callback is invoked\n * when the data transfer is complete, or when an error has",
+      "summary": "The `attachment` function transfers a file from a specified `path` as an attachment, allowing developers to optionally specify a different filename for the attachment and provide a callback function to handle completion or errors. This function is useful in scenarios where a developer needs to send files, such as in email services or file download functionalities, ensuring that the transfer process is managed efficiently."
+    },
+    {
+      "name": "append",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ld` with value `val`.\n *\n * Example:\n *\n *    res.append('Link', ['<http://localhost/>', '<http://localhost:3000/>']);\n *    res.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');\n *    res.append('Warning', '199 Miscellaneous warning');\n *\n * @param",
+      "summary": "The `append` function is used to add a specified value to a header in an HTTP response, allowing for multiple values to be associated with a single header field. A developer would use this function when they need to set or update HTTP headers, such as adding multiple links or cookies, in a web server context."
+    },
+    {
+      "name": "header",
+      "file": "test_repos/express/lib/response.js",
+      "code": "usCode = code;\n  return this;\n};\n\n/**\n * Set Link header field with the given `links`.\n *\n * Examples:\n *\n *    res.links({\n *      next: 'http://api.example.com/users?page=2',\n *      last: 'http://api.example.com/users?page=5',\n *      pages: [\n * ",
+      "summary": "The `header` function sets the Link header field in an HTTP response with specified link relations, such as \"next\" and \"last,\" to facilitate pagination in API responses. A developer would use this function when implementing an API that requires navigation through paginated resources, allowing clients to easily access subsequent pages of data."
+    },
+    {
+      "name": "clearCookie",
+      "file": "test_repos/express/lib/response.js",
+      "code": "{ServerResponse} for chaining\n * @public\n */\n\nres.clearCookie = function clearCookie(name, options) {\n  // Force cookie expiration by setting expires to the past\n  const opts = { path: '/', ...options, expires: new Date(1)};\n  // ensure maxAge is not",
+      "summary": "The `clearCookie` function is designed to remove a specified cookie by setting its expiration date to a time in the past, effectively forcing it to expire. A developer would use this function when they need to delete a cookie from the client's browser, such as during user logout or when clearing user-specific data."
+    },
+    {
+      "name": "location",
+      "file": "test_repos/express/lib/response.js",
+      "code": "(val), opts));\n\n  return this;\n};\n\n/**\n * Set the location header to `url`.\n *\n * The given `url` can also be \"back\", which redirects\n * to the _Referrer_ or _Referer_ headers or \"/\".\n *\n * Examples:\n *\n *    res.location('/foo/bar').;\n *    res.loca",
+      "summary": "The `location` function sets the HTTP response's `Location` header to a specified URL, allowing for redirection to that URL or to the previous page if the value \"back\" is provided. A developer would use this function in a web application to manage client redirection, such as after processing a form submission or navigating to a new resource."
+    },
+    {
+      "name": "redirect",
+      "file": "test_repos/express/lib/response.js",
+      "code": ".\n *\n * The given `url` can also be \"back\", which redirects\n * to the _Referrer_ or _Referer_ headers or \"/\".\n *\n * Examples:\n *\n *    res.location('/foo/bar').;\n *    res.location('http://example.com');\n *    res.location('../login');\n *\n * @param {",
+      "summary": "The `redirect` function is designed to redirect the user to a specified URL, which can either be a direct path, an external URL, or the previous page based on the referrer headers; if no valid URL is provided, it defaults to the root path (\"/\"). Developers would use this function in web applications to control navigation and enhance user experience by directing users to specific pages after actions like form submissions or login attempts."
+    },
+    {
+      "name": "render",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ache\n *  - `filename`  filename of the view being rendered\n *\n * @public\n */\n\nres.render = function render(view, options, callback) {\n  var app = this.req.app;\n  var done = callback;\n  var opts = options || {};\n  var req = this.req;\n  var self = this",
+      "summary": "The `render` function is designed to render a specified view template with given options and an optional callback, typically used in web applications to generate HTML responses dynamically. A developer would use this function when they need to send a rendered view back to the client, often in response to an HTTP request, allowing for the inclusion of dynamic data in the output."
+    },
+    {
+      "name": "sendfile",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ile = send(req, pathname, opts);\n\n  // transfer\n  sendfile(res, file, opts, function (err) {\n    if (done) return done(err);\n    if (err && err.code === 'EISDIR') return next();\n\n    // next() all but write errors\n    if (err && err.code !== 'ECONNAB",
+      "summary": "The `sendfile` function is used to transfer a specified file in response to an HTTP request, handling potential errors during the transfer process. A developer would use this function when they need to efficiently serve files over a web server while managing error scenarios, such as when the requested resource is a directory or when connection issues arise."
+    },
+    {
+      "name": "onaborted",
+      "file": "test_repos/express/lib/response.js",
+      "code": "  var streaming;\n\n  // request aborted\n  function onaborted() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('Request aborted');\n    err.code = 'ECONNABORTED';\n    callback(err);\n  }\n\n  // directory\n  function ondirectory() {\n    i",
+      "summary": "The `onaborted` function handles the scenario when a request is aborted, setting a flag to prevent further processing and invoking a callback with an error indicating the abortion. A developer would use this function in scenarios involving asynchronous operations, such as network requests, where it's important to manage and respond to request cancellations gracefully."
+    },
+    {
+      "name": "ondirectory",
+      "file": "test_repos/express/lib/response.js",
+      "code": "    callback(err);\n  }\n\n  // directory\n  function ondirectory() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('EISDIR, read');\n    err.code = 'EISDIR';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) re",
+      "summary": "The `ondirectory` function is designed to handle a scenario where a directory is encountered when a file operation is expected, signaling an error with a specific code ('EISDIR') to the provided callback function. A developer would use this function in file system operations to gracefully manage and report errors when attempting to read a directory instead of a file."
+    },
+    {
+      "name": "onerror",
+      "file": "test_repos/express/lib/response.js",
+      "code": "';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) return;\n    done = true;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() ",
+      "summary": "The `onerror` function handles error events by checking if the process has already completed (using the `done` flag) and, if not, it sets `done` to true and invokes a provided callback function with the error object. A developer would use this function in scenarios where they need to manage error handling in asynchronous operations, ensuring that subsequent errors do not trigger additional callbacks once the process is complete."
+    },
+    {
+      "name": "onend",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ue;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === '",
+      "summary": "The `onend` function is designed to signal the completion of a process, ensuring that a callback is executed only once by checking a `done` flag. A developer would use this function in scenarios where they need to manage asynchronous operations and ensure that a final callback is invoked only after all tasks have been completed, preventing multiple invocations."
+    },
+    {
+      "name": "onfile",
+      "file": "test_repos/express/lib/response.js",
+      "code": "= true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n ",
+      "summary": "The `onfile` function is designed to set a `streaming` variable to `false`, indicating that file processing has completed. A developer would use this function in scenarios where they need to manage the state of file streaming, such as when handling file uploads or downloads in an application."
+    },
+    {
+      "name": "onfinish",
+      "file": "test_repos/express/lib/response.js",
+      "code": " streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n    setImmediate(function () {\n      if (streaming !== false && !",
+      "summary": "The `onfinish` function handles the completion of a streaming operation, checking for errors and invoking appropriate callbacks based on the error type or completion status. A developer would use this function to manage the finalization of a stream, ensuring proper error handling and resource cleanup when the streaming process ends."
+    },
+    {
+      "name": "onstream",
+      "file": "test_repos/express/lib/response.js",
+      "code": "allback();\n    });\n  }\n\n  // streaming\n  function onstream() {\n    streaming = true;\n  }\n\n  file.on('directory', ondirectory);\n  file.on('end', onend);\n  file.on('error', onerror);\n  file.on('file', onfile);\n  file.on('stream', onstream);\n  onFinishe",
+      "summary": "The `onstream` function sets a `streaming` variable to `true`, indicating that a streaming process has started. A developer would use this function in the context of handling file events, particularly when they want to manage the state of streaming data during file operations."
+    },
+    {
+      "name": "headers",
+      "file": "test_repos/express/lib/response.js",
+      "code": "q.fresh) this.status(304);\n\n  // strip irrelevant headers\n  if (204 === this.statusCode || 304 === this.statusCode) {\n    this.removeHeader('Content-Type');\n    this.removeHeader('Content-Length');\n    this.removeHeader('Transfer-Encoding');\n    chun",
+      "summary": "The `headers` function is designed to manage HTTP response headers by removing specific headers (like `Content-Type`, `Content-Length`, and `Transfer-Encoding`) when the response status is either 204 (No Content) or 304 (Not Modified). A developer would use this function to ensure that irrelevant headers are not included in the response for these status codes, which can help maintain compliance with HTTP standards and improve client-server communication efficiency."
+    },
+    {
+      "name": "stringify",
+      "file": "test_repos/express/lib/response.js",
+      "code": " throw new TypeError(`Invalid status code: ${JSON.stringify(code)}. Status code must be an integer.`);\n  }\n  // Check if the status code is outside of Node's valid range\n  if (code < 100 || code > 999) {\n    throw new RangeError(`Invalid status code:",
+      "summary": "The `stringify` function is likely used to convert a value into a JSON string format, which is particularly useful for creating informative error messages that include non-string values. A developer would use it when they need to ensure that any variable, such as a status code, is properly formatted as a string for logging or debugging purposes, especially when throwing errors related to invalid input."
+    },
+    {
+      "name": "query",
+      "file": "test_repos/express/lib/request.js",
+      "code": "Range(size, range, options);\n};\n\n/**\n * Parse the query string of `req.url`.\n *\n * This uses the \"query parser\" setting to parse the raw\n * string into an object.\n *\n * @return {String}\n * @api public\n */\n\ndefineGetter(req, 'query', function query(){",
+      "summary": "The `query` function parses the query string from the `req.url` and converts it into an object using the specified \"query parser\" setting. A developer would use this function when they need to easily access and manipulate the parameters passed in the URL of an incoming HTTP request in a web application."
+    },
+    {
+      "name": "is",
+      "file": "test_repos/express/lib/request.js",
+      "code": "man Shtylman\n * Copyright(c) 2014-2015 Douglas Christopher Wilson\n * MIT Licensed\n */\n\n'use strict';\n\n/**\n * Module dependencies.\n * @private\n */\n\nvar accepts = require('accepts');\nvar isIP = require('node:net').isIP;\nvar typeis = require('type-is');",
+      "summary": "The `is` function is a utility that helps developers determine the type of request or data being handled, such as checking if a request is of a specific content type or if an IP address is valid. Developers would use this function in web applications to ensure proper request handling and validation, particularly when dealing with different content types or client IP addresses."
+    },
+    {
+      "name": "protocol",
+      "file": "test_repos/express/lib/request.js",
+      "code": "  return typeis(this, arr);\n};\n\n/**\n * Return the protocol string \"http\" or \"https\"\n * when requested with TLS. When the \"trust proxy\"\n * setting trusts the socket address, the\n * \"X-Forwarded-Proto\" header field will be trusted\n * and used if presen",
+      "summary": "The `protocol` function returns the protocol string (\"http\" or \"https\") based on the request's TLS status, utilizing the \"X-Forwarded-Proto\" header if the \"trust proxy\" setting is enabled. A developer would use this function in a web application to accurately determine the protocol being used for incoming requests, especially when the application is behind a reverse proxy."
+    },
+    {
+      "name": "secure",
+      "file": "test_repos/express/lib/request.js",
+      "code": "turn {Boolean}\n * @public\n */\n\ndefineGetter(req, 'secure', function secure(){\n  return this.protocol === 'https';\n});\n\n/**\n * Return the remote address from the trusted proxy.\n *\n * The is the remote address on the socket unless\n * \"trust proxy\" is s",
+      "summary": "The `secure` function checks if the current request is being made over HTTPS by comparing the request's protocol to 'https'. A developer would use this function to determine whether to enforce secure connections or apply security-related logic based on the request's protocol."
+    },
+    {
+      "name": "ip",
+      "file": "test_repos/express/lib/request.js",
+      "code": "eturn {String}\n * @public\n */\n\ndefineGetter(req, 'ip', function ip(){\n  var trust = this.app.get('trust proxy fn');\n  return proxyaddr(this, trust);\n});\n\n/**\n * When \"trust proxy\" is set, trusted proxy addresses + client.\n *\n * For example if the val",
+      "summary": "The `ip` function retrieves the client's IP address from an HTTP request, taking into account any trusted proxy addresses if the \"trust proxy\" setting is enabled in the application. A developer would use this function when they need to accurately determine the client's IP address in a web application that may be behind one or more proxy servers."
+    },
+    {
+      "name": "ips",
+      "file": "test_repos/express/lib/request.js",
+      "code": "return {Array}\n * @public\n */\n\ndefineGetter(req, 'ips', function ips() {\n  var trust = this.app.get('trust proxy fn');\n  var addrs = proxyaddr.all(this, trust);\n\n  // reverse the order (to farthest -> closest)\n  // and remove socket address\n  addrs.r",
+      "summary": "The `ips` function retrieves an array of IP addresses from a request object, considering the configured proxy trust settings, and reverses the order to list the farthest address first. A developer would use this function when they need to accurately identify the original client's IP address in a proxied environment, such as when using load balancers or reverse proxies."
+    },
+    {
+      "name": "subdomains",
+      "file": "test_repos/express/lib/request.js",
+      "code": "everse().pop()\n\n  return addrs\n});\n\n/**\n * Return subdomains as an array.\n *\n * Subdomains are the dot-separated parts of the host before the main domain of\n * the app. By default, the domain of the app is assumed to be the last two\n * parts of the h",
+      "summary": "The `subdomains` function extracts and returns an array of subdomains from a given host, which are the dot-separated components preceding the main domain. A developer would use this function when they need to analyze or manipulate subdomain information, such as for routing, analytics, or multi-tenant applications."
+    },
+    {
+      "name": "path",
+      "file": "test_repos/express/lib/request.js",
+      "code": ");\n});\n\n/**\n * Short-hand for `url.parse(req.url).pathname`.\n *\n * @return {String}\n * @public\n */\n\ndefineGetter(req, 'path', function path() {\n  return parse(this).pathname;\n});\n\n/**\n * Parse the \"Host\" header field to a host.\n *\n * When the \"trust ",
+      "summary": "The `path` function is a shorthand method that retrieves the pathname component from the URL of an incoming request by parsing `req.url`. A developer would use this function when they need to easily access the path of a request in a web application, typically within middleware or route handlers."
+    },
+    {
+      "name": "host",
+      "file": "test_repos/express/lib/request.js",
+      "code": "\n * Subdomains are the dot-separated parts of the host before the main domain of\n * the app. By default, the domain of the app is assumed to be the last two\n * parts of the host. This can be changed by setting \"subdomain offset\".\n *\n * For example, i",
+      "summary": "The `host` function extracts and manages subdomains from a given host string, allowing developers to specify a \"subdomain offset\" to determine how many parts of the host should be considered as the main domain. This function is useful for applications that need to handle multiple subdomains dynamically, such as multi-tenant applications or services that rely on subdomain routing."
+    },
+    {
+      "name": "hostname",
+      "file": "test_repos/express/lib/request.js",
+      "code": "(req, 'subdomains', function subdomains() {\n  var hostname = this.hostname;\n\n  if (!hostname) return [];\n\n  var offset = this.app.get('subdomain offset');\n  var subdomains = !isIP(hostname)\n    ? hostname.split('.').reverse()\n    : [hostname];\n\n  ret",
+      "summary": "The `hostname` function extracts the hostname from a request object and returns an array of subdomains, reversing the order of the segments unless the hostname is an IP address. A developer would use this function when they need to handle or manipulate subdomains in a web application, particularly for routing or access control based on subdomain structures."
+    },
+    {
+      "name": "stale",
+      "file": "test_repos/express/lib/request.js",
+      "code": "return false;\n});\n\n/**\n * Check if the request is stale, aka\n * \"Last-Modified\" and / or the \"ETag\" for the\n * resource has changed.\n *\n * @return {Boolean}\n * @public\n */\n\ndefineGetter(req, 'stale', function stale(){\n  return !this.fresh;\n});\n\n/**\n ",
+      "summary": "The `stale` function checks if an HTTP request is considered stale, which occurs when the resource's \"Last-Modified\" or \"ETag\" values have changed, indicating that the cached version may no longer be valid. A developer would use this function to determine whether to serve a cached response or fetch a fresh version of the resource, optimizing performance and ensuring data accuracy."
+    },
+    {
+      "name": "xhr",
+      "file": "test_repos/express/lib/request.js",
+      "code": "turn {Boolean}\n * @public\n */\n\ndefineGetter(req, 'xhr', function xhr(){\n  var val = this.get('X-Requested-With') || '';\n  return val.toLowerCase() === 'xmlhttprequest';\n});\n\n/**\n * Helper function for creating a getter on an object.\n *\n * @param {Obj",
+      "summary": "The `xhr` function checks if the current request was made using XMLHttpRequest by examining the `X-Requested-With` header and returns a boolean indicating the result. A developer would use this function to determine if the request is an AJAX call, allowing them to tailor the response or behavior of their application accordingly."
+    },
+    {
+      "name": "defineGetter",
+      "file": "test_repos/express/lib/request.js",
+      "code": "bject.\n *\n * @return {String}\n * @api public\n */\n\ndefineGetter(req, 'query', function query(){\n  var queryparse = this.app.get('query parser fn');\n\n  if (!queryparse) {\n    // parsing is disabled\n    return Object.create(null);\n  }\n\n  var querystring",
+      "summary": "The `defineGetter` function defines a getter for the `query` property on the `req` object, which parses the query string using a specified query parser function from the application settings. A developer would use this function when they need to dynamically access and parse query parameters from incoming requests in a web application, particularly when working with frameworks like Express.js."
+    },
+    {
+      "name": "createApplication",
+      "file": "test_repos/express/lib/express.js",
+      "code": "\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an express application.\n *\n * @return {Function}\n * @api public\n */\n\nfunction createApplication() {\n  var app = ",
+      "summary": "The `createApplication` function initializes and returns a new Express application instance, allowing developers to set up a web server with routing and middleware capabilities. A developer would use this function when they need to create a new Express application for building web applications or APIs."
+    },
+    {
+      "name": "app",
+      "file": "test_repos/express/lib/express.js",
+      "code": "uire('merge-descriptors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;",
+      "summary": "The `app` function is designed to create an Express-like application instance that facilitates the handling of HTTP requests and responses, allowing developers to define routes and middleware for web applications. A developer would use this function when building a server-side application that requires a structured way to manage incoming requests and send responses, typically in a Node.js environment."
+    },
+    {
+      "name": "application",
+      "file": "test_repos/express/lib/express.js",
+      "code": "uire('merge-descriptors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;",
+      "summary": "The `application` function is designed to create an Express-like application object that facilitates the handling of HTTP requests and responses, allowing developers to define routes and middleware for web applications. A developer would use this function when building a server-side application that requires a structured way to manage incoming requests and route them to appropriate handlers."
+    },
+    {
+      "name": "request",
+      "file": "test_repos/express/lib/express.js",
+      "code": " Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an express application.\n *\n * @return {Function}\n * ",
+      "summary": "The `request` function is part of a module that helps create an Express-like application, providing a structured way to handle HTTP requests and responses. A developer would use it when building a web server or application that requires routing and middleware capabilities to manage incoming requests effectively."
+    },
+    {
+      "name": "response",
+      "file": "test_repos/express/lib/express.js",
+      "code": " req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an express application.\n *\n * @return {Function}\n * @api public\n */\n\nfunction create",
+      "summary": "The `createApplication` function is designed to create an Express application instance, which is a foundational component for building web applications and APIs in Node.js. A developer would use this function when setting up a new Express application to handle HTTP requests and responses efficiently."
+    },
+    {
+      "name": "Route",
+      "file": "test_repos/express/lib/express.js",
+      "code": "tors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an ",
+      "summary": "The `Route` function is part of a web application framework that facilitates the creation and management of routes for handling HTTP requests and responses. A developer would use it when building a web server to define how different URL paths should be processed, allowing for organized and efficient request handling."
+    },
+    {
+      "name": "Router",
+      "file": "test_repos/express/lib/express.js",
+      "code": "tors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an ",
+      "summary": "The `Router` function is part of a web application framework that facilitates the creation of routing mechanisms, allowing developers to define how an application responds to various HTTP requests based on the URL and request method. Developers would use this function when building server-side applications to manage different routes and their corresponding handlers efficiently."
+    },
+    {
+      "name": "raw",
+      "file": "test_repos/express/lib/express.js",
+      "code": "eware\n */\n\nexports.json = bodyParser.json\nexports.raw = bodyParser.raw\nexports.static = require('serve-static');\nexports.text = bodyParser.text\nexports.urlencoded = bodyParser.urlencoded\n",
+      "summary": "The `raw` function is an export from the `bodyParser` middleware that parses incoming request bodies in a buffer format, allowing developers to handle raw binary data in HTTP requests. A developer would use this function when they need to process non-JSON or non-text data, such as file uploads or other binary content, in their web applications."
+    },
+    {
+      "name": "static",
+      "file": "test_repos/express/lib/express.js",
+      "code": "yParser.json\nexports.raw = bodyParser.raw\nexports.static = require('serve-static');\nexports.text = bodyParser.text\nexports.urlencoded = bodyParser.urlencoded\n",
+      "summary": "The `static` function, imported from the `serve-static` module, serves static files such as images, CSS, and JavaScript from a specified directory in a web application. A developer would use it when they need to efficiently deliver static assets to clients without the overhead of dynamic processing."
+    },
+    {
+      "name": "urlencoded",
+      "file": "test_repos/express/lib/express.js",
+      "code": "-static');\nexports.text = bodyParser.text\nexports.urlencoded = bodyParser.urlencoded\n",
+      "summary": "The `urlencoded` function is a middleware provided by the `body-parser` library in Node.js that parses incoming requests with URL-encoded payloads, making the data accessible in the `req.body` object. A developer would use this function when they need to handle form submissions or any data sent via the URL-encoded format in their web applications."
+    },
+    {
+      "name": "acceptParams",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "function(type){\n  return ~type.indexOf('/')\n    ? acceptParams(type)\n    : { value: (mime.lookup(type) || 'application/octet-stream'), params: {} }\n};\n\n/**\n * Normalize `types`, for example \"html\" becomes \"text/html\".\n *\n * @param {Array} types\n * @r",
+      "summary": "The `acceptParams` function normalizes a given MIME type by checking if it contains a slash; if it does, it recursively calls itself, otherwise, it returns an object with the MIME type's value (defaulting to 'application/octet-stream' if not found) and an empty parameters object. A developer would use this function when handling content negotiation in HTTP requests to ensure that the correct MIME type is processed and returned."
+    },
+    {
+      "name": "compileQueryParser",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "* @return {Function}\n * @api private\n */\n\nexports.compileQueryParser = function compileQueryParser(val) {\n  var fn;\n\n  if (typeof val === 'function') {\n    return val;\n  }\n\n  switch (val) {\n    case true:\n    case 'simple':\n      fn = querystring.par",
+      "summary": "The `compileQueryParser` function returns a query parsing function based on the input value, which can either be a function, a boolean, or a string indicating the desired parsing method. A developer would use this function when they need to dynamically select a query parser based on user input or configuration settings in a web application."
+    },
+    {
+      "name": "setCharset",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "\n * @return {String}\n * @api private\n */\n\nexports.setCharset = function setCharset(type, charset) {\n  if (!type || !charset) {\n    return type;\n  }\n\n  // parse type\n  var parsed = contentType.parse(type);\n\n  // set charset\n  parsed.parameters.charset",
+      "summary": "The `setCharset` function modifies the charset parameter of a given content type string, returning the updated type if both the type and charset are provided; otherwise, it returns the original type. A developer would use this function when they need to ensure that a specific charset is set for HTTP content types, particularly in scenarios involving content negotiation or response headers in web applications."
+    },
+    {
+      "name": "createETagGenerator",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "turn {String}\n * @api private\n */\n\nexports.etag = createETagGenerator({ weak: false })\n\n/**\n * Return weak ETag for `body`.\n *\n * @param {String|Buffer} body\n * @param {String} [encoding]\n * @return {String}\n * @api private\n */\n\nexports.wetag = creat",
+      "summary": "The `createETagGenerator` function creates an ETag generator that produces strong ETags for a given body, which can be a string or a buffer. A developer would use this function when implementing caching mechanisms in web applications to efficiently manage content validation and optimize resource delivery based on changes in the response body."
+    },
+    {
+      "name": "generateETag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "createETagGenerator (options) {\n  return function generateETag (body, encoding) {\n    var buf = !Buffer.isBuffer(body)\n      ? Buffer.from(body, encoding)\n      : body\n\n    return etag(buf, options)\n  }\n}\n\n/**\n * Parse an extended query string with q",
+      "summary": "The `generateETag` function creates a middleware generator that produces an ETag (entity tag) for a given response body, allowing for efficient caching and validation in HTTP requests. A developer would use this function when implementing caching mechanisms in web applications to optimize performance and reduce unnecessary data transfers."
+    },
+    {
+      "name": "parseExtendedQueryString",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "lse:\n      break;\n    case 'extended':\n      fn = parseExtendedQueryString;\n      break;\n    default:\n      throw new TypeError('unknown value for query parser function: ' + val);\n  }\n\n  return fn;\n}\n\n/**\n * Compile \"proxy trust\" value to function.\n ",
+      "summary": "The `parseExtendedQueryString` function is designed to parse query strings in a more complex format, typically used when handling URL parameters that may include nested structures or arrays. A developer would use this function when they need to process and extract data from query strings that go beyond the standard key-value pairs, such as in web applications that require advanced URL parameter handling."
+    },
+    {
+      "name": "methods",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "node:buffer');\n\n\n/**\n * A list of lowercased HTTP methods that are supported by Node.js.\n * @api private\n */\nexports.methods = METHODS.map((method) => method.toLowerCase());\n\n/**\n * Return strong ETag for `body`.\n *\n * @param {String|Buffer} body\n * ",
+      "summary": "The `methods` function creates and exports an array of HTTP methods supported by Node.js, converting each method to lowercase. A developer would use this function when they need a standardized list of HTTP methods for handling requests in a web application or API."
+    },
+    {
+      "name": "etag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": ");\nvar contentType = require('content-type');\nvar etag = require('etag');\nvar mime = require('mime-types')\nvar proxyaddr = require('proxy-addr');\nvar qs = require('qs');\nvar querystring = require('node:querystring');\nconst { Buffer } = require('node:",
+      "summary": "The `etag` function generates an entity tag (ETag) for a given resource, which is a unique identifier used for caching and validation in HTTP responses. A developer would use this function to optimize web application performance by enabling conditional requests, allowing clients to cache resources and reduce unnecessary data transfers."
+    },
+    {
+      "name": "wetag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "\n * @return {String}\n * @api private\n */\n\nexports.wetag = createETagGenerator({ weak: true })\n\n/**\n * Normalize the given `type`, for example \"html\" becomes \"text/html\".\n *\n * @param {String} type\n * @return {Object}\n * @api private\n */\n\nexports.norm",
+      "summary": "The `wetag` function generates a weak ETag (entity tag) for HTTP responses, which is useful for caching and conditional requests, allowing developers to efficiently manage resource versions without strict validation. A developer would use this function when implementing caching mechanisms in web applications to optimize performance and reduce unnecessary data transfers."
+    },
+    {
+      "name": "normalizeType",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "\n * @return {Object}\n * @api private\n */\n\nexports.normalizeType = function(type){\n  return ~type.indexOf('/')\n    ? acceptParams(type)\n    : { value: (mime.lookup(type) || 'application/octet-stream'), params: {} }\n};\n\n/**\n * Normalize `types`, for ex",
+      "summary": "The `normalizeType` function takes a MIME type string as input and returns an object containing the MIME type and its associated parameters; it uses the `acceptParams` function if the type includes a slash (indicating a specific media type), otherwise, it looks up the MIME type using the `mime` library and defaults to 'application/octet-stream'. A developer would use this function when handling content negotiation in web applications to ensure that the correct MIME type is processed and returned based on the client's request."
+    },
+    {
+      "name": "normalizeTypes",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "s\n * @return {Array}\n * @api private\n */\n\nexports.normalizeTypes = function(types) {\n  return types.map(exports.normalizeType);\n};\n\n\n/**\n * Parse accept params `str` returning an\n * object with `.value`, `.quality` and `.params`.\n *\n * @param {String",
+      "summary": "The `normalizeTypes` function takes an array of types as input and returns a new array where each type is processed by the `normalizeType` function, ensuring consistent formatting or structure. A developer would use this function when they need to standardize or validate a list of type inputs, such as when handling content negotiation in web applications."
+    },
+    {
+      "name": "compileETag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "* @return {Function}\n * @api private\n */\n\nexports.compileETag = function(val) {\n  var fn;\n\n  if (typeof val === 'function') {\n    return val;\n  }\n\n  switch (val) {\n    case true:\n    case 'weak':\n      fn = exports.wetag;\n      break;\n    case false:",
+      "summary": "The `compileETag` function generates and returns an ETag generation function based on the provided input value, which can be a boolean, a string, or a function. A developer would use this function when implementing caching mechanisms in web applications to efficiently manage and validate resource versions using ETags."
+    },
+    {
+      "name": "compileTrust",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "* @return {Function}\n * @api private\n */\n\nexports.compileTrust = function(val) {\n  if (typeof val === 'function') return val;\n\n  if (val === true) {\n    // Support plain true/false\n    return function(){ return true };\n  }\n\n  if (typeof val === 'numb",
+      "summary": "The `compileTrust` function takes an input value and returns a corresponding function that indicates trustworthiness; if the input is a function, it returns it as is, and if the input is `true`, it returns a function that always returns `true`. A developer would use this function to standardize trust evaluation logic in scenarios where different types of trust indicators (functions, boolean values) need to be handled uniformly."
+    },
+    {
+      "name": "View",
+      "file": "test_repos/express/lib/view.js",
+      "code": " Module exports.\n * @public\n */\n\nmodule.exports = View;\n\n/**\n * Initialize a new `View` with the given `name`.\n *\n * Options:\n *\n *   - `defaultEngine` the default template engine name\n *   - `engines` template engine require() cache\n *   - `root` ro",
+      "summary": "The `View` function initializes a new view object with a specified name, allowing developers to set options such as the default template engine, engine cache, and root directory for templates. A developer would use this function when creating a web application that requires rendering dynamic content using templates, enabling the management and organization of different views."
+    },
+    {
+      "name": "lookup",
+      "file": "test_repos/express/lib/view.js",
+      "code": " require() cache\n *   - `root` root path for view lookup\n *\n * @param {string} name\n * @param {object} options\n * @public\n */\n\nfunction View(name, options) {\n  var opts = options || {};\n\n  this.defaultEngine = opts.defaultEngine;\n  this.ext = extname",
+      "summary": "The `View` function is a constructor that initializes a view object with a specified name and options, allowing developers to define default settings such as the default template engine and file extension for rendering views. A developer would use this function when setting up a templating system in a web application to manage and render different views efficiently."
+    },
+    {
+      "name": "onRender",
+      "file": "test_repos/express/lib/view.js",
+      "code": "lbacks\n  this.engine(this.path, options, function onRender() {\n    if (!sync) {\n      return callback.apply(this, arguments);\n    }\n\n    // copy arguments\n    var args = new Array(arguments.length);\n    var cntx = this;\n\n    for (var i = 0; i < argum",
+      "summary": "The `onRender` function is a callback that is executed after a rendering process, allowing developers to handle the results based on whether the rendering is synchronous or asynchronous. A developer would use this function when they need to manage the completion of a rendering task and perform additional actions based on the rendering's outcome, particularly in scenarios involving asynchronous operations."
+    },
+    {
+      "name": "renderTick",
+      "file": "test_repos/express/lib/view.js",
+      "code": " to be async\n    return process.nextTick(function renderTick() {\n      return callback.apply(cntx, args);\n    });\n  });\n\n  sync = false;\n};\n\n/**\n * Resolve the file within the given directory.\n *\n * @param {string} dir\n * @param {string} file\n * @pri",
+      "summary": "The `renderTick` function is designed to execute a callback function in the next iteration of the event loop, allowing for asynchronous processing without blocking the current execution context. A developer would use this function when they need to defer the execution of a callback until after the current operation is complete, ensuring that the application remains responsive and can handle other tasks in the meantime."
+    },
+    {
+      "name": "resolve",
+      "file": "test_repos/express/lib/view.js",
+      "code": "extname = path.extname;\nvar join = path.join;\nvar resolve = path.resolve;\n\n/**\n * Module exports.\n * @public\n */\n\nmodule.exports = View;\n\n/**\n * Initialize a new `View` with the given `name`.\n *\n * Options:\n *\n *   - `defaultEngine` the default templ",
+      "summary": "The `resolve` function is part of the `path` module in Node.js, and it is used to resolve a sequence of path segments into an absolute path, taking into account the current working directory. A developer would use this function when they need to construct a full file path from relative segments, ensuring that the resulting path is correctly formatted and absolute, which is particularly useful when working with file system operations or serving files in a web application."
+    },
+    {
+      "name": "tryStat",
+      "file": "test_repos/express/lib/view.js",
+      "code": ".<ext>\n  var path = join(dir, file);\n  var stat = tryStat(path);\n\n  if (stat && stat.isFile()) {\n    return path;\n  }\n\n  // <path>/index.<ext>\n  path = join(dir, basename(file, ext), 'index' + ext);\n  stat = tryStat(path);\n\n  if (stat && stat.isFile(",
+      "summary": "The `tryStat` function attempts to retrieve the file status of a given path, returning information about the file if it exists. A developer would use this function to check for the existence of a file or its properties before proceeding with file operations, such as reading or processing the file."
+    },
+    {
+      "name": "init",
+      "file": "test_repos/express/lib/application.js",
+      "code": " route reflection methods\n *\n * @private\n */\n\napp.init = function init() {\n  var router = null;\n\n  this.cache = Object.create(null);\n  this.engines = Object.create(null);\n  this.settings = Object.create(null);\n\n  this.defaultConfiguration();\n\n  // Se",
+      "summary": "The `init` function initializes the application by creating empty objects for caching, template engines, and settings, while also invoking a method to set default configurations. A developer would use this function to set up the foundational structure and state of the application before routing and other functionalities are implemented."
+    },
+    {
+      "name": "getrouter",
+      "file": "test_repos/express/lib/application.js",
+      "code": "le: true,\n    enumerable: true,\n    get: function getrouter() {\n      if (router === null) {\n        router = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n ",
+      "summary": "The `getrouter` function initializes a new `Router` instance with specific routing options (case sensitivity and strictness) if the `router` variable is currently `null`. A developer would use this function when they need to ensure that a routing system is set up only once, optimizing performance by avoiding unnecessary reinitialization."
+    },
+    {
+      "name": "defaultConfiguration",
+      "file": "test_repos/express/lib/application.js",
+      "code": ");\n  this.settings = Object.create(null);\n\n  this.defaultConfiguration();\n\n  // Setup getting to lazily add base router\n  Object.defineProperty(this, 'router', {\n    configurable: true,\n    enumerable: true,\n    get: function getrouter() {\n      if (",
+      "summary": "The `defaultConfiguration` function initializes default settings for an object by creating a new object with no prototype and assigning it to `this.settings`. A developer would use this function when they want to ensure that an object starts with a clean slate of default configurations, avoiding inherited properties from the prototype chain."
+    },
+    {
+      "name": "onmount",
+      "file": "test_repos/express/lib/application.js",
+      "code": "g in %s mode', env);\n\n  this.on('mount', function onmount(parent) {\n    // inherit trust proxy\n    if (this.settings[trustProxyDefaultSymbol] === true\n      && typeof parent.settings['trust proxy fn'] === 'function') {\n      delete this.settings['tru",
+      "summary": "The `onmount` function is an event handler that executes when a component is mounted, allowing it to inherit trust proxy settings from its parent component if certain conditions are met. A developer would use this function in a web application to ensure that trust proxy configurations are consistently applied across nested components, particularly in scenarios involving HTTP request handling."
+    },
+    {
+      "name": "handle",
+      "file": "test_repos/express/lib/application.js",
+      "code": " * Module dependencies.\n * @private\n */\n\nvar finalhandler = require('finalhandler');\nvar debug = require('debug')('express:application');\nvar View = require('./view');\nvar http = require('node:http');\nvar methods = require('./utils').methods;\nvar com",
+      "summary": "The `handle` function is part of an Express-like application framework that processes incoming HTTP requests, managing routing and middleware execution. A developer would use it when building a web server to handle requests and responses efficiently, ensuring that the appropriate views and middleware are invoked based on the request context."
+    },
+    {
+      "name": "use",
+      "file": "test_repos/express/lib/application.js",
+      "code": " Douglas Christopher Wilson\n * MIT Licensed\n */\n\n'use strict';\n\n/**\n * Module dependencies.\n * @private\n */\n\nvar finalhandler = require('finalhandler');\nvar debug = require('debug')('express:application');\nvar View = require('./view');\nvar http = req",
+      "summary": "The `use` function in this context is part of an Express.js application, allowing developers to add middleware functions that can process requests and responses in a web server. Developers would use it to define custom behavior for handling HTTP requests, such as logging, authentication, or modifying request/response objects, enhancing the functionality of their web applications."
+    },
+    {
+      "name": "mounted_app",
+      "file": "test_repos/express/lib/application.js",
+      "code": "erty on req and res\n    router.use(path, function mounted_app(req, res, next) {\n      var orig = req.app;\n      fn.handle(req, res, function (err) {\n        Object.setPrototypeOf(req, orig.request)\n        Object.setPrototypeOf(res, orig.response)\n  ",
+      "summary": "The `mounted_app` function is a middleware for an Express.js router that handles incoming requests and responses, allowing for the modification of their prototypes to restore the original request and response objects after processing. A developer would use this function when they need to integrate a mounted application within an existing Express application while ensuring that the original request and response objects retain their properties and methods after middleware execution."
+    },
+    {
+      "name": "route",
+      "file": "test_repos/express/lib/application.js",
+      "code": "\nvar once = require('once')\nvar Router = require('router');\n\n/**\n * Module variables.\n * @private\n */\n\nvar slice = Array.prototype.slice;\nvar flatten = Array.prototype.flat;\n\n/**\n * Application prototype.\n */\n\nvar app = exports = module.exports = {};",
+      "summary": "The `route` function is part of a module that likely facilitates the creation of a routing system for web applications, allowing developers to define and manage routes for handling HTTP requests. A developer would use it when building a server-side application that requires routing capabilities to direct incoming requests to the appropriate handlers based on the URL and HTTP method."
+    },
+    {
+      "name": "param",
+      "file": "test_repos/express/lib/application.js",
+      "code": "se() documentation for details.\n *\n * If the _fn_ parameter is an express app, then it will be\n * mounted at the _route_ specified.\n *\n * @public\n */\n\napp.use = function use(fn) {\n  var offset = 0;\n  var path = '/';\n\n  // default path to '/'\n  // dis",
+      "summary": "The `use` function in this JavaScript code is designed to mount middleware or an Express application at a specified route within an Express server. A developer would use this function when they want to add functionality or handle requests at a specific path in their web application, allowing for modular and organized code structure."
+    },
+    {
+      "name": "set",
+      "file": "test_repos/express/lib/application.js",
+      "code": "efault';\n\n/**\n * Initialize the server.\n *\n *   - setup default configuration\n *   - setup default middleware\n *   - setup route reflection methods\n *\n * @private\n */\n\napp.init = function init() {\n  var router = null;\n\n  this.cache = Object.create(nu",
+      "summary": "The `init` function initializes a server by setting up default configurations, middleware, and route reflection methods. A developer would use this function when they need to establish a foundational setup for a web application, ensuring that essential components are in place before handling requests."
+    },
+    {
+      "name": "enabled",
+      "file": "test_repos/express/lib/application.js",
+      "code": "uter = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n      }\n\n      return router;\n    }\n  });\n};\n\n/**\n * Initialize application configuration.\n * @private\n ",
+      "summary": "The `enabled` function checks whether a specific feature or configuration option is enabled in the application, such as \"case sensitive routing\" or \"strict routing.\" A developer would use this function to conditionally configure routing behavior based on the application's settings or user preferences."
+    },
+    {
+      "name": "disabled",
+      "file": "test_repos/express/lib/application.js",
+      "code": "s.set(setting));\n};\n\n/**\n * Check if `setting` is disabled.\n *\n *    app.disabled('foo')\n *    // => true\n *\n *    app.enable('foo')\n *    app.disabled('foo')\n *    // => false\n *\n * @param {String} setting\n * @return {Boolean}\n * @public\n */\n\napp.di",
+      "summary": "The `disabled` function checks whether a specified setting (passed as a string) is currently disabled within an application, returning `true` or `false` accordingly. A developer would use this function to determine the status of a feature or configuration setting, particularly when managing application states or toggling features on and off."
+    },
+    {
+      "name": "enable",
+      "file": "test_repos/express/lib/application.js",
+      "code": "uter = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n      }\n\n      return router;\n    }\n  });\n};\n\n/**\n * Initialize application configuration.\n * @private\n ",
+      "summary": "The `enable` function is used to configure specific routing options in a JavaScript application by enabling features such as case-sensitive and strict routing based on the developer's preferences. A developer would use this function when setting up a router to ensure that the application adheres to specific routing behaviors that may be required for their application's URL handling."
+    },
+    {
+      "name": "disable",
+      "file": "test_repos/express/lib/application.js",
+      "code": "s.set(setting));\n};\n\n/**\n * Check if `setting` is disabled.\n *\n *    app.disabled('foo')\n *    // => true\n *\n *    app.enable('foo')\n *    app.disabled('foo')\n *    // => false\n *\n * @param {String} setting\n * @return {Boolean}\n * @public\n */\n\napp.di",
+      "summary": "The `disable` function checks whether a specified setting is currently disabled, returning `true` if it is and `false` otherwise. A developer would use this function to manage application settings, particularly to verify the status of features or configurations that can be toggled on or off."
+    },
+    {
+      "name": "all",
+      "file": "test_repos/express/lib/application.js",
+      "code": "et('views', resolve('views'));\n  this.set('jsonp callback name', 'callback');\n\n  if (env === 'production') {\n    this.enable('view cache');\n  }\n};\n\n/**\n * Dispatch a req, res pair into the application. Starts pipeline processing.\n *\n * If no callback",
+      "summary": "The `all` function is designed to handle incoming requests and responses within a web application, initiating the processing pipeline for the request. A developer would use this function when they need to set up a route that responds to all HTTP methods (GET, POST, etc.) for a specific endpoint, allowing for flexible request handling in a web server context."
+    },
+    {
+      "name": "listen",
+      "file": "test_repos/express/lib/application.js",
+      "code": " app = express();\n *\n *    http.createServer(app).listen(80);\n *    https.createServer({ ... }, app).listen(443);\n *\n * @return {http.Server}\n * @public\n */\n\napp.listen = function listen() {\n  var server = http.createServer(this)\n  var args = slice.c",
+      "summary": "The `listen` function creates an HTTP server using the Express application instance and binds it to a specified port, allowing the application to handle incoming requests. A developer would use this function when they want to start an Express server to serve web applications or APIs over HTTP or HTTPS."
+    },
+    {
+      "name": "logerror",
+      "file": "test_repos/express/lib/application.js",
+      "code": "eq, res, {\n    env: this.get('env'),\n    onerror: logerror.bind(this)\n  });\n\n  // set powered by header\n  if (this.enabled('x-powered-by')) {\n    res.setHeader('X-Powered-By', 'Express');\n  }\n\n  // set circular references\n  req.res = res;\n  res.req =",
+      "summary": "The `logerror` function is used to handle error logging in a web application, specifically by binding the current context to ensure that the error handling operates correctly within that scope. A developer would use this function when they need to capture and log errors that occur during request processing, particularly in an Express.js application, to facilitate debugging and improve application reliability."
+    },
+    {
+      "name": "tryRender",
+      "file": "test_repos/express/lib/application.js",
+      "code": "     cache[name] = view;\n    }\n  }\n\n  // render\n  tryRender(view, renderOptions, done);\n};\n\n/**\n * Listen for connections.\n *\n * A node `http.Server` is returned, with this\n * application (which is a `Function`) as its\n * callback. If you wish to cre",
+      "summary": "The `tryRender` function attempts to render a specified view using given rendering options and a callback function to handle the completion of the rendering process. A developer would use this function when they need to dynamically generate and display content in a web application, particularly when handling HTTP requests and responses."
+    }
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "repo": "express",
+  "functions": [
+    {
+      "name": "pets",
+      "file": "test_repos/express/examples/mvc/db.js",
+      "code": "'use strict'\n\n// faux database\n\nvar pets = exports.pets = [];\n\npets.push({ name: 'Tobi', id: 0 });\npets.push({ name: 'Loki', id: 1 });\npets.push({ name: 'Jane', id: 2 });\npets.push({ name: 'Raul', id: 3 });\n\nvar users = exports.users = "
+    },
+    {
+      "name": "users",
+      "file": "test_repos/express/examples/mvc/db.js",
+      "code": "d: 2 });\npets.push({ name: 'Raul', id: 3 });\n\nvar users = exports.users = [];\n\nusers.push({ name: 'TJ', pets: [pets[0], pets[1], pets[2]], id: 0  });\nusers.push({ name: 'Guillermo', pets: [pets[3]], id: 1 });\nusers.push({ name: 'Nathan', pets: [], id"
+    },
+    {
+      "name": "name",
+      "file": "test_repos/express/examples/mvc/controllers/user-pet/index.js",
+      "code": "cies.\n */\n\nvar db = require('../../db');\n\nexports.name = 'pet';\nexports.prefix = '/user/:user_id';\n\nexports.create = function(req, res, next){\n  var id = req.params.user_id;\n  var user = db.users[id];\n  var body = req.body;\n  if (!user) return next('"
+    },
+    {
+      "name": "prefix",
+      "file": "test_repos/express/examples/mvc/controllers/user-pet/index.js",
+      "code": "quire('../../db');\n\nexports.name = 'pet';\nexports.prefix = '/user/:user_id';\n\nexports.create = function(req, res, next){\n  var id = req.params.user_id;\n  var user = db.users[id];\n  var body = req.body;\n  if (!user) return next('route');\n  var pet = {"
+    },
+    {
+      "name": "create",
+      "file": "test_repos/express/examples/mvc/controllers/user-pet/index.js",
+      "code": "pet';\nexports.prefix = '/user/:user_id';\n\nexports.create = function(req, res, next){\n  var id = req.params.user_id;\n  var user = db.users[id];\n  var body = req.body;\n  if (!user) return next('route');\n  var pet = { name: body.pet.name };\n  pet.id = d"
+    },
+    {
+      "name": "engine",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "cies.\n */\n\nvar db = require('../../db');\n\nexports.engine = 'hbs';\n\nexports.before = function(req, res, next){\n  var id = req.params.user_id;\n  if (!id) return next();\n  // pretend to query a database...\n  process.nextTick(function(){\n    req.user = d"
+    },
+    {
+      "name": "before",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "re('../../db');\n\nexports.engine = 'hbs';\n\nexports.before = function(req, res, next){\n  var id = req.params.user_id;\n  if (!id) return next();\n  // pretend to query a database...\n  process.nextTick(function(){\n    req.user = db.users[id];\n    // cant "
+    },
+    {
+      "name": "list",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "ve on to the routes\n    next();\n  });\n};\n\nexports.list = function(req, res, next){\n  res.render('list', { users: db.users });\n};\n\nexports.edit = function(req, res, next){\n  res.render('edit', { user: req.user });\n};\n\nexports.show = function(req, res,"
+    },
+    {
+      "name": "edit",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": ".render('list', { users: db.users });\n};\n\nexports.edit = function(req, res, next){\n  res.render('edit', { user: req.user });\n};\n\nexports.show = function(req, res, next){\n  res.render('show', { user: req.user });\n};\n\nexports.update = function(req, res"
+    },
+    {
+      "name": "show",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "s.render('edit', { user: req.user });\n};\n\nexports.show = function(req, res, next){\n  res.render('show', { user: req.user });\n};\n\nexports.update = function(req, res, next){\n  var body = req.body;\n  req.user.name = body.user.name;\n  res.message('Inform"
+    },
+    {
+      "name": "update",
+      "file": "test_repos/express/examples/mvc/controllers/user/index.js",
+      "code": "s.render('show', { user: req.user });\n};\n\nexports.update = function(req, res, next){\n  var body = req.body;\n  req.user.name = body.user.name;\n  res.message('Information updated!');\n  res.redirect('/user/' + req.user.id);\n};\n"
+    },
+    {
+      "name": "index",
+      "file": "test_repos/express/examples/mvc/controllers/main/index.js",
+      "code": "'use strict'\n\nexports.index = function(req, res){\n  res.redirect('/users');\n};\n"
+    },
+    {
+      "name": "authenticate",
+      "file": "test_repos/express/examples/auth/index.js",
+      "code": "sing our plain-object database of doom!\n\nfunction authenticate(name, pass, fn) {\n  if (!module.parent) console.log('authenticating %s:%s', name, pass);\n  var user = users[name];\n  // query the db for the given username\n  if (!user) return fn(null, nu"
+    },
+    {
+      "name": "restrict",
+      "file": "test_repos/express/examples/auth/index.js",
+      "code": "(null, user)\n    fn(null, null)\n  });\n}\n\nfunction restrict(req, res, next) {\n  if (req.session.user) {\n    next();\n  } else {\n    req.session.error = 'Access denied!';\n    res.redirect('/login');\n  }\n}\n\napp.get('/', function(req, res){\n  res.redirect"
+    },
+    {
+      "name": "User",
+      "file": "test_repos/express/examples/view-locals/user.js",
+      "code": "'use strict'\n\nmodule.exports = User;\n\n// faux model\n\nfunction User(name, age, species) {\n  this.name = name;\n  this.age = age;\n  this.species = species;\n}\n\nUser.all = function(fn){\n  // process.nextTick makes sure this function API"
+    },
+    {
+      "name": "ferrets",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "ews'));\napp.set('view engine', 'ejs');\n\n// filter ferrets only\n\nfunction ferrets(user) {\n  return user.species === 'ferret'\n}\n\n// naive nesting approach,\n// delegating errors to next(err)\n// in order to expose the \"count\"\n// and \"users\" locals\n\napp.g"
+    },
+    {
+      "name": "count",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "ng errors to next(err)\n// in order to expose the \"count\"\n// and \"users\" locals\n\napp.get('/', function(req, res, next){\n  User.count(function(err, count){\n    if (err) return next(err);\n    User.all(function(err, users){\n      if (err) return next(err"
+    },
+    {
+      "name": "count2",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "e\n// is more flexible with `req.users`.\n\nfunction count2(req, res, next) {\n  User.count(function(err, count){\n    if (err) return next(err);\n    res.locals.count = count;\n    next();\n  })\n}\n\nfunction users2(req, res, next) {\n  User.all(function(err, "
+    },
+    {
+      "name": "users2",
+      "file": "test_repos/express/examples/view-locals/index.js",
+      "code": "ocals.count = count;\n    next();\n  })\n}\n\nfunction users2(req, res, next) {\n  User.all(function(err, users){\n    if (err) return next(err);\n    res.locals.users = users.filter(ferrets);\n    next();\n  })\n}\n\napp.get('/middleware-locals', count2, users2,"
+    },
+    {
+      "name": "GithubView",
+      "file": "test_repos/express/examples/view-constructor/github-view.js",
+      "code": "th');\nvar extname = path.extname;\n\n/**\n * Expose `GithubView`.\n */\n\nmodule.exports = GithubView;\n\n/**\n * Custom view that fetches and renders\n * remove github templates. You could\n * render templates from a database etc.\n */\n\nfunction GithubView(name"
+    },
+    {
+      "name": "load",
+      "file": "test_repos/express/examples/route-separation/user.js",
+      "code": "', { title: 'Users', users: users });\n};\n\nexports.load = function(req, res, next){\n  var id = req.params.id;\n  req.user = users[id];\n  if (req.user) {\n    next();\n  } else {\n    var err = new Error('cannot find user ' + id);\n    err.status = 404;\n   "
+    },
+    {
+      "name": "view",
+      "file": "test_repos/express/examples/route-separation/user.js",
+      "code": " err.status = 404;\n    next(err);\n  }\n};\n\nexports.view = function(req, res){\n  res.render('users/view', {\n    title: 'Viewing user ' + req.user.name,\n    user: req.user\n  });\n};\n\nexports.edit = function(req, res){\n  res.render('users/edit', {\n    tit"
+    },
+    {
+      "name": "error",
+      "file": "test_repos/express/examples/web-service/index.js",
+      "code": "r app = module.exports = express();\n\n// create an error with .status. we\n// can then use the property in our\n// custom error handler (Connect respects this prop as well)\n\nfunction error(status, msg) {\n  var err = new Error(msg);\n  err.status = status"
+    },
+    {
+      "name": "html",
+      "file": "test_repos/express/examples/error-pages/index.js",
+      "code": "es, next){\n  res.status(404);\n\n  res.format({\n    html: function () {\n      res.render('404', { url: req.url })\n    },\n    json: function () {\n      res.json({ error: 'Not found' })\n    },\n    default: function () {\n      res.type('txt').send('Not fo"
+    },
+    {
+      "name": "json",
+      "file": "test_repos/express/examples/error-pages/index.js",
+      "code": "//localhost:3000/notfound -H \"Accept: application/json\"\n// $ curl http://localhost:3000/notfound -H \"Accept: text/plain\"\n\napp.use(function(req, res, next){\n  res.status(404);\n\n  res.format({\n    html: function () {\n      res.render('404', { url: req."
+    },
+    {
+      "name": "default",
+      "file": "test_repos/express/examples/error-pages/index.js",
+      "code": "      res.json({ error: 'Not found' })\n    },\n    default: function () {\n      res.type('txt').send('Not found')\n    }\n  })\n});\n\n// error-handling middleware, take the same form\n// as regular middleware, however they require an\n// arity of 4, aka the"
+    },
+    {
+      "name": "get",
+      "file": "test_repos/express/examples/route-map/index.js",
+      "code": "map(a[key], route + key);\n        break;\n      // get: function(){ ... }\n      case 'function':\n        if (verbose) console.log('%s %s', key, route);\n        app[key](route, a[key]);\n        break;\n    }\n  }\n};\n\nvar users = {\n  list: function(req, r"
+    },
+    {
+      "name": "delete",
+      "file": "test_repos/express/examples/route-map/index.js",
+      "code": "nd('user ' +  escapeHtml(req.params.uid))\n  },\n\n  delete: function(req, res){\n    res.send('delete users');\n  }\n};\n\nvar pets = {\n  list: function(req, res){\n    res.send('user ' + escapeHtml(req.params.uid) + '\\'s pets')\n  },\n\n  delete: function(req,"
+    },
+    {
+      "name": "destroy",
+      "file": "test_repos/express/examples/resource/index.js",
+      "code": "    var id = parseInt(req.params.id, 10);\n    obj.destroy(req, res, id);\n  });\n};\n\n// Fake records\n\nvar users = [\n  { name: 'tj' }\n  , { name: 'ciaran' }\n  , { name: 'aaron' }\n  , { name: 'guillermo' }\n  , { name: 'simon' }\n  , { name: 'tobi' }\n];\n\n/"
+    },
+    {
+      "name": "range",
+      "file": "test_repos/express/examples/resource/index.js",
+      "code": " 10);\n    var format = req.params.format;\n    obj.range(req, res, a, b, format);\n  });\n  this.get(path + '/:id', obj.show);\n  this.delete(path + '/:id', function(req, res){\n    var id = parseInt(req.params.id, 10);\n    obj.destroy(req, res, id);\n  })"
+    },
+    {
+      "name": "loadUser",
+      "file": "test_repos/express/examples/route-middleware/index.js",
+      "code": "n+github@gmail.com', role: 'admin' }\n];\n\nfunction loadUser(req, res, next) {\n  // You would fetch your user from the db\n  var user = users[req.params.id];\n  if (user) {\n    req.user = user;\n    next();\n  } else {\n    next(new Error('Failed to load us"
+    },
+    {
+      "name": "andRestrictToSelf",
+      "file": "test_repos/express/examples/route-middleware/index.js",
+      "code": "to load user ' + req.params.id));\n  }\n}\n\nfunction andRestrictToSelf(req, res, next) {\n  // If our authenticated user is the user we are viewing\n  // then everything is fine :)\n  if (req.authenticatedUser.id === req.user.id) {\n    next();\n  } else {\n "
+    },
+    {
+      "name": "andRestrictTo",
+      "file": "test_repos/express/examples/route-middleware/index.js",
+      "code": "to load user ' + req.params.id));\n  }\n}\n\nfunction andRestrictToSelf(req, res, next) {\n  // If our authenticated user is the user we are viewing\n  // then everything is fine :)\n  if (req.authenticatedUser.id === req.user.id) {\n    next();\n  } else {\n "
+    },
+    {
+      "name": "text",
+      "file": "test_repos/express/examples/content-negotiation/users.js",
+      "code": " + '</li>';\n  }).join('') + '</ul>');\n};\n\nexports.text = function(req, res){\n  res.send(users.map(function(user){\n    return ' - ' + user.name + '\\n';\n  }).join(''));\n};\n\nexports.json = function(req, res){\n  res.json(users);\n};\n"
+    },
+    {
+      "name": "format",
+      "file": "test_repos/express/examples/content-negotiation/index.js",
+      "code": "// so either you can deal with different types of formatting\n// for expected response in index.js\napp.get('/', function(req, res){\n  res.format({\n    html: function(){\n      res.send('<ul>' + users.map(function(user){\n        return '<li>' + user.nam"
+    },
+    {
+      "name": "status",
+      "file": "test_repos/express/lib/response.js",
+      "code": "IsAbsolute = require('node:path').isAbsolute;\nvar statuses = require('statuses')\nvar sign = require('cookie-signature').sign;\nvar normalizeType = require('./utils').normalizeType;\nvar normalizeTypes = require('./utils').normalizeTypes;\nvar setCharset"
+    },
+    {
+      "name": "send",
+      "file": "test_repos/express/lib/response.js",
+      "code": ").setCharset;\nvar cookie = require('cookie');\nvar send = require('send');\nvar extname = path.extname;\nvar resolve = path.resolve;\nvar vary = require('vary');\nconst { Buffer } = require('node:buffer');\n\n/**\n * Response prototype.\n * @public\n */\n\nvar r"
+    },
+    {
+      "name": "jsonp",
+      "file": "test_repos/express/lib/response.js",
+      "code": "P callback support.\n *\n * Examples:\n *\n *     res.jsonp(null);\n *     res.jsonp({ user: 'tj' });\n *\n * @param {string|number|boolean|object} obj\n * @public\n */\n\nres.jsonp = function jsonp(obj) {\n  // settings\n  var app = this.app;\n  var escape = app."
+    },
+    {
+      "name": "sendStatus",
+      "file": "test_repos/express/lib/response.js",
+      "code": " if no description.\n *\n * Examples:\n *\n *     res.sendStatus(200);\n *\n * @param {number} statusCode\n * @public\n */\n\nres.sendStatus = function sendStatus(statusCode) {\n  var body = statuses.message[statusCode] || String(statusCode)\n\n  this.status(stat"
+    },
+    {
+      "name": "sendFile",
+      "file": "test_repos/express/lib/response.js",
+      "code": " *\n *  The following example illustrates how `res.sendFile()` may\n *  be used as an alternative for the `static()` middleware for\n *  dynamic situations. The code backing `res.sendFile()` is actually\n *  the same code, so HTTP cache support etc is id"
+    },
+    {
+      "name": "download",
+      "file": "test_repos/express/lib/response.js",
+      "code": "hod uses `res.sendFile()`.\n *\n * @public\n */\n\nres.download = function download (path, filename, options, callback) {\n  var done = callback;\n  var name = filename;\n  var opts = options || null\n\n  // support function as second or third arg\n  if (typeof"
+    },
+    {
+      "name": "contentType",
+      "file": "test_repos/express/lib/response.js",
+      "code": "t-Type_ response header with `type` through `mime.contentType()`\n * when it does not contain \"/\", or set the Content-Type to `type` otherwise.\n * When no mapping is found though `mime.contentType()`, the type is set to\n * \"application/octet-stream\".\n"
+    },
+    {
+      "name": "attachment",
+      "file": "test_repos/express/lib/response.js",
+      "code": "**\n * Transfer the file at the given `path` as an attachment.\n *\n * Optionally providing an alternate attachment `filename`,\n * and optional callback `callback(err)`. The callback is invoked\n * when the data transfer is complete, or when an error has"
+    },
+    {
+      "name": "append",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ld` with value `val`.\n *\n * Example:\n *\n *    res.append('Link', ['<http://localhost/>', '<http://localhost:3000/>']);\n *    res.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');\n *    res.append('Warning', '199 Miscellaneous warning');\n *\n * @param"
+    },
+    {
+      "name": "header",
+      "file": "test_repos/express/lib/response.js",
+      "code": "usCode = code;\n  return this;\n};\n\n/**\n * Set Link header field with the given `links`.\n *\n * Examples:\n *\n *    res.links({\n *      next: 'http://api.example.com/users?page=2',\n *      last: 'http://api.example.com/users?page=5',\n *      pages: [\n * "
+    },
+    {
+      "name": "clearCookie",
+      "file": "test_repos/express/lib/response.js",
+      "code": "{ServerResponse} for chaining\n * @public\n */\n\nres.clearCookie = function clearCookie(name, options) {\n  // Force cookie expiration by setting expires to the past\n  const opts = { path: '/', ...options, expires: new Date(1)};\n  // ensure maxAge is not"
+    },
+    {
+      "name": "location",
+      "file": "test_repos/express/lib/response.js",
+      "code": "(val), opts));\n\n  return this;\n};\n\n/**\n * Set the location header to `url`.\n *\n * The given `url` can also be \"back\", which redirects\n * to the _Referrer_ or _Referer_ headers or \"/\".\n *\n * Examples:\n *\n *    res.location('/foo/bar').;\n *    res.loca"
+    },
+    {
+      "name": "redirect",
+      "file": "test_repos/express/lib/response.js",
+      "code": ".\n *\n * The given `url` can also be \"back\", which redirects\n * to the _Referrer_ or _Referer_ headers or \"/\".\n *\n * Examples:\n *\n *    res.location('/foo/bar').;\n *    res.location('http://example.com');\n *    res.location('../login');\n *\n * @param {"
+    },
+    {
+      "name": "render",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ache\n *  - `filename`  filename of the view being rendered\n *\n * @public\n */\n\nres.render = function render(view, options, callback) {\n  var app = this.req.app;\n  var done = callback;\n  var opts = options || {};\n  var req = this.req;\n  var self = this"
+    },
+    {
+      "name": "sendfile",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ile = send(req, pathname, opts);\n\n  // transfer\n  sendfile(res, file, opts, function (err) {\n    if (done) return done(err);\n    if (err && err.code === 'EISDIR') return next();\n\n    // next() all but write errors\n    if (err && err.code !== 'ECONNAB"
+    },
+    {
+      "name": "onaborted",
+      "file": "test_repos/express/lib/response.js",
+      "code": "  var streaming;\n\n  // request aborted\n  function onaborted() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('Request aborted');\n    err.code = 'ECONNABORTED';\n    callback(err);\n  }\n\n  // directory\n  function ondirectory() {\n    i"
+    },
+    {
+      "name": "ondirectory",
+      "file": "test_repos/express/lib/response.js",
+      "code": "    callback(err);\n  }\n\n  // directory\n  function ondirectory() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('EISDIR, read');\n    err.code = 'EISDIR';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) re"
+    },
+    {
+      "name": "onerror",
+      "file": "test_repos/express/lib/response.js",
+      "code": "';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) return;\n    done = true;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() "
+    },
+    {
+      "name": "onend",
+      "file": "test_repos/express/lib/response.js",
+      "code": "ue;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === '"
+    },
+    {
+      "name": "onfile",
+      "file": "test_repos/express/lib/response.js",
+      "code": "= true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n "
+    },
+    {
+      "name": "onfinish",
+      "file": "test_repos/express/lib/response.js",
+      "code": " streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n    setImmediate(function () {\n      if (streaming !== false && !"
+    },
+    {
+      "name": "onstream",
+      "file": "test_repos/express/lib/response.js",
+      "code": "allback();\n    });\n  }\n\n  // streaming\n  function onstream() {\n    streaming = true;\n  }\n\n  file.on('directory', ondirectory);\n  file.on('end', onend);\n  file.on('error', onerror);\n  file.on('file', onfile);\n  file.on('stream', onstream);\n  onFinishe"
+    },
+    {
+      "name": "headers",
+      "file": "test_repos/express/lib/response.js",
+      "code": "q.fresh) this.status(304);\n\n  // strip irrelevant headers\n  if (204 === this.statusCode || 304 === this.statusCode) {\n    this.removeHeader('Content-Type');\n    this.removeHeader('Content-Length');\n    this.removeHeader('Transfer-Encoding');\n    chun"
+    },
+    {
+      "name": "stringify",
+      "file": "test_repos/express/lib/response.js",
+      "code": " throw new TypeError(`Invalid status code: ${JSON.stringify(code)}. Status code must be an integer.`);\n  }\n  // Check if the status code is outside of Node's valid range\n  if (code < 100 || code > 999) {\n    throw new RangeError(`Invalid status code:"
+    },
+    {
+      "name": "query",
+      "file": "test_repos/express/lib/request.js",
+      "code": "Range(size, range, options);\n};\n\n/**\n * Parse the query string of `req.url`.\n *\n * This uses the \"query parser\" setting to parse the raw\n * string into an object.\n *\n * @return {String}\n * @api public\n */\n\ndefineGetter(req, 'query', function query(){"
+    },
+    {
+      "name": "is",
+      "file": "test_repos/express/lib/request.js",
+      "code": "man Shtylman\n * Copyright(c) 2014-2015 Douglas Christopher Wilson\n * MIT Licensed\n */\n\n'use strict';\n\n/**\n * Module dependencies.\n * @private\n */\n\nvar accepts = require('accepts');\nvar isIP = require('node:net').isIP;\nvar typeis = require('type-is');"
+    },
+    {
+      "name": "protocol",
+      "file": "test_repos/express/lib/request.js",
+      "code": "  return typeis(this, arr);\n};\n\n/**\n * Return the protocol string \"http\" or \"https\"\n * when requested with TLS. When the \"trust proxy\"\n * setting trusts the socket address, the\n * \"X-Forwarded-Proto\" header field will be trusted\n * and used if presen"
+    },
+    {
+      "name": "secure",
+      "file": "test_repos/express/lib/request.js",
+      "code": "turn {Boolean}\n * @public\n */\n\ndefineGetter(req, 'secure', function secure(){\n  return this.protocol === 'https';\n});\n\n/**\n * Return the remote address from the trusted proxy.\n *\n * The is the remote address on the socket unless\n * \"trust proxy\" is s"
+    },
+    {
+      "name": "ip",
+      "file": "test_repos/express/lib/request.js",
+      "code": "eturn {String}\n * @public\n */\n\ndefineGetter(req, 'ip', function ip(){\n  var trust = this.app.get('trust proxy fn');\n  return proxyaddr(this, trust);\n});\n\n/**\n * When \"trust proxy\" is set, trusted proxy addresses + client.\n *\n * For example if the val"
+    },
+    {
+      "name": "ips",
+      "file": "test_repos/express/lib/request.js",
+      "code": "return {Array}\n * @public\n */\n\ndefineGetter(req, 'ips', function ips() {\n  var trust = this.app.get('trust proxy fn');\n  var addrs = proxyaddr.all(this, trust);\n\n  // reverse the order (to farthest -> closest)\n  // and remove socket address\n  addrs.r"
+    },
+    {
+      "name": "subdomains",
+      "file": "test_repos/express/lib/request.js",
+      "code": "everse().pop()\n\n  return addrs\n});\n\n/**\n * Return subdomains as an array.\n *\n * Subdomains are the dot-separated parts of the host before the main domain of\n * the app. By default, the domain of the app is assumed to be the last two\n * parts of the h"
+    },
+    {
+      "name": "path",
+      "file": "test_repos/express/lib/request.js",
+      "code": ");\n});\n\n/**\n * Short-hand for `url.parse(req.url).pathname`.\n *\n * @return {String}\n * @public\n */\n\ndefineGetter(req, 'path', function path() {\n  return parse(this).pathname;\n});\n\n/**\n * Parse the \"Host\" header field to a host.\n *\n * When the \"trust "
+    },
+    {
+      "name": "host",
+      "file": "test_repos/express/lib/request.js",
+      "code": "\n * Subdomains are the dot-separated parts of the host before the main domain of\n * the app. By default, the domain of the app is assumed to be the last two\n * parts of the host. This can be changed by setting \"subdomain offset\".\n *\n * For example, i"
+    },
+    {
+      "name": "hostname",
+      "file": "test_repos/express/lib/request.js",
+      "code": "(req, 'subdomains', function subdomains() {\n  var hostname = this.hostname;\n\n  if (!hostname) return [];\n\n  var offset = this.app.get('subdomain offset');\n  var subdomains = !isIP(hostname)\n    ? hostname.split('.').reverse()\n    : [hostname];\n\n  ret"
+    },
+    {
+      "name": "stale",
+      "file": "test_repos/express/lib/request.js",
+      "code": "return false;\n});\n\n/**\n * Check if the request is stale, aka\n * \"Last-Modified\" and / or the \"ETag\" for the\n * resource has changed.\n *\n * @return {Boolean}\n * @public\n */\n\ndefineGetter(req, 'stale', function stale(){\n  return !this.fresh;\n});\n\n/**\n "
+    },
+    {
+      "name": "xhr",
+      "file": "test_repos/express/lib/request.js",
+      "code": "turn {Boolean}\n * @public\n */\n\ndefineGetter(req, 'xhr', function xhr(){\n  var val = this.get('X-Requested-With') || '';\n  return val.toLowerCase() === 'xmlhttprequest';\n});\n\n/**\n * Helper function for creating a getter on an object.\n *\n * @param {Obj"
+    },
+    {
+      "name": "defineGetter",
+      "file": "test_repos/express/lib/request.js",
+      "code": "bject.\n *\n * @return {String}\n * @api public\n */\n\ndefineGetter(req, 'query', function query(){\n  var queryparse = this.app.get('query parser fn');\n\n  if (!queryparse) {\n    // parsing is disabled\n    return Object.create(null);\n  }\n\n  var querystring"
+    },
+    {
+      "name": "createApplication",
+      "file": "test_repos/express/lib/express.js",
+      "code": "\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an express application.\n *\n * @return {Function}\n * @api public\n */\n\nfunction createApplication() {\n  var app = "
+    },
+    {
+      "name": "app",
+      "file": "test_repos/express/lib/express.js",
+      "code": "uire('merge-descriptors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;"
+    },
+    {
+      "name": "application",
+      "file": "test_repos/express/lib/express.js",
+      "code": "uire('merge-descriptors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;"
+    },
+    {
+      "name": "request",
+      "file": "test_repos/express/lib/express.js",
+      "code": " Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an express application.\n *\n * @return {Function}\n * "
+    },
+    {
+      "name": "response",
+      "file": "test_repos/express/lib/express.js",
+      "code": " req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an express application.\n *\n * @return {Function}\n * @api public\n */\n\nfunction create"
+    },
+    {
+      "name": "Route",
+      "file": "test_repos/express/lib/express.js",
+      "code": "tors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an "
+    },
+    {
+      "name": "Router",
+      "file": "test_repos/express/lib/express.js",
+      "code": "tors');\nvar proto = require('./application');\nvar Router = require('router');\nvar req = require('./request');\nvar res = require('./response');\n\n/**\n * Expose `createApplication()`.\n */\n\nexports = module.exports = createApplication;\n\n/**\n * Create an "
+    },
+    {
+      "name": "raw",
+      "file": "test_repos/express/lib/express.js",
+      "code": "eware\n */\n\nexports.json = bodyParser.json\nexports.raw = bodyParser.raw\nexports.static = require('serve-static');\nexports.text = bodyParser.text\nexports.urlencoded = bodyParser.urlencoded\n"
+    },
+    {
+      "name": "static",
+      "file": "test_repos/express/lib/express.js",
+      "code": "yParser.json\nexports.raw = bodyParser.raw\nexports.static = require('serve-static');\nexports.text = bodyParser.text\nexports.urlencoded = bodyParser.urlencoded\n"
+    },
+    {
+      "name": "urlencoded",
+      "file": "test_repos/express/lib/express.js",
+      "code": "-static');\nexports.text = bodyParser.text\nexports.urlencoded = bodyParser.urlencoded\n"
+    },
+    {
+      "name": "acceptParams",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "function(type){\n  return ~type.indexOf('/')\n    ? acceptParams(type)\n    : { value: (mime.lookup(type) || 'application/octet-stream'), params: {} }\n};\n\n/**\n * Normalize `types`, for example \"html\" becomes \"text/html\".\n *\n * @param {Array} types\n * @r"
+    },
+    {
+      "name": "compileQueryParser",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "* @return {Function}\n * @api private\n */\n\nexports.compileQueryParser = function compileQueryParser(val) {\n  var fn;\n\n  if (typeof val === 'function') {\n    return val;\n  }\n\n  switch (val) {\n    case true:\n    case 'simple':\n      fn = querystring.par"
+    },
+    {
+      "name": "setCharset",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "\n * @return {String}\n * @api private\n */\n\nexports.setCharset = function setCharset(type, charset) {\n  if (!type || !charset) {\n    return type;\n  }\n\n  // parse type\n  var parsed = contentType.parse(type);\n\n  // set charset\n  parsed.parameters.charset"
+    },
+    {
+      "name": "createETagGenerator",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "turn {String}\n * @api private\n */\n\nexports.etag = createETagGenerator({ weak: false })\n\n/**\n * Return weak ETag for `body`.\n *\n * @param {String|Buffer} body\n * @param {String} [encoding]\n * @return {String}\n * @api private\n */\n\nexports.wetag = creat"
+    },
+    {
+      "name": "generateETag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "createETagGenerator (options) {\n  return function generateETag (body, encoding) {\n    var buf = !Buffer.isBuffer(body)\n      ? Buffer.from(body, encoding)\n      : body\n\n    return etag(buf, options)\n  }\n}\n\n/**\n * Parse an extended query string with q"
+    },
+    {
+      "name": "parseExtendedQueryString",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "lse:\n      break;\n    case 'extended':\n      fn = parseExtendedQueryString;\n      break;\n    default:\n      throw new TypeError('unknown value for query parser function: ' + val);\n  }\n\n  return fn;\n}\n\n/**\n * Compile \"proxy trust\" value to function.\n "
+    },
+    {
+      "name": "methods",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "node:buffer');\n\n\n/**\n * A list of lowercased HTTP methods that are supported by Node.js.\n * @api private\n */\nexports.methods = METHODS.map((method) => method.toLowerCase());\n\n/**\n * Return strong ETag for `body`.\n *\n * @param {String|Buffer} body\n * "
+    },
+    {
+      "name": "etag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": ");\nvar contentType = require('content-type');\nvar etag = require('etag');\nvar mime = require('mime-types')\nvar proxyaddr = require('proxy-addr');\nvar qs = require('qs');\nvar querystring = require('node:querystring');\nconst { Buffer } = require('node:"
+    },
+    {
+      "name": "wetag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "\n * @return {String}\n * @api private\n */\n\nexports.wetag = createETagGenerator({ weak: true })\n\n/**\n * Normalize the given `type`, for example \"html\" becomes \"text/html\".\n *\n * @param {String} type\n * @return {Object}\n * @api private\n */\n\nexports.norm"
+    },
+    {
+      "name": "normalizeType",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "\n * @return {Object}\n * @api private\n */\n\nexports.normalizeType = function(type){\n  return ~type.indexOf('/')\n    ? acceptParams(type)\n    : { value: (mime.lookup(type) || 'application/octet-stream'), params: {} }\n};\n\n/**\n * Normalize `types`, for ex"
+    },
+    {
+      "name": "normalizeTypes",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "s\n * @return {Array}\n * @api private\n */\n\nexports.normalizeTypes = function(types) {\n  return types.map(exports.normalizeType);\n};\n\n\n/**\n * Parse accept params `str` returning an\n * object with `.value`, `.quality` and `.params`.\n *\n * @param {String"
+    },
+    {
+      "name": "compileETag",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "* @return {Function}\n * @api private\n */\n\nexports.compileETag = function(val) {\n  var fn;\n\n  if (typeof val === 'function') {\n    return val;\n  }\n\n  switch (val) {\n    case true:\n    case 'weak':\n      fn = exports.wetag;\n      break;\n    case false:"
+    },
+    {
+      "name": "compileTrust",
+      "file": "test_repos/express/lib/utils.js",
+      "code": "* @return {Function}\n * @api private\n */\n\nexports.compileTrust = function(val) {\n  if (typeof val === 'function') return val;\n\n  if (val === true) {\n    // Support plain true/false\n    return function(){ return true };\n  }\n\n  if (typeof val === 'numb"
+    },
+    {
+      "name": "View",
+      "file": "test_repos/express/lib/view.js",
+      "code": " Module exports.\n * @public\n */\n\nmodule.exports = View;\n\n/**\n * Initialize a new `View` with the given `name`.\n *\n * Options:\n *\n *   - `defaultEngine` the default template engine name\n *   - `engines` template engine require() cache\n *   - `root` ro"
+    },
+    {
+      "name": "lookup",
+      "file": "test_repos/express/lib/view.js",
+      "code": " require() cache\n *   - `root` root path for view lookup\n *\n * @param {string} name\n * @param {object} options\n * @public\n */\n\nfunction View(name, options) {\n  var opts = options || {};\n\n  this.defaultEngine = opts.defaultEngine;\n  this.ext = extname"
+    },
+    {
+      "name": "onRender",
+      "file": "test_repos/express/lib/view.js",
+      "code": "lbacks\n  this.engine(this.path, options, function onRender() {\n    if (!sync) {\n      return callback.apply(this, arguments);\n    }\n\n    // copy arguments\n    var args = new Array(arguments.length);\n    var cntx = this;\n\n    for (var i = 0; i < argum"
+    },
+    {
+      "name": "renderTick",
+      "file": "test_repos/express/lib/view.js",
+      "code": " to be async\n    return process.nextTick(function renderTick() {\n      return callback.apply(cntx, args);\n    });\n  });\n\n  sync = false;\n};\n\n/**\n * Resolve the file within the given directory.\n *\n * @param {string} dir\n * @param {string} file\n * @pri"
+    },
+    {
+      "name": "resolve",
+      "file": "test_repos/express/lib/view.js",
+      "code": "extname = path.extname;\nvar join = path.join;\nvar resolve = path.resolve;\n\n/**\n * Module exports.\n * @public\n */\n\nmodule.exports = View;\n\n/**\n * Initialize a new `View` with the given `name`.\n *\n * Options:\n *\n *   - `defaultEngine` the default templ"
+    },
+    {
+      "name": "tryStat",
+      "file": "test_repos/express/lib/view.js",
+      "code": ".<ext>\n  var path = join(dir, file);\n  var stat = tryStat(path);\n\n  if (stat && stat.isFile()) {\n    return path;\n  }\n\n  // <path>/index.<ext>\n  path = join(dir, basename(file, ext), 'index' + ext);\n  stat = tryStat(path);\n\n  if (stat && stat.isFile("
+    },
+    {
+      "name": "init",
+      "file": "test_repos/express/lib/application.js",
+      "code": " route reflection methods\n *\n * @private\n */\n\napp.init = function init() {\n  var router = null;\n\n  this.cache = Object.create(null);\n  this.engines = Object.create(null);\n  this.settings = Object.create(null);\n\n  this.defaultConfiguration();\n\n  // Se"
+    },
+    {
+      "name": "getrouter",
+      "file": "test_repos/express/lib/application.js",
+      "code": "le: true,\n    enumerable: true,\n    get: function getrouter() {\n      if (router === null) {\n        router = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n "
+    },
+    {
+      "name": "defaultConfiguration",
+      "file": "test_repos/express/lib/application.js",
+      "code": ");\n  this.settings = Object.create(null);\n\n  this.defaultConfiguration();\n\n  // Setup getting to lazily add base router\n  Object.defineProperty(this, 'router', {\n    configurable: true,\n    enumerable: true,\n    get: function getrouter() {\n      if ("
+    },
+    {
+      "name": "onmount",
+      "file": "test_repos/express/lib/application.js",
+      "code": "g in %s mode', env);\n\n  this.on('mount', function onmount(parent) {\n    // inherit trust proxy\n    if (this.settings[trustProxyDefaultSymbol] === true\n      && typeof parent.settings['trust proxy fn'] === 'function') {\n      delete this.settings['tru"
+    },
+    {
+      "name": "handle",
+      "file": "test_repos/express/lib/application.js",
+      "code": " * Module dependencies.\n * @private\n */\n\nvar finalhandler = require('finalhandler');\nvar debug = require('debug')('express:application');\nvar View = require('./view');\nvar http = require('node:http');\nvar methods = require('./utils').methods;\nvar com"
+    },
+    {
+      "name": "use",
+      "file": "test_repos/express/lib/application.js",
+      "code": " Douglas Christopher Wilson\n * MIT Licensed\n */\n\n'use strict';\n\n/**\n * Module dependencies.\n * @private\n */\n\nvar finalhandler = require('finalhandler');\nvar debug = require('debug')('express:application');\nvar View = require('./view');\nvar http = req"
+    },
+    {
+      "name": "mounted_app",
+      "file": "test_repos/express/lib/application.js",
+      "code": "erty on req and res\n    router.use(path, function mounted_app(req, res, next) {\n      var orig = req.app;\n      fn.handle(req, res, function (err) {\n        Object.setPrototypeOf(req, orig.request)\n        Object.setPrototypeOf(res, orig.response)\n  "
+    },
+    {
+      "name": "route",
+      "file": "test_repos/express/lib/application.js",
+      "code": "\nvar once = require('once')\nvar Router = require('router');\n\n/**\n * Module variables.\n * @private\n */\n\nvar slice = Array.prototype.slice;\nvar flatten = Array.prototype.flat;\n\n/**\n * Application prototype.\n */\n\nvar app = exports = module.exports = {};"
+    },
+    {
+      "name": "param",
+      "file": "test_repos/express/lib/application.js",
+      "code": "se() documentation for details.\n *\n * If the _fn_ parameter is an express app, then it will be\n * mounted at the _route_ specified.\n *\n * @public\n */\n\napp.use = function use(fn) {\n  var offset = 0;\n  var path = '/';\n\n  // default path to '/'\n  // dis"
+    },
+    {
+      "name": "set",
+      "file": "test_repos/express/lib/application.js",
+      "code": "efault';\n\n/**\n * Initialize the server.\n *\n *   - setup default configuration\n *   - setup default middleware\n *   - setup route reflection methods\n *\n * @private\n */\n\napp.init = function init() {\n  var router = null;\n\n  this.cache = Object.create(nu"
+    },
+    {
+      "name": "enabled",
+      "file": "test_repos/express/lib/application.js",
+      "code": "uter = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n      }\n\n      return router;\n    }\n  });\n};\n\n/**\n * Initialize application configuration.\n * @private\n "
+    },
+    {
+      "name": "disabled",
+      "file": "test_repos/express/lib/application.js",
+      "code": "s.set(setting));\n};\n\n/**\n * Check if `setting` is disabled.\n *\n *    app.disabled('foo')\n *    // => true\n *\n *    app.enable('foo')\n *    app.disabled('foo')\n *    // => false\n *\n * @param {String} setting\n * @return {Boolean}\n * @public\n */\n\napp.di"
+    },
+    {
+      "name": "enable",
+      "file": "test_repos/express/lib/application.js",
+      "code": "uter = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n      }\n\n      return router;\n    }\n  });\n};\n\n/**\n * Initialize application configuration.\n * @private\n "
+    },
+    {
+      "name": "disable",
+      "file": "test_repos/express/lib/application.js",
+      "code": "s.set(setting));\n};\n\n/**\n * Check if `setting` is disabled.\n *\n *    app.disabled('foo')\n *    // => true\n *\n *    app.enable('foo')\n *    app.disabled('foo')\n *    // => false\n *\n * @param {String} setting\n * @return {Boolean}\n * @public\n */\n\napp.di"
+    },
+    {
+      "name": "all",
+      "file": "test_repos/express/lib/application.js",
+      "code": "et('views', resolve('views'));\n  this.set('jsonp callback name', 'callback');\n\n  if (env === 'production') {\n    this.enable('view cache');\n  }\n};\n\n/**\n * Dispatch a req, res pair into the application. Starts pipeline processing.\n *\n * If no callback"
+    },
+    {
+      "name": "listen",
+      "file": "test_repos/express/lib/application.js",
+      "code": " app = express();\n *\n *    http.createServer(app).listen(80);\n *    https.createServer({ ... }, app).listen(443);\n *\n * @return {http.Server}\n * @public\n */\n\napp.listen = function listen() {\n  var server = http.createServer(this)\n  var args = slice.c"
+    },
+    {
+      "name": "logerror",
+      "file": "test_repos/express/lib/application.js",
+      "code": "eq, res, {\n    env: this.get('env'),\n    onerror: logerror.bind(this)\n  });\n\n  // set powered by header\n  if (this.enabled('x-powered-by')) {\n    res.setHeader('X-Powered-By', 'Express');\n  }\n\n  // set circular references\n  req.res = res;\n  res.req ="
+    },
+    {
+      "name": "tryRender",
+      "file": "test_repos/express/lib/application.js",
+      "code": "     cache[name] = view;\n    }\n  }\n\n  // render\n  tryRender(view, renderOptions, done);\n};\n\n/**\n * Listen for connections.\n *\n * A node `http.Server` is returned, with this\n * application (which is a `Function`) as its\n * callback. If you wish to cre"
+    }
+  ]
+}

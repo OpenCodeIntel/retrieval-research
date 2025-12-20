@@ -1,0 +1,68 @@
+{
+  "timestamp": "2025-12-18T16:08:06.403532",
+  "experiment": "03_checkpoint3_combined",
+  "results": {
+    "equal": {
+      "metrics": {
+        "hit@1": 0.19047619047619047,
+        "hit@3": 0.47619047619047616,
+        "hit@5": 0.8571428571428571
+      },
+      "weights": {
+        "bm25": 1.0,
+        "code_semantic": 1.0,
+        "summary_semantic": 1.0
+      }
+    },
+    "bm25_heavy": {
+      "metrics": {
+        "hit@1": 0.23809523809523808,
+        "hit@3": 0.42857142857142855,
+        "hit@5": 0.7619047619047619
+      },
+      "weights": {
+        "bm25": 2.0,
+        "code_semantic": 1.0,
+        "summary_semantic": 1.0
+      }
+    },
+    "summary_heavy": {
+      "metrics": {
+        "hit@1": 0.14285714285714285,
+        "hit@3": 0.38095238095238093,
+        "hit@5": 0.9047619047619048
+      },
+      "weights": {
+        "bm25": 1.0,
+        "code_semantic": 1.0,
+        "summary_semantic": 2.0
+      }
+    },
+    "no_bm25": {
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 0.42857142857142855,
+        "hit@5": 0.9523809523809523
+      },
+      "weights": {
+        "bm25": 0.0,
+        "code_semantic": 1.0,
+        "summary_semantic": 1.0
+      }
+    },
+    "code_heavy": {
+      "metrics": {
+        "hit@1": 0.14285714285714285,
+        "hit@3": 0.47619047619047616,
+        "hit@5": 0.8095238095238095
+      },
+      "weights": {
+        "bm25": 1.0,
+        "code_semantic": 2.0,
+        "summary_semantic": 1.0
+      }
+    }
+  },
+  "best": "bm25_heavy",
+  "best_hit1": 0.23809523809523808
+}

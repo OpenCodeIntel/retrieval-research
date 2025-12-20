@@ -1,0 +1,790 @@
+{
+  "timestamp": "2025-12-18T16:33:12.798593",
+  "num_functions": 112,
+  "functions": [
+    {
+      "name": "useSyncExternalStoreExports",
+      "code": "{ useSyncExternalStoreWithSelector } = useSyncExternalStoreExports",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "Provides a hook for synchronizing external store data with selectors in a React component. Use this function when you need to efficiently manage and derive state from an external data source in your application, ensuring that UI updates are triggered only when necessary."
+    },
+    {
+      "name": "identity",
+      "code": "identity = <T>(arg: T): T => arg",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "Returns the input argument as-is, effectively serving as an identity function. Use this function when you want to pass through values without altering them, such as in functional programming contexts or when working with higher-order functions that require a transformation function but you want to avoid changing the value."
+    },
+    {
+      "name": "arg",
+      "code": "<T>(arg: T): T => arg",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "arrow_function",
+      "summary": "Returns the input argument unchanged, effectively passing through values without alteration. This function is useful in scenarios where a consistent return type is needed, particularly in functional programming contexts or as a utility in state management to maintain type integrity. Developers may use this function to enhance code readability and ensure that the input type is preserved without modification."
+    },
+    {
+      "name": "useStoreWithEqualityFn",
+      "code": "function useStoreWithEqualityFn<TState, StateSlice>(\n  api: ReadonlyStoreApi<TState>,\n  selector: (state: TState) => StateSlice = identity as any,\n  equalityFn?: (a: StateSlice, b: StateSlice) => boolean,\n) {\n  const slice = useSyncExternalStoreWithSelector(\n    api.subscribe,\n    api.getState,\n    api.getInitialState,\n    selector,\n    equalityFn,\n  )\n  React.useDebugValue(slice)\n  return slice\n}",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "function_declaration",
+      "summary": "Provides a hook for accessing slices of state from a Zustand store with the ability to customize equality checks for state comparison. Use this function when you want to optimize your component's re-renders by ensuring it only updates when specific parts of the state change, helping improve performance in larger applications."
+    },
+    {
+      "name": "slice",
+      "code": "slice = useSyncExternalStoreWithSelector(\n    api.subscribe,\n    api.getState,\n    api.getInitialState,\n    selector,\n    equalityFn,\n  )",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "Enables state management in a React application by allowing components to subscribe to specific slices of state. Use this function when you need to efficiently select and react to changes in a portion of your global store's state, improving performance and reactivity in your application."
+    },
+    {
+      "name": "createWithEqualityFnImpl",
+      "code": "createWithEqualityFnImpl = <T>(\n  createState: StateCreator<T, [], []>,\n  defaultEqualityFn?: <U>(a: U, b: U) => boolean,\n) => {\n  const api = createStore(createState)\n\n  const useBoundStoreWithEqualityFn: any = (\n    selector?: any,\n    equalityFn = defaultEqualityFn,\n  ) => useStoreWithEqualityFn(api, selector, equalityFn)\n\n  Object.assign(useBoundStoreWithEqualityFn, api)\n\n  return useBoundStoreWithEqualityFn\n}",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store with a customizable equality function for extracting state. Use this function when you need to selectively re-render components based on specific state slices while ensuring optimal performance with equality checks. Ideal for applications where state comparison is necessary to minimize unnecessary renders."
+    },
+    {
+      "name": "api",
+      "code": "api = createStore(createState)",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store instance with a specified initial state. Use this function to initiate state management in your application where you need a centralized store for managing and accessing state across components. Ideal for projects leveraging React or similar frameworks for component-based architecture."
+    },
+    {
+      "name": "useBoundStoreWithEqualityFn",
+      "code": "useBoundStoreWithEqualityFn: any = (\n    selector?: any,\n    equalityFn = defaultEqualityFn,\n  ) => useStoreWithEqualityFn(api, selector, equalityFn)",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "A custom hook that allows you to access a Zustand store with a selector and an optional equality function for optimized updates. Use this function when you want to derive state from your store and avoid unnecessary re-renders by comparing previous and current values efficiently. Ideal for improving performance in React applications by ensuring components only re-render when relevant state changes occur."
+    },
+    {
+      "name": "createWithEqualityFn",
+      "code": "createWithEqualityFn = (<T>(\n  createState: StateCreator<T, [], []> | undefined,\n  defaultEqualityFn?: <U>(a: U, b: U) => boolean,\n) =>\n  createState\n    ? createWithEqualityFnImpl(createState, defaultEqualityFn)\n    : createWithEqualityFnImpl) as CreateWithEqualityFn",
+      "file": "test_repos/zustand/src/traditional.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store with a custom equality function to determine when state updates should trigger re-renders. Use this function when you need finer control over state comparisons, optimizing performance in React components by preventing unnecessary renders."
+    },
+    {
+      "name": "identity",
+      "code": "identity = <T>(arg: T): T => arg",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "variable_declarator",
+      "summary": "The `identity` function returns the input argument unchanged and serves as a simple utility for maintaining typographic integrity in TypeScript. Developers can use it in situations where a function is required but no transformation of the input is needed, especially when dealing with higher-order functions or callbacks that expect a function signature."
+    },
+    {
+      "name": "arg",
+      "code": "<T>(arg: T): T => arg",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "arrow_function",
+      "summary": "Returns the value passed to it, effectively serving as an identity function. Developers can use this function when they need to ensure that a value is returned unchanged, such as when defining callback functions or middleware in Zustand. This is useful for maintaining type integrity in TypeScript while working with state management."
+    },
+    {
+      "name": "useStore",
+      "code": "function useStore<TState, StateSlice>(\n  api: ReadonlyStoreApi<TState>,\n  selector: (state: TState) => StateSlice = identity as any,\n) {\n  const slice = React.useSyncExternalStore(\n    api.subscribe,\n    React.useCallback(() => selector(api.getState()), [api, selector]),\n    React.useCallback(() => selector(api.getInitialState()), [api, selector]),\n  )\n  React.useDebugValue(slice)\n  return slice\n}",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "function_declaration",
+      "summary": "\"Retrieves a specific slice of state from a Zustand store using a selector function. Use this function when you need to synchronize component state with a specific part of your global store, ensuring that your component updates automatically when the selected state changes.\""
+    },
+    {
+      "name": "slice",
+      "code": "slice = React.useSyncExternalStore(\n    api.subscribe,\n    React.useCallback(() => selector(api.getState()), [api, selector]),\n    React.useCallback(() => selector(api.getInitialState()), [api, selector]),\n  )",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "variable_declarator",
+      "summary": "Implements a synchronization mechanism for external stores using Zustand, allowing components to reactively subscribe to state changes and access both current and initial state. Use this function when integrating Zustand with external data sources or libraries that require maintaining synchronized state, ensuring your components stay updated seamlessly."
+    },
+    {
+      "name": "createImpl",
+      "code": "createImpl = <T>(createState: StateCreator<T, [], []>) => {\n  const api = createStore(createState)\n\n  const useBoundStore: any = (selector?: any) => useStore(api, selector)\n\n  Object.assign(useBoundStore, api)\n\n  return useBoundStore\n}",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a custom Zustand store based on the provided state creator function. Use this function when you want to define and manage application state in a React application, allowing components to access and manipulate that state seamlessly."
+    },
+    {
+      "name": "api",
+      "code": "api = createStore(createState)",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store instance based on the specified initial state. Use this when you want to manage global state in your React application, providing a streamlined way to access and modify that state across components. Ideal for applications needing efficient state management without boilerplate code."
+    },
+    {
+      "name": "useBoundStore",
+      "code": "useBoundStore: any = (selector?: any) => useStore(api, selector)",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "variable_declarator",
+      "summary": "Returns a bound store from Zustand that allows you to access and manipulate state using a selector function. Use this function when you need to interact with a specific slice of your Zustand store in a React component, simplifying state management and improving performance by preventing unnecessary re-renders."
+    },
+    {
+      "name": "create",
+      "code": "create = (<T>(createState: StateCreator<T, [], []> | undefined) =>\n  createState ? createImpl(createState) : createImpl) as Create",
+      "file": "test_repos/zustand/src/react.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store by initializing it with a specified state creator function. Developers use this function when they want to set up a new store for managing application state in a React application. This function serves as the primary method for creating and configuring Zustand state management."
+    },
+    {
+      "name": "createStoreImpl",
+      "code": "createStoreImpl: CreateStoreImpl = (createState) => {\n  type TState = ReturnType<typeof createState>\n  type Listener = (state: TState, prevState: TState) => void\n  let state: TState\n  const listeners: Set<Listener> = new Set()\n\n  const setState: StoreApi<TState>['setState'] = (partial, replace) => {\n    // TODO: Remove type assertion once https://github.com/microsoft/TypeScript/issues/37663 is resolved\n    // https://github.com/microsoft/TypeScript/issues/37663#issuecomment-759728342\n    const nextState =\n      typeof partial === 'function'\n        ? (partial as (state: TState) => TState)(state)\n        : partial\n    if (!Object.is(nextState, state)) {\n      const previousState = state\n      state =\n        (replace ?? (typeof nextState !== 'object' || nextState === null))\n          ? (nextState as TState)\n          : Object.assign({}, state, nextState)\n      listeners.forEach((listener) => listener(state, previousState))\n    }\n  }\n\n  const getState: StoreApi<TState>['getState'] = () => state\n\n  const getInitialState: StoreApi<TState>['getInitialState'] = () =>\n    initialState\n\n  const subscribe: StoreApi<TState>['subscribe'] = (listener) => {\n    listeners.add(listener)\n    // Unsubscribe\n    return () => listeners.delete(listener)\n  }\n\n  const api = { setState, getState, getInitialState, subscribe }\n  const initialState = (state = createState(setState, getState, api))\n  return api as any\n}",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store implementation that facilitates state management by allowing developers to set, get, and subscribe to state changes. Use this function when building applications that require a reactive state management solution, enabling efficient updates and listener notifications for component states."
+    },
+    {
+      "name": "listeners",
+      "code": "listeners: Set<Listener> = new Set()",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Manages a collection of listener functions that can react to state changes in a Zustand store. This is useful when you need to trigger side effects or UI updates in response to specific state updates. You would use this when implementing dynamic features that depend on the store's state changes."
+    },
+    {
+      "name": "setState",
+      "code": "setState: StoreApi<TState>['setState'] = (partial, replace) => {\n    // TODO: Remove type assertion once https://github.com/microsoft/TypeScript/issues/37663 is resolved\n    // https://github.com/microsoft/TypeScript/issues/37663#issuecomment-759728342\n    const nextState =\n      typeof partial === 'function'\n        ? (partial as (state: TState) => TState)(state)\n        : partial\n    if (!Object.is(nextState, state)) {\n      const previousState = state\n      state =\n        (replace ?? (typeof nextState !== 'object' || nextState === null))\n          ? (nextState as TState)\n          : Object.assign({}, state, nextState)\n      listeners.forEach((listener) => listener(state, previousState))\n    }\n  }",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Updates the current state of a Zustand store with new values or a state updater function. Use this function when you need to change the store's state in response to user actions or events, ensuring the listeners are notified of the state changes."
+    },
+    {
+      "name": "nextState",
+      "code": "nextState =\n      typeof partial === 'function'\n        ? (partial as (state: TState) => TState)(state)\n        : partial",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Calculates the next state for a Zustand store based on either a direct state update or a function that modifies the current state. Use this function when you need to return a new state derived from either an object or a state-updating function, allowing for flexible state management in your application."
+    },
+    {
+      "name": "previousState",
+      "code": "previousState = state",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the previous state of a Zustand store. This function is useful when you need to access or compare the state before the most recent update, enabling functionalities like undo actions or version comparisons in your application."
+    },
+    {
+      "name": "getState",
+      "code": "getState: StoreApi<TState>['getState'] = () => state",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the current state of the Zustand store. Developers use this function when they need to access or read the current state values stored in the Zustand store, facilitating state access across components."
+    },
+    {
+      "name": "getInitialState",
+      "code": "getInitialState: StoreApi<TState>['getInitialState'] = () =>\n    initialState",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the initial state of a Zustand store. Use this function when initializing your store to ensure that it starts with a predefined state structure, making it essential for consistent state management across your application."
+    },
+    {
+      "name": "initialState",
+      "code": "() =>\n    initialState",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "arrow_function",
+      "summary": "Returns the initial state object for a Zustand store. Developers would use this function when setting up a store to ensure that it starts with a predefined state, making it essential for initializing state management in applications."
+    },
+    {
+      "name": "subscribe",
+      "code": "subscribe: StoreApi<TState>['subscribe'] = (listener) => {\n    listeners.add(listener)\n    // Unsubscribe\n    return () => listeners.delete(listener)\n  }",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Subscribes a listener function to state changes in a Zustand store, allowing components or functions to react to updates in the store's state. Use this function when you want to enable reactive programming in your application, ensuring that specific actions are taken whenever the state is modified."
+    },
+    {
+      "name": "api",
+      "code": "api = { setState, getState, getInitialState, subscribe }",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Provides an API for managing application state in Zustand, allowing developers to set, get, and subscribe to state changes. Use this function when you need to create a state store that facilitates state management across your application components."
+    },
+    {
+      "name": "initialState",
+      "code": "initialState = (state = createState(setState, getState, api))",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Initializes the Zustand store with a specified initial state, allowing developers to set up their application's state management seamlessly. Use this function when you want to define the default state structure and values for your store before using it throughout your application."
+    },
+    {
+      "name": "createStore",
+      "code": "createStore = ((createState) =>\n  createState ? createStoreImpl(createState) : createStoreImpl) as CreateStore",
+      "file": "test_repos/zustand/src/vanilla.ts",
+      "type": "variable_declarator",
+      "summary": "Creates a Zustand store by initializing state management with the provided creation function. Use this function when setting up a new store in your application to manage and persist state effectively across components."
+    },
+    {
+      "name": "subscribeWithSelectorImpl",
+      "code": "subscribeWithSelectorImpl: SubscribeWithSelectorImpl =\n  (fn) => (set, get, api) => {\n    type S = ReturnType<typeof fn>\n    type Listener = (state: S, previousState: S) => void\n    const origSubscribe = api.subscribe as (listener: Listener) => () => void\n    api.subscribe = ((selector: any, optListener: any, options: any) => {\n      let listener: Listener = selector // if no selector\n      if (optListener) {\n        const equalityFn = options?.equalityFn || Object.is\n        let currentSlice = selector(api.getState())\n        listener = (state) => {\n          const nextSlice = selector(state)\n          if (!equalityFn(currentSlice, nextSlice)) {\n            const previousSlice = currentSlice\n            optListener((currentSlice = nextSlice), previousSlice)\n          }\n        }\n        if (options?.fireImmediately) {\n          optListener(currentSlice, currentSlice)\n        }\n      }\n      return origSubscribe(listener)\n    }) as any\n    const initialState = fn(set, get, api)\n    return initialState\n  }",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Enhances the Zustand store subscription mechanism by allowing developers to subscribe to specific slices of the state with custom equality checks. Use this function when you want to optimize performance by preventing unnecessary re-renders or side effects in your application based on selective state updates. Ideal for managing complex state dependencies efficiently in a React application."
+    },
+    {
+      "name": "origSubscribe",
+      "code": "origSubscribe = api.subscribe as (listener: Listener) => () => void",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Subscribes to updates in a Zustand store, allowing developers to listen for state changes and execute a callback function when those changes occur. This function is useful when you want to react to specific state updates in your application, enabling efficient re-renders or side effects based on store data changes."
+    },
+    {
+      "name": "listener",
+      "code": "listener: Listener = selector",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Subscribes to changes in state selections to trigger callbacks, allowing developers to listen for specific parts of the Zustand store. Use this function when you need to react to changes in selected state slices without unnecessary re-renders. Ideal for optimizing performance in React applications using Zustand for state management."
+    },
+    {
+      "name": "equalityFn",
+      "code": "equalityFn = options?.equalityFn || Object.is",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Defines a custom equality function for state comparison in Zustand, allowing developers to specify how state changes are detected. This is useful when optimizing component re-renders or when implementing derived state, ensuring updates only occur when relevant changes happen. Use this when you need fine-grained control over state subscriptions and want to prevent unnecessary updates in your application."
+    },
+    {
+      "name": "currentSlice",
+      "code": "currentSlice = selector(api.getState())",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the current slice of state from a Zustand store based on the provided selector function. Developers use this function when they need to access specific parts of the store's state for efficient reactivity and minimal re-renders in their components. This is particularly useful in performance-sensitive applications requiring targeted state management."
+    },
+    {
+      "name": "nextSlice",
+      "code": "nextSlice = selector(state)",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Returns a specific slice of the global state based on a provided selector function. Developers would use this function when they need to extract or listen to a particular portion of their Zustand store's state efficiently, allowing for optimized re-renders and focused state management in their applications."
+    },
+    {
+      "name": "previousSlice",
+      "code": "previousSlice = currentSlice",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Stores the previous slice of state in a Zustand store, allowing developers to access the last known state of a specific part of the application state. Use this function when you need to compare the current state with the past state, enabling features like undo functionality or change detection in your application."
+    },
+    {
+      "name": "initialState",
+      "code": "initialState = fn(set, get, api)",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Sets the initial state for a Zustand store using a provided function that can access state management methods. Use this when you want to define default values and actions for your application's global state at the time of store creation. Ideal for initializing complex state structures or when integrating with external data sources."
+    },
+    {
+      "name": "subscribeWithSelector",
+      "code": "subscribeWithSelector =\n  subscribeWithSelectorImpl as unknown as SubscribeWithSelector",
+      "file": "test_repos/zustand/src/middleware/subscribeWithSelector.ts",
+      "type": "variable_declarator",
+      "summary": "Allows subscribing to Zustand store changes with specific selectors for more efficient state management. Use this function when you want to avoid unnecessary re-renders by targeting specific slices of your state. Ideal for optimizing performance in large applications where selective updates are crucial."
+    },
+    {
+      "name": "ssrSafe",
+      "code": "function ssrSafe<\n  T extends object,\n  U extends object,\n  Mps extends [StoreMutatorIdentifier, unknown][] = [],\n  Mcs extends [StoreMutatorIdentifier, unknown][] = [],\n>(\n  config: StateCreator<T, Mps, Mcs, U>,\n  isSSR: boolean = typeof window === 'undefined',\n): StateCreator<T, Mps, Mcs, U> {\n  return (set, get, api) => {\n    if (!isSSR) {\n      return config(set, get, api)\n    }\n    const ssrSet = () => {\n      throw new Error('Cannot set state of Zustand store in SSR')\n    }\n    api.setState = ssrSet\n    return config(ssrSet as never, get, api)\n  }\n}",
+      "file": "test_repos/zustand/src/middleware/ssrSafe.ts",
+      "type": "function_declaration",
+      "summary": "Ensures that the Zustand store state cannot be modified during server-side rendering (SSR) to prevent errors. Use this function when building applications with SSR to safely configure your Zustand store without risking state mutations on the server. Ideal for developers seeking to manage state in an isomorphic React application."
+    },
+    {
+      "name": "ssrSet",
+      "code": "ssrSet = () => {\n      throw new Error('Cannot set state of Zustand store in SSR')\n    }",
+      "file": "test_repos/zustand/src/middleware/ssrSafe.ts",
+      "type": "variable_declarator",
+      "summary": "Throws an error when attempting to set the state of a Zustand store during server-side rendering (SSR). Use this function to prevent state modifications in SSR environments, ensuring that state management follows the appropriate lifecycle and avoids inconsistencies. It is crucial when implementing Zustand in applications that render content on the server."
+    },
+    {
+      "name": "trackedConnections",
+      "code": "trackedConnections: Map<ConnectionName, ConnectionInformation> = new Map()",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Tracks active connections in a Zustand state management system by maintaining a mapping of connection names to their respective information. Developers would use this when managing multiple connections in their application and need an organized way to access and update connection data during runtime. This functionality is essential for real-time applications requiring connection tracking and state synchronization."
+    },
+    {
+      "name": "getTrackedConnectionState",
+      "code": "getTrackedConnectionState = (\n  name: string | undefined,\n): Record<string, any> => {\n  const api = trackedConnections.get(name)\n  if (!api) return {}\n  return Object.fromEntries(\n    Object.entries(api.stores).map(([key, api]) => [key, api.getState()]),\n  )\n}",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the current state of tracked connections in a Zustand application based on a specified name. Use this function when you need to access the state of a specific connection, especially in debugging or development scenarios with the Zustand devtools. It's useful for developers who want to monitor or log the state of stores associated with a particular connection."
+    },
+    {
+      "name": "api",
+      "code": "api = trackedConnections.get(name)",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves a specific tracked connection from the Zustand store using its name. Use this function when you need to access or manipulate a connection's state in a structured way within your application's state management."
+    },
+    {
+      "name": "extractConnectionInformation",
+      "code": "extractConnectionInformation = (\n  store: string | undefined,\n  extensionConnector: NonNullable<\n    (typeof window)['__REDUX_DEVTOOLS_EXTENSION__']\n  >,\n  options: Omit<DevtoolsOptions, 'enabled' | 'anonymousActionType' | 'store'>,\n) => {\n  if (store === undefined) {\n    return {\n      type: 'untracked' as const,\n      connection: extensionConnector.connect(options),\n    }\n  }\n  const existingConnection = trackedConnections.get(options.name)\n  if (existingConnection) {\n    return { type: 'tracked' as const, store, ...existingConnection }\n  }\n  const newConnection: ConnectionInformation = {\n    connection: extensionConnector.connect(options),\n    stores: {},\n  }\n  trackedConnections.set(options.name, newConnection)\n  return { type: 'tracked' as const, store, ...newConnection }\n}",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Extracts connection information for Zustand stores when integrating with the Redux DevTools extension, determining whether the store is tracked or untracked. Use this function when you want to enable debugging capabilities in your application with Redux DevTools and manage the connections properly based on the store's tracking status."
+    },
+    {
+      "name": "existingConnection",
+      "code": "existingConnection = trackedConnections.get(options.name)",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves an existing connection from the trackedConnections based on the specified options name. Use this function when you need to access or validate a previously established connection within your Zustand state management setup. Ideal for scenarios where maintaining consistent state across various components is necessary."
+    },
+    {
+      "name": "newConnection",
+      "code": "newConnection: ConnectionInformation = {\n    connection: extensionConnector.connect(options),\n    stores: {},\n  }",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Establishes a new connection to the Zustand store using the provided options, facilitating the integration with an extension for state management. Developers should use this function when they need to initiate a connection to manage the state of their application through the Zustand devtools. This is essential for monitoring and debugging state changes in real-time during development."
+    },
+    {
+      "name": "removeStoreFromTrackedConnections",
+      "code": "removeStoreFromTrackedConnections = (\n  name: string | undefined,\n  store: string | undefined,\n) => {\n  if (store === undefined) return\n  const connectionInfo = trackedConnections.get(name)\n  if (!connectionInfo) return\n  delete connectionInfo.stores[store]\n  if (Object.keys(connectionInfo.stores).length === 0) {\n    trackedConnections.delete(name)\n  }\n}",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Removes a specified store from the tracked connections in Zustand's devtools integration. Use this function when you want to disconnect a store from the devtools feature, especially when the store is no longer needed or has been removed from your application. This helps keep your tracked connections organized and up-to-date."
+    },
+    {
+      "name": "connectionInfo",
+      "code": "connectionInfo = trackedConnections.get(name)",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the connection information of a specific tracked connection by its name. Use this function when you need to access or inspect the state of a particular connection in Zustand's devtools, particularly during debugging or development."
+    },
+    {
+      "name": "findCallerName",
+      "code": "findCallerName = (stack: string | undefined) => {\n  if (!stack) return undefined\n  const traceLines = stack.split('\\n')\n  const apiSetStateLineIndex = traceLines.findIndex((traceLine) =>\n    traceLine.includes('api.setState'),\n  )\n  if (apiSetStateLineIndex < 0) return undefined\n  const callerLine = traceLines[apiSetStateLineIndex + 1]?.trim() || ''\n  return /.+ (.+) .+/.exec(callerLine)?.[1]\n}",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Extracts the name of the caller function from a stack trace when the Zustand `api.setState` method is invoked. Developers would use this function for debugging purposes to identify which part of the code triggered a state update, especially when tracking state changes in applications using Zustand for state management."
+    },
+    {
+      "name": "traceLines",
+      "code": "traceLines = stack.split('\\n')",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Splits a stack trace string into an array of lines for easier analysis and debugging. Use this function when you need to process error stack traces in your Zustand application to identify specific points of failure. Ideal for developers seeking to enhance error handling and logging in their state management implementation."
+    },
+    {
+      "name": "apiSetStateLineIndex",
+      "code": "apiSetStateLineIndex = traceLines.findIndex((traceLine) =>\n    traceLine.includes('api.setState'),\n  )",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the index of the first occurrence of the 'api.setState' string within the trace lines. This function is useful when debugging API state changes and allows developers to easily locate and reference specific state updates in the trace logs. Use it when you need to analyze or trace back state modifications related to API calls in Zustand-managed applications."
+    },
+    {
+      "name": "callerLine",
+      "code": "callerLine = traceLines[apiSetStateLineIndex + 1]?.trim() || ''",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the caller's line of code from a trace, providing a formatted string representation of the caller\u2019s location. This function is useful when debugging or analyzing state changes, helping developers quickly identify which part of their code is triggering state updates in a Zustand store."
+    },
+    {
+      "name": "devtoolsImpl",
+      "code": "devtoolsImpl: DevtoolsImpl =\n  (fn, devtoolsOptions = {}) =>\n  (set, get, api) => {\n    const { enabled, anonymousActionType, store, ...options } = devtoolsOptions\n\n    type S = ReturnType<typeof fn> & {\n      [store: string]: ReturnType<typeof fn>\n    }\n    type PartialState = Partial<S> | ((s: S) => Partial<S>)\n\n    let extensionConnector:\n      | (typeof window)['__REDUX_DEVTOOLS_EXTENSION__']\n      | false\n    try {\n      extensionConnector =\n        (enabled ?? import.meta.env?.MODE !== 'production') &&\n        window.__REDUX_DEVTOOLS_EXTENSION__\n    } catch {\n      // ignored\n    }\n\n    if (!extensionConnector) {\n      return fn(set, get, api)\n    }\n\n    const { connection, ...connectionInformation } =\n      extractConnectionInformation(store, extensionConnector, options)\n\n    let isRecording = true\n    ;(api.setState as any) = ((state, replace, nameOrAction: Action) => {\n      const r = set(state, replace as any)\n      if (!isRecording) return r\n      const action: { type: string } =\n        nameOrAction === undefined\n          ? {\n              type:\n                anonymousActionType ||\n                findCallerName(new Error().stack) ||\n                'anonymous',\n            }\n          : typeof nameOrAction === 'string'\n            ? { type: nameOrAction }\n            : nameOrAction\n      if (store === undefined) {\n        connection?.send(action, get())\n        return r\n      }\n      connection?.send(\n        {\n          ...action,\n          type: `${store}/${action.type}`,\n        },\n        {\n          ...getTrackedConnectionState(options.name),\n          [store]: api.getState(),\n        },\n      )\n      return r\n    }) as NamedSet<S>\n    ;(api as StoreApi<S> & StoreDevtools<S>).devtools = {\n      cleanup: () => {\n        if (\n          connection &&\n          typeof (connection as any).unsubscribe === 'function'\n        ) {\n          ;(connection as any).unsubscribe()\n        }\n        removeStoreFromTrackedConnections(options.name, store)\n      }",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Integrates Zustand state management with Redux DevTools, enabling real-time state monitoring and debugging through the Redux DevTools extension. Use this function when you want to enhance your Zustand store with debugging capabilities, especially during development and testing. Ideal for any application needing improved visibility into state changes while maintaining performance in production."
+    },
+    {
+      "name": "devtoolsOptions",
+      "code": "{ enabled, anonymousActionType, store, ...options } = devtoolsOptions",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Configures developer tools options for Zustand state management, enabling features like action logging and time-travel debugging. Use this function when you want to enhance your development experience by monitoring state changes and actions in your application. Ideal for developers looking to integrate debugging capabilities into their Zustand stores."
+    },
+    {
+      "name": "extensionConnector",
+      "code": "extensionConnector:\n      | (typeof window)['__REDUX_DEVTOOLS_EXTENSION__']\n      | false",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Provides a connection to the Redux DevTools extension, allowing for enhanced debugging and state inspection of Zustand stores. Developers should use this function when they want to leverage Redux DevTools for real-time tracking and visualization of state changes during the development process. Ideal for improving the debugging experience and understanding state flows in applications using Zustand."
+    },
+    {
+      "name": "r",
+      "code": "r = set(state, replace as any)",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Updates the state in a Zustand store with new values, replacing the current state as specified. Developers would use this function when they want to make specific changes to the state without merging, ensuring the state reflects a complete new setup. This is particularly useful in scenarios where a total state reset or complete overwrite is necessary for the application logic."
+    },
+    {
+      "name": "action",
+      "code": "action: { type: string } =\n        nameOrAction === undefined\n          ? {\n              type:\n                anonymousActionType ||\n                findCallerName(new Error().stack) ||\n                'anonymous',\n            }\n          : typeof nameOrAction === 'string'\n            ? { type: nameOrAction }\n            : nameOrAction",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Generates an action object representing a state change in a Zustand store. Developers use this function to create consistent action types for tracking state modifications, especially when the action name is not explicitly provided. It ensures that every action can be logged or handled uniformly within state management workflows."
+    },
+    {
+      "name": "setStateFromDevtools",
+      "code": "setStateFromDevtools: StoreApi<S>['setState'] = (...a) => {\n      const originalIsRecording = isRecording\n      isRecording = false\n      set(...(a as Parameters<typeof set>))\n      isRecording = originalIsRecording\n    }",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Updates the Zustand store state based on interactions captured from the Redux DevTools extension. Use this function when you want to synchronize the application's state with changes made in the DevTools, ensuring that user actions in the DevTools can reflect immediately in your Zustand store state."
+    },
+    {
+      "name": "originalIsRecording",
+      "code": "originalIsRecording = isRecording",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Indicates whether the Zustand store is currently in the recording state, allowing for debugging and monitoring of state changes. A developer would use this function when they need to determine if the store is actively tracking changes for performance analysis or development purposes. This is essential for integrating Zustand with development tools or creating custom middleware for state debugging."
+    },
+    {
+      "name": "initialState",
+      "code": "initialState = fn(api.setState, get, api)",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Initializes the Zustand store with a predefined initial state. Developers use this function when setting up a new store to ensure it starts with the correct values, enabling consistent application behavior. This is essential for managing global or shared state in React applications."
+    },
+    {
+      "name": "didWarnAboutReservedActionType",
+      "code": "didWarnAboutReservedActionType = false",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Tracks whether a warning has been issued for using a reserved action type in Zustand. Developers should refer to this property when debugging their Zustand store and need to avoid unintentionally using reserved action types that could lead to conflicts or unexpected behavior. This is essential for maintaining clean and predictable state management in your application."
+    },
+    {
+      "name": "originalDispatch",
+      "code": "originalDispatch = (api as any).dispatch",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Enables direct dispatching of actions to the Zustand store, allowing developers to manipulate store state programmatically. Use this function when integrating Zustand with other libraries or custom middleware where you need to trigger state changes manually. This provides a way to access and execute the store's dispatch method more flexibly."
+    },
+    {
+      "name": "stateFromDevtools",
+      "code": "stateFromDevtools = (action.state as S)[store]",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the current state of a Zustand store while integrating with Redux DevTools for easier debugging. Use this function when you want to inspect and track the state changes of your Zustand store in the DevTools UI. This is essential for developers who need to monitor state updates in real-time during development."
+    },
+    {
+      "name": "lastComputedState",
+      "code": "lastComputedState =\n                nextLiftedState.computedStates.slice(-1)[0]?.state",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the most recent computed state from the Zustand devtools lifted state. This is useful for debugging or analyzing state changes in your Zustand store when you want to access the latest state after actions have been processed."
+    },
+    {
+      "name": "devtools",
+      "code": "devtools = devtoolsImpl as unknown as Devtools",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Integrates the Zustand state management library with Redux DevTools, allowing for easier debugging and state inspection. Developers would use this function when they want to monitor and manipulate the state of their application in real time during development. It enhances the debugging experience by visualizing state changes in a familiar Redux interface."
+    },
+    {
+      "name": "parseJsonThen",
+      "code": "parseJsonThen = <T>(stringified: string, fn: (parsed: T) => void) => {\n  let parsed: T | undefined\n  try {\n    parsed = JSON.parse(stringified)\n  } catch (e) {\n    console.error(\n      '[zustand devtools middleware] Could not parse the received json',\n      e,\n    )\n  }\n  if (parsed !== undefined) fn(parsed as T)\n}",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Parses a JSON string and invokes a callback function with the parsed object. Use this function when you need to safely handle stringified JSON data and perform an action based on the resulting object, while also managing potential parsing errors. Ideal for integrations with external data sources that provide JSON-formatted strings."
+    },
+    {
+      "name": "parsed",
+      "code": "parsed: T | undefined",
+      "file": "test_repos/zustand/src/middleware/devtools.ts",
+      "type": "variable_declarator",
+      "summary": "Returns the parsed value of the stored state or `undefined` if not available. Use this function when you need to access the current state of a Zustand store in a parsed form, helping to easily retrieve and utilize state data in your application."
+    },
+    {
+      "name": "immerImpl",
+      "code": "immerImpl: ImmerImpl = (initializer) => (set, get, store) => {\n  type T = ReturnType<typeof initializer>\n\n  store.setState = (updater, replace, ...args) => {\n    const nextState = (\n      typeof updater === 'function' ? produce(updater as any) : updater\n    ) as ((s: T) => T) | T | Partial<T>\n\n    return set(nextState, replace as any, ...args)\n  }\n\n  return initializer(store.setState, get, store)\n}",
+      "file": "test_repos/zustand/src/middleware/immer.ts",
+      "type": "variable_declarator",
+      "summary": "Implements an immer-based state management solution for Zustand, enabling mutable state updates while maintaining immutability. Use this function when you want to simplify state mutations in your Zustand stores by leveraging the immer library. Ideal for developers looking to enhance state management patterns with straightforward, mutable syntax."
+    },
+    {
+      "name": "nextState",
+      "code": "nextState = (\n      typeof updater === 'function' ? produce(updater as any) : updater\n    ) as ((s: T) => T) | T | Partial<T>",
+      "file": "test_repos/zustand/src/middleware/immer.ts",
+      "type": "variable_declarator",
+      "summary": "Applies an updater function or partial state to generate the next state in a Zustand store. Use this function when you need to modify the current state in a predictable way, especially in scenarios involving complex state updates or when using immer for immutability."
+    },
+    {
+      "name": "immer",
+      "code": "immer = immerImpl as unknown as Immer",
+      "file": "test_repos/zustand/src/middleware/immer.ts",
+      "type": "variable_declarator",
+      "summary": "Provides a way to manage immutable state updates in Zustand stores using the Immer library. Use this function when you want to simplify state manipulation by writing straightforward mutable code that gets converted to immutable updates, enhancing state management efficiency in your application."
+    },
+    {
+      "name": "createJSONStorage",
+      "code": "function createJSONStorage<S, R = unknown>(\n  getStorage: () => StateStorage<R>,\n  options?: JsonStorageOptions,\n): PersistStorage<S, unknown> | undefined {\n  let storage: StateStorage<R> | undefined\n  try {\n    storage = getStorage()\n  } catch {\n    // prevent error if the storage is not defined (e.g. when server side rendering a page)\n    return\n  }\n  const persistStorage: PersistStorage<S, R> = {\n    getItem: (name) => {\n      const parse = (str: string | null) => {\n        if (str === null) {\n          return null\n        }\n        return JSON.parse(str, options?.reviver) as StorageValue<S>\n      }\n      const str = storage.getItem(name) ?? null\n      if (str instanceof Promise) {\n        return str.then(parse)\n      }\n      return parse(str)\n    },\n    setItem: (name, newValue) =>\n      storage.setItem(name, JSON.stringify(newValue, options?.replacer)),\n    removeItem: (name) => storage.removeItem(name),\n  }\n  return persistStorage\n}",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "function_declaration",
+      "summary": "Creates a JSON-based storage solution for persisting state in a Zustand store. Use this function when you want to save and retrieve state across sessions, ensuring data remains consistent even after page reloads, while automatically handling JSON serialization and deserialization."
+    },
+    {
+      "name": "storage",
+      "code": "storage: StateStorage<R> | undefined",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Defines the storage mechanism for persisting Zustand store state, which can be set to localStorage, sessionStorage, or a custom storage solution. Developers should use this when they want to ensure that their application's state is maintained across page reloads or sessions, enhancing user experience by preventing data loss."
+    },
+    {
+      "name": "persistStorage",
+      "code": "persistStorage: PersistStorage<S, R> = {\n    getItem: (name) => {\n      const parse = (str: string | null) => {\n        if (str === null) {\n          return null\n        }\n        return JSON.parse(str, options?.reviver) as StorageValue<S>\n      }\n      const str = storage.getItem(name) ?? null\n      if (str instanceof Promise) {\n        return str.then(parse)\n      }\n      return parse(str)\n    },\n    setItem: (name, newValue) =>\n      storage.setItem(name, JSON.stringify(newValue, options?.replacer)),\n    removeItem: (name) => storage.removeItem(name),\n  }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Provides an interface for persistent storage using Zustand, allowing developers to easily manage the saving, retrieving, and deletion of state in localStorage or sessionStorage. Use this function when you want your application's state to persist across page reloads or sessions, automatically handling the serialization and deserialization of data."
+    },
+    {
+      "name": "parse",
+      "code": "parse = (str: string | null) => {\n        if (str === null) {\n          return null\n        }\n        return JSON.parse(str, options?.reviver) as StorageValue<S>\n      }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Parses a JSON string into a JavaScript object and returns null if the input is null. This function is useful when retrieving stored state data from localStorage or sessionStorage, allowing developers to seamlessly convert stringified state back to its original structure for use in their applications."
+    },
+    {
+      "name": "str",
+      "code": "str = storage.getItem(name) ?? null",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves an item from storage based on the specified name, returning null if the item does not exist. This function is useful when initializing state from persistent storage, ensuring that applications can pull previously saved data during startup or component rendering. Developers can use this when implementing data persistence in Zustand stores."
+    },
+    {
+      "name": "toThenable",
+      "code": "toThenable =\n  <Result, Input>(\n    fn: (input: Input) => Result | Promise<Result> | Thenable<Result>,\n  ) =>\n  (input: Input): Thenable<Result> => {\n    try {\n      const result = fn(input)\n      if (result instanceof Promise) {\n        return result as Thenable<Result>\n      }\n      return {\n        then(onFulfilled) {\n          return toThenable(onFulfilled)(result as Result)\n        },\n        catch(_onRejected) {\n          return this as Thenable<any>\n        },\n      }\n    } catch (e: any) {\n      return {\n        then(_onFulfilled) {\n          return this as Thenable<any>\n        },\n        catch(onRejected) {\n          return toThenable(onRejected)(e)\n        },\n      }\n    }\n  }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Converts a synchronous or asynchronous function into a thenable object, allowing developers to handle results in a promise-like manner. Use this function when you want to work with both immediate and delayed return values in a consistent way, especially when integrating third-party libraries that may return either Promises or regular values. This is helpful for simplifying asynchronous programming patterns in TypeScript applications."
+    },
+    {
+      "name": "then",
+      "code": "then(onFulfilled) {\n          return toThenable(onFulfilled)(result as Result)\n        }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "method_definition",
+      "summary": "Handles the resolution of promises by executing a callback when the promise is fulfilled. Use this function when you want to process the result of an asynchronous operation within a Zustand store context, ensuring the handler receives the resolved value."
+    },
+    {
+      "name": "catch",
+      "code": "catch(_onRejected) {\n          return this as Thenable<any>\n        }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "method_definition",
+      "summary": "Handles the rejection of promises within a Zustand store, enabling developers to manage error cases effectively. Use this function when you want to ensure that your state management can gracefully handle asynchronous operations that may fail, improving the robustness of your application."
+    },
+    {
+      "name": "then",
+      "code": "then(_onFulfilled) {\n          return this as Thenable<any>\n        }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "method_definition",
+      "summary": "Provides a `then` method that allows users to register a callback function to be executed upon fulfillment of a promise-like object. Developers would use this method when they want to handle successful outcomes of asynchronous operations within their Zustand store. It helps integrate promise handling seamlessly in state management scenarios."
+    },
+    {
+      "name": "catch",
+      "code": "catch(onRejected) {\n          return toThenable(onRejected)(e)\n        }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "method_definition",
+      "summary": "Handles errors in asynchronous operations by catching rejections and invoking a specified error handler. Use this function when you need to gracefully manage errors in promises or asynchronous actions within Zustand state management. Ideal for improving the robustness of your state updates in response to potential failures."
+    },
+    {
+      "name": "persistImpl",
+      "code": "persistImpl: PersistImpl = (config, baseOptions) => (set, get, api) => {\n  type S = ReturnType<typeof config>\n  let options = {\n    storage: createJSONStorage<S, void>(() => localStorage),\n    partialize: (state: S) => state,\n    version: 0,\n    merge: (persistedState: unknown, currentState: S) => ({\n      ...currentState,\n      ...(persistedState as object),\n    }),\n    ...baseOptions,\n  }\n\n  let hasHydrated = false\n  const hydrationListeners = new Set<PersistListener<S>>()\n  const finishHydrationListeners = new Set<PersistListener<S>>()\n  let storage = options.storage\n\n  if (!storage) {\n    return config(\n      (...args) => {\n        console.warn(\n          `[zustand persist middleware] Unable to update item '${options.name}', the given storage is currently unavailable.`,\n        )\n        set(...(args as Parameters<typeof set>))\n      },\n      get,\n      api,\n    )\n  }\n\n  const setItem = () => {\n    const state = options.partialize({ ...get() })\n    return (storage as PersistStorage<S, unknown>).setItem(options.name, {\n      state,\n      version: options.version,\n    })\n  }\n\n  const savedSetState = api.setState\n\n  api.setState = (state, replace) => {\n    savedSetState(state, replace as any)\n    return setItem()\n  }\n\n  const configResult = config(\n    (...args) => {\n      set(...(args as Parameters<typeof set>))\n      return setItem()\n    },\n    get,\n    api,\n  )\n\n  api.getInitialState = () => configResult\n\n  // a workaround to solve the issue of not storing rehydrated state in sync storage\n  // the set(state) value would be later overridden with initial state by create()\n  // to avoid this, we merge the state from localStorage into the initial state.\n  let stateFromStorage: S | undefined\n\n  // rehydrate initial state with existing stored state\n  const hydrate = () => {\n    if (!storage) return\n\n    // On the first invocation of 'hydrate', state will not yet be defined (this is\n    // true for both the 'asynchronous' and 'synchronous' case). Pass 'configResult'\n  ",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Persisting state management for Zustand using storage options like localStorage. This function is used when you want to ensure that your application's state is retained across page reloads or sessions, automatically handling state serialization for seamless storage integration."
+    },
+    {
+      "name": "options",
+      "code": "options = {\n    storage: createJSONStorage<S, void>(() => localStorage),\n    partialize: (state: S) => state,\n    version: 0,\n    merge: (persistedState: unknown, currentState: S) => ({\n      ...currentState,\n      ...(persistedState as object),\n    }),\n    ...baseOptions,\n  }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Configures options for storing Zustand state, including support for serialization to localStorage. Use this function when you want to enable persistence in your state management setup, ensuring state is retained across sessions. It also facilitates state merging and version control for enhanced data integrity."
+    },
+    {
+      "name": "hydrationListeners",
+      "code": "hydrationListeners = new Set<PersistListener<S>>()",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Manages hydration listeners for Zustand state persistence, enabling custom actions to be executed during the hydration process when state is retrieved from storage. Developers would utilize this when needing to synchronize additional side effects or logic with state restoration after the application loads. This is essential for scenarios where state needs to be seamlessly integrated with external data sources or for triggering specific updates after the state is populated."
+    },
+    {
+      "name": "finishHydrationListeners",
+      "code": "finishHydrationListeners = new Set<PersistListener<S>>()",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Manages listeners for Zustand state hydration, ensuring that state is correctly updated after rehydration from persistent storage. Developers would use this function when implementing state persistence features in their applications, particularly when using Zustand\u2019s persist middleware. It is essential for handling scenarios where the application needs to synchronize state with local or session storage after a page load."
+    },
+    {
+      "name": "storage",
+      "code": "storage = options.storage",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Configures the storage mechanism for persisting Zustand store state, allowing for state to be saved in options like localStorage or sessionStorage. Use this function when you want your application's state to persist across page reloads or sessions, ensuring a seamless user experience."
+    },
+    {
+      "name": "setItem",
+      "code": "setItem = () => {\n    const state = options.partialize({ ...get() })\n    return (storage as PersistStorage<S, unknown>).setItem(options.name, {\n      state,\n      version: options.version,\n    })\n  }",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Saves the current state of a Zustand store to a specified storage solution (like localStorage or sessionStorage). Use this function when you want to ensure that your application's state is retained across page reloads or sessions, providing a seamless user experience."
+    },
+    {
+      "name": "state",
+      "code": "state = options.partialize({ ...get() })",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Sets the current state of a Zustand store by partially applying a new state object. Use this function when you need to update the store's state while ensuring that existing state values are preserved, particularly in scenarios involving state persistence across sessions."
+    },
+    {
+      "name": "savedSetState",
+      "code": "savedSetState = api.setState",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Sets the state of a Zustand store, allowing developers to update store values reactively. Use this function when you need to change the state in response to user actions or side effects in your application. It is essential for managing complex state interactions within Zustand-based applications."
+    },
+    {
+      "name": "configResult",
+      "code": "configResult = config(\n    (...args) => {\n      set(...(args as Parameters<typeof set>))\n      return setItem()\n    },\n    get,\n    api,\n  )",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Configures the Zustand store to persist its state across sessions, ensuring that data remains available even after page reloads. This function is ideal for applications that require persistent state management, such as user settings or forms that users expect to return to with their data intact."
+    },
+    {
+      "name": "stateFromStorage",
+      "code": "stateFromStorage: S | undefined",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the current state from storage (localStorage or sessionStorage) for a Zustand store. This function is utilized when initializing the store to ensure that any previously saved state is loaded into the application, maintaining a seamless user experience across page refreshes or sessions."
+    },
+    {
+      "name": "hydrate",
+      "code": "hydrate = () => {\n    if (!storage) return\n\n    // On the first invocation of 'hydrate', state will not yet be defined (this is\n    // true for both the 'asynchronous' and 'synchronous' case). Pass 'configResult'\n    // as a backup  to 'get()' so listeners and 'onRehydrateStorage' are called with\n    // the latest available state.\n\n    hasHydrated = false\n    hydrationListeners.forEach((cb) => cb(get() ?? configResult))\n\n    const postRehydrationCallback =\n      options.onRehydrateStorage?.(get() ?? configResult) || undefined\n\n    // bind is used to avoid `TypeError: Illegal invocation` error\n    return toThenable(storage.getItem.bind(storage))(options.name)\n      .then((deserializedStorageValue) => {\n        if (deserializedStorageValue) {\n          if (\n            typeof deserializedStorageValue.version === 'number' &&\n            deserializedStorageValue.version !== options.version\n          ) {\n            if (options.migrate) {\n              const migration = options.migrate(\n                deserializedStorageValue.state,\n                deserializedStorageValue.version,\n              )\n              if (migration instanceof Promise) {\n                return migration.then((result) => [true, result] as const)\n              }\n              return [true, migration] as const\n            }\n            console.error(\n              `State loaded from storage couldn't be migrated since no migrate function was provided`,\n            )\n          } else {\n            return [false, deserializedStorageValue.state] as const\n          }\n        }\n        return [false, undefined] as const\n      })\n      .then((migrationResult) => {\n        const [migrated, migratedState] = migrationResult\n        stateFromStorage = options.merge(\n          migratedState as S,\n          get() ?? configResult,\n        )\n\n        set(stateFromStorage as S, true)\n        if (migrated) {\n          return setItem()\n        }\n      })\n      .then(() => {\n        // TODO: In the asynchronous case",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Hydrates the Zustand store by loading persisted state from storage, ensuring that the latest state is available for listeners and rehydration callbacks. This function is essential when initializing the store on app load to restore state, especially if using features like state versioning or migration. Use it when you want to populate your store with previously saved data to maintain a seamless user experience across sessions."
+    },
+    {
+      "name": "postRehydrationCallback",
+      "code": "postRehydrationCallback =\n      options.onRehydrateStorage?.(get() ?? configResult) || undefined",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Executes a callback function after the store has been rehydrated with persisted storage data. Use this function when you want to execute specific logic or side effects immediately following the restoration of state, ensuring that your application behaves correctly with the loaded data."
+    },
+    {
+      "name": "migration",
+      "code": "migration = options.migrate(\n                deserializedStorageValue.state,\n                deserializedStorageValue.version,\n              )",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Migrates the state of a Zustand store when there's a change in the storage version or structure. Use this function when updating your application's state management to ensure older states adapt seamlessly to new formats. It's essential for maintaining data integrity across application updates."
+    },
+    {
+      "name": "migrationResult",
+      "code": "[migrated, migratedState] = migrationResult",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Returns the result of applying migrations to your Zustand store's state. Use this function when upgrading your application's state schema, ensuring that existing state is properly migrated to a new format. This is essential for maintaining data integrity during state updates in your application."
+    },
+    {
+      "name": "persist",
+      "code": "persist = persistImpl as unknown as Persist",
+      "file": "test_repos/zustand/src/middleware/persist.ts",
+      "type": "variable_declarator",
+      "summary": "Preserves application state in localStorage or sessionStorage, ensuring that user data remains persistently available across page reloads. Ideal for situations where maintaining user settings or form inputs is necessary between sessions or navigations. Use this function when implementing durable state in a Zustand store to enhance user experience."
+    },
+    {
+      "name": "reduxImpl",
+      "code": "reduxImpl: ReduxImpl = (reducer, initial) => (set, _get, api) => {\n  type S = typeof initial\n  type A = Parameters<typeof reducer>[1]\n  ;(api as any).dispatch = (action: A) => {\n    ;(set as NamedSet<S>)((state: S) => reducer(state, action), false, action)\n    return action\n  }\n  ;(api as any).dispatchFromDevtools = true\n\n  return { dispatch: (...args) => (api as any).dispatch(...args), ...initial }\n}",
+      "file": "test_repos/zustand/src/middleware/redux.ts",
+      "type": "variable_declarator",
+      "summary": "Implements Redux-like state management for Zustand by providing a dispatch function that allows for updating state based on actions. Use this function when you want to integrate familiar Redux principles into your Zustand state management setup, enabling easier migration and a structured way to handle state updates."
+    },
+    {
+      "name": "redux",
+      "code": "redux = reduxImpl as unknown as Redux",
+      "file": "test_repos/zustand/src/middleware/redux.ts",
+      "type": "variable_declarator",
+      "summary": "Provides a Redux-compatible interface for managing state with the Zustand library. Use this function when you want to integrate Redux-like state management features in a Zustand application, enabling a familiar API for developers who are accustomed to Redux."
+    },
+    {
+      "name": "combine",
+      "code": "function combine<\n  T extends object,\n  U extends object,\n  Mps extends [StoreMutatorIdentifier, unknown][] = [],\n  Mcs extends [StoreMutatorIdentifier, unknown][] = [],\n>(\n  initialState: T,\n  create: StateCreator<T, Mps, Mcs, U>,\n): StateCreator<Write<T, U>, Mps, Mcs> {\n  return (...args) => Object.assign({}, initialState, (create as any)(...args))\n}",
+      "file": "test_repos/zustand/src/middleware/combine.ts",
+      "type": "function_declaration",
+      "summary": "Combines an initial state with a state creator function to produce a new Zustand store configuration. Use this function when you want to initialize state in a structured manner while incorporating additional functionality through the provided state creator. Ideal for developers looking to enhance their Zustand store setup with custom state management behavior."
+    },
+    {
+      "name": "isIterable",
+      "code": "isIterable = (obj: object): obj is Iterable<unknown> =>\n  Symbol.iterator in obj",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Determines if a given object is iterable by checking for the presence of the Symbol.iterator property. Use this function when you need to verify that an object can be used with iteration constructs such as for...of loops, or when working with functions that expect iterable inputs. This is useful for ensuring type safety in applications that work with collections or sequences."
+    },
+    {
+      "name": "hasIterableEntries",
+      "code": "hasIterableEntries = (\n  value: Iterable<unknown>,\n): value is Iterable<unknown> & {\n  entries(): Iterable<[unknown, unknown]>\n} =>\n  // HACK: avoid checking entries type\n  'entries' in value",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Determines if a given value is an iterable object that has an `entries` method. This function is useful when you need to check if a value can be treated as a map or similar structure, ensuring you can safely iterate over key-value pairs. Use this when working with Zustand state management and validating iterables in your applications."
+    },
+    {
+      "name": "compareEntries",
+      "code": "compareEntries = (\n  valueA: { entries(): Iterable<[unknown, unknown]> },\n  valueB: { entries(): Iterable<[unknown, unknown]> },\n) => {\n  const mapA = valueA instanceof Map ? valueA : new Map(valueA.entries())\n  const mapB = valueB instanceof Map ? valueB : new Map(valueB.entries())\n  if (mapA.size !== mapB.size) {\n    return false\n  }\n  for (const [key, value] of mapA) {\n    if (!mapB.has(key) || !Object.is(value, mapB.get(key))) {\n      return false\n    }\n  }\n  return true\n}",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Compares two entries-like objects for deep equality, specifically checking if they contain the same keys and values. This function is useful when you need to determine if two state snapshots in Zustand have identical data, helping optimize rendering and avoid unnecessary updates in your UI. Ideal for use in scenarios where you want to ensure that changes to state only trigger updates when actual data differs."
+    },
+    {
+      "name": "mapA",
+      "code": "mapA = valueA instanceof Map ? valueA : new Map(valueA.entries())",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Converts a value into a Map if it isn't already an instance of Map. Use this function when you need to ensure that your data structure is consistently formatted as a Map, particularly when working with state management in a Zustand store."
+    },
+    {
+      "name": "mapB",
+      "code": "mapB = valueB instanceof Map ? valueB : new Map(valueB.entries())",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Transforms a given value into a Map if it is not already one, ensuring data is stored in a Map format for consistent access. This function is useful when you need to convert various data structures to a Map for use with Zustand or other related state management patterns. Use this function when working with state that requires map-like behavior for optimal performance and data handling."
+    },
+    {
+      "name": "compareIterables",
+      "code": "compareIterables = (\n  valueA: Iterable<unknown>,\n  valueB: Iterable<unknown>,\n) => {\n  const iteratorA = valueA[Symbol.iterator]()\n  const iteratorB = valueB[Symbol.iterator]()\n  let nextA = iteratorA.next()\n  let nextB = iteratorB.next()\n  while (!nextA.done && !nextB.done) {\n    if (!Object.is(nextA.value, nextB.value)) {\n      return false\n    }\n    nextA = iteratorA.next()\n    nextB = iteratorB.next()\n  }\n  return !!nextA.done && !!nextB.done\n}",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Compares two iterable objects to determine if they contain the same values in the same order. Use this function when you need to check for equality between two collections, such as arrays or sets, ensuring data integrity in state management scenarios."
+    },
+    {
+      "name": "iteratorA",
+      "code": "iteratorA = valueA[Symbol.iterator]()",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Provides an iterator for the specified value, allowing for sequential access to its elements. Use this function when you need to iterate over a collection of items within your Zustand store, making it easier to manage and manipulate state in a predictable manner. Ideal for scenarios that require looping through state values, such as rendering lists or processing collections."
+    },
+    {
+      "name": "iteratorB",
+      "code": "iteratorB = valueB[Symbol.iterator]()",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves an iterator for the specified value, allowing for easy traversal of its elements. This function is useful when you need to iterate over collections of state in a Zustand store, making it easier to manage and manipulate the stored data in a clean and efficient manner."
+    },
+    {
+      "name": "nextA",
+      "code": "nextA = iteratorA.next()",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Advances to the next value in an iterator, returning the result of the next iteration. Use this function when you need to retrieve sequential values from an iterable object in your Zustand state management setup. Ideal for scenarios where you want to iteratively process or consume items from a collection within the state."
+    },
+    {
+      "name": "nextB",
+      "code": "nextB = iteratorB.next()",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Retrieves the next value from an iterator in a Zustand store. This function is useful when implementing async state updates or managing sequential data flow in an application. Developers would use this to efficiently iterate over data sets while maintaining the state in a reactive way."
+    },
+    {
+      "name": "shallow",
+      "code": "function shallow<T>(valueA: T, valueB: T): boolean {\n  if (Object.is(valueA, valueB)) {\n    return true\n  }\n  if (\n    typeof valueA !== 'object' ||\n    valueA === null ||\n    typeof valueB !== 'object' ||\n    valueB === null\n  ) {\n    return false\n  }\n  if (Object.getPrototypeOf(valueA) !== Object.getPrototypeOf(valueB)) {\n    return false\n  }\n  if (isIterable(valueA) && isIterable(valueB)) {\n    if (hasIterableEntries(valueA) && hasIterableEntries(valueB)) {\n      return compareEntries(valueA, valueB)\n    }\n    return compareIterables(valueA, valueB)\n  }\n  // assume plain objects\n  return compareEntries(\n    { entries: () => Object.entries(valueA) },\n    { entries: () => Object.entries(valueB) },\n  )\n}",
+      "file": "test_repos/zustand/src/vanilla/shallow.ts",
+      "type": "function_declaration",
+      "summary": "Compares two values for shallow equality, returning true if they are the same reference or have identical properties and values. This function is useful in Zustand state management when you need to determine if two objects (or iterable structures) are equivalent, helping optimize component re-renders and ensuring efficient state updates."
+    },
+    {
+      "name": "useShallow",
+      "code": "function useShallow<S, U>(selector: (state: S) => U): (state: S) => U {\n  const prev = React.useRef<U>(undefined)\n  return (state) => {\n    const next = selector(state)\n    return shallow(prev.current, next)\n      ? (prev.current as U)\n      : (prev.current = next)\n  }\n}",
+      "file": "test_repos/zustand/src/react/shallow.ts",
+      "type": "function_declaration",
+      "summary": "Provides a shallow comparison of state values in a Zustand store to prevent unnecessary re-renders. Use this function when you want to optimize rendering performance by ensuring that components only update when the selected state has changed significantly."
+    },
+    {
+      "name": "prev",
+      "code": "prev = React.useRef<U>(undefined)",
+      "file": "test_repos/zustand/src/react/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Stores a reference to the previous state in a Zustand store, allowing for easy state comparison and change detection. Developers would use this when they need to implement features that depend on tracking previous values, such as conditional rendering or effects based on state transitions."
+    },
+    {
+      "name": "next",
+      "code": "next = selector(state)",
+      "file": "test_repos/zustand/src/react/shallow.ts",
+      "type": "variable_declarator",
+      "summary": "Extracts the next value from the state based on the provided selector function. Developers would use this function when they want to derive specific pieces of state in a Zustand store, allowing for efficient and selective re-renders in their React components."
+    }
+  ]
+}

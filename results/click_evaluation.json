@@ -1,0 +1,893 @@
+{
+  "codebase": "click",
+  "language": "python",
+  "total_functions": 7,
+  "hit@1": 0.6,
+  "hit@3": 0.76,
+  "hit@5": 0.82,
+  "by_category": {
+    "commands": {
+      "hit@1": 0.8,
+      "count": 10
+    },
+    "options": {
+      "hit@1": 0.375,
+      "count": 8
+    },
+    "arguments": {
+      "hit@1": 0.3333333333333333,
+      "count": 6
+    },
+    "output": {
+      "hit@1": 0.75,
+      "count": 8
+    },
+    "input": {
+      "hit@1": 0.6666666666666666,
+      "count": 6
+    },
+    "groups": {
+      "hit@1": 0.3333333333333333,
+      "count": 6
+    },
+    "types": {
+      "hit@1": 0.8333333333333334,
+      "count": 6
+    }
+  },
+  "all_results": [
+    {
+      "query": "create cli command",
+      "expected": [
+        "command",
+        "add_command",
+        "Command"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "command",
+      "top_3": [
+        "command",
+        "command",
+        "command"
+      ]
+    },
+    {
+      "query": "add command to group",
+      "expected": [
+        "add_command",
+        "command"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "command",
+      "top_3": [
+        "command",
+        "group",
+        "group"
+      ]
+    },
+    {
+      "query": "get command by name",
+      "expected": [
+        "get_command",
+        "resolve_command"
+      ],
+      "category": "commands",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "name",
+      "top_3": [
+        "name",
+        "name",
+        "name"
+      ]
+    },
+    {
+      "query": "list all commands",
+      "expected": [
+        "list_commands",
+        "format_commands"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "list_commands",
+      "top_3": [
+        "list_commands",
+        "command",
+        "command"
+      ]
+    },
+    {
+      "query": "invoke command",
+      "expected": [
+        "invoke",
+        "main",
+        "__call__"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "invoke",
+      "top_3": [
+        "invoke",
+        "invoke",
+        "invoke"
+      ]
+    },
+    {
+      "query": "get command path",
+      "expected": [
+        "command_path",
+        "info_name"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "command_path",
+      "top_3": [
+        "command_path",
+        "command",
+        "command"
+      ]
+    },
+    {
+      "query": "format command help",
+      "expected": [
+        "format_help",
+        "format_commands",
+        "get_help"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "format_help",
+      "top_3": [
+        "format_help",
+        "format_help_text",
+        "command"
+      ]
+    },
+    {
+      "query": "resolve command name",
+      "expected": [
+        "resolve_command",
+        "get_command"
+      ],
+      "category": "commands",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "name",
+      "top_3": [
+        "name",
+        "resolve_command",
+        "name"
+      ]
+    },
+    {
+      "query": "create command decorator",
+      "expected": [
+        "command",
+        "decorators"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "decorator",
+      "top_3": [
+        "decorator",
+        "decorator",
+        "decorator"
+      ]
+    },
+    {
+      "query": "pass context to command",
+      "expected": [
+        "pass_context",
+        "make_pass_decorator"
+      ],
+      "category": "commands",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "pass_context",
+      "top_3": [
+        "pass_context",
+        "pass_obj",
+        "make_pass_decorator"
+      ]
+    },
+    {
+      "query": "add option to command",
+      "expected": [
+        "add_option",
+        "option"
+      ],
+      "category": "options",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "option",
+      "top_3": [
+        "option",
+        "add_option",
+        "command"
+      ]
+    },
+    {
+      "query": "create option decorator",
+      "expected": [
+        "option",
+        "Option"
+      ],
+      "category": "options",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "option",
+      "top_3": [
+        "option",
+        "decorator",
+        "decorator"
+      ]
+    },
+    {
+      "query": "parse option value",
+      "expected": [
+        "_process_opts",
+        "_match_long_opt"
+      ],
+      "category": "options",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "option",
+      "top_3": [
+        "option",
+        "_parse_decls",
+        "parse_args"
+      ]
+    },
+    {
+      "query": "handle boolean flag",
+      "expected": [
+        "flag_value",
+        "is_flag"
+      ],
+      "category": "options",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "value_from_envvar",
+      "top_3": [
+        "value_from_envvar",
+        "process_value",
+        "add_to_parser"
+      ]
+    },
+    {
+      "query": "set option default",
+      "expected": [
+        "default",
+        "_format_default"
+      ],
+      "category": "options",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "option",
+      "top_3": [
+        "option",
+        "get_default",
+        "get_default"
+      ]
+    },
+    {
+      "query": "validate option",
+      "expected": [
+        "_process_opts",
+        "type_cast_value"
+      ],
+      "category": "options",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "option",
+      "top_3": [
+        "option",
+        "_match_long_opt",
+        "get_help_option"
+      ]
+    },
+    {
+      "query": "get option from state",
+      "expected": [
+        "_get_value_from_state"
+      ],
+      "category": "options",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "_get_value_from_state",
+      "top_3": [
+        "_get_value_from_state",
+        "option",
+        "get_help_option"
+      ]
+    },
+    {
+      "query": "normalize option name",
+      "expected": [
+        "_normalize_opt",
+        "_split_opt"
+      ],
+      "category": "options",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "name",
+      "top_3": [
+        "name",
+        "option",
+        "name"
+      ]
+    },
+    {
+      "query": "add argument to command",
+      "expected": [
+        "add_argument",
+        "argument"
+      ],
+      "category": "arguments",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "argument",
+      "top_3": [
+        "argument",
+        "add_argument",
+        "command"
+      ]
+    },
+    {
+      "query": "create argument decorator",
+      "expected": [
+        "argument",
+        "Argument"
+      ],
+      "category": "arguments",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "argument",
+      "top_3": [
+        "argument",
+        "decorator",
+        "decorator"
+      ]
+    },
+    {
+      "query": "parse arguments",
+      "expected": [
+        "parse_args",
+        "_process_args_for_args"
+      ],
+      "category": "arguments",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "argument",
+      "top_3": [
+        "argument",
+        "parse_args",
+        "parse_args"
+      ]
+    },
+    {
+      "query": "unpack argument values",
+      "expected": [
+        "_unpack_args",
+        "_expand_args"
+      ],
+      "category": "arguments",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "argument",
+      "top_3": [
+        "argument",
+        "_unpack_args",
+        "_is_incomplete_argument"
+      ]
+    },
+    {
+      "query": "handle multiple arguments",
+      "expected": [
+        "nargs",
+        "_process_args_for_args"
+      ],
+      "category": "arguments",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "argument",
+      "top_3": [
+        "argument",
+        "parse_args",
+        "_process_args_for_args"
+      ]
+    },
+    {
+      "query": "get argument encoding",
+      "expected": [
+        "_get_argv_encoding"
+      ],
+      "category": "arguments",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "argument",
+      "top_3": [
+        "argument",
+        "_get_argv_encoding",
+        "get_best_encoding"
+      ]
+    },
+    {
+      "query": "print to terminal",
+      "expected": [
+        "echo",
+        "secho",
+        "_echo"
+      ],
+      "category": "output",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "raw_terminal",
+      "top_3": [
+        "raw_terminal",
+        "raw_terminal",
+        "raw_terminal"
+      ]
+    },
+    {
+      "query": "print styled text",
+      "expected": [
+        "secho",
+        "style",
+        "echo"
+      ],
+      "category": "output",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "style",
+      "top_3": [
+        "style",
+        "secho",
+        "_nullpager"
+      ]
+    },
+    {
+      "query": "apply text style",
+      "expected": [
+        "style",
+        "_interpret_color"
+      ],
+      "category": "output",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "style",
+      "top_3": [
+        "style",
+        "secho",
+        "unstyle"
+      ]
+    },
+    {
+      "query": "remove text style",
+      "expected": [
+        "unstyle"
+      ],
+      "category": "output",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "style",
+      "top_3": [
+        "style",
+        "unstyle",
+        "secho"
+      ]
+    },
+    {
+      "query": "print via pager",
+      "expected": [
+        "echo_via_pager",
+        "_echo"
+      ],
+      "category": "output",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "pager",
+      "top_3": [
+        "pager",
+        "echo_via_pager",
+        "_nullpager"
+      ]
+    },
+    {
+      "query": "clear terminal screen",
+      "expected": [
+        "clear"
+      ],
+      "category": "output",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "clear",
+      "top_3": [
+        "clear",
+        "hidden_input",
+        "visible_input"
+      ]
+    },
+    {
+      "query": "format output",
+      "expected": [
+        "format_help",
+        "format_usage"
+      ],
+      "category": "output",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top_result": "output",
+      "top_3": [
+        "output",
+        "format_options",
+        "format_pos"
+      ]
+    },
+    {
+      "query": "wrap text output",
+      "expected": [
+        "wrap_text",
+        "_flush_par"
+      ],
+      "category": "output",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "wrap_text",
+      "top_3": [
+        "wrap_text",
+        "output",
+        "write_text"
+      ]
+    },
+    {
+      "query": "prompt user for input",
+      "expected": [
+        "prompt",
+        "prompt_func",
+        "_build_prompt"
+      ],
+      "category": "input",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "prompt",
+      "top_3": [
+        "prompt",
+        "hidden_prompt_func",
+        "visible_input"
+      ]
+    },
+    {
+      "query": "confirm user action",
+      "expected": [
+        "confirm"
+      ],
+      "category": "input",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "confirm",
+      "top_3": [
+        "confirm",
+        "process",
+        "takes_value"
+      ]
+    },
+    {
+      "query": "hidden password input",
+      "expected": [
+        "hidden_prompt_func",
+        "prompt"
+      ],
+      "category": "input",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "hidden_input",
+      "top_3": [
+        "hidden_input",
+        "password_option",
+        "hidden_prompt_func"
+      ]
+    },
+    {
+      "query": "get single character",
+      "expected": [
+        "_getchar",
+        "getchar"
+      ],
+      "category": "input",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "_get_argv_encoding",
+      "top_3": [
+        "_get_argv_encoding",
+        "getchar",
+        "getchar"
+      ]
+    },
+    {
+      "query": "pause for user",
+      "expected": [
+        "pause",
+        "_pause_echo"
+      ],
+      "category": "input",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "pause",
+      "top_3": [
+        "pause",
+        "_pause_echo",
+        "__init__"
+      ]
+    },
+    {
+      "query": "edit in external editor",
+      "expected": [
+        "edit",
+        "editor"
+      ],
+      "category": "input",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "edit",
+      "top_3": [
+        "edit",
+        "edit",
+        "edit"
+      ]
+    },
+    {
+      "query": "create command group",
+      "expected": [
+        "group",
+        "Group",
+        "MultiCommand"
+      ],
+      "category": "groups",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "group",
+      "top_3": [
+        "group",
+        "group",
+        "group"
+      ]
+    },
+    {
+      "query": "invoke group command",
+      "expected": [
+        "invoke",
+        "result_callback"
+      ],
+      "category": "groups",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "invoke",
+      "top_3": [
+        "invoke",
+        "group",
+        "group"
+      ]
+    },
+    {
+      "query": "chain commands together",
+      "expected": [
+        "_check_nested_chain",
+        "chain"
+      ],
+      "category": "groups",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "command",
+      "top_3": [
+        "command",
+        "command",
+        "command"
+      ]
+    },
+    {
+      "query": "get group context",
+      "expected": [
+        "make_context",
+        "Context"
+      ],
+      "category": "groups",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "group",
+      "top_3": [
+        "group",
+        "group",
+        "group"
+      ]
+    },
+    {
+      "query": "format group help",
+      "expected": [
+        "format_help",
+        "format_commands"
+      ],
+      "category": "groups",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "group",
+      "top_3": [
+        "group",
+        "group",
+        "group"
+      ]
+    },
+    {
+      "query": "pass group obj",
+      "expected": [
+        "pass_obj",
+        "make_pass_decorator"
+      ],
+      "category": "groups",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "group",
+      "top_3": [
+        "group",
+        "group",
+        "group"
+      ]
+    },
+    {
+      "query": "convert parameter type",
+      "expected": [
+        "convert",
+        "type_cast_value"
+      ],
+      "category": "types",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "convert",
+      "top_3": [
+        "convert",
+        "convert",
+        "convert"
+      ]
+    },
+    {
+      "query": "create choice type",
+      "expected": [
+        "Choice",
+        "convert"
+      ],
+      "category": "types",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "normalize_choice",
+      "top_3": [
+        "normalize_choice",
+        "get_invalid_choice_message",
+        "convert_type"
+      ]
+    },
+    {
+      "query": "create path type",
+      "expected": [
+        "Path",
+        "resolve_path"
+      ],
+      "category": "types",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "coerce_path_result",
+      "top_3": [
+        "coerce_path_result",
+        "command_path",
+        "_make_sub_context"
+      ]
+    },
+    {
+      "query": "create file type",
+      "expected": [
+        "File",
+        "_FileType"
+      ],
+      "category": "types",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "open_file",
+      "top_3": [
+        "open_file",
+        "coerce_path_result",
+        "_make_sub_context"
+      ]
+    },
+    {
+      "query": "validate range type",
+      "expected": [
+        "IntRange",
+        "FloatRange",
+        "_clamp"
+      ],
+      "category": "types",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "type_cast_value",
+      "top_3": [
+        "type_cast_value",
+        "_describe_range",
+        "convert"
+      ]
+    },
+    {
+      "query": "create tuple type",
+      "expected": [
+        "Tuple",
+        "convert"
+      ],
+      "category": "types",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "convert_type",
+      "top_3": [
+        "convert_type",
+        "convert",
+        "_make_sub_context"
+      ]
+    }
+  ]
+}

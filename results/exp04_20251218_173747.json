@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-12-18T17:37:47.006017",
+  "experiment": "04_reranking",
+  "target": ">85% Hit@1",
+  "previous_best": 0.8095,
+  "baseline_metrics": {
+    "hit@1": 0.7619047619047619,
+    "hit@3": 0.9523809523809523,
+    "hit@5": 0.9523809523809523
+  },
+  "rerank_metrics": {
+    "hit@1": 0.6666666666666666,
+    "hit@3": 0.8571428571428571,
+    "hit@5": 0.8571428571428571
+  },
+  "improvement": -0.14283333333333337,
+  "improved_queries": [
+    [
+      "redux devtools integration",
+      "extensionConnector",
+      "devtools"
+    ],
+    [
+      "use store in react component",
+      "useBoundStore",
+      "useStore"
+    ]
+  ],
+  "regressed_queries": [
+    [
+      "listen for state changes",
+      "subscribe",
+      "listener"
+    ],
+    [
+      "custom storage adapter",
+      "storage",
+      "persistStorage"
+    ],
+    [
+      "check if state objects are equal",
+      "shallow",
+      "compareEntries"
+    ],
+    [
+      "notify all listeners of change",
+      "listeners",
+      "setState"
+    ]
+  ]
+}

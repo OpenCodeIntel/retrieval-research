@@ -1,0 +1,533 @@
+{
+  "total": 88,
+  "functions": [
+    {
+      "name": "links",
+      "file": "response.js",
+      "type": "res.method",
+      "code": "res.links = function(links) {\n  var link = this.get('Link') || '';\n  if (link) link += ', ';\n  return this.set('Link', link + Object.keys(links).map(function(rel) {\n    // Allow multiple links if links[rel] is an array\n    if (Array.isArray(links[rel])) {\n      return links[rel].map(function (singleLink) {\n        return `<${singleLink}>; rel=\"${rel}\"`;\n      }).join(', ');\n    } else {\n      return `<${links[rel]}>; rel=\"${rel}\"`;\n    }\n  }).join(', '));\n};\n\n/**\n * Send a response.\n *\n * Exampl"
+    },
+    {
+      "name": "format",
+      "file": "response.js",
+      "type": "res.method",
+      "code": "res.format = function(obj){\n  var req = this.req;\n  var next = req.next;\n\n  var keys = Object.keys(obj)\n    .filter(function (v) { return v !== 'default' })\n\n  var key = keys.length > 0\n    ? req.accepts(keys)\n    : false;\n\n  this.vary(\"Accept\");\n\n  if (key) {\n    this.set('Content-Type', normalizeType(key).value);\n    obj[key](req, this, next);\n  } else if (obj.default) {\n    obj.default(req, this, next)\n  } else {\n    next(createError(406, {\n      types: normalizeTypes(keys).map(function (o) {"
+    },
+    {
+      "name": "get",
+      "file": "response.js",
+      "type": "res.method",
+      "code": "res.get = function(field){\n  return this.getHeader(field);\n};\n\n/**\n * Clear cookie `name`.\n *\n * @param {String} name\n * @param {Object} [options]\n * @return {ServerResponse} for chaining\n * @public\n */\n\nres.clearCookie = function clearCookie(name, options) {\n  // Force cookie expiration by setting expires to the past\n  const opts = { path: '/', ...options, expires: new Date(1)};\n  // ensure maxAge is not passed\n  delete opts.maxAge\n\n  return this.cookie(name, '', opts);\n};\n\n/**\n * Set cookie `n"
+    },
+    {
+      "name": "cookie",
+      "file": "response.js",
+      "type": "res.method",
+      "code": "res.cookie = function (name, value, options) {\n  var opts = { ...options };\n  var secret = this.req.secret;\n  var signed = opts.signed;\n\n  if (signed && !secret) {\n    throw new Error('cookieParser(\"secret\") required for signed cookies');\n  }\n\n  var val = typeof value === 'object'\n    ? 'j:' + JSON.stringify(value)\n    : String(value);\n\n  if (signed) {\n    val = 's:' + sign(val, secret);\n  }\n\n  if (opts.maxAge != null) {\n    var maxAge = opts.maxAge - 0\n\n    if (!isNaN(maxAge)) {\n      opts.expi"
+    },
+    {
+      "name": "vary",
+      "file": "response.js",
+      "type": "res.method",
+      "code": "res.vary = function(field){\n  vary(this, field);\n\n  return this;\n};\n\n/**\n * Render `view` with the given `options` and optional callback `fn`.\n * When a callback function is given a response will _not_ be made\n * automatically, otherwise a response of _200_ and _text/html_ is given.\n *\n * Options:\n *\n *  - `cache`     boolean hinting to the engine it should cache\n *  - `filename`  filename of the view being rendered\n *\n * @public\n */\n\nres.render = function render(view, options, callback) {\n  var"
+    },
+    {
+      "name": "status",
+      "file": "response.js",
+      "type": "function",
+      "code": "function status(code) {\n  // Check if the status code is not an integer\n  if (!Number.isInteger(code)) {\n    throw new TypeError(`Invalid status code: ${JSON.stringify(code)}. Status code must be an integer.`);\n  }\n  // Check if the status code is outside of Node's valid range\n  if (code < 100 || code > 999) {\n    throw new RangeError(`Invalid status code: ${JSON.stringify(code)}. Status code must be greater than 99 and less than 1000.`);\n  }\n\n  this.statusCode = code;\n  return this;\n};\n\n/**\n * "
+    },
+    {
+      "name": "send",
+      "file": "response.js",
+      "type": "function",
+      "code": "function send(body) {\n  var chunk = body;\n  var encoding;\n  var req = this.req;\n  var type;\n\n  // settings\n  var app = this.app;\n\n  switch (typeof chunk) {\n    // string defaulting to html\n    case 'string':\n      if (!this.get('Content-Type')) {\n        this.type('html');\n      }\n      break;\n    case 'boolean':\n    case 'number':\n    case 'object':\n      if (chunk === null) {\n        chunk = '';\n      } else if (ArrayBuffer.isView(chunk)) {\n        if (!this.get('Content-Type')) {\n          th"
+    },
+    {
+      "name": "json",
+      "file": "response.js",
+      "type": "function",
+      "code": "function json(obj) {\n  // settings\n  var app = this.app;\n  var escape = app.get('json escape')\n  var replacer = app.get('json replacer');\n  var spaces = app.get('json spaces');\n  var body = stringify(obj, replacer, spaces, escape)\n\n  // content-type\n  if (!this.get('Content-Type')) {\n    this.set('Content-Type', 'application/json');\n  }\n\n  return this.send(body);\n};\n\n/**\n * Send JSON response with JSONP callback support.\n *\n * Examples:\n *\n *     res.jsonp(null);\n *     res.jsonp({ user: 'tj' })"
+    },
+    {
+      "name": "jsonp",
+      "file": "response.js",
+      "type": "function",
+      "code": "function jsonp(obj) {\n  // settings\n  var app = this.app;\n  var escape = app.get('json escape')\n  var replacer = app.get('json replacer');\n  var spaces = app.get('json spaces');\n  var body = stringify(obj, replacer, spaces, escape)\n  var callback = this.req.query[app.get('jsonp callback name')];\n\n  // content-type\n  if (!this.get('Content-Type')) {\n    this.set('X-Content-Type-Options', 'nosniff');\n    this.set('Content-Type', 'application/json');\n  }\n\n  // fixup callback\n  if (Array.isArray(cal"
+    },
+    {
+      "name": "sendStatus",
+      "file": "response.js",
+      "type": "function",
+      "code": "function sendStatus(statusCode) {\n  var body = statuses.message[statusCode] || String(statusCode)\n\n  this.status(statusCode);\n  this.type('txt');\n\n  return this.send(body);\n};\n\n/**\n * Transfer the file at the given `path`.\n *\n * Automatically sets the _Content-Type_ response header field.\n * The callback `callback(err)` is invoked when the transfer is complete\n * or when an error occurs. Be sure to check `res.headersSent`\n * if you wish to attempt responding, as the header and some data\n * may h"
+    },
+    {
+      "name": "sendFile",
+      "file": "response.js",
+      "type": "function",
+      "code": "function sendFile(path, options, callback) {\n  var done = callback;\n  var req = this.req;\n  var res = this;\n  var next = req.next;\n  var opts = options || {};\n\n  if (!path) {\n    throw new TypeError('path argument is required to res.sendFile');\n  }\n\n  if (typeof path !== 'string') {\n    throw new TypeError('path must be a string to res.sendFile')\n  }\n\n  // support function as second arg\n  if (typeof options === 'function') {\n    done = options;\n    opts = {};\n  }\n\n  if (!opts.root && !pathIsAbso"
+    },
+    {
+      "name": "download",
+      "file": "response.js",
+      "type": "function",
+      "code": "function download (path, filename, options, callback) {\n  var done = callback;\n  var name = filename;\n  var opts = options || null\n\n  // support function as second or third arg\n  if (typeof filename === 'function') {\n    done = filename;\n    name = null;\n    opts = null\n  } else if (typeof options === 'function') {\n    done = options\n    opts = null\n  }\n\n  // support optional filename, where options may be in it's place\n  if (typeof filename === 'object' &&\n    (typeof options === 'function' || "
+    },
+    {
+      "name": "contentType",
+      "file": "response.js",
+      "type": "function",
+      "code": "function contentType(type) {\n  var ct = type.indexOf('/') === -1\n    ? (mime.contentType(type) || 'application/octet-stream')\n    : type;\n\n  return this.set('Content-Type', ct);\n};\n\n/**\n * Respond to the Acceptable formats using an `obj`\n * of mime-type callbacks.\n *\n * This method uses `req.accepted`, an array of\n * acceptable types ordered by their quality values.\n * When \"Accept\" is not present the _first_ callback\n * is invoked, otherwise the first match is used. When\n * no match is performe"
+    },
+    {
+      "name": "attachment",
+      "file": "response.js",
+      "type": "function",
+      "code": "function attachment(filename) {\n  if (filename) {\n    this.type(extname(filename));\n  }\n\n  this.set('Content-Disposition', contentDisposition(filename));\n\n  return this;\n};\n\n/**\n * Append additional header `field` with value `val`.\n *\n * Example:\n *\n *    res.append('Link', ['<http://localhost/>', '<http://localhost:3000/>']);\n *    res.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');\n *    res.append('Warning', '199 Miscellaneous warning');\n *\n * @param {String} field\n * @param {String|Array}"
+    },
+    {
+      "name": "append",
+      "file": "response.js",
+      "type": "function",
+      "code": "function append(field, val) {\n  var prev = this.get(field);\n  var value = val;\n\n  if (prev) {\n    // concat the new and prev vals\n    value = Array.isArray(prev) ? prev.concat(val)\n      : Array.isArray(val) ? [prev].concat(val)\n        : [prev, val]\n  }\n\n  return this.set(field, value);\n};\n\n/**\n * Set header `field` to `val`, or pass\n * an object of header fields.\n *\n * Examples:\n *\n *    res.set('Foo', ['bar', 'baz']);\n *    res.set('Accept', 'application/json');\n *    res.set({ Accept: 'text/"
+    },
+    {
+      "name": "header",
+      "file": "response.js",
+      "type": "function",
+      "code": "function header(field, val) {\n  if (arguments.length === 2) {\n    var value = Array.isArray(val)\n      ? val.map(String)\n      : String(val);\n\n    // add charset to content-type\n    if (field.toLowerCase() === 'content-type') {\n      if (Array.isArray(value)) {\n        throw new TypeError('Content-Type cannot be set to an Array');\n      }\n      value = mime.contentType(value)\n    }\n\n    this.setHeader(field, value);\n  } else {\n    for (var key in field) {\n      this.set(key, field[key]);\n    }\n "
+    },
+    {
+      "name": "clearCookie",
+      "file": "response.js",
+      "type": "function",
+      "code": "function clearCookie(name, options) {\n  // Force cookie expiration by setting expires to the past\n  const opts = { path: '/', ...options, expires: new Date(1)};\n  // ensure maxAge is not passed\n  delete opts.maxAge\n\n  return this.cookie(name, '', opts);\n};\n\n/**\n * Set cookie `name` to `value`, with the given `options`.\n *\n * Options:\n *\n *    - `maxAge`   max-age in milliseconds, converted to `expires`\n *    - `signed`   sign the cookie\n *    - `path`     defaults to \"/\"\n *\n * Examples:\n *\n *   "
+    },
+    {
+      "name": "location",
+      "file": "response.js",
+      "type": "function",
+      "code": "function location(url) {\n  return this.set('Location', encodeUrl(url));\n};\n\n/**\n * Redirect to the given `url` with optional response `status`\n * defaulting to 302.\n *\n * Examples:\n *\n *    res.redirect('/foo/bar');\n *    res.redirect('http://example.com');\n *    res.redirect(301, 'http://example.com');\n *    res.redirect('../login'); // /blog/post/1 -> /blog/login\n *\n * @public\n */\n\nres.redirect = function redirect(url) {\n  var address = url;\n  var body;\n  var status = 302;\n\n  // allow status /"
+    },
+    {
+      "name": "redirect",
+      "file": "response.js",
+      "type": "function",
+      "code": "function redirect(url) {\n  var address = url;\n  var body;\n  var status = 302;\n\n  // allow status / url\n  if (arguments.length === 2) {\n    status = arguments[0]\n    address = arguments[1]\n  }\n\n  if (!address) {\n    deprecate('Provide a url argument');\n  }\n\n  if (typeof address !== 'string') {\n    deprecate('Url must be a string');\n  }\n\n  if (typeof status !== 'number') {\n    deprecate('Status must be a number');\n  }\n\n  // Set location header\n  address = this.location(address).get('Location');\n\n "
+    },
+    {
+      "name": "render",
+      "file": "response.js",
+      "type": "function",
+      "code": "function render(view, options, callback) {\n  var app = this.req.app;\n  var done = callback;\n  var opts = options || {};\n  var req = this.req;\n  var self = this;\n\n  // support callback function as second arg\n  if (typeof options === 'function') {\n    done = options;\n    opts = {};\n  }\n\n  // merge res.locals\n  opts._locals = self.locals;\n\n  // default callback to respond\n  done = done || function (err, str) {\n    if (err) return req.next(err);\n    self.send(str);\n  };\n\n  // render\n  app.render(vie"
+    },
+    {
+      "name": "sendfile",
+      "file": "response.js",
+      "type": "function",
+      "code": "function sendfile(res, file, options, callback) {\n  var done = false;\n  var streaming;\n\n  // request aborted\n  function onaborted() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('Request aborted');\n    err.code = 'ECONNABORTED';\n    callback(err);\n  }\n\n  // directory\n  function ondirectory() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('EISDIR, read');\n    err.code = 'EISDIR';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) ret"
+    },
+    {
+      "name": "onaborted",
+      "file": "response.js",
+      "type": "function",
+      "code": "function onaborted() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('Request aborted');\n    err.code = 'ECONNABORTED';\n    callback(err);\n  }\n\n  // directory\n  function ondirectory() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('EISDIR, read');\n    err.code = 'EISDIR';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) return;\n    done = true;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = "
+    },
+    {
+      "name": "ondirectory",
+      "file": "response.js",
+      "type": "function",
+      "code": "function ondirectory() {\n    if (done) return;\n    done = true;\n\n    var err = new Error('EISDIR, read');\n    err.code = 'EISDIR';\n    callback(err);\n  }\n\n  // errors\n  function onerror(err) {\n    if (done) return;\n    done = true;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return on"
+    },
+    {
+      "name": "onerror",
+      "file": "response.js",
+      "type": "function",
+      "code": "function onerror(err) {\n    if (done) return;\n    done = true;\n    callback(err);\n  }\n\n  // ended\n  function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n    setImmediate(function () {\n      if (streaming !== false && !done) {\n        onaborted();\n       "
+    },
+    {
+      "name": "onend",
+      "file": "response.js",
+      "type": "function",
+      "code": "function onend() {\n    if (done) return;\n    done = true;\n    callback();\n  }\n\n  // file\n  function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n    setImmediate(function () {\n      if (streaming !== false && !done) {\n        onaborted();\n        return;\n      }\n\n      if (done) return;\n      done = true;\n      callback();\n    });\n  }\n\n  // str"
+    },
+    {
+      "name": "onfile",
+      "file": "response.js",
+      "type": "function",
+      "code": "function onfile() {\n    streaming = false;\n  }\n\n  // finished\n  function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n    setImmediate(function () {\n      if (streaming !== false && !done) {\n        onaborted();\n        return;\n      }\n\n      if (done) return;\n      done = true;\n      callback();\n    });\n  }\n\n  // streaming\n  function onstream() {\n    streaming = true;\n  }\n\n  file.on('directory', ondirector"
+    },
+    {
+      "name": "onfinish",
+      "file": "response.js",
+      "type": "function",
+      "code": "function onfinish(err) {\n    if (err && err.code === 'ECONNRESET') return onaborted();\n    if (err) return onerror(err);\n    if (done) return;\n\n    setImmediate(function () {\n      if (streaming !== false && !done) {\n        onaborted();\n        return;\n      }\n\n      if (done) return;\n      done = true;\n      callback();\n    });\n  }\n\n  // streaming\n  function onstream() {\n    streaming = true;\n  }\n\n  file.on('directory', ondirectory);\n  file.on('end', onend);\n  file.on('error', onerror);\n  file"
+    },
+    {
+      "name": "onstream",
+      "file": "response.js",
+      "type": "function",
+      "code": "function onstream() {\n    streaming = true;\n  }\n\n  file.on('directory', ondirectory);\n  file.on('end', onend);\n  file.on('error', onerror);\n  file.on('file', onfile);\n  file.on('stream', onstream);\n  onFinished(res, onfinish);\n\n  if (options.headers) {\n    // set headers on successful transfer\n    file.on('headers', function headers(res) {\n      var obj = options.headers;\n      var keys = Object.keys(obj);\n\n      for (var i = 0; i < keys.length; i++) {\n        var k = keys[i];\n        res.setHea"
+    },
+    {
+      "name": "headers",
+      "file": "response.js",
+      "type": "function",
+      "code": "function headers(res) {\n      var obj = options.headers;\n      var keys = Object.keys(obj);\n\n      for (var i = 0; i < keys.length; i++) {\n        var k = keys[i];\n        res.setHeader(k, obj[k]);\n      }\n    });\n  }\n\n  // pipe\n  file.pipe(res);\n}\n\n/**\n * Stringify JSON, like JSON.stringify, but v8 optimized, with the\n * ability to escape characters that can trigger HTML sniffing.\n *\n * @param {*} value\n * @param {function} replacer\n * @param {number} spaces\n * @param {boolean} escape\n * @retur"
+    },
+    {
+      "name": "stringify",
+      "file": "response.js",
+      "type": "function",
+      "code": "function stringify (value, replacer, spaces, escape) {\n  // v8 checks arguments.length for optimizing simple call\n  // https://bugs.chromium.org/p/v8/issues/detail?id=4730\n  var json = replacer || spaces\n    ? JSON.stringify(value, replacer, spaces)\n    : JSON.stringify(value);\n\n  if (escape && typeof json === 'string') {\n    json = json.replace(/[<>&]/g, function (c) {\n      switch (c.charCodeAt(0)) {\n        case 0x3c:\n          return '\\\\u003c'\n        case 0x3e:\n          return '\\\\u003e'\n  "
+    },
+    {
+      "name": "accepts",
+      "file": "request.js",
+      "type": "req.method",
+      "code": "req.accepts = function(){\n  var accept = accepts(this);\n  return accept.types.apply(accept, arguments);\n};\n\n/**\n * Check if the given `encoding`s are accepted.\n *\n * @param {String} ...encoding\n * @return {String|Array}\n * @public\n */\n\nreq.acceptsEncodings = function(){\n  var accept = accepts(this);\n  return accept.encodings.apply(accept, arguments);\n};\n\n/**\n * Check if the given `charset`s are acceptable,\n * otherwise you should respond with 406 \"Not Acceptable\".\n *\n * @param {String} ...charse"
+    },
+    {
+      "name": "acceptsEncodings",
+      "file": "request.js",
+      "type": "req.method",
+      "code": "req.acceptsEncodings = function(){\n  var accept = accepts(this);\n  return accept.encodings.apply(accept, arguments);\n};\n\n/**\n * Check if the given `charset`s are acceptable,\n * otherwise you should respond with 406 \"Not Acceptable\".\n *\n * @param {String} ...charset\n * @return {String|Array}\n * @public\n */\n\nreq.acceptsCharsets = function(){\n  var accept = accepts(this);\n  return accept.charsets.apply(accept, arguments);\n};\n\n/**\n * Check if the given `lang`s are acceptable,\n * otherwise you should"
+    },
+    {
+      "name": "acceptsCharsets",
+      "file": "request.js",
+      "type": "req.method",
+      "code": "req.acceptsCharsets = function(){\n  var accept = accepts(this);\n  return accept.charsets.apply(accept, arguments);\n};\n\n/**\n * Check if the given `lang`s are acceptable,\n * otherwise you should respond with 406 \"Not Acceptable\".\n *\n * @param {String} ...lang\n * @return {String|Array}\n * @public\n */\n\nreq.acceptsLanguages = function(...languages) {\n  return accepts(this).languages(...languages);\n};\n\n/**\n * Parse Range header field, capping to the given `size`.\n *\n * Unspecified ranges such as \"0-\" "
+    },
+    {
+      "name": "acceptsLanguages",
+      "file": "request.js",
+      "type": "req.method",
+      "code": "req.acceptsLanguages = function(...languages) {\n  return accepts(this).languages(...languages);\n};\n\n/**\n * Parse Range header field, capping to the given `size`.\n *\n * Unspecified ranges such as \"0-\" require knowledge of your resource length. In\n * the case of a byte range this is of course the total number of bytes. If the\n * Range header field is not given `undefined` is returned, `-1` when unsatisfiable,\n * and `-2` when syntactically invalid.\n *\n * When ranges are returned, the array has a \""
+    },
+    {
+      "name": "header",
+      "file": "request.js",
+      "type": "function",
+      "code": "function header(name) {\n  if (!name) {\n    throw new TypeError('name argument is required to req.get');\n  }\n\n  if (typeof name !== 'string') {\n    throw new TypeError('name must be a string to req.get');\n  }\n\n  var lc = name.toLowerCase();\n\n  switch (lc) {\n    case 'referer':\n    case 'referrer':\n      return this.headers.referrer\n        || this.headers.referer;\n    default:\n      return this.headers[lc];\n  }\n};\n\n/**\n * To do: update docs.\n *\n * Check if the given `type(s)` is acceptable, retur"
+    },
+    {
+      "name": "range",
+      "file": "request.js",
+      "type": "function",
+      "code": "function range(size, options) {\n  var range = this.get('Range');\n  if (!range) return;\n  return parseRange(size, range, options);\n};\n\n/**\n * Parse the query string of `req.url`.\n *\n * This uses the \"query parser\" setting to parse the raw\n * string into an object.\n *\n * @return {String}\n * @api public\n */\n\ndefineGetter(req, 'query', function query(){\n  var queryparse = this.app.get('query parser fn');\n\n  if (!queryparse) {\n    // parsing is disabled\n    return Object.create(null);\n  }\n\n  var quer"
+    },
+    {
+      "name": "query",
+      "file": "request.js",
+      "type": "function",
+      "code": "function query(){\n  var queryparse = this.app.get('query parser fn');\n\n  if (!queryparse) {\n    // parsing is disabled\n    return Object.create(null);\n  }\n\n  var querystring = parse(this).query;\n\n  return queryparse(querystring);\n});\n\n/**\n * Check if the incoming request contains the \"Content-Type\"\n * header field, and it contains the given mime `type`.\n *\n * Examples:\n *\n *      // With Content-Type: text/html; charset=utf-8\n *      req.is('html');\n *      req.is('text/html');\n *      req.is('t"
+    },
+    {
+      "name": "is",
+      "file": "request.js",
+      "type": "function",
+      "code": "function is(types) {\n  var arr = types;\n\n  // support flattened arguments\n  if (!Array.isArray(types)) {\n    arr = new Array(arguments.length);\n    for (var i = 0; i < arr.length; i++) {\n      arr[i] = arguments[i];\n    }\n  }\n\n  return typeis(this, arr);\n};\n\n/**\n * Return the protocol string \"http\" or \"https\"\n * when requested with TLS. When the \"trust proxy\"\n * setting trusts the socket address, the\n * \"X-Forwarded-Proto\" header field will be trusted\n * and used if present.\n *\n * If you're runn"
+    },
+    {
+      "name": "protocol",
+      "file": "request.js",
+      "type": "function",
+      "code": "function protocol(){\n  var proto = this.socket.encrypted\n    ? 'https'\n    : 'http';\n  var trust = this.app.get('trust proxy fn');\n\n  if (!trust(this.socket.remoteAddress, 0)) {\n    return proto;\n  }\n\n  // Note: X-Forwarded-Proto is normally only ever a\n  //       single value, but this is to be safe.\n  var header = this.get('X-Forwarded-Proto') || proto\n  var index = header.indexOf(',')\n\n  return index !== -1\n    ? header.substring(0, index).trim()\n    : header.trim()\n});\n\n/**\n * Short-hand for"
+    },
+    {
+      "name": "secure",
+      "file": "request.js",
+      "type": "function",
+      "code": "function secure(){\n  return this.protocol === 'https';\n});\n\n/**\n * Return the remote address from the trusted proxy.\n *\n * The is the remote address on the socket unless\n * \"trust proxy\" is set.\n *\n * @return {String}\n * @public\n */\n\ndefineGetter(req, 'ip', function ip(){\n  var trust = this.app.get('trust proxy fn');\n  return proxyaddr(this, trust);\n});\n\n/**\n * When \"trust proxy\" is set, trusted proxy addresses + client.\n *\n * For example if the value were \"client, proxy1, proxy2\"\n * you would r"
+    },
+    {
+      "name": "ip",
+      "file": "request.js",
+      "type": "function",
+      "code": "function ip(){\n  var trust = this.app.get('trust proxy fn');\n  return proxyaddr(this, trust);\n});\n\n/**\n * When \"trust proxy\" is set, trusted proxy addresses + client.\n *\n * For example if the value were \"client, proxy1, proxy2\"\n * you would receive the array `[\"client\", \"proxy1\", \"proxy2\"]`\n * where \"proxy2\" is the furthest down-stream and \"proxy1\" and\n * \"proxy2\" were trusted.\n *\n * @return {Array}\n * @public\n */\n\ndefineGetter(req, 'ips', function ips() {\n  var trust = this.app.get('trust proxy"
+    },
+    {
+      "name": "ips",
+      "file": "request.js",
+      "type": "function",
+      "code": "function ips() {\n  var trust = this.app.get('trust proxy fn');\n  var addrs = proxyaddr.all(this, trust);\n\n  // reverse the order (to farthest -> closest)\n  // and remove socket address\n  addrs.reverse().pop()\n\n  return addrs\n});\n\n/**\n * Return subdomains as an array.\n *\n * Subdomains are the dot-separated parts of the host before the main domain of\n * the app. By default, the domain of the app is assumed to be the last two\n * parts of the host. This can be changed by setting \"subdomain offset\".\n"
+    },
+    {
+      "name": "subdomains",
+      "file": "request.js",
+      "type": "function",
+      "code": "function subdomains() {\n  var hostname = this.hostname;\n\n  if (!hostname) return [];\n\n  var offset = this.app.get('subdomain offset');\n  var subdomains = !isIP(hostname)\n    ? hostname.split('.').reverse()\n    : [hostname];\n\n  return subdomains.slice(offset);\n});\n\n/**\n * Short-hand for `url.parse(req.url).pathname`.\n *\n * @return {String}\n * @public\n */\n\ndefineGetter(req, 'path', function path() {\n  return parse(this).pathname;\n});\n\n/**\n * Parse the \"Host\" header field to a host.\n *\n * When the "
+    },
+    {
+      "name": "path",
+      "file": "request.js",
+      "type": "function",
+      "code": "function path() {\n  return parse(this).pathname;\n});\n\n/**\n * Parse the \"Host\" header field to a host.\n *\n * When the \"trust proxy\" setting trusts the socket\n * address, the \"X-Forwarded-Host\" header field will\n * be trusted.\n *\n * @return {String}\n * @public\n */\n\ndefineGetter(req, 'host', function host(){\n  var trust = this.app.get('trust proxy fn');\n  var val = this.get('X-Forwarded-Host');\n\n  if (!val || !trust(this.socket.remoteAddress, 0)) {\n    val = this.get('Host');\n  } else if (val.index"
+    },
+    {
+      "name": "host",
+      "file": "request.js",
+      "type": "function",
+      "code": "function host(){\n  var trust = this.app.get('trust proxy fn');\n  var val = this.get('X-Forwarded-Host');\n\n  if (!val || !trust(this.socket.remoteAddress, 0)) {\n    val = this.get('Host');\n  } else if (val.indexOf(',') !== -1) {\n    // Note: X-Forwarded-Host is normally only ever a\n    //       single value, but this is to be safe.\n    val = val.substring(0, val.indexOf(',')).trimRight()\n  }\n\n  return val || undefined;\n});\n\n/**\n * Parse the \"Host\" header field to a hostname.\n *\n * When the \"trust"
+    },
+    {
+      "name": "hostname",
+      "file": "request.js",
+      "type": "function",
+      "code": "function hostname(){\n  var host = this.host;\n\n  if (!host) return;\n\n  // IPv6 literal support\n  var offset = host[0] === '['\n    ? host.indexOf(']') + 1\n    : 0;\n  var index = host.indexOf(':', offset);\n\n  return index !== -1\n    ? host.substring(0, index)\n    : host;\n});\n\n/**\n * Check if the request is fresh, aka\n * Last-Modified or the ETag\n * still match.\n *\n * @return {Boolean}\n * @public\n */\n\ndefineGetter(req, 'fresh', function(){\n  var method = this.method;\n  var res = this.res\n  var statu"
+    },
+    {
+      "name": "stale",
+      "file": "request.js",
+      "type": "function",
+      "code": "function stale(){\n  return !this.fresh;\n});\n\n/**\n * Check if the request was an _XMLHttpRequest_.\n *\n * @return {Boolean}\n * @public\n */\n\ndefineGetter(req, 'xhr', function xhr(){\n  var val = this.get('X-Requested-With') || '';\n  return val.toLowerCase() === 'xmlhttprequest';\n});\n\n/**\n * Helper function for creating a getter on an object.\n *\n * @param {Object} obj\n * @param {String} name\n * @param {Function} getter\n * @private\n */\nfunction defineGetter(obj, name, getter) {\n  Object.defineProperty"
+    },
+    {
+      "name": "xhr",
+      "file": "request.js",
+      "type": "function",
+      "code": "function xhr(){\n  var val = this.get('X-Requested-With') || '';\n  return val.toLowerCase() === 'xmlhttprequest';\n});\n\n/**\n * Helper function for creating a getter on an object.\n *\n * @param {Object} obj\n * @param {String} name\n * @param {Function} getter\n * @private\n */\nfunction defineGetter(obj, name, getter) {\n  Object.defineProperty(obj, name, {\n    configurable: true,\n    enumerable: true,\n    get: getter\n  });\n}\n"
+    },
+    {
+      "name": "defineGetter",
+      "file": "request.js",
+      "type": "function",
+      "code": "function defineGetter(obj, name, getter) {\n  Object.defineProperty(obj, name, {\n    configurable: true,\n    enumerable: true,\n    get: getter\n  });\n}\n"
+    },
+    {
+      "name": "createApplication",
+      "file": "express.js",
+      "type": "function",
+      "code": "function createApplication() {\n  var app = function(req, res, next) {\n    app.handle(req, res, next);\n  };\n\n  mixin(app, EventEmitter.prototype, false);\n  mixin(app, proto, false);\n\n  // expose the prototype that will get set on requests\n  app.request = Object.create(req, {\n    app: { configurable: true, enumerable: true, writable: true, value: app }\n  })\n\n  // expose the prototype that will get set on responses\n  app.response = Object.create(res, {\n    app: { configurable: true, enumerable: tru"
+    },
+    {
+      "name": "normalizeType",
+      "file": "utils.js",
+      "type": "exports.method",
+      "code": "exports.normalizeType = function(type){\n  return ~type.indexOf('/')\n    ? acceptParams(type)\n    : { value: (mime.lookup(type) || 'application/octet-stream'), params: {} }\n};\n\n/**\n * Normalize `types`, for example \"html\" becomes \"text/html\".\n *\n * @param {Array} types\n * @return {Array}\n * @api private\n */\n\nexports.normalizeTypes = function(types) {\n  return types.map(exports.normalizeType);\n};\n\n\n/**\n * Parse accept params `str` returning an\n * object with `.value`, `.quality` and `.params`.\n *\n"
+    },
+    {
+      "name": "normalizeTypes",
+      "file": "utils.js",
+      "type": "exports.method",
+      "code": "exports.normalizeTypes = function(types) {\n  return types.map(exports.normalizeType);\n};\n\n\n/**\n * Parse accept params `str` returning an\n * object with `.value`, `.quality` and `.params`.\n *\n * @param {String} str\n * @return {Object}\n * @api private\n */\n\nfunction acceptParams (str) {\n  var length = str.length;\n  var colonIndex = str.indexOf(';');\n  var index = colonIndex === -1 ? length : colonIndex;\n  var ret = { value: str.slice(0, index).trim(), quality: 1, params: {} };\n\n  while (index < len"
+    },
+    {
+      "name": "compileETag",
+      "file": "utils.js",
+      "type": "exports.method",
+      "code": "exports.compileETag = function(val) {\n  var fn;\n\n  if (typeof val === 'function') {\n    return val;\n  }\n\n  switch (val) {\n    case true:\n    case 'weak':\n      fn = exports.wetag;\n      break;\n    case false:\n      break;\n    case 'strong':\n      fn = exports.etag;\n      break;\n    default:\n      throw new TypeError('unknown value for etag function: ' + val);\n  }\n\n  return fn;\n}\n\n/**\n * Compile \"query parser\" value to function.\n *\n * @param  {String|Function} val\n * @return {Function}\n * @api pr"
+    },
+    {
+      "name": "compileTrust",
+      "file": "utils.js",
+      "type": "exports.method",
+      "code": "exports.compileTrust = function(val) {\n  if (typeof val === 'function') return val;\n\n  if (val === true) {\n    // Support plain true/false\n    return function(){ return true };\n  }\n\n  if (typeof val === 'number') {\n    // Support trusting hop count\n    return function(a, i){ return i < val };\n  }\n\n  if (typeof val === 'string') {\n    // Support comma-separated values\n    val = val.split(',')\n      .map(function (v) { return v.trim() })\n  }\n\n  return proxyaddr.compile(val || []);\n}\n\n/**\n * Set th"
+    },
+    {
+      "name": "acceptParams",
+      "file": "utils.js",
+      "type": "function",
+      "code": "function acceptParams (str) {\n  var length = str.length;\n  var colonIndex = str.indexOf(';');\n  var index = colonIndex === -1 ? length : colonIndex;\n  var ret = { value: str.slice(0, index).trim(), quality: 1, params: {} };\n\n  while (index < length) {\n    var splitIndex = str.indexOf('=', index);\n    if (splitIndex === -1) break;\n\n    var colonIndex = str.indexOf(';', index);\n    var endIndex = colonIndex === -1 ? length : colonIndex;\n\n    if (splitIndex > endIndex) {\n      index = str.lastIndex"
+    },
+    {
+      "name": "compileQueryParser",
+      "file": "utils.js",
+      "type": "function",
+      "code": "function compileQueryParser(val) {\n  var fn;\n\n  if (typeof val === 'function') {\n    return val;\n  }\n\n  switch (val) {\n    case true:\n    case 'simple':\n      fn = querystring.parse;\n      break;\n    case false:\n      break;\n    case 'extended':\n      fn = parseExtendedQueryString;\n      break;\n    default:\n      throw new TypeError('unknown value for query parser function: ' + val);\n  }\n\n  return fn;\n}\n\n/**\n * Compile \"proxy trust\" value to function.\n *\n * @param  {Boolean|String|Number|Array|F"
+    },
+    {
+      "name": "setCharset",
+      "file": "utils.js",
+      "type": "function",
+      "code": "function setCharset(type, charset) {\n  if (!type || !charset) {\n    return type;\n  }\n\n  // parse type\n  var parsed = contentType.parse(type);\n\n  // set charset\n  parsed.parameters.charset = charset;\n\n  // format type\n  return contentType.format(parsed);\n};\n\n/**\n * Create an ETag generator function, generating ETags with\n * the given options.\n *\n * @param {object} options\n * @return {function}\n * @private\n */\n\nfunction createETagGenerator (options) {\n  return function generateETag (body, encoding"
+    },
+    {
+      "name": "createETagGenerator",
+      "file": "utils.js",
+      "type": "function",
+      "code": "function createETagGenerator (options) {\n  return function generateETag (body, encoding) {\n    var buf = !Buffer.isBuffer(body)\n      ? Buffer.from(body, encoding)\n      : body\n\n    return etag(buf, options)\n  }\n}\n\n/**\n * Parse an extended query string with qs.\n *\n * @param {String} str\n * @return {Object}\n * @private\n */\n\nfunction parseExtendedQueryString(str) {\n  return qs.parse(str, {\n    allowPrototypes: true\n  });\n}\n"
+    },
+    {
+      "name": "generateETag",
+      "file": "utils.js",
+      "type": "function",
+      "code": "function generateETag (body, encoding) {\n    var buf = !Buffer.isBuffer(body)\n      ? Buffer.from(body, encoding)\n      : body\n\n    return etag(buf, options)\n  }\n}\n\n/**\n * Parse an extended query string with qs.\n *\n * @param {String} str\n * @return {Object}\n * @private\n */\n\nfunction parseExtendedQueryString(str) {\n  return qs.parse(str, {\n    allowPrototypes: true\n  });\n}\n"
+    },
+    {
+      "name": "parseExtendedQueryString",
+      "file": "utils.js",
+      "type": "function",
+      "code": "function parseExtendedQueryString(str) {\n  return qs.parse(str, {\n    allowPrototypes: true\n  });\n}\n"
+    },
+    {
+      "name": "View",
+      "file": "view.js",
+      "type": "function",
+      "code": "function View(name, options) {\n  var opts = options || {};\n\n  this.defaultEngine = opts.defaultEngine;\n  this.ext = extname(name);\n  this.name = name;\n  this.root = opts.root;\n\n  if (!this.ext && !this.defaultEngine) {\n    throw new Error('No default engine was specified and no extension was provided.');\n  }\n\n  var fileName = name;\n\n  if (!this.ext) {\n    // get extension from default engine name\n    this.ext = this.defaultEngine[0] !== '.'\n      ? '.' + this.defaultEngine\n      : this.defaultEn"
+    },
+    {
+      "name": "lookup",
+      "file": "view.js",
+      "type": "function",
+      "code": "function lookup(name) {\n  var path;\n  var roots = [].concat(this.root);\n\n  debug('lookup \"%s\"', name);\n\n  for (var i = 0; i < roots.length && !path; i++) {\n    var root = roots[i];\n\n    // resolve the path\n    var loc = resolve(root, name);\n    var dir = dirname(loc);\n    var file = basename(loc);\n\n    // resolve the file\n    path = this.resolve(dir, file);\n  }\n\n  return path;\n};\n\n/**\n * Render with the given options.\n *\n * @param {object} options\n * @param {function} callback\n * @private\n */\n\nV"
+    },
+    {
+      "name": "render",
+      "file": "view.js",
+      "type": "function",
+      "code": "function render(options, callback) {\n  var sync = true;\n\n  debug('render \"%s\"', this.path);\n\n  // render, normalizing sync callbacks\n  this.engine(this.path, options, function onRender() {\n    if (!sync) {\n      return callback.apply(this, arguments);\n    }\n\n    // copy arguments\n    var args = new Array(arguments.length);\n    var cntx = this;\n\n    for (var i = 0; i < arguments.length; i++) {\n      args[i] = arguments[i];\n    }\n\n    // force callback to be async\n    return process.nextTick(funct"
+    },
+    {
+      "name": "onRender",
+      "file": "view.js",
+      "type": "function",
+      "code": "function onRender() {\n    if (!sync) {\n      return callback.apply(this, arguments);\n    }\n\n    // copy arguments\n    var args = new Array(arguments.length);\n    var cntx = this;\n\n    for (var i = 0; i < arguments.length; i++) {\n      args[i] = arguments[i];\n    }\n\n    // force callback to be async\n    return process.nextTick(function renderTick() {\n      return callback.apply(cntx, args);\n    });\n  });\n\n  sync = false;\n};\n\n/**\n * Resolve the file within the given directory.\n *\n * @param {string"
+    },
+    {
+      "name": "renderTick",
+      "file": "view.js",
+      "type": "function",
+      "code": "function renderTick() {\n      return callback.apply(cntx, args);\n    });\n  });\n\n  sync = false;\n};\n\n/**\n * Resolve the file within the given directory.\n *\n * @param {string} dir\n * @param {string} file\n * @private\n */\n\nView.prototype.resolve = function resolve(dir, file) {\n  var ext = this.ext;\n\n  // <path>.<ext>\n  var path = join(dir, file);\n  var stat = tryStat(path);\n\n  if (stat && stat.isFile()) {\n    return path;\n  }\n\n  // <path>/index.<ext>\n  path = join(dir, basename(file, ext), 'index' +"
+    },
+    {
+      "name": "resolve",
+      "file": "view.js",
+      "type": "function",
+      "code": "function resolve(dir, file) {\n  var ext = this.ext;\n\n  // <path>.<ext>\n  var path = join(dir, file);\n  var stat = tryStat(path);\n\n  if (stat && stat.isFile()) {\n    return path;\n  }\n\n  // <path>/index.<ext>\n  path = join(dir, basename(file, ext), 'index' + ext);\n  stat = tryStat(path);\n\n  if (stat && stat.isFile()) {\n    return path;\n  }\n};\n\n/**\n * Return a stat, maybe.\n *\n * @param {string} path\n * @return {fs.Stats}\n * @private\n */\n\nfunction tryStat(path) {\n  debug('stat \"%s\"', path);\n\n  try {"
+    },
+    {
+      "name": "tryStat",
+      "file": "view.js",
+      "type": "function",
+      "code": "function tryStat(path) {\n  debug('stat \"%s\"', path);\n\n  try {\n    return fs.statSync(path);\n  } catch (e) {\n    return undefined;\n  }\n}\n"
+    },
+    {
+      "name": "init",
+      "file": "application.js",
+      "type": "function",
+      "code": "function init() {\n  var router = null;\n\n  this.cache = Object.create(null);\n  this.engines = Object.create(null);\n  this.settings = Object.create(null);\n\n  this.defaultConfiguration();\n\n  // Setup getting to lazily add base router\n  Object.defineProperty(this, 'router', {\n    configurable: true,\n    enumerable: true,\n    get: function getrouter() {\n      if (router === null) {\n        router = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.en"
+    },
+    {
+      "name": "getrouter",
+      "file": "application.js",
+      "type": "function",
+      "code": "function getrouter() {\n      if (router === null) {\n        router = new Router({\n          caseSensitive: this.enabled('case sensitive routing'),\n          strict: this.enabled('strict routing')\n        });\n      }\n\n      return router;\n    }\n  });\n};\n\n/**\n * Initialize application configuration.\n * @private\n */\n\napp.defaultConfiguration = function defaultConfiguration() {\n  var env = process.env.NODE_ENV || 'development';\n\n  // default settings\n  this.enable('x-powered-by');\n  this.set('etag',"
+    },
+    {
+      "name": "defaultConfiguration",
+      "file": "application.js",
+      "type": "function",
+      "code": "function defaultConfiguration() {\n  var env = process.env.NODE_ENV || 'development';\n\n  // default settings\n  this.enable('x-powered-by');\n  this.set('etag', 'weak');\n  this.set('env', env);\n  this.set('query parser', 'simple')\n  this.set('subdomain offset', 2);\n  this.set('trust proxy', false);\n\n  // trust proxy inherit back-compat\n  Object.defineProperty(this.settings, trustProxyDefaultSymbol, {\n    configurable: true,\n    value: true\n  });\n\n  debug('booting in %s mode', env);\n\n  this.on('moun"
+    },
+    {
+      "name": "onmount",
+      "file": "application.js",
+      "type": "function",
+      "code": "function onmount(parent) {\n    // inherit trust proxy\n    if (this.settings[trustProxyDefaultSymbol] === true\n      && typeof parent.settings['trust proxy fn'] === 'function') {\n      delete this.settings['trust proxy'];\n      delete this.settings['trust proxy fn'];\n    }\n\n    // inherit protos\n    Object.setPrototypeOf(this.request, parent.request)\n    Object.setPrototypeOf(this.response, parent.response)\n    Object.setPrototypeOf(this.engines, parent.engines)\n    Object.setPrototypeOf(this.set"
+    },
+    {
+      "name": "handle",
+      "file": "application.js",
+      "type": "function",
+      "code": "function handle(req, res, callback) {\n  // final handler\n  var done = callback || finalhandler(req, res, {\n    env: this.get('env'),\n    onerror: logerror.bind(this)\n  });\n\n  // set powered by header\n  if (this.enabled('x-powered-by')) {\n    res.setHeader('X-Powered-By', 'Express');\n  }\n\n  // set circular references\n  req.res = res;\n  res.req = req;\n\n  // alter the prototypes\n  Object.setPrototypeOf(req, this.request)\n  Object.setPrototypeOf(res, this.response)\n\n  // setup locals\n  if (!res.loca"
+    },
+    {
+      "name": "use",
+      "file": "application.js",
+      "type": "function",
+      "code": "function use(fn) {\n  var offset = 0;\n  var path = '/';\n\n  // default path to '/'\n  // disambiguate app.use([fn])\n  if (typeof fn !== 'function') {\n    var arg = fn;\n\n    while (Array.isArray(arg) && arg.length !== 0) {\n      arg = arg[0];\n    }\n\n    // first arg is the path\n    if (typeof arg !== 'function') {\n      offset = 1;\n      path = fn;\n    }\n  }\n\n  var fns = flatten.call(slice.call(arguments, offset), Infinity);\n\n  if (fns.length === 0) {\n    throw new TypeError('app.use() requires a mi"
+    },
+    {
+      "name": "mounted_app",
+      "file": "application.js",
+      "type": "function",
+      "code": "function mounted_app(req, res, next) {\n      var orig = req.app;\n      fn.handle(req, res, function (err) {\n        Object.setPrototypeOf(req, orig.request)\n        Object.setPrototypeOf(res, orig.response)\n        next(err);\n      });\n    });\n\n    // mounted an app\n    fn.emit('mount', this);\n  }, this);\n\n  return this;\n};\n\n/**\n * Proxy to the app `Router#route()`\n * Returns a new `Route` instance for the _path_.\n *\n * Routes are isolated middleware stacks for specific paths.\n * See the Route a"
+    },
+    {
+      "name": "route",
+      "file": "application.js",
+      "type": "function",
+      "code": "function route(path) {\n  return this.router.route(path);\n};\n\n/**\n * Register the given template engine callback `fn`\n * as `ext`.\n *\n * By default will `require()` the engine based on the\n * file extension. For example if you try to render\n * a \"foo.ejs\" file Express will invoke the following internally:\n *\n *     app.engine('ejs', require('ejs').__express);\n *\n * For engines that do not provide `.__express` out of the box,\n * or if you wish to \"map\" a different extension to the template engine\n"
+    },
+    {
+      "name": "engine",
+      "file": "application.js",
+      "type": "function",
+      "code": "function engine(ext, fn) {\n  if (typeof fn !== 'function') {\n    throw new Error('callback function required');\n  }\n\n  // get file extension\n  var extension = ext[0] !== '.'\n    ? '.' + ext\n    : ext;\n\n  // store engine\n  this.engines[extension] = fn;\n\n  return this;\n};\n\n/**\n * Proxy to `Router#param()` with one added api feature. The _name_ parameter\n * can be an array of names.\n *\n * See the Router#param() docs for more details.\n *\n * @param {String|Array} name\n * @param {Function} fn\n * @retu"
+    },
+    {
+      "name": "param",
+      "file": "application.js",
+      "type": "function",
+      "code": "function param(name, fn) {\n  if (Array.isArray(name)) {\n    for (var i = 0; i < name.length; i++) {\n      this.param(name[i], fn);\n    }\n\n    return this;\n  }\n\n  this.router.param(name, fn);\n\n  return this;\n};\n\n/**\n * Assign `setting` to `val`, or return `setting`'s value.\n *\n *    app.set('foo', 'bar');\n *    app.set('foo');\n *    // => \"bar\"\n *\n * Mounted servers inherit their parent server's settings.\n *\n * @param {String} setting\n * @param {*} [val]\n * @return {Server} for chaining\n * @publi"
+    },
+    {
+      "name": "set",
+      "file": "application.js",
+      "type": "function",
+      "code": "function set(setting, val) {\n  if (arguments.length === 1) {\n    // app.get(setting)\n    return this.settings[setting];\n  }\n\n  debug('set \"%s\" to %o', setting, val);\n\n  // set value\n  this.settings[setting] = val;\n\n  // trigger matched settings\n  switch (setting) {\n    case 'etag':\n      this.set('etag fn', compileETag(val));\n      break;\n    case 'query parser':\n      this.set('query parser fn', compileQueryParser(val));\n      break;\n    case 'trust proxy':\n      this.set('trust proxy fn', comp"
+    },
+    {
+      "name": "path",
+      "file": "application.js",
+      "type": "function",
+      "code": "function path() {\n  return this.parent\n    ? this.parent.path() + this.mountpath\n    : '';\n};\n\n/**\n * Check if `setting` is enabled (truthy).\n *\n *    app.enabled('foo')\n *    // => false\n *\n *    app.enable('foo')\n *    app.enabled('foo')\n *    // => true\n *\n * @param {String} setting\n * @return {Boolean}\n * @public\n */\n\napp.enabled = function enabled(setting) {\n  return Boolean(this.set(setting));\n};\n\n/**\n * Check if `setting` is disabled.\n *\n *    app.disabled('foo')\n *    // => true\n *\n *   "
+    },
+    {
+      "name": "enabled",
+      "file": "application.js",
+      "type": "function",
+      "code": "function enabled(setting) {\n  return Boolean(this.set(setting));\n};\n\n/**\n * Check if `setting` is disabled.\n *\n *    app.disabled('foo')\n *    // => true\n *\n *    app.enable('foo')\n *    app.disabled('foo')\n *    // => false\n *\n * @param {String} setting\n * @return {Boolean}\n * @public\n */\n\napp.disabled = function disabled(setting) {\n  return !this.set(setting);\n};\n\n/**\n * Enable `setting`.\n *\n * @param {String} setting\n * @return {app} for chaining\n * @public\n */\n\napp.enable = function enable(s"
+    },
+    {
+      "name": "disabled",
+      "file": "application.js",
+      "type": "function",
+      "code": "function disabled(setting) {\n  return !this.set(setting);\n};\n\n/**\n * Enable `setting`.\n *\n * @param {String} setting\n * @return {app} for chaining\n * @public\n */\n\napp.enable = function enable(setting) {\n  return this.set(setting, true);\n};\n\n/**\n * Disable `setting`.\n *\n * @param {String} setting\n * @return {app} for chaining\n * @public\n */\n\napp.disable = function disable(setting) {\n  return this.set(setting, false);\n};\n\n/**\n * Delegate `.VERB(...)` calls to `router.VERB(...)`.\n */\n\nmethods.forEa"
+    },
+    {
+      "name": "enable",
+      "file": "application.js",
+      "type": "function",
+      "code": "function enable(setting) {\n  return this.set(setting, true);\n};\n\n/**\n * Disable `setting`.\n *\n * @param {String} setting\n * @return {app} for chaining\n * @public\n */\n\napp.disable = function disable(setting) {\n  return this.set(setting, false);\n};\n\n/**\n * Delegate `.VERB(...)` calls to `router.VERB(...)`.\n */\n\nmethods.forEach(function (method) {\n  app[method] = function (path) {\n    if (method === 'get' && arguments.length === 1) {\n      // app.get(setting)\n      return this.set(path);\n    }\n\n   "
+    },
+    {
+      "name": "disable",
+      "file": "application.js",
+      "type": "function",
+      "code": "function disable(setting) {\n  return this.set(setting, false);\n};\n\n/**\n * Delegate `.VERB(...)` calls to `router.VERB(...)`.\n */\n\nmethods.forEach(function (method) {\n  app[method] = function (path) {\n    if (method === 'get' && arguments.length === 1) {\n      // app.get(setting)\n      return this.set(path);\n    }\n\n    var route = this.route(path);\n    route[method].apply(route, slice.call(arguments, 1));\n    return this;\n  };\n});\n\n/**\n * Special-cased \"all\" method, applying the given route `path"
+    },
+    {
+      "name": "all",
+      "file": "application.js",
+      "type": "function",
+      "code": "function all(path) {\n  var route = this.route(path);\n  var args = slice.call(arguments, 1);\n\n  for (var i = 0; i < methods.length; i++) {\n    route[methods[i]].apply(route, args);\n  }\n\n  return this;\n};\n\n/**\n * Render the given view `name` name with `options`\n * and a callback accepting an error and the\n * rendered template string.\n *\n * Example:\n *\n *    app.render('email', { name: 'Tobi' }, function(err, html){\n *      // ...\n *    })\n *\n * @param {String} name\n * @param {Object|Function} opti"
+    },
+    {
+      "name": "render",
+      "file": "application.js",
+      "type": "function",
+      "code": "function render(name, options, callback) {\n  var cache = this.cache;\n  var done = callback;\n  var engines = this.engines;\n  var opts = options;\n  var view;\n\n  // support callback function as second arg\n  if (typeof options === 'function') {\n    done = options;\n    opts = {};\n  }\n\n  // merge options\n  var renderOptions = { ...this.locals, ...opts._locals, ...opts };\n\n  // set .cache unless explicitly provided\n  if (renderOptions.cache == null) {\n    renderOptions.cache = this.enabled('view cache'"
+    },
+    {
+      "name": "listen",
+      "file": "application.js",
+      "type": "function",
+      "code": "function listen() {\n  var server = http.createServer(this)\n  var args = slice.call(arguments)\n  if (typeof args[args.length - 1] === 'function') {\n    var done = args[args.length - 1] = once(args[args.length - 1])\n    server.once('error', done)\n  }\n  return server.listen.apply(server, args)\n}\n\n/**\n * Log error using console.error.\n *\n * @param {Error} err\n * @private\n */\n\nfunction logerror(err) {\n  /* istanbul ignore next */\n  if (this.get('env') !== 'test') console.error(err.stack || err.toStri"
+    },
+    {
+      "name": "logerror",
+      "file": "application.js",
+      "type": "function",
+      "code": "function logerror(err) {\n  /* istanbul ignore next */\n  if (this.get('env') !== 'test') console.error(err.stack || err.toString());\n}\n\n/**\n * Try rendering a view.\n * @private\n */\n\nfunction tryRender(view, options, callback) {\n  try {\n    view.render(options, callback);\n  } catch (err) {\n    callback(err);\n  }\n}\n"
+    },
+    {
+      "name": "tryRender",
+      "file": "application.js",
+      "type": "function",
+      "code": "function tryRender(view, options, callback) {\n  try {\n    view.render(options, callback);\n  } catch (err) {\n    callback(err);\n  }\n}\n"
+    }
+  ]
+}

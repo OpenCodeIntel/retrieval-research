@@ -1,0 +1,903 @@
+{
+  "codebase": "zod",
+  "total_queries": 50,
+  "total_functions": 220,
+  "hit@1": 0.9,
+  "hit@3": 0.98,
+  "hit@5": 0.98,
+  "by_category": {
+    "schema": {
+      "hit@1": 1.0,
+      "count": 12
+    },
+    "validation": {
+      "hit@1": 0.7,
+      "count": 10
+    },
+    "transform": {
+      "hit@1": 0.875,
+      "count": 8
+    },
+    "error": {
+      "hit@1": 1.0,
+      "count": 6
+    },
+    "string": {
+      "hit@1": 1.0,
+      "count": 8
+    },
+    "utility": {
+      "hit@1": 0.8333333333333334,
+      "count": 6
+    }
+  },
+  "all_results": [
+    {
+      "query": "create string schema",
+      "expected": [
+        "string",
+        "ostring",
+        "stringType"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "string",
+      "top_3": [
+        "string",
+        "str",
+        "createZodEnum"
+      ]
+    },
+    {
+      "query": "create number schema",
+      "expected": [
+        "number",
+        "onumber",
+        "numberType"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "number",
+      "top_3": [
+        "number",
+        "num",
+        "oboolean"
+      ]
+    },
+    {
+      "query": "create boolean schema",
+      "expected": [
+        "boolean",
+        "oboolean",
+        "booleanType"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "boolean",
+      "top_3": [
+        "boolean",
+        "oboolean",
+        "fromJSONSchema"
+      ]
+    },
+    {
+      "query": "create object schema",
+      "expected": [
+        "object",
+        "handleObjectResult",
+        "strictObject"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "object",
+      "top_3": [
+        "object",
+        "createTransparentProxy",
+        "extend"
+      ]
+    },
+    {
+      "query": "create array schema",
+      "expected": [
+        "array",
+        "handleArrayResult"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "array",
+      "top_3": [
+        "array",
+        "joinValues",
+        "createZodEnum"
+      ]
+    },
+    {
+      "query": "create enum schema",
+      "expected": [
+        "createZodEnum",
+        "cleanEnum",
+        "nativeEnum"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "createZodEnum",
+      "top_3": [
+        "createZodEnum",
+        "nativeEnum",
+        "num"
+      ]
+    },
+    {
+      "query": "create union type schema",
+      "expected": [
+        "union",
+        "discriminatedUnion",
+        "handleUnionResults"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "union",
+      "top_3": [
+        "union",
+        "handleUnionResults",
+        "discriminatedUnion"
+      ]
+    },
+    {
+      "query": "create optional field",
+      "expected": [
+        "optional",
+        "nullable",
+        "nullish"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "optional",
+      "top_3": [
+        "optional",
+        "ostring",
+        "deepPartialify"
+      ]
+    },
+    {
+      "query": "create date schema",
+      "expected": [
+        "date",
+        "datetime",
+        "datetimeRegex"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "date",
+      "top_3": [
+        "date",
+        "timeRegexSource",
+        "createZodEnum"
+      ]
+    },
+    {
+      "query": "create tuple schema",
+      "expected": [
+        "tuple",
+        "handleTupleResult"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "tuple",
+      "top_3": [
+        "tuple",
+        "createZodEnum",
+        "handleTupleResult"
+      ]
+    },
+    {
+      "query": "create record schema",
+      "expected": [
+        "record",
+        "handleRecordResult"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "record",
+      "top_3": [
+        "record",
+        "partialRecord",
+        "looseRecord"
+      ]
+    },
+    {
+      "query": "create literal value schema",
+      "expected": [
+        "literal"
+      ],
+      "category": "schema",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "literal",
+      "top_3": [
+        "literal",
+        "templateLiteral",
+        "createZodEnum"
+      ]
+    },
+    {
+      "query": "parse input data",
+      "expected": [
+        "parseStr",
+        "handleResults"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "parseStr",
+      "top_3": [
+        "parseStr",
+        "freeze",
+        "handleReadonlyResult"
+      ]
+    },
+    {
+      "query": "safely parse data",
+      "expected": [
+        "parseStr",
+        "handleResults"
+      ],
+      "category": "validation",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "isValidBase64URL",
+      "top_3": [
+        "isValidBase64URL",
+        "parseStr",
+        "esc"
+      ]
+    },
+    {
+      "query": "validate input value",
+      "expected": [
+        "check",
+        "assert",
+        "handleCheckPropertyResult"
+      ],
+      "category": "validation",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "top_result": "date",
+      "top_3": [
+        "date",
+        "nullish",
+        "parseStr"
+      ]
+    },
+    {
+      "query": "check if value matches schema",
+      "expected": [
+        "check",
+        "assert",
+        "handleCheckPropertyResult"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "check",
+      "top_3": [
+        "check",
+        "literal",
+        "xor"
+      ]
+    },
+    {
+      "query": "handle parse results",
+      "expected": [
+        "handleResults",
+        "handlePipeResult"
+      ],
+      "category": "validation",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "handleExclusiveUnionResults",
+      "top_3": [
+        "handleExclusiveUnionResults",
+        "handleUnionResults",
+        "handleResults"
+      ]
+    },
+    {
+      "query": "assert value type",
+      "expected": [
+        "assert",
+        "assertEqual",
+        "assertIs"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "assert",
+      "top_3": [
+        "assert",
+        "assertIs",
+        "assertNotEqual"
+      ]
+    },
+    {
+      "query": "check value equality",
+      "expected": [
+        "assertEqual",
+        "assertNotEqual",
+        "check"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "check",
+      "top_3": [
+        "check",
+        "handleCheckPropertyResult",
+        "float64"
+      ]
+    },
+    {
+      "query": "coerce number value",
+      "expected": [
+        "onumber",
+        "oboolean",
+        "ostring"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "number",
+      "top_3": [
+        "number",
+        "num",
+        "onumber"
+      ]
+    },
+    {
+      "query": "validate with custom logic",
+      "expected": [
+        "custom",
+        "refine",
+        "handleRefineResult"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "custom",
+      "top_3": [
+        "custom",
+        "check",
+        "superRefine"
+      ]
+    },
+    {
+      "query": "check type assertion",
+      "expected": [
+        "assertIs",
+        "assert",
+        "check"
+      ],
+      "category": "validation",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "assert",
+      "top_3": [
+        "assert",
+        "check",
+        "assertIs"
+      ]
+    },
+    {
+      "query": "transform parsed value",
+      "expected": [
+        "transform",
+        "handleTransformResult",
+        "isTransforming"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "transform",
+      "top_3": [
+        "transform",
+        "finalizeSet",
+        "handleArrayResult"
+      ]
+    },
+    {
+      "query": "add refinement to schema",
+      "expected": [
+        "refine",
+        "handleRefineResult",
+        "superRefine"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "refine",
+      "top_3": [
+        "refine",
+        "addIssueToContext",
+        "superRefine"
+      ]
+    },
+    {
+      "query": "chain schema transformations",
+      "expected": [
+        "pipe",
+        "handlePipeResult",
+        "transform"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "transform",
+      "top_3": [
+        "transform",
+        "isTransforming",
+        "preprocess"
+      ]
+    },
+    {
+      "query": "set default value result",
+      "expected": [
+        "handleDefaultResult",
+        "handleCatchall"
+      ],
+      "category": "transform",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "set",
+      "top_3": [
+        "set",
+        "handleDefaultResult",
+        "handleSetResult"
+      ]
+    },
+    {
+      "query": "handle catchall schema",
+      "expected": [
+        "catchall",
+        "handleCatchall"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "catchall",
+      "top_3": [
+        "catchall",
+        "handleCatchall",
+        "handlePropertyResult"
+      ]
+    },
+    {
+      "query": "preprocess input before parse",
+      "expected": [
+        "preprocess"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "preprocess",
+      "top_3": [
+        "preprocess",
+        "process",
+        "parseStr"
+      ]
+    },
+    {
+      "query": "make schema partial",
+      "expected": [
+        "partial",
+        "deepPartialify"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "partial",
+      "top_3": [
+        "partial",
+        "partialRecord",
+        "makeReturnsIssue"
+      ]
+    },
+    {
+      "query": "extend object schema",
+      "expected": [
+        "extend",
+        "safeExtend",
+        "merge",
+        "pick",
+        "omit"
+      ],
+      "category": "transform",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "extend",
+      "top_3": [
+        "extend",
+        "object",
+        "safeExtend"
+      ]
+    },
+    {
+      "query": "format validation error",
+      "expected": [
+        "formatError",
+        "prettifyError",
+        "treeifyError"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "formatError",
+      "top_3": [
+        "formatError",
+        "treeifyError",
+        "flattenError"
+      ]
+    },
+    {
+      "query": "flatten error messages",
+      "expected": [
+        "flattenError"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "flattenError",
+      "top_3": [
+        "flattenError",
+        "formatError",
+        "initializer"
+      ]
+    },
+    {
+      "query": "create error tree",
+      "expected": [
+        "treeifyError"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "treeifyError",
+      "top_3": [
+        "treeifyError",
+        "processCreateParams",
+        "createTransparentProxy"
+      ]
+    },
+    {
+      "query": "add error to context",
+      "expected": [
+        "addIssueToContext",
+        "processError"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "addIssueToContext",
+      "top_3": [
+        "addIssueToContext",
+        "setError",
+        "processError"
+      ]
+    },
+    {
+      "query": "process validation error",
+      "expected": [
+        "processError",
+        "addIssueToContext"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "process",
+      "top_3": [
+        "process",
+        "processError",
+        "processCreateParams"
+      ]
+    },
+    {
+      "query": "prettify error output",
+      "expected": [
+        "prettifyError",
+        "formatError"
+      ],
+      "category": "error",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "prettifyError",
+      "top_3": [
+        "prettifyError",
+        "flattenError",
+        "treeifyError"
+      ]
+    },
+    {
+      "query": "validate email address",
+      "expected": [
+        "email"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "email",
+      "top_3": [
+        "email",
+        "date",
+        "isValidIP"
+      ]
+    },
+    {
+      "query": "validate url string",
+      "expected": [
+        "url"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "url",
+      "top_3": [
+        "url",
+        "string",
+        "httpUrl"
+      ]
+    },
+    {
+      "query": "validate uuid format",
+      "expected": [
+        "uuid",
+        "guid"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "uuid",
+      "top_3": [
+        "uuid",
+        "uuidv7",
+        "date"
+      ]
+    },
+    {
+      "query": "validate datetime string",
+      "expected": [
+        "datetime",
+        "datetimeRegex"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "datetime",
+      "top_3": [
+        "datetime",
+        "time",
+        "datetimeRegex"
+      ]
+    },
+    {
+      "query": "validate base64 encoding",
+      "expected": [
+        "base64",
+        "isValidBase64",
+        "base64url",
+        "base64ToUint8Array"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "base64",
+      "top_3": [
+        "base64",
+        "isValidBase64",
+        "isValidBase64URL"
+      ]
+    },
+    {
+      "query": "validate ip address",
+      "expected": [
+        "ip",
+        "ipv4",
+        "ipv6",
+        "cidrv4",
+        "cidrv6"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "ip",
+      "top_3": [
+        "ip",
+        "isValidIP",
+        "isValidCidr"
+      ]
+    },
+    {
+      "query": "validate jwt token",
+      "expected": [
+        "jwt",
+        "isValidJWT"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "jwt",
+      "top_3": [
+        "jwt",
+        "isValidJWT",
+        "date"
+      ]
+    },
+    {
+      "query": "validate emoji string",
+      "expected": [
+        "emoji"
+      ],
+      "category": "string",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "emoji",
+      "top_3": [
+        "emoji",
+        "string",
+        "str"
+      ]
+    },
+    {
+      "query": "clone schema definition",
+      "expected": [
+        "clone",
+        "cloneDef"
+      ],
+      "category": "utility",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "clone",
+      "top_3": [
+        "clone",
+        "cloneDef",
+        "init"
+      ]
+    },
+    {
+      "query": "get schema description",
+      "expected": [
+        "describe"
+      ],
+      "category": "utility",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "ip",
+      "top_3": [
+        "ip",
+        "esc",
+        "describe"
+      ]
+    },
+    {
+      "query": "create lazy schema",
+      "expected": [
+        "lazy",
+        "defineLazy"
+      ],
+      "category": "utility",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "lazy",
+      "top_3": [
+        "lazy",
+        "defineLazy",
+        "createZodEnum"
+      ]
+    },
+    {
+      "query": "convert path to dot notation",
+      "expected": [
+        "toDotPath"
+      ],
+      "category": "utility",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "toDotPath",
+      "top_3": [
+        "toDotPath",
+        "convertSchema",
+        "convertBaseSchema"
+      ]
+    },
+    {
+      "query": "create params",
+      "expected": [
+        "processCreateParams",
+        "cleanParams"
+      ],
+      "category": "utility",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "processCreateParams",
+      "top_3": [
+        "processCreateParams",
+        "createZodEnum",
+        "createTransparentProxy"
+      ]
+    },
+    {
+      "query": "get config settings",
+      "expected": [
+        "config"
+      ],
+      "category": "utility",
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "top_result": "config",
+      "top_3": [
+        "config",
+        "getErrorMap",
+        "set"
+      ]
+    }
+  ]
+}

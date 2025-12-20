@@ -1,0 +1,117 @@
+{
+  "config": {
+    "generic_penalty": 0.6,
+    "bm25_weight": 0.5,
+    "name_boost": 5.0,
+    "summary_boost": 0.5
+  },
+  "metrics": {
+    "hit@1": 0.9384615384615385,
+    "hit@3": 0.9846153846153847,
+    "hit@5": 1.0,
+    "total_queries": 65
+  },
+  "by_category": {
+    "state": {
+      "hit@1": 1.0,
+      "count": 15
+    },
+    "persist": {
+      "hit@1": 0.9166666666666666,
+      "count": 12
+    },
+    "middleware": {
+      "hit@1": 1.0,
+      "count": 8
+    },
+    "react": {
+      "hit@1": 0.9,
+      "count": 10
+    },
+    "devtools": {
+      "hit@1": 0.875,
+      "count": 8
+    },
+    "utils": {
+      "hit@1": 1.0,
+      "count": 8
+    },
+    "error": {
+      "hit@1": 0.75,
+      "count": 4
+    }
+  },
+  "failures": [
+    {
+      "query": "handle state rehydration",
+      "expected": [
+        "hydrate",
+        "hydrationListeners",
+        "finishHydrationListeners"
+      ],
+      "category": "persist",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top": "postRehydrationCallback",
+      "top_3": [
+        "postRehydrationCallback",
+        "state",
+        "finishHydrationListeners"
+      ]
+    },
+    {
+      "query": "avoid unnecessary rerenders",
+      "expected": [
+        "shallow",
+        "useShallow",
+        "equalityFn"
+      ],
+      "category": "react",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top": "subscribeWithSelector",
+      "top_3": [
+        "subscribeWithSelector",
+        "useBoundStoreWithEqualityFn",
+        "r"
+      ]
+    },
+    {
+      "query": "remove store from devtools",
+      "expected": [
+        "removeStoreFromTrackedConnections",
+        "trackedConnections"
+      ],
+      "category": "devtools",
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "top": "devtools",
+      "top_3": [
+        "devtools",
+        "removeStoreFromTrackedConnections",
+        "devtoolsImpl"
+      ]
+    },
+    {
+      "query": "handle async state updates",
+      "expected": [
+        "then",
+        "toThenable",
+        "catch"
+      ],
+      "category": "error",
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "top": "nextB",
+      "top_3": [
+        "nextB",
+        "state",
+        "reduxImpl"
+      ]
+    }
+  ]
+}
