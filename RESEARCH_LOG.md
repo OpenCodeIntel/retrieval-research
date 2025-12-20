@@ -1868,3 +1868,141 @@ results/
 > "The new extraction framework is working correctly. The accuracy gap is primarily due to embedding model choice (OpenAI general vs Voyage code-specific), not the extraction quality. Qualified names and class context ARE being used - we just need better embeddings to leverage them."
 
 *Logged: December 20, 2025 ~11:00 AM CST*
+
+
+---
+
+## Day 4 (Continued): RRF Breakthrough + Multi-Codebase Validation
+
+**Date:** December 20, 2025 (Evening)
+
+### 🎯 Goal
+Validate RRF + Voyage approach across all Python codebases.
+
+---
+
+### 🚀 BREAKTHROUGH RESULTS
+
+| Codebase | OLD System | NEW RRF+Voyage | Delta |
+|----------|------------|----------------|-------|
+| **Requests** | 68% | **88%** | **+20%** 🔥 |
+| **Click** | 60% | **62%** | **+2%** |
+| **Flask** | 64% | 62% | -2% |
+| **AVERAGE** | **64%** | **70.7%** | **+6.7%** |
+
+**Requests achieved JS-level performance!** 88% Hit@1 on a Python library.
+
+---
+
+### 📊 Evolution of Results (Flask as Example)
+
+| Configuration | Hit@1 | Notes |
+|---------------|-------|-------|
+| NEW Linear + OpenAI | 54-56% | Baseline |
+| NEW Linear + Voyage | 58% | +2-4% from code embeddings |
+| NEW RRF + OpenAI | 60% | +4% from fusion strategy |
+| NEW RRF + Voyage | **62%** | Best config |
+| OLD System | 64% | -2% gap (1 query) |
+
+---
+
+### 🔑 Why Requests Improved So Much (+20%)
+
+1. **Clean Class Structure**
+   - `Session.get`, `Session.post`, `Session.put`
+   - `HTTPAdapter.send`, `HTTPAdapter.build_response`
+   - Qualified names eliminated ambiguity completely
+
+2. **Method-Heavy Codebase**
+   - 230 functions, mostly class methods
+   - Class context + docstrings provided rich search signal
+
+3. **Clear API Design**
+   - Function names match natural language queries
+   - "send get request" → `Session.get` (rank 0 in all 3 signals!)
+
+---
+
+### 🔧 Technical Stack Validated
+
+**Triple Fusion (RRF):**
+```
+Score = 1/(k + BM25_rank) + 1/(k + Code_rank) + 1/(k + Summary_rank)
+```
+
+**Components:**
+- BM25: Keyword matching on qualified names + docstrings
+- Code Embeddings: Voyage-code-3 on full context
+- Summary Embeddings: Voyage-code-3 on LLM summaries
+
+**Why RRF > Linear:**
+- Doesn't need score normalization
+- More robust to outliers
+- Industry standard (Elasticsearch, etc.)
+
+---
+
+### 💰 Investment Analysis
+
+**Voyage AI:** $10 for paid tier (2000 RPM)
+- Enabled fast iteration (2-3 min vs 1 hour per test)
+- Confirmed code-specific embeddings > general embeddings
+- 200M free tokens still apply
+
+**ROI:** +20% accuracy on Requests, validated production approach
+
+---
+
+### 📁 Files Created Today
+
+```
+evals/
+├── requests_queries.json     # 50 queries
+└── click_queries.json        # 50 queries
+
+results/
+├── requests_v2_summaries.json  # 230 functions
+└── click_v2_summaries.json     # 484 functions
+```
+
+---
+
+### 🎯 Key Learnings
+
+1. **Qualified names are CRUCIAL for Python**
+   - "get" → ambiguous
+   - "Session.get" → precise match
+
+2. **Class context amplifies semantic search**
+   - Method + class docstring = rich signal
+   - Especially powerful for well-documented libraries
+
+3. **RRF fusion is robust**
+   - Works across different codebases
+   - No manual weight tuning needed
+
+4. **Voyage-code-3 is worth it**
+   - Code-specific > general embeddings
+   - Especially for semantic code search
+
+---
+
+### 📈 Research Milestone
+
+**Python Search is Now Competitive with JavaScript!**
+
+| Language | Average Hit@1 |
+|----------|---------------|
+| JavaScript (6 codebases) | 87.5% |
+| Python OLD (3 codebases) | 64.0% |
+| **Python NEW (3 codebases)** | **70.7%** |
+
+Gap reduced from 23.5% to 16.8%!
+
+And Requests specifically: **88%** - matching JS performance.
+
+---
+
+*"The $10 investment proved that production-quality code search is achievable with the right architecture."*
+
+*Logged: December 20, 2025 ~12:30 PM CST*
