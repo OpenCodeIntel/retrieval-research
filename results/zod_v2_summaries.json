@@ -1,0 +1,21 @@
+{
+  "codebase": "zod",
+  "count": 1,
+  "functions": [
+    {
+      "name": "generateRedirects",
+      "qualified_name": "generateRedirects",
+      "file_path": "packages/docs/next.config.mjs",
+      "code": "function generateRedirects(idmap, page, origin = \"/\") {\n  /** @type import(\"next\").Redirect */\n  const redirects = [];\n\n  for (const [key, value] of Object.entries(idmap)) {\n    if (key === value && origin === page) {\n      continue;\n    }\n\n    if (page[0] !== \"/\") throw new Error(\"page must start with /\");\n    redirects.push({\n      source: origin,\n      has: [\n        {\n          type: \"query\",\n          key: \"id\",\n          value: key,\n        },\n      ],\n      destination: `${page}?id=${value}`,\n      permanent: true,\n    });\n  }\n  return redirects;\n}",
+      "signature": "function generateRedirects(idmap, page, origin = \"/\")",
+      "class_name": null,
+      "class_docstring": null,
+      "docstring": "@param {object} idmap\n@param {string} page\n* @param {string?} origin",
+      "decorators": [],
+      "is_method": false,
+      "is_dunder": false,
+      "language": "javascript",
+      "summary": "The `generateRedirects` function creates an array of redirect objects based on a mapping of IDs (`idmap`) to their corresponding values, generating permanent redirects from a specified origin to a destination page that includes the ID as a query parameter. This function is useful for setting up dynamic redirects in a web application, particularly when handling query parameters for different resources."
+    }
+  ]
+}

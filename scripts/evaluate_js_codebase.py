@@ -58,7 +58,22 @@ def extract_functions(codebase: str) -> List[ExtractedFunction]:
     
     print(f"📂 Extracting from {repo_path}...")
     
-    extractor = JavaScriptExtractor(str(repo_path), language="typescript")
+    # Auto-detect language based on files present
+    ts_files = list(repo_path.rglob("*.ts")) + list(repo_path.rglob("*.tsx"))
+    js_files = list(repo_path.rglob("*.js")) + list(repo_path.rglob("*.jsx"))
+    
+    # Filter out node_modules and test files
+    ts_files = [f for f in ts_files if 'node_modules' not in str(f) and 'test' not in str(f).lower()]
+    js_files = [f for f in js_files if 'node_modules' not in str(f) and 'test' not in str(f).lower()]
+    
+    if len(ts_files) > len(js_files):
+        language = "typescript"
+        print(f"   Detected: TypeScript ({len(ts_files)} .ts files)")
+    else:
+        language = "javascript"
+        print(f"   Detected: JavaScript ({len(js_files)} .js files)")
+    
+    extractor = JavaScriptExtractor(str(repo_path), language=language)
     functions = extractor.extract_all()
     
     print(f"   Found {len(functions)} functions")

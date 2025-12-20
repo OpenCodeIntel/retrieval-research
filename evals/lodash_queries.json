@@ -1,0 +1,352 @@
+[
+  {
+    "query": "apply",
+    "expected": [
+      "apply",
+      "apply"
+    ]
+  },
+  {
+    "query": "array aggregator",
+    "expected": [
+      "arrayAggregator",
+      "arrayAggregator"
+    ]
+  },
+  {
+    "query": "array each",
+    "expected": [
+      "arrayEach",
+      "arrayEach"
+    ]
+  },
+  {
+    "query": "array each right",
+    "expected": [
+      "arrayEachRight",
+      "arrayEachRight"
+    ]
+  },
+  {
+    "query": "array every",
+    "expected": [
+      "arrayEvery",
+      "arrayEvery"
+    ]
+  },
+  {
+    "query": "array filter",
+    "expected": [
+      "arrayFilter",
+      "arrayFilter"
+    ]
+  },
+  {
+    "query": "array includes",
+    "expected": [
+      "arrayIncludes",
+      "arrayIncludes"
+    ]
+  },
+  {
+    "query": "array includes with",
+    "expected": [
+      "arrayIncludesWith",
+      "arrayIncludesWith"
+    ]
+  },
+  {
+    "query": "array map",
+    "expected": [
+      "arrayMap",
+      "arrayMap"
+    ]
+  },
+  {
+    "query": "array push",
+    "expected": [
+      "arrayPush",
+      "arrayPush"
+    ]
+  },
+  {
+    "query": "array reduce",
+    "expected": [
+      "arrayReduce",
+      "arrayReduce"
+    ]
+  },
+  {
+    "query": "array reduce right",
+    "expected": [
+      "arrayReduceRight",
+      "arrayReduceRight"
+    ]
+  },
+  {
+    "query": "array some",
+    "expected": [
+      "arraySome",
+      "arraySome"
+    ]
+  },
+  {
+    "query": "ascii to array",
+    "expected": [
+      "asciiToArray",
+      "asciiToArray"
+    ]
+  },
+  {
+    "query": "ascii words",
+    "expected": [
+      "asciiWords",
+      "asciiWords"
+    ]
+  },
+  {
+    "query": "base find key",
+    "expected": [
+      "baseFindKey",
+      "baseFindKey"
+    ]
+  },
+  {
+    "query": "base find index",
+    "expected": [
+      "baseFindIndex",
+      "baseFindIndex"
+    ]
+  },
+  {
+    "query": "base index of",
+    "expected": [
+      "baseIndexOf",
+      "baseIndexOf"
+    ]
+  },
+  {
+    "query": "base index of with",
+    "expected": [
+      "baseIndexOfWith",
+      "baseIndexOfWith"
+    ]
+  },
+  {
+    "query": "base is na n",
+    "expected": [
+      "baseIsNaN",
+      "baseIsNaN"
+    ]
+  },
+  {
+    "query": "base mean",
+    "expected": [
+      "baseMean",
+      "baseMean"
+    ]
+  },
+  {
+    "query": "base property",
+    "expected": [
+      "baseProperty",
+      "baseProperty"
+    ]
+  },
+  {
+    "query": "base property of",
+    "expected": [
+      "basePropertyOf",
+      "basePropertyOf"
+    ]
+  },
+  {
+    "query": "base reduce",
+    "expected": [
+      "baseReduce",
+      "baseReduce"
+    ]
+  },
+  {
+    "query": "base sort by",
+    "expected": [
+      "baseSortBy",
+      "baseSortBy"
+    ]
+  },
+  {
+    "query": "base sum",
+    "expected": [
+      "baseSum",
+      "baseSum"
+    ]
+  },
+  {
+    "query": "base times",
+    "expected": [
+      "baseTimes",
+      "baseTimes"
+    ]
+  },
+  {
+    "query": "base to pairs",
+    "expected": [
+      "baseToPairs",
+      "baseToPairs"
+    ]
+  },
+  {
+    "query": "base trim",
+    "expected": [
+      "baseTrim",
+      "baseTrim"
+    ]
+  },
+  {
+    "query": "base unary",
+    "expected": [
+      "baseUnary",
+      "baseUnary"
+    ]
+  },
+  {
+    "query": "base values",
+    "expected": [
+      "baseValues",
+      "baseValues"
+    ]
+  },
+  {
+    "query": "cache has",
+    "expected": [
+      "cacheHas",
+      "cacheHas"
+    ]
+  },
+  {
+    "query": "chars start index",
+    "expected": [
+      "charsStartIndex",
+      "charsStartIndex"
+    ]
+  },
+  {
+    "query": "chars end index",
+    "expected": [
+      "charsEndIndex",
+      "charsEndIndex"
+    ]
+  },
+  {
+    "query": "count holders",
+    "expected": [
+      "countHolders",
+      "countHolders"
+    ]
+  },
+  {
+    "query": "escape string char",
+    "expected": [
+      "escapeStringChar",
+      "escapeStringChar"
+    ]
+  },
+  {
+    "query": "get value",
+    "expected": [
+      "getValue",
+      "getValue"
+    ]
+  },
+  {
+    "query": "has unicode",
+    "expected": [
+      "hasUnicode",
+      "hasUnicode"
+    ]
+  },
+  {
+    "query": "has unicode word",
+    "expected": [
+      "hasUnicodeWord",
+      "hasUnicodeWord"
+    ]
+  },
+  {
+    "query": "iterator to array",
+    "expected": [
+      "iteratorToArray",
+      "iteratorToArray"
+    ]
+  },
+  {
+    "query": "map to array",
+    "expected": [
+      "mapToArray",
+      "mapToArray"
+    ]
+  },
+  {
+    "query": "over arg",
+    "expected": [
+      "overArg",
+      "overArg"
+    ]
+  },
+  {
+    "query": "replace holders",
+    "expected": [
+      "replaceHolders",
+      "replaceHolders"
+    ]
+  },
+  {
+    "query": "set to array",
+    "expected": [
+      "setToArray",
+      "setToArray"
+    ]
+  },
+  {
+    "query": "set to pairs",
+    "expected": [
+      "setToPairs",
+      "setToPairs"
+    ]
+  },
+  {
+    "query": "strict index of",
+    "expected": [
+      "strictIndexOf",
+      "strictIndexOf"
+    ]
+  },
+  {
+    "query": "strict last index of",
+    "expected": [
+      "strictLastIndexOf",
+      "strictLastIndexOf"
+    ]
+  },
+  {
+    "query": "string size",
+    "expected": [
+      "stringSize",
+      "stringSize"
+    ]
+  },
+  {
+    "query": "string to array",
+    "expected": [
+      "stringToArray",
+      "stringToArray"
+    ]
+  },
+  {
+    "query": "trimmed end index",
+    "expected": [
+      "trimmedEndIndex",
+      "trimmedEndIndex"
+    ]
+  }
+]

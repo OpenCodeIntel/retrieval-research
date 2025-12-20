@@ -1,0 +1,9 @@
+[
+  {
+    "query": "generate redirects",
+    "expected": [
+      "generateRedirects",
+      "generateRedirects"
+    ]
+  }
+]

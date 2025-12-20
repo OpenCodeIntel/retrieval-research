@@ -1,0 +1,352 @@
+[
+  {
+    "query": "create app",
+    "expected": [
+      "createApp",
+      "createApp"
+    ]
+  },
+  {
+    "query": "cept",
+    "expected": [
+      "cept (",
+      "cept ("
+    ]
+  },
+  {
+    "query": "var app",
+    "expected": [
+      " var app ",
+      " var app "
+    ]
+  },
+  {
+    "query": "y j s",
+    "expected": [
+      "y {\n    JS",
+      "y {\n    JS"
+    ]
+  },
+  {
+    "query": "r return funct",
+    "expected": [
+      "r) {\n  return funct",
+      "r) {\n  return funct"
+    ]
+  },
+  {
+    "query": "handle headers",
+    "expected": [
+      "handleHeaders",
+      "handleHeaders"
+    ]
+  },
+  {
+    "query": "ount var st",
+    "expected": [
+      "ount) {\n  var st",
+      "ount) {\n  var st"
+    ]
+  },
+  {
+    "query": "var",
+    "expected": [
+      " {\n  var ",
+      " {\n  var "
+    ]
+  },
+  {
+    "query": "nt return",
+    "expected": [
+      "nt) {\n  return",
+      "nt) {\n  return"
+    ]
+  },
+  {
+    "query": "view",
+    "expected": [
+      "View",
+      "View"
+    ]
+  },
+  {
+    "query": "accept",
+    "expected": [
+      "accept",
+      "accept"
+    ]
+  },
+  {
+    "query": "req",
+    "expected": [
+      "(req) ",
+      "(req) "
+    ]
+  },
+  {
+    "query": "app exp",
+    "expected": [
+      "app = exp",
+      "app = exp"
+    ]
+  },
+  {
+    "query": "test",
+    "expected": [
+      "test",
+      "test"
+    ]
+  },
+  {
+    "query": "fn",
+    "expected": [
+      "fn1",
+      "fn1"
+    ]
+  },
+  {
+    "query": "fn",
+    "expected": [
+      "fn2",
+      "fn2"
+    ]
+  },
+  {
+    "query": "render",
+    "expected": [
+      "render",
+      "render"
+    ]
+  },
+  {
+    "query": "reate redirect server for domain",
+    "expected": [
+      "reateRedirectServerForDomain ",
+      "reateRedirectServerForDomain "
+    ]
+  },
+  {
+    "query": "est requested redirect",
+    "expected": [
+      "estRequestedRedirect ",
+      "estRequestedRedirect "
+    ]
+  },
+  {
+    "query": "handler",
+    "expected": [
+      "handler1",
+      "handler1"
+    ]
+  },
+  {
+    "query": "handler",
+    "expected": [
+      "handler2",
+      "handler2"
+    ]
+  },
+  {
+    "query": "fn",
+    "expected": [
+      "fn3",
+      "fn3"
+    ]
+  },
+  {
+    "query": "supports regexp",
+    "expected": [
+      "supportsRegexp",
+      "supportsRegexp"
+    ]
+  },
+  {
+    "query": "should have header values",
+    "expected": [
+      "shouldHaveHeaderValues",
+      "shouldHaveHeaderValues"
+    ]
+  },
+  {
+    "query": "get expected client address",
+    "expected": [
+      "getExpectedClientAddress",
+      "getExpectedClientAddress"
+    ]
+  },
+  {
+    "query": "sendfile",
+    "expected": [
+      "sendfile",
+      "sendfile"
+    ]
+  },
+  {
+    "query": "stringify",
+    "expected": [
+      "stringify",
+      "stringify"
+    ]
+  },
+  {
+    "query": "define getter",
+    "expected": [
+      "defineGetter",
+      "defineGetter"
+    ]
+  },
+  {
+    "query": "create application",
+    "expected": [
+      "createApplication",
+      "createApplication"
+    ]
+  },
+  {
+    "query": "accept params",
+    "expected": [
+      "acceptParams",
+      "acceptParams"
+    ]
+  },
+  {
+    "query": "create e tag generator",
+    "expected": [
+      "createETagGenerator",
+      "createETagGenerator"
+    ]
+  },
+  {
+    "query": "parse extended query string",
+    "expected": [
+      "parseExtendedQueryString",
+      "parseExtendedQueryString"
+    ]
+  },
+  {
+    "query": "try stat",
+    "expected": [
+      "tryStat",
+      "tryStat"
+    ]
+  },
+  {
+    "query": "logerror",
+    "expected": [
+      "logerror",
+      "logerror"
+    ]
+  },
+  {
+    "query": "try render",
+    "expected": [
+      "tryRender",
+      "tryRender"
+    ]
+  },
+  {
+    "query": "authenticate",
+    "expected": [
+      "authenticate",
+      "authenticate"
+    ]
+  },
+  {
+    "query": "restrict",
+    "expected": [
+      "restrict",
+      "restrict"
+    ]
+  },
+  {
+    "query": "user",
+    "expected": [
+      "User",
+      "User"
+    ]
+  },
+  {
+    "query": "ferrets",
+    "expected": [
+      "ferrets",
+      "ferrets"
+    ]
+  },
+  {
+    "query": "count",
+    "expected": [
+      "count",
+      "count"
+    ]
+  },
+  {
+    "query": "users",
+    "expected": [
+      "users",
+      "users"
+    ]
+  },
+  {
+    "query": "count",
+    "expected": [
+      "count2",
+      "count2"
+    ]
+  },
+  {
+    "query": "users",
+    "expected": [
+      "users2",
+      "users2"
+    ]
+  },
+  {
+    "query": "github view",
+    "expected": [
+      "GithubView",
+      "GithubView"
+    ]
+  },
+  {
+    "query": "error",
+    "expected": [
+      "error",
+      "error"
+    ]
+  },
+  {
+    "query": "list",
+    "expected": [
+      "list",
+      "list"
+    ]
+  },
+  {
+    "query": "load user",
+    "expected": [
+      "loadUser",
+      "loadUser"
+    ]
+  },
+  {
+    "query": "and restrict to self",
+    "expected": [
+      "andRestrictToSelf",
+      "andRestrictToSelf"
+    ]
+  },
+  {
+    "query": "and restrict to",
+    "expected": [
+      "andRestrictTo",
+      "andRestrictTo"
+    ]
+  },
+  {
+    "query": "format",
+    "expected": [
+      "format",
+      "format"
+    ]
+  }
+]
