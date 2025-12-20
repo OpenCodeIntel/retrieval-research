@@ -1,0 +1,252 @@
+[
+  {
+    "query": "create flask app",
+    "expected": "create_jinja_environment",
+    "category": "app"
+  },
+  {
+    "query": "run flask server",
+    "expected": "run",
+    "category": "app"
+  },
+  {
+    "query": "register blueprint",
+    "expected": "blueprint",
+    "category": "app"
+  },
+  {
+    "query": "add url rule",
+    "expected": "url_for",
+    "category": "app"
+  },
+  {
+    "query": "create application context",
+    "expected": "app_context",
+    "category": "app"
+  },
+  {
+    "query": "create request context",
+    "expected": "request_context",
+    "category": "app"
+  },
+  {
+    "query": "handle before request",
+    "expected": "before_request",
+    "category": "app"
+  },
+  {
+    "query": "handle after request",
+    "expected": "after_this_request",
+    "category": "app"
+  },
+  {
+    "query": "register error handler",
+    "expected": "handle_http_exception",
+    "category": "app"
+  },
+  {
+    "query": "teardown application",
+    "expected": "do_teardown_appcontext",
+    "category": "app"
+  },
+  {
+    "query": "get request data",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "get form values",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "get request headers",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "get query parameters",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "get uploaded file",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "get request method",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "get request url",
+    "expected": "url_for",
+    "category": "request"
+  },
+  {
+    "query": "check request type",
+    "expected": "from_environ",
+    "category": "request"
+  },
+  {
+    "query": "create response object",
+    "expected": "make_response",
+    "category": "response"
+  },
+  {
+    "query": "return json response",
+    "expected": "jsonify",
+    "category": "response"
+  },
+  {
+    "query": "redirect to url",
+    "expected": "redirect",
+    "category": "response"
+  },
+  {
+    "query": "send file to client",
+    "expected": "send_file",
+    "category": "response"
+  },
+  {
+    "query": "set response headers",
+    "expected": "from_app",
+    "category": "response"
+  },
+  {
+    "query": "set response status",
+    "expected": "from_app",
+    "category": "response"
+  },
+  {
+    "query": "abort with error",
+    "expected": "abort",
+    "category": "response"
+  },
+  {
+    "query": "render html template",
+    "expected": "render_template",
+    "category": "response"
+  },
+  {
+    "query": "get session data",
+    "expected": "get",
+    "category": "session"
+  },
+  {
+    "query": "set session value",
+    "expected": "setdefault",
+    "category": "session"
+  },
+  {
+    "query": "check session permanent",
+    "expected": "permanent",
+    "category": "session"
+  },
+  {
+    "query": "create null session",
+    "expected": "make_null_session",
+    "category": "session"
+  },
+  {
+    "query": "open session",
+    "expected": "open_session",
+    "category": "session"
+  },
+  {
+    "query": "save session data",
+    "expected": "save_session",
+    "category": "session"
+  },
+  {
+    "query": "define route endpoint",
+    "expected": "endpoint",
+    "category": "routing"
+  },
+  {
+    "query": "get url for endpoint",
+    "expected": "url_for",
+    "category": "routing"
+  },
+  {
+    "query": "dispatch request",
+    "expected": "dispatch_request",
+    "category": "routing"
+  },
+  {
+    "query": "match url pattern",
+    "expected": "create_url_adapter",
+    "category": "routing"
+  },
+  {
+    "query": "handle view function",
+    "expected": "dispatch_request",
+    "category": "routing"
+  },
+  {
+    "query": "create class view",
+    "expected": "as_view",
+    "category": "routing"
+  },
+  {
+    "query": "load config from file",
+    "expected": "from_file",
+    "category": "config"
+  },
+  {
+    "query": "get config value",
+    "expected": "get",
+    "category": "config"
+  },
+  {
+    "query": "set default config",
+    "expected": "setdefault",
+    "category": "config"
+  },
+  {
+    "query": "load from environment",
+    "expected": "from_prefixed_env",
+    "category": "config"
+  },
+  {
+    "query": "update config",
+    "expected": "from_mapping",
+    "category": "config"
+  },
+  {
+    "query": "check debug mode",
+    "expected": "make_config",
+    "category": "config"
+  },
+  {
+    "query": "create test client",
+    "expected": "test_client",
+    "category": "testing"
+  },
+  {
+    "query": "create test request context",
+    "expected": "test_request_context",
+    "category": "testing"
+  },
+  {
+    "query": "run test command",
+    "expected": "test_cli_runner",
+    "category": "testing"
+  },
+  {
+    "query": "push test context",
+    "expected": "push",
+    "category": "testing"
+  },
+  {
+    "query": "make test response",
+    "expected": "make_response",
+    "category": "testing"
+  },
+  {
+    "query": "session transaction",
+    "expected": "session_transaction",
+    "category": "testing"
+  }
+]
