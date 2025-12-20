@@ -1,0 +1,233 @@
+[
+  {
+    "query": "config in AxiosError",
+    "expected": [
+      "config",
+      "AxiosError.config"
+    ]
+  },
+  {
+    "query": "code in AxiosError",
+    "expected": [
+      "code",
+      "AxiosError.code"
+    ]
+  },
+  {
+    "query": "request in AxiosError",
+    "expected": [
+      "request",
+      "AxiosError.request"
+    ]
+  },
+  {
+    "query": "response in AxiosError",
+    "expected": [
+      "response",
+      "AxiosError.response"
+    ]
+  },
+  {
+    "query": "is axios error in AxiosError",
+    "expected": [
+      "isAxiosError",
+      "AxiosError.isAxiosError"
+    ]
+  },
+  {
+    "query": "status in AxiosError",
+    "expected": [
+      "status",
+      "AxiosError.status"
+    ]
+  },
+  {
+    "query": "to j s o n in AxiosError",
+    "expected": [
+      "toJSON",
+      "AxiosError.toJSON"
+    ]
+  },
+  {
+    "query": "cause in AxiosError",
+    "expected": [
+      "cause",
+      "AxiosError.cause"
+    ]
+  },
+  {
+    "query": "event in AxiosError",
+    "expected": [
+      "event",
+      "AxiosError.event"
+    ]
+  },
+  {
+    "query": "e r r f r t o o m a n y r e d i r e c t s in AxiosError",
+    "expected": [
+      "ERR_FR_TOO_MANY_REDIRECTS",
+      "AxiosError.ERR_FR_TOO_MANY_REDIRECTS"
+    ]
+  },
+  {
+    "query": "e r r b a d o p t i o n v a l u e in AxiosError",
+    "expected": [
+      "ERR_BAD_OPTION_VALUE",
+      "AxiosError.ERR_BAD_OPTION_VALUE"
+    ]
+  },
+  {
+    "query": "e r r b a d o p t i o n in AxiosError",
+    "expected": [
+      "ERR_BAD_OPTION",
+      "AxiosError.ERR_BAD_OPTION"
+    ]
+  },
+  {
+    "query": "e r r n e t w o r k in AxiosError",
+    "expected": [
+      "ERR_NETWORK",
+      "AxiosError.ERR_NETWORK"
+    ]
+  },
+  {
+    "query": "e r r d e p r e c a t e d in AxiosError",
+    "expected": [
+      "ERR_DEPRECATED",
+      "AxiosError.ERR_DEPRECATED"
+    ]
+  },
+  {
+    "query": "e r r b a d r e s p o n s e in AxiosError",
+    "expected": [
+      "ERR_BAD_RESPONSE",
+      "AxiosError.ERR_BAD_RESPONSE"
+    ]
+  },
+  {
+    "query": "e r r b a d r e q u e s t in AxiosError",
+    "expected": [
+      "ERR_BAD_REQUEST",
+      "AxiosError.ERR_BAD_REQUEST"
+    ]
+  },
+  {
+    "query": "e r r n o t s u p p o r t in AxiosError",
+    "expected": [
+      "ERR_NOT_SUPPORT",
+      "AxiosError.ERR_NOT_SUPPORT"
+    ]
+  },
+  {
+    "query": "e r r i n v a l i d u r l in AxiosError",
+    "expected": [
+      "ERR_INVALID_URL",
+      "AxiosError.ERR_INVALID_URL"
+    ]
+  },
+  {
+    "query": "e r r c a n c e l e d in AxiosError",
+    "expected": [
+      "ERR_CANCELED",
+      "AxiosError.ERR_CANCELED"
+    ]
+  },
+  {
+    "query": "e c o n n a b o r t e d in AxiosError",
+    "expected": [
+      "ECONNABORTED",
+      "AxiosError.ECONNABORTED"
+    ]
+  },
+  {
+    "query": "e t i m e d o u t in AxiosError",
+    "expected": [
+      "ETIMEDOUT",
+      "AxiosError.ETIMEDOUT"
+    ]
+  },
+  {
+    "query": "name in CanceledError",
+    "expected": [
+      "name",
+      "CanceledError.name"
+    ]
+  },
+  {
+    "query": "defaults in Axios",
+    "expected": [
+      "defaults",
+      "Axios.defaults"
+    ]
+  },
+  {
+    "query": "interceptors in Axios",
+    "expected": [
+      "interceptors",
+      "Axios.interceptors"
+    ]
+  },
+  {
+    "query": "handle response",
+    "expected": [
+      "handleResponse",
+      "handleResponse"
+    ]
+  },
+  {
+    "query": "handle error",
+    "expected": [
+      "handleError",
+      "handleError"
+    ]
+  },
+  {
+    "query": "handle user response",
+    "expected": [
+      "handleUserResponse",
+      "handleUserResponse"
+    ]
+  },
+  {
+    "query": "handle user response with custom headers",
+    "expected": [
+      "handleUserResponseWithCustomHeaders",
+      "handleUserResponseWithCustomHeaders"
+    ]
+  },
+  {
+    "query": "handle string response",
+    "expected": [
+      "handleStringResponse",
+      "handleStringResponse"
+    ]
+  },
+  {
+    "query": "adapter",
+    "expected": [
+      "adapter",
+      "adapter"
+    ]
+  },
+  {
+    "query": "fn",
+    "expected": [
+      "fn1",
+      "fn1"
+    ]
+  },
+  {
+    "query": "get request config",
+    "expected": [
+      "getRequestConfig1",
+      "getRequestConfig1"
+    ]
+  },
+  {
+    "query": "get request config",
+    "expected": [
+      "getRequestConfig2",
+      "getRequestConfig2"
+    ]
+  }
+]

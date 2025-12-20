@@ -1,0 +1,226 @@
+[
+  {
+    "query": "identity",
+    "expected": [
+      "identity",
+      "identity"
+    ]
+  },
+  {
+    "query": "use store with equality fn",
+    "expected": [
+      "useStoreWithEqualityFn",
+      "useStoreWithEqualityFn"
+    ]
+  },
+  {
+    "query": "create with equality fn impl",
+    "expected": [
+      "createWithEqualityFnImpl",
+      "createWithEqualityFnImpl"
+    ]
+  },
+  {
+    "query": "use store",
+    "expected": [
+      "useStore",
+      "useStore"
+    ]
+  },
+  {
+    "query": "create impl",
+    "expected": [
+      "createImpl",
+      "createImpl"
+    ]
+  },
+  {
+    "query": "create store impl",
+    "expected": [
+      "createStoreImpl",
+      "createStoreImpl"
+    ]
+  },
+  {
+    "query": "subscribe with selector impl",
+    "expected": [
+      "subscribeWithSelectorImpl",
+      "subscribeWithSelectorImpl"
+    ]
+  },
+  {
+    "query": "ssr safe",
+    "expected": [
+      "ssrSafe",
+      "ssrSafe"
+    ]
+  },
+  {
+    "query": "get tracked connection state",
+    "expected": [
+      "getTrackedConnectionState",
+      "getTrackedConnectionState"
+    ]
+  },
+  {
+    "query": "extract connection information",
+    "expected": [
+      "extractConnectionInformation",
+      "extractConnectionInformation"
+    ]
+  },
+  {
+    "query": "remove store from tracked connections",
+    "expected": [
+      "removeStoreFromTrackedConnections",
+      "removeStoreFromTrackedConnections"
+    ]
+  },
+  {
+    "query": "find caller name",
+    "expected": [
+      "findCallerName",
+      "findCallerName"
+    ]
+  },
+  {
+    "query": "devtools impl",
+    "expected": [
+      "devtoolsImpl",
+      "devtoolsImpl"
+    ]
+  },
+  {
+    "query": "parse json then",
+    "expected": [
+      "parseJsonThen",
+      "parseJsonThen"
+    ]
+  },
+  {
+    "query": "immer impl",
+    "expected": [
+      "immerImpl",
+      "immerImpl"
+    ]
+  },
+  {
+    "query": "create j s o n storage",
+    "expected": [
+      "createJSONStorage",
+      "createJSONStorage"
+    ]
+  },
+  {
+    "query": "to thenable",
+    "expected": [
+      "toThenable",
+      "toThenable"
+    ]
+  },
+  {
+    "query": "persist impl",
+    "expected": [
+      "persistImpl",
+      "persistImpl"
+    ]
+  },
+  {
+    "query": "redux impl",
+    "expected": [
+      "reduxImpl",
+      "reduxImpl"
+    ]
+  },
+  {
+    "query": "combine",
+    "expected": [
+      "combine",
+      "combine"
+    ]
+  },
+  {
+    "query": "is iterable",
+    "expected": [
+      "isIterable",
+      "isIterable"
+    ]
+  },
+  {
+    "query": "has iterable entries",
+    "expected": [
+      "hasIterableEntries",
+      "hasIterableEntries"
+    ]
+  },
+  {
+    "query": "compare entries",
+    "expected": [
+      "compareEntries",
+      "compareEntries"
+    ]
+  },
+  {
+    "query": "compare iterables",
+    "expected": [
+      "compareIterables",
+      "compareIterables"
+    ]
+  },
+  {
+    "query": "shallow",
+    "expected": [
+      "shallow",
+      "shallow"
+    ]
+  },
+  {
+    "query": "use shallow",
+    "expected": [
+      "useShallow",
+      "useShallow"
+    ]
+  },
+  {
+    "query": "inc",
+    "expected": [
+      "inc",
+      "inc"
+    ]
+  },
+  {
+    "query": "counter",
+    "expected": [
+      "Counter",
+      "Counter"
+    ]
+  },
+  {
+    "query": "app",
+    "expected": [
+      "App",
+      "App"
+    ]
+  },
+  {
+    "query": "is rough equal",
+    "expected": [
+      "isRoughEqual",
+      "isRoughEqual"
+    ]
+  },
+  {
+    "query": "first fn compare",
+    "expected": [
+      "firstFnCompare",
+      "firstFnCompare"
+    ]
+  },
+  {
+    "query": "second fn compare",
+    "expected": [
+      "secondFnCompare",
+      "secondFnCompare"
+    ]
+  }
+]
