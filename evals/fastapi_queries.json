@@ -1,0 +1,352 @@
+[
+  {
+    "query": "pdm build initialize",
+    "expected": [
+      "pdm_build_initialize",
+      "pdm_build_initialize"
+    ]
+  },
+  {
+    "query": "render in UJSONResponse",
+    "expected": [
+      "render",
+      "UJSONResponse.render"
+    ]
+  },
+  {
+    "query": "http exception handler",
+    "expected": [
+      "http_exception_handler",
+      "http_exception_handler"
+    ]
+  },
+  {
+    "query": "request validation exception handler",
+    "expected": [
+      "request_validation_exception_handler",
+      "request_validation_exception_handler"
+    ]
+  },
+  {
+    "query": "websocket request validation exception handler",
+    "expected": [
+      "websocket_request_validation_exception_handler",
+      "websocket_request_validation_exception_handler"
+    ]
+  },
+  {
+    "query": "build middleware stack in FastAPI",
+    "expected": [
+      "build_middleware_stack",
+      "FastAPI.build_middleware_stack"
+    ]
+  },
+  {
+    "query": "openapi in FastAPI",
+    "expected": [
+      "openapi",
+      "FastAPI.openapi"
+    ]
+  },
+  {
+    "query": "setup in FastAPI",
+    "expected": [
+      "setup",
+      "FastAPI.setup"
+    ]
+  },
+  {
+    "query": "add api route in FastAPI",
+    "expected": [
+      "add_api_route",
+      "FastAPI.add_api_route"
+    ]
+  },
+  {
+    "query": "api route in FastAPI",
+    "expected": [
+      "api_route",
+      "FastAPI.api_route"
+    ]
+  },
+  {
+    "query": "add api websocket route in FastAPI",
+    "expected": [
+      "add_api_websocket_route",
+      "FastAPI.add_api_websocket_route"
+    ]
+  },
+  {
+    "query": "websocket in FastAPI",
+    "expected": [
+      "websocket",
+      "FastAPI.websocket"
+    ]
+  },
+  {
+    "query": "include router in FastAPI",
+    "expected": [
+      "include_router",
+      "FastAPI.include_router"
+    ]
+  },
+  {
+    "query": "get in FastAPI",
+    "expected": [
+      "get",
+      "FastAPI.get"
+    ]
+  },
+  {
+    "query": "put in FastAPI",
+    "expected": [
+      "put",
+      "FastAPI.put"
+    ]
+  },
+  {
+    "query": "post in FastAPI",
+    "expected": [
+      "post",
+      "FastAPI.post"
+    ]
+  },
+  {
+    "query": "delete in FastAPI",
+    "expected": [
+      "delete",
+      "FastAPI.delete"
+    ]
+  },
+  {
+    "query": "options in FastAPI",
+    "expected": [
+      "options",
+      "FastAPI.options"
+    ]
+  },
+  {
+    "query": "head in FastAPI",
+    "expected": [
+      "head",
+      "FastAPI.head"
+    ]
+  },
+  {
+    "query": "patch in FastAPI",
+    "expected": [
+      "patch",
+      "FastAPI.patch"
+    ]
+  },
+  {
+    "query": "trace in FastAPI",
+    "expected": [
+      "trace",
+      "FastAPI.trace"
+    ]
+  },
+  {
+    "query": "websocket route in FastAPI",
+    "expected": [
+      "websocket_route",
+      "FastAPI.websocket_route"
+    ]
+  },
+  {
+    "query": "on event in FastAPI",
+    "expected": [
+      "on_event",
+      "FastAPI.on_event"
+    ]
+  },
+  {
+    "query": "middleware in FastAPI",
+    "expected": [
+      "middleware",
+      "FastAPI.middleware"
+    ]
+  },
+  {
+    "query": "exception handler in FastAPI",
+    "expected": [
+      "exception_handler",
+      "FastAPI.exception_handler"
+    ]
+  },
+  {
+    "query": "contextmanager in threadpool",
+    "expected": [
+      "contextmanager_in_threadpool",
+      "contextmanager_in_threadpool"
+    ]
+  },
+  {
+    "query": "add task in BackgroundTasks",
+    "expected": [
+      "add_task",
+      "BackgroundTasks.add_task"
+    ]
+  },
+  {
+    "query": "isoformat",
+    "expected": [
+      "isoformat",
+      "isoformat"
+    ]
+  },
+  {
+    "query": "decimal encoder",
+    "expected": [
+      "decimal_encoder",
+      "decimal_encoder"
+    ]
+  },
+  {
+    "query": "generate encoders by class tuples",
+    "expected": [
+      "generate_encoders_by_class_tuples",
+      "generate_encoders_by_class_tuples"
+    ]
+  },
+  {
+    "query": "jsonable encoder",
+    "expected": [
+      "jsonable_encoder",
+      "jsonable_encoder"
+    ]
+  },
+  {
+    "query": "main",
+    "expected": [
+      "main",
+      "main"
+    ]
+  },
+  {
+    "query": "is body allowed for status code",
+    "expected": [
+      "is_body_allowed_for_status_code",
+      "is_body_allowed_for_status_code"
+    ]
+  },
+  {
+    "query": "get path param names",
+    "expected": [
+      "get_path_param_names",
+      "get_path_param_names"
+    ]
+  },
+  {
+    "query": "create model field",
+    "expected": [
+      "create_model_field",
+      "create_model_field"
+    ]
+  },
+  {
+    "query": "create cloned field",
+    "expected": [
+      "create_cloned_field",
+      "create_cloned_field"
+    ]
+  },
+  {
+    "query": "generate operation id for path",
+    "expected": [
+      "generate_operation_id_for_path",
+      "generate_operation_id_for_path"
+    ]
+  },
+  {
+    "query": "generate unique id",
+    "expected": [
+      "generate_unique_id",
+      "generate_unique_id"
+    ]
+  },
+  {
+    "query": "deep dict update",
+    "expected": [
+      "deep_dict_update",
+      "deep_dict_update"
+    ]
+  },
+  {
+    "query": "get value or default",
+    "expected": [
+      "get_value_or_default",
+      "get_value_or_default"
+    ]
+  },
+  {
+    "query": "request response",
+    "expected": [
+      "request_response",
+      "request_response"
+    ]
+  },
+  {
+    "query": "websocket session",
+    "expected": [
+      "websocket_session",
+      "websocket_session"
+    ]
+  },
+  {
+    "query": "prepare response content",
+    "expected": [
+      "_prepare_response_content",
+      "_prepare_response_content"
+    ]
+  },
+  {
+    "query": "merge lifespan context",
+    "expected": [
+      "_merge_lifespan_context",
+      "_merge_lifespan_context"
+    ]
+  },
+  {
+    "query": "extract endpoint context",
+    "expected": [
+      "_extract_endpoint_context",
+      "_extract_endpoint_context"
+    ]
+  },
+  {
+    "query": "serialize response",
+    "expected": [
+      "serialize_response",
+      "serialize_response"
+    ]
+  },
+  {
+    "query": "run endpoint function",
+    "expected": [
+      "run_endpoint_function",
+      "run_endpoint_function"
+    ]
+  },
+  {
+    "query": "get request handler",
+    "expected": [
+      "get_request_handler",
+      "get_request_handler"
+    ]
+  },
+  {
+    "query": "get websocket app",
+    "expected": [
+      "get_websocket_app",
+      "get_websocket_app"
+    ]
+  },
+  {
+    "query": "matches in APIWebSocketRoute",
+    "expected": [
+      "matches",
+      "APIWebSocketRoute.matches"
+    ]
+  }
+]

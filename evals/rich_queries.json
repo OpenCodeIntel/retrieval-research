@@ -1,0 +1,352 @@
+[
+  {
+    "query": "make widths table",
+    "expected": [
+      "make_widths_table",
+      "make_widths_table"
+    ]
+  },
+  {
+    "query": "get cell size",
+    "expected": [
+      "get_cell_size",
+      "get_cell_size"
+    ]
+  },
+  {
+    "query": "test",
+    "expected": [
+      "test",
+      "test"
+    ]
+  },
+  {
+    "query": "run",
+    "expected": [
+      "run",
+      "run"
+    ]
+  },
+  {
+    "query": "run steps",
+    "expected": [
+      "run_steps",
+      "run_steps"
+    ]
+  },
+  {
+    "query": "walk directory",
+    "expected": [
+      "walk_directory",
+      "walk_directory"
+    ]
+  },
+  {
+    "query": "divide by",
+    "expected": [
+      "divide_by",
+      "divide_by"
+    ]
+  },
+  {
+    "query": "divide all",
+    "expected": [
+      "divide_all",
+      "divide_all"
+    ]
+  },
+  {
+    "query": "foo",
+    "expected": [
+      "foo",
+      "foo"
+    ]
+  },
+  {
+    "query": "bar",
+    "expected": [
+      "bar",
+      "bar"
+    ]
+  },
+  {
+    "query": "get panels",
+    "expected": [
+      "get_panels",
+      "get_panels"
+    ]
+  },
+  {
+    "query": "print calendar",
+    "expected": [
+      "print_calendar",
+      "print_calendar"
+    ]
+  },
+  {
+    "query": "handle sigint",
+    "expected": [
+      "handle_sigint",
+      "handle_sigint"
+    ]
+  },
+  {
+    "query": "copy url",
+    "expected": [
+      "copy_url",
+      "copy_url"
+    ]
+  },
+  {
+    "query": "download",
+    "expected": [
+      "download",
+      "download"
+    ]
+  },
+  {
+    "query": "beat",
+    "expected": [
+      "beat",
+      "beat"
+    ]
+  },
+  {
+    "query": "test locals",
+    "expected": [
+      "test_locals",
+      "test_locals"
+    ]
+  },
+  {
+    "query": "print table",
+    "expected": [
+      "print_table",
+      "print_table"
+    ]
+  },
+  {
+    "query": "hello",
+    "expected": [
+      "hello",
+      "hello"
+    ]
+  },
+  {
+    "query": "get content",
+    "expected": [
+      "get_content",
+      "get_content"
+    ]
+  },
+  {
+    "query": "make layout",
+    "expected": [
+      "make_layout",
+      "make_layout"
+    ]
+  },
+  {
+    "query": "make sponsor message",
+    "expected": [
+      "make_sponsor_message",
+      "make_sponsor_message"
+    ]
+  },
+  {
+    "query": "make syntax",
+    "expected": [
+      "make_syntax",
+      "make_syntax"
+    ]
+  },
+  {
+    "query": "memory str in Process",
+    "expected": [
+      "memory_str",
+      "Process.memory_str"
+    ]
+  },
+  {
+    "query": "time str in Process",
+    "expected": [
+      "time_str",
+      "Process.time_str"
+    ]
+  },
+  {
+    "query": "generate process",
+    "expected": [
+      "generate_process",
+      "generate_process"
+    ]
+  },
+  {
+    "query": "create process table",
+    "expected": [
+      "create_process_table",
+      "create_process_table"
+    ]
+  },
+  {
+    "query": "highlight in RainbowHighlighter",
+    "expected": [
+      "highlight",
+      "RainbowHighlighter.highlight"
+    ]
+  },
+  {
+    "query": "setup in TextSuite",
+    "expected": [
+      "setup",
+      "TextSuite.setup"
+    ]
+  },
+  {
+    "query": "time wrapping in TextSuite",
+    "expected": [
+      "time_wrapping",
+      "TextSuite.time_wrapping"
+    ]
+  },
+  {
+    "query": "time indent guides in TextSuite",
+    "expected": [
+      "time_indent_guides",
+      "TextSuite.time_indent_guides"
+    ]
+  },
+  {
+    "query": "time fit in TextSuite",
+    "expected": [
+      "time_fit",
+      "TextSuite.time_fit"
+    ]
+  },
+  {
+    "query": "time split in TextSuite",
+    "expected": [
+      "time_split",
+      "TextSuite.time_split"
+    ]
+  },
+  {
+    "query": "time divide in TextSuite",
+    "expected": [
+      "time_divide",
+      "TextSuite.time_divide"
+    ]
+  },
+  {
+    "query": "time align center in TextSuite",
+    "expected": [
+      "time_align_center",
+      "TextSuite.time_align_center"
+    ]
+  },
+  {
+    "query": "time render in TextSuite",
+    "expected": [
+      "time_render",
+      "TextSuite.time_render"
+    ]
+  },
+  {
+    "query": "time wrapping unicode heavy in TextSuite",
+    "expected": [
+      "time_wrapping_unicode_heavy",
+      "TextSuite.time_wrapping_unicode_heavy"
+    ]
+  },
+  {
+    "query": "time fit unicode heavy in TextSuite",
+    "expected": [
+      "time_fit_unicode_heavy",
+      "TextSuite.time_fit_unicode_heavy"
+    ]
+  },
+  {
+    "query": "time split unicode heavy in TextSuite",
+    "expected": [
+      "time_split_unicode_heavy",
+      "TextSuite.time_split_unicode_heavy"
+    ]
+  },
+  {
+    "query": "time divide unicode heavy in TextSuite",
+    "expected": [
+      "time_divide_unicode_heavy",
+      "TextSuite.time_divide_unicode_heavy"
+    ]
+  },
+  {
+    "query": "time align center unicode heavy in TextSuite",
+    "expected": [
+      "time_align_center_unicode_heavy",
+      "TextSuite.time_align_center_unicode_heavy"
+    ]
+  },
+  {
+    "query": "time render unicode heavy in TextSuite",
+    "expected": [
+      "time_render_unicode_heavy",
+      "TextSuite.time_render_unicode_heavy"
+    ]
+  },
+  {
+    "query": "time wrapping unicode heavy warm cache in TextHotCacheSuite",
+    "expected": [
+      "time_wrapping_unicode_heavy_warm_cache",
+      "TextHotCacheSuite.time_wrapping_unicode_heavy_warm_cache"
+    ]
+  },
+  {
+    "query": "time text thin terminal heavy wrapping in SyntaxWrappingSuite",
+    "expected": [
+      "time_text_thin_terminal_heavy_wrapping",
+      "SyntaxWrappingSuite.time_text_thin_terminal_heavy_wrapping"
+    ]
+  },
+  {
+    "query": "time text thin terminal medium wrapping in SyntaxWrappingSuite",
+    "expected": [
+      "time_text_thin_terminal_medium_wrapping",
+      "SyntaxWrappingSuite.time_text_thin_terminal_medium_wrapping"
+    ]
+  },
+  {
+    "query": "time text wide terminal no wrapping in SyntaxWrappingSuite",
+    "expected": [
+      "time_text_wide_terminal_no_wrapping",
+      "SyntaxWrappingSuite.time_text_wide_terminal_no_wrapping"
+    ]
+  },
+  {
+    "query": "print with width in SyntaxWrappingSuite",
+    "expected": [
+      "_print_with_width",
+      "SyntaxWrappingSuite._print_with_width"
+    ]
+  },
+  {
+    "query": "time table no wrapping in TableSuite",
+    "expected": [
+      "time_table_no_wrapping",
+      "TableSuite.time_table_no_wrapping"
+    ]
+  },
+  {
+    "query": "time table heavy wrapping in TableSuite",
+    "expected": [
+      "time_table_heavy_wrapping",
+      "TableSuite.time_table_heavy_wrapping"
+    ]
+  },
+  {
+    "query": "print table in TableSuite",
+    "expected": [
+      "_print_table",
+      "TableSuite._print_table"
+    ]
+  }
+]
