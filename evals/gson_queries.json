@@ -1,0 +1,352 @@
+[
+  {
+    "query": "create in InterceptorFactory",
+    "expected": [
+      "create",
+      "com.google.gson.interceptors.InterceptorFactory.create"
+    ]
+  },
+  {
+    "query": "interceptor adapter in InterceptorAdapter",
+    "expected": [
+      "InterceptorAdapter",
+      "com.google.gson.interceptors.InterceptorAdapter.InterceptorAdapter"
+    ]
+  },
+  {
+    "query": "write in InterceptorAdapter",
+    "expected": [
+      "write",
+      "com.google.gson.interceptors.InterceptorAdapter.write"
+    ]
+  },
+  {
+    "query": "read in InterceptorAdapter",
+    "expected": [
+      "read",
+      "com.google.gson.interceptors.InterceptorAdapter.read"
+    ]
+  },
+  {
+    "query": "post deserialize in JsonPostDeserializer",
+    "expected": [
+      "postDeserialize",
+      "com.google.gson.interceptors.JsonPostDeserializer.postDeserialize"
+    ]
+  },
+  {
+    "query": "graph adapter builder in GraphAdapterBuilder",
+    "expected": [
+      "GraphAdapterBuilder",
+      "com.google.gson.graph.GraphAdapterBuilder.GraphAdapterBuilder"
+    ]
+  },
+  {
+    "query": "add type in GraphAdapterBuilder",
+    "expected": [
+      "addType",
+      "com.google.gson.graph.GraphAdapterBuilder.addType"
+    ]
+  },
+  {
+    "query": "register on in GraphAdapterBuilder",
+    "expected": [
+      "registerOn",
+      "com.google.gson.graph.GraphAdapterBuilder.registerOn"
+    ]
+  },
+  {
+    "query": "factory in Factory",
+    "expected": [
+      "Factory",
+      "com.google.gson.graph.Factory.Factory"
+    ]
+  },
+  {
+    "query": "create instance in Factory",
+    "expected": [
+      "createInstance",
+      "com.google.gson.graph.Factory.createInstance"
+    ]
+  },
+  {
+    "query": "graph in Graph",
+    "expected": [
+      "Graph",
+      "com.google.gson.graph.Graph.Graph"
+    ]
+  },
+  {
+    "query": "next name in Graph",
+    "expected": [
+      "nextName",
+      "com.google.gson.graph.Graph.nextName"
+    ]
+  },
+  {
+    "query": "element in Element",
+    "expected": [
+      "Element",
+      "com.google.gson.graph.Element.Element"
+    ]
+  },
+  {
+    "query": "runtime type adapter factory in RuntimeTypeAdapterFactory",
+    "expected": [
+      "RuntimeTypeAdapterFactory",
+      "com.google.gson.typeadapters.RuntimeTypeAdapterFactory.RuntimeTypeAdapterFactory"
+    ]
+  },
+  {
+    "query": "recognize subtypes in RuntimeTypeAdapterFactory",
+    "expected": [
+      "recognizeSubtypes",
+      "com.google.gson.typeadapters.RuntimeTypeAdapterFactory.recognizeSubtypes"
+    ]
+  },
+  {
+    "query": "register subtype in RuntimeTypeAdapterFactory",
+    "expected": [
+      "registerSubtype",
+      "com.google.gson.typeadapters.RuntimeTypeAdapterFactory.registerSubtype"
+    ]
+  },
+  {
+    "query": "format in UtcDateTypeAdapter",
+    "expected": [
+      "format",
+      "com.google.gson.typeadapters.UtcDateTypeAdapter.format"
+    ]
+  },
+  {
+    "query": "pad int in UtcDateTypeAdapter",
+    "expected": [
+      "padInt",
+      "com.google.gson.typeadapters.UtcDateTypeAdapter.padInt"
+    ]
+  },
+  {
+    "query": "parse in UtcDateTypeAdapter",
+    "expected": [
+      "parse",
+      "com.google.gson.typeadapters.UtcDateTypeAdapter.parse"
+    ]
+  },
+  {
+    "query": "check offset in UtcDateTypeAdapter",
+    "expected": [
+      "checkOffset",
+      "com.google.gson.typeadapters.UtcDateTypeAdapter.checkOffset"
+    ]
+  },
+  {
+    "query": "parse int in UtcDateTypeAdapter",
+    "expected": [
+      "parseInt",
+      "com.google.gson.typeadapters.UtcDateTypeAdapter.parseInt"
+    ]
+  },
+  {
+    "query": "post construct adapter in PostConstructAdapter",
+    "expected": [
+      "PostConstructAdapter",
+      "com.google.gson.typeadapters.PostConstructAdapter.PostConstructAdapter"
+    ]
+  },
+  {
+    "query": "event in Event",
+    "expected": [
+      "Event",
+      "com.google.gson.extras.examples.rawcollections.Event.Event"
+    ]
+  },
+  {
+    "query": "to string in Event",
+    "expected": [
+      "toString",
+      "com.google.gson.extras.examples.rawcollections.Event.toString"
+    ]
+  },
+  {
+    "query": "main in RawCollectionsExample",
+    "expected": [
+      "main",
+      "com.google.gson.extras.examples.rawcollections.RawCollectionsExample.main"
+    ]
+  },
+  {
+    "query": "set up in InterceptorTest",
+    "expected": [
+      "setUp",
+      "com.google.gson.interceptors.InterceptorTest.setUp"
+    ]
+  },
+  {
+    "query": "test exceptions propagated in InterceptorTest",
+    "expected": [
+      "testExceptionsPropagated",
+      "com.google.gson.interceptors.InterceptorTest.testExceptionsPropagated"
+    ]
+  },
+  {
+    "query": "test top level class in InterceptorTest",
+    "expected": [
+      "testTopLevelClass",
+      "com.google.gson.interceptors.InterceptorTest.testTopLevelClass"
+    ]
+  },
+  {
+    "query": "test list in InterceptorTest",
+    "expected": [
+      "testList",
+      "com.google.gson.interceptors.InterceptorTest.testList"
+    ]
+  },
+  {
+    "query": "test collection in InterceptorTest",
+    "expected": [
+      "testCollection",
+      "com.google.gson.interceptors.InterceptorTest.testCollection"
+    ]
+  },
+  {
+    "query": "test map key and values in InterceptorTest",
+    "expected": [
+      "testMapKeyAndValues",
+      "com.google.gson.interceptors.InterceptorTest.testMapKeyAndValues"
+    ]
+  },
+  {
+    "query": "test field in InterceptorTest",
+    "expected": [
+      "testField",
+      "com.google.gson.interceptors.InterceptorTest.testField"
+    ]
+  },
+  {
+    "query": "test custom type adapter in InterceptorTest",
+    "expected": [
+      "testCustomTypeAdapter",
+      "com.google.gson.interceptors.InterceptorTest.testCustomTypeAdapter"
+    ]
+  },
+  {
+    "query": "test direct invocation of type adapter in InterceptorTest",
+    "expected": [
+      "testDirectInvocationOfTypeAdapter",
+      "com.google.gson.interceptors.InterceptorTest.testDirectInvocationOfTypeAdapter"
+    ]
+  },
+  {
+    "query": "user in User",
+    "expected": [
+      "User",
+      "com.google.gson.interceptors.User.User"
+    ]
+  },
+  {
+    "query": "test serialization in GraphAdapterBuilderTest",
+    "expected": [
+      "testSerialization",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testSerialization"
+    ]
+  },
+  {
+    "query": "test deserialization in GraphAdapterBuilderTest",
+    "expected": [
+      "testDeserialization",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testDeserialization"
+    ]
+  },
+  {
+    "query": "test deserialization direct self reference in GraphAdapterBuilderTest",
+    "expected": [
+      "testDeserializationDirectSelfReference",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testDeserializationDirectSelfReference"
+    ]
+  },
+  {
+    "query": "test add type custom instance creator in GraphAdapterBuilderTest",
+    "expected": [
+      "testAddTypeCustomInstanceCreator",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testAddTypeCustomInstanceCreator"
+    ]
+  },
+  {
+    "query": "test add type overwrite in GraphAdapterBuilderTest",
+    "expected": [
+      "testAddTypeOverwrite",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testAddTypeOverwrite"
+    ]
+  },
+  {
+    "query": "test serialize list of lists in GraphAdapterBuilderTest",
+    "expected": [
+      "testSerializeListOfLists",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testSerializeListOfLists"
+    ]
+  },
+  {
+    "query": "test deserialize list of lists in GraphAdapterBuilderTest",
+    "expected": [
+      "testDeserializeListOfLists",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testDeserializeListOfLists"
+    ]
+  },
+  {
+    "query": "test serialization with multiple types in GraphAdapterBuilderTest",
+    "expected": [
+      "testSerializationWithMultipleTypes",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testSerializationWithMultipleTypes"
+    ]
+  },
+  {
+    "query": "test deserialization with multiple types in GraphAdapterBuilderTest",
+    "expected": [
+      "testDeserializationWithMultipleTypes",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testDeserializationWithMultipleTypes"
+    ]
+  },
+  {
+    "query": "test builder reuse in GraphAdapterBuilderTest",
+    "expected": [
+      "testBuilderReuse",
+      "com.google.gson.graph.GraphAdapterBuilderTest.testBuilderReuse"
+    ]
+  },
+  {
+    "query": "roshambo in Roshambo",
+    "expected": [
+      "Roshambo",
+      "com.google.gson.graph.Roshambo.Roshambo"
+    ]
+  },
+  {
+    "query": "employee in Employee",
+    "expected": [
+      "Employee",
+      "com.google.gson.graph.Employee.Employee"
+    ]
+  },
+  {
+    "query": "company in Company",
+    "expected": [
+      "Company",
+      "com.google.gson.graph.Company.Company"
+    ]
+  },
+  {
+    "query": "test in PostConstructAdapterFactoryTest",
+    "expected": [
+      "test",
+      "com.google.gson.typeadapters.PostConstructAdapterFactoryTest.test"
+    ]
+  },
+  {
+    "query": "sandwich in Sandwich",
+    "expected": [
+      "Sandwich",
+      "com.google.gson.typeadapters.Sandwich.Sandwich"
+    ]
+  }
+]
