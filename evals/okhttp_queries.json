@@ -1,0 +1,352 @@
+[
+  {
+    "query": "test constructor in ZstdInterceptorJavaTest",
+    "expected": [
+      "testConstructor",
+      "okhttp3.zstd.ZstdInterceptorJavaTest.testConstructor"
+    ]
+  },
+  {
+    "query": "tags seeded from request in CallJavaTest",
+    "expected": [
+      "tagsSeededFromRequest",
+      "okhttp3.CallJavaTest.tagsSeededFromRequest"
+    ]
+  },
+  {
+    "query": "tags can be computed in CallJavaTest",
+    "expected": [
+      "tagsCanBeComputed",
+      "okhttp3.CallJavaTest.tagsCanBeComputed"
+    ]
+  },
+  {
+    "query": "call ok http in OkHttpCaller",
+    "expected": [
+      "callOkHttp",
+      "okhttp3.modules.OkHttpCaller.callOkHttp"
+    ]
+  },
+  {
+    "query": "main in Main",
+    "expected": [
+      "main",
+      "okhttp3.modules.Main.main"
+    ]
+  },
+  {
+    "query": "test visibility in JavaModuleTest",
+    "expected": [
+      "testVisibility",
+      "okhttp3.modules.test.JavaModuleTest.testVisibility"
+    ]
+  },
+  {
+    "query": "test mock web server in JavaModuleTest",
+    "expected": [
+      "testMockWebServer",
+      "okhttp3.modules.test.JavaModuleTest.testMockWebServer"
+    ]
+  },
+  {
+    "query": "test modules in JavaModuleTest",
+    "expected": [
+      "testModules",
+      "okhttp3.modules.test.JavaModuleTest.testModules"
+    ]
+  },
+  {
+    "query": "get fails without additional cert in LetsEncryptTest",
+    "expected": [
+      "getFailsWithoutAdditionalCert",
+      "okhttp.regression.LetsEncryptTest.getFailsWithoutAdditionalCert"
+    ]
+  },
+  {
+    "query": "get passes additional cert in LetsEncryptTest",
+    "expected": [
+      "getPassesAdditionalCert",
+      "okhttp.regression.LetsEncryptTest.getPassesAdditionalCert"
+    ]
+  },
+  {
+    "query": "send request in LetsEncryptTest",
+    "expected": [
+      "sendRequest",
+      "okhttp.regression.LetsEncryptTest.sendRequest"
+    ]
+  },
+  {
+    "query": "get in OkHttpClientTest",
+    "expected": [
+      "get",
+      "okhttp.regression.compare.OkHttpClientTest.get"
+    ]
+  },
+  {
+    "query": "test roundtrip in CertificatesJavaTest",
+    "expected": [
+      "testRoundtrip",
+      "okhttp3.tls.CertificatesJavaTest.testRoundtrip"
+    ]
+  },
+  {
+    "query": "ack api s in ackApi {",
+    "expected": [
+      "ackApi(S",
+      "okhttp3.slack.ackApi {.ackApi(S"
+    ]
+  },
+  {
+    "query": "thorize url s in ackApi {",
+    "expected": [
+      "thorizeUrl(S",
+      "okhttp3.slack.ackApi {.thorizeUrl(S"
+    ]
+  },
+  {
+    "query": "change code s in ackApi {",
+    "expected": [
+      "changeCode(S",
+      "okhttp3.slack.ackApi {.changeCode(S"
+    ]
+  },
+  {
+    "query": "m start s in ackApi {",
+    "expected": [
+      "mStart(S",
+      "okhttp3.slack.ackApi {.mStart(S"
+    ]
+  },
+  {
+    "query": "m h in ackApi {",
+    "expected": [
+      "m(H",
+      "okhttp3.slack.ackApi {.m(H"
+    ]
+  },
+  {
+    "query": "l to json h in ackJsonAdapters {",
+    "expected": [
+      "lToJson(H",
+      "okhttp3.slack.ackJsonAdapters {.lToJson(H"
+    ]
+  },
+  {
+    "query": "l from json s in ackJsonAdapters {",
+    "expected": [
+      "lFromJson(S",
+      "okhttp3.slack.ackJsonAdapters {.lFromJson(S"
+    ]
+  },
+  {
+    "query": "rtm session in RtmSession",
+    "expected": [
+      "RtmSession",
+      "okhttp3.slack.RtmSession.RtmSession"
+    ]
+  },
+  {
+    "query": "open in RtmSession",
+    "expected": [
+      "open",
+      "okhttp3.slack.RtmSession.open"
+    ]
+  },
+  {
+    "query": "on open in RtmSession",
+    "expected": [
+      "onOpen",
+      "okhttp3.slack.RtmSession.onOpen"
+    ]
+  },
+  {
+    "query": "on message in RtmSession",
+    "expected": [
+      "onMessage",
+      "okhttp3.slack.RtmSession.onMessage"
+    ]
+  },
+  {
+    "query": "on closing in RtmSession",
+    "expected": [
+      "onClosing",
+      "okhttp3.slack.RtmSession.onClosing"
+    ]
+  },
+  {
+    "query": "on failure in RtmSession",
+    "expected": [
+      "onFailure",
+      "okhttp3.slack.RtmSession.onFailure"
+    ]
+  },
+  {
+    "query": "close in RtmSession",
+    "expected": [
+      "close",
+      "okhttp3.slack.RtmSession.close"
+    ]
+  },
+  {
+    "query": "o auth session in OAuthSession",
+    "expected": [
+      "OAuthSession",
+      "okhttp3.slack.OAuthSession.OAuthSession"
+    ]
+  },
+  {
+    "query": "to string in OAuthSession",
+    "expected": [
+      "toString",
+      "okhttp3.slack.OAuthSession.toString"
+    ]
+  },
+  {
+    "query": "o auth session factory in OAuthSessionFactory",
+    "expected": [
+      "OAuthSessionFactory",
+      "okhttp3.slack.OAuthSessionFactory.OAuthSessionFactory"
+    ]
+  },
+  {
+    "query": "start in OAuthSessionFactory",
+    "expected": [
+      "start",
+      "okhttp3.slack.OAuthSessionFactory.start"
+    ]
+  },
+  {
+    "query": "new authorize url in OAuthSessionFactory",
+    "expected": [
+      "newAuthorizeUrl",
+      "okhttp3.slack.OAuthSessionFactory.newAuthorizeUrl"
+    ]
+  },
+  {
+    "query": "random token in OAuthSessionFactory",
+    "expected": [
+      "randomToken",
+      "okhttp3.slack.OAuthSessionFactory.randomToken"
+    ]
+  },
+  {
+    "query": "redirect url in OAuthSessionFactory",
+    "expected": [
+      "redirectUrl",
+      "okhttp3.slack.OAuthSessionFactory.redirectUrl"
+    ]
+  },
+  {
+    "query": "dispatch in OAuthSessionFactory",
+    "expected": [
+      "dispatch",
+      "okhttp3.slack.OAuthSessionFactory.dispatch"
+    ]
+  },
+  {
+    "query": "session granted in Listener",
+    "expected": [
+      "sessionGranted",
+      "okhttp3.slack.Listener.sessionGranted"
+    ]
+  },
+  {
+    "query": "slack client in SlackClient",
+    "expected": [
+      "SlackClient",
+      "okhttp3.slack.SlackClient.SlackClient"
+    ]
+  },
+  {
+    "query": "request oauth session in SlackClient",
+    "expected": [
+      "requestOauthSession",
+      "okhttp3.slack.SlackClient.requestOauthSession"
+    ]
+  },
+  {
+    "query": "init oauth session in SlackClient",
+    "expected": [
+      "initOauthSession",
+      "okhttp3.slack.SlackClient.initOauthSession"
+    ]
+  },
+  {
+    "query": "await access token in SlackClient",
+    "expected": [
+      "awaitAccessToken",
+      "okhttp3.slack.SlackClient.awaitAccessToken"
+    ]
+  },
+  {
+    "query": "start rtm in SlackClient",
+    "expected": [
+      "startRtm",
+      "okhttp3.slack.SlackClient.startRtm"
+    ]
+  },
+  {
+    "query": "crawler in Crawler",
+    "expected": [
+      "Crawler",
+      "okhttp3.sample.Crawler.Crawler"
+    ]
+  },
+  {
+    "query": "parallel drain queue in Crawler",
+    "expected": [
+      "parallelDrainQueue",
+      "okhttp3.sample.Crawler.parallelDrainQueue"
+    ]
+  },
+  {
+    "query": "drain queue in Crawler",
+    "expected": [
+      "drainQueue",
+      "okhttp3.sample.Crawler.drainQueue"
+    ]
+  },
+  {
+    "query": "fetch in Crawler",
+    "expected": [
+      "fetch",
+      "okhttp3.sample.Crawler.fetch"
+    ]
+  },
+  {
+    "query": "ok http contributors in OkHttpContributors",
+    "expected": [
+      "OkHttpContributors",
+      "okhttp3.sample.OkHttpContributors.OkHttpContributors"
+    ]
+  },
+  {
+    "query": "run in ClientAndServer",
+    "expected": [
+      "run",
+      "okhttp3.unixdomainsockets.ClientAndServer.run"
+    ]
+  },
+  {
+    "query": "unix domain server socket factory in UnixDomainServerSocketFactory",
+    "expected": [
+      "UnixDomainServerSocketFactory",
+      "okhttp3.unixdomainsockets.UnixDomainServerSocketFactory.UnixDomainServerSocketFactory"
+    ]
+  },
+  {
+    "query": "create server socket in UnixDomainServerSocketFactory",
+    "expected": [
+      "createServerSocket",
+      "okhttp3.unixdomainsockets.UnixDomainServerSocketFactory.createServerSocket"
+    ]
+  },
+  {
+    "query": "unix domain server socket in UnixDomainServerSocket",
+    "expected": [
+      "UnixDomainServerSocket",
+      "okhttp3.unixdomainsockets.UnixDomainServerSocket.UnixDomainServerSocket"
+    ]
+  }
+]
