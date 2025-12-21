@@ -108,6 +108,9 @@ def extract_functions(codebase: str) -> List[ExtractedFunction]:
     elif language == "java":
         from src.extractors.java import JavaExtractor
         extractor = JavaExtractor(str(repo_path))
+    elif language == "go":
+        from src.extractors.go import GoExtractor
+        extractor = GoExtractor(str(repo_path))
     else:
         from src.extractors.javascript import JavaScriptExtractor
         extractor = JavaScriptExtractor(str(repo_path), language=language)
