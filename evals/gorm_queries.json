@@ -1,0 +1,352 @@
+[
+  {
+    "query": "parse zero value tag",
+    "expected": [
+      "parseZeroValueTag",
+      "gorm.parseZeroValueTag"
+    ]
+  },
+  {
+    "query": "joins",
+    "expected": [
+      "joins",
+      "gorm.joins"
+    ]
+  },
+  {
+    "query": "prepare values",
+    "expected": [
+      "prepareValues",
+      "gorm.prepareValues"
+    ]
+  },
+  {
+    "query": "scan into map",
+    "expected": [
+      "scanIntoMap",
+      "gorm.scanIntoMap"
+    ]
+  },
+  {
+    "query": "scan",
+    "expected": [
+      "Scan",
+      "gorm.Scan"
+    ]
+  },
+  {
+    "query": "initialize callbacks",
+    "expected": [
+      "initializeCallbacks",
+      "gorm.initializeCallbacks"
+    ]
+  },
+  {
+    "query": "get r index",
+    "expected": [
+      "getRIndex",
+      "gorm.getRIndex"
+    ]
+  },
+  {
+    "query": "sort callbacks",
+    "expected": [
+      "sortCallbacks",
+      "gorm.sortCallbacks"
+    ]
+  },
+  {
+    "query": "remove callbacks",
+    "expected": [
+      "removeCallbacks",
+      "gorm.removeCallbacks"
+    ]
+  },
+  {
+    "query": "new prepared stmt d b",
+    "expected": [
+      "NewPreparedStmtDB",
+      "gorm.NewPreparedStmtDB"
+    ]
+  },
+  {
+    "query": "expand values",
+    "expected": [
+      "expandValues",
+      "gorm.expandValues"
+    ]
+  },
+  {
+    "query": "with result",
+    "expected": [
+      "WithResult",
+      "gorm.WithResult"
+    ]
+  },
+  {
+    "query": "open",
+    "expected": [
+      "Open",
+      "gorm.Open"
+    ]
+  },
+  {
+    "query": "expr",
+    "expected": [
+      "Expr",
+      "gorm.Expr"
+    ]
+  },
+  {
+    "query": "new slog logger",
+    "expected": [
+      "NewSlogLogger",
+      "logger.NewSlogLogger"
+    ]
+  },
+  {
+    "query": "new",
+    "expected": [
+      "New",
+      "logger.New"
+    ]
+  },
+  {
+    "query": "is printable",
+    "expected": [
+      "isPrintable",
+      "logger.isPrintable"
+    ]
+  },
+  {
+    "query": "is numeric",
+    "expected": [
+      "isNumeric",
+      "logger.isNumeric"
+    ]
+  },
+  {
+    "query": "explain s q l",
+    "expected": [
+      "ExplainSQL",
+      "logger.ExplainSQL"
+    ]
+  },
+  {
+    "query": "raw exec",
+    "expected": [
+      "RawExec",
+      "callbacks.RawExec"
+    ]
+  },
+  {
+    "query": "query",
+    "expected": [
+      "Query",
+      "callbacks.Query"
+    ]
+  },
+  {
+    "query": "build query s q l",
+    "expected": [
+      "BuildQuerySQL",
+      "callbacks.BuildQuerySQL"
+    ]
+  },
+  {
+    "query": "preload",
+    "expected": [
+      "Preload",
+      "callbacks.Preload"
+    ]
+  },
+  {
+    "query": "after query",
+    "expected": [
+      "AfterQuery",
+      "callbacks.AfterQuery"
+    ]
+  },
+  {
+    "query": "before create",
+    "expected": [
+      "BeforeCreate",
+      "callbacks.BeforeCreate"
+    ]
+  },
+  {
+    "query": "create",
+    "expected": [
+      "Create",
+      "callbacks.Create"
+    ]
+  },
+  {
+    "query": "after create",
+    "expected": [
+      "AfterCreate",
+      "callbacks.AfterCreate"
+    ]
+  },
+  {
+    "query": "convert to create values",
+    "expected": [
+      "ConvertToCreateValues",
+      "callbacks.ConvertToCreateValues"
+    ]
+  },
+  {
+    "query": "setup update reflect value",
+    "expected": [
+      "SetupUpdateReflectValue",
+      "callbacks.SetupUpdateReflectValue"
+    ]
+  },
+  {
+    "query": "before update",
+    "expected": [
+      "BeforeUpdate",
+      "callbacks.BeforeUpdate"
+    ]
+  },
+  {
+    "query": "update",
+    "expected": [
+      "Update",
+      "callbacks.Update"
+    ]
+  },
+  {
+    "query": "after update",
+    "expected": [
+      "AfterUpdate",
+      "callbacks.AfterUpdate"
+    ]
+  },
+  {
+    "query": "convert to assignments",
+    "expected": [
+      "ConvertToAssignments",
+      "callbacks.ConvertToAssignments"
+    ]
+  },
+  {
+    "query": "before delete",
+    "expected": [
+      "BeforeDelete",
+      "callbacks.BeforeDelete"
+    ]
+  },
+  {
+    "query": "delete before associations",
+    "expected": [
+      "DeleteBeforeAssociations",
+      "callbacks.DeleteBeforeAssociations"
+    ]
+  },
+  {
+    "query": "delete",
+    "expected": [
+      "Delete",
+      "callbacks.Delete"
+    ]
+  },
+  {
+    "query": "after delete",
+    "expected": [
+      "AfterDelete",
+      "callbacks.AfterDelete"
+    ]
+  },
+  {
+    "query": "save before associations",
+    "expected": [
+      "SaveBeforeAssociations",
+      "callbacks.SaveBeforeAssociations"
+    ]
+  },
+  {
+    "query": "save after associations",
+    "expected": [
+      "SaveAfterAssociations",
+      "callbacks.SaveAfterAssociations"
+    ]
+  },
+  {
+    "query": "on conflict option",
+    "expected": [
+      "onConflictOption",
+      "callbacks.onConflictOption"
+    ]
+  },
+  {
+    "query": "save associations",
+    "expected": [
+      "saveAssociations",
+      "callbacks.saveAssociations"
+    ]
+  },
+  {
+    "query": "check associations saved",
+    "expected": [
+      "checkAssociationsSaved",
+      "callbacks.checkAssociationsSaved"
+    ]
+  },
+  {
+    "query": "call method",
+    "expected": [
+      "callMethod",
+      "callbacks.callMethod"
+    ]
+  },
+  {
+    "query": "parse preload map",
+    "expected": [
+      "parsePreloadMap",
+      "callbacks.parsePreloadMap"
+    ]
+  },
+  {
+    "query": "embedded values",
+    "expected": [
+      "embeddedValues",
+      "callbacks.embeddedValues"
+    ]
+  },
+  {
+    "query": "preload entry point",
+    "expected": [
+      "preloadEntryPoint",
+      "callbacks.preloadEntryPoint"
+    ]
+  },
+  {
+    "query": "preload d b",
+    "expected": [
+      "preloadDB",
+      "callbacks.preloadDB"
+    ]
+  },
+  {
+    "query": "preload",
+    "expected": [
+      "preload",
+      "callbacks.preload"
+    ]
+  },
+  {
+    "query": "begin transaction",
+    "expected": [
+      "BeginTransaction",
+      "callbacks.BeginTransaction"
+    ]
+  },
+  {
+    "query": "commit or rollback transaction",
+    "expected": [
+      "CommitOrRollbackTransaction",
+      "callbacks.CommitOrRollbackTransaction"
+    ]
+  }
+]
