@@ -1,0 +1,352 @@
+[
+  {
+    "query": "s file",
+    "expected": [
+      "sFile(",
+      "cho\n.sFile("
+    ]
+  },
+  {
+    "query": "reate filesystem",
+    "expected": [
+      "reateFilesystem(",
+      "cho\n.reateFilesystem("
+    ]
+  },
+  {
+    "query": "tatic directory handler",
+    "expected": [
+      "taticDirectoryHandler(",
+      "cho\n.taticDirectoryHandler("
+    ]
+  },
+  {
+    "query": "tatic file handler",
+    "expected": [
+      "taticFileHandler(",
+      "cho\n.taticFileHandler("
+    ]
+  },
+  {
+    "query": "ew default f s",
+    "expected": [
+      "ewDefaultFS(",
+      "cho\n.ewDefaultFS("
+    ]
+  },
+  {
+    "query": "ub f s",
+    "expected": [
+      "ubFS(",
+      "cho\n.ubFS("
+    ]
+  },
+  {
+    "query": "ust sub f s",
+    "expected": [
+      "ustSubFS(",
+      "cho\n.ustSubFS("
+    ]
+  },
+  {
+    "query": "anitize u r i",
+    "expected": [
+      "anitizeURI(",
+      "cho\n.anitizeURI("
+    ]
+  },
+  {
+    "query": "ew response",
+    "expected": [
+      "ewResponse(",
+      "cho\n.ewResponse("
+    ]
+  },
+  {
+    "query": "s if you trus",
+    "expected": [
+      "s if you trus",
+      "cho\n.s if you trus"
+    ]
+  },
+  {
+    "query": "d trustable i p",
+    "expected": [
+      "d trustable IP",
+      "cho\n.d trustable IP"
+    ]
+  },
+  {
+    "query": "func new i p",
+    "expected": [
+      "}\n}\n\nfunc newIP",
+      "cho\n.}\n}\n\nfunc newIP"
+    ]
+  },
+  {
+    "query": "re range",
+    "expected": [
+      "re := range ",
+      "cho\n.re := range "
+    ]
+  },
+  {
+    "query": "return",
+    "expected": [
+      ") {\n\t\treturn",
+      "cho\n.) {\n\t\treturn"
+    ]
+  },
+  {
+    "query": "acts i p address",
+    "expected": [
+      "acts IP address",
+      "cho\n.acts IP address"
+    ]
+  },
+  {
+    "query": "put prox",
+    "expected": [
+      " put prox",
+      "cho\n. put prox"
+    ]
+  },
+  {
+    "query": "real i p strings trim pr",
+    "expected": [
+      "\t\trealIP = strings.TrimPr",
+      "cho\n.\t\trealIP = strings.TrimPr"
+    ]
+  },
+  {
+    "query": "direct i p",
+    "expected": [
+      ", \",\"), \",\"), directIP",
+      "cho\n., \",\"), \",\"), directIP"
+    ]
+  },
+  {
+    "query": "et with proper type",
+    "expected": [
+      "etWithProperType(",
+      "cho\n.etWithProperType("
+    ]
+  },
+  {
+    "query": "nmarshal inputs to field",
+    "expected": [
+      "nmarshalInputsToField(",
+      "cho\n.nmarshalInputsToField("
+    ]
+  },
+  {
+    "query": "nmarshal input to field",
+    "expected": [
+      "nmarshalInputToField(",
+      "cho\n.nmarshalInputToField("
+    ]
+  },
+  {
+    "query": "et int field",
+    "expected": [
+      "etIntField(",
+      "cho\n.etIntField("
+    ]
+  },
+  {
+    "query": "et uint field",
+    "expected": [
+      "etUintField(",
+      "cho\n.etUintField("
+    ]
+  },
+  {
+    "query": "et bool field",
+    "expected": [
+      "etBoolField(",
+      "cho\n.etBoolField("
+    ]
+  },
+  {
+    "query": "et float field",
+    "expected": [
+      "etFloatField(",
+      "cho\n.etFloatField("
+    ]
+  },
+  {
+    "query": "s field multipart file",
+    "expected": [
+      "sFieldMultipartFile(",
+      "cho\n.sFieldMultipartFile("
+    ]
+  },
+  {
+    "query": "et multipart file header types",
+    "expected": [
+      "etMultipartFileHeaderTypes(",
+      "cho\n.etMultipartFileHeaderTypes("
+    ]
+  },
+  {
+    "query": "ew",
+    "expected": [
+      "ew(",
+      "cho\n.ew("
+    ]
+  },
+  {
+    "query": "ilepath or content",
+    "expected": [
+      "ilepathOrContent(",
+      "cho\n.ilepathOrContent("
+    ]
+  },
+  {
+    "query": "error code i",
+    "expected": [
+      "Error(code i",
+      "cho\n.Error(code i"
+    ]
+  },
+  {
+    "query": "dler h http",
+    "expected": [
+      "dler(h http",
+      "cho\n.dler(h http"
+    ]
+  },
+  {
+    "query": "dleware m func",
+    "expected": [
+      "dleware(m func",
+      "cho\n.dleware(m func"
+    ]
+  },
+  {
+    "query": "r htt",
+    "expected": [
+      "(r *htt",
+      "cho\n.(r *htt"
+    ]
+  },
+  {
+    "query": "name h hand",
+    "expected": [
+      "Name(h Hand",
+      "cho\n.Name(h Hand"
+    ]
+  },
+  {
+    "query": "ener addres",
+    "expected": [
+      "ener(addres",
+      "cho\n.ener(addres"
+    ]
+  },
+  {
+    "query": "ddleware h hand",
+    "expected": [
+      "ddleware(h Hand",
+      "cho\n.ddleware(h Hand"
+    ]
+  },
+  {
+    "query": "ew router",
+    "expected": [
+      "ewRouter(",
+      "cho\n.ewRouter("
+    ]
+  },
+  {
+    "query": "ormalize path slash",
+    "expected": [
+      "ormalizePathSlash(",
+      "cho\n.ormalizePathSlash("
+    ]
+  },
+  {
+    "query": "ew node",
+    "expected": [
+      "ewNode(",
+      "cho\n.ewNode("
+    ]
+  },
+  {
+    "query": "ptions method handler",
+    "expected": [
+      "ptionsMethodHandler(",
+      "cho\n.ptionsMethodHandler("
+    ]
+  },
+  {
+    "query": "ew binding error",
+    "expected": [
+      "ewBindingError(",
+      "cho\n.ewBindingError("
+    ]
+  },
+  {
+    "query": "uery params binder",
+    "expected": [
+      "ueryParamsBinder(",
+      "cho\n.ueryParamsBinder("
+    ]
+  },
+  {
+    "query": "ath params binder",
+    "expected": [
+      "athParamsBinder(",
+      "cho\n.athParamsBinder("
+    ]
+  },
+  {
+    "query": "orm field binder",
+    "expected": [
+      "ormFieldBinder(",
+      "cho\n.ormFieldBinder("
+    ]
+  },
+  {
+    "query": "s r f",
+    "expected": [
+      "SRF(",
+      "iddleware\n.SRF("
+    ]
+  },
+  {
+    "query": "s r f with config",
+    "expected": [
+      "SRFWithConfig(",
+      "iddleware\n.SRFWithConfig("
+    ]
+  },
+  {
+    "query": "alidate c s r f token",
+    "expected": [
+      "alidateCSRFToken(",
+      "iddleware\n.alidateCSRFToken("
+    ]
+  },
+  {
+    "query": "o r s",
+    "expected": [
+      "ORS(",
+      "iddleware\n.ORS("
+    ]
+  },
+  {
+    "query": "o r s with config",
+    "expected": [
+      "ORSWithConfig(",
+      "iddleware\n.ORSWithConfig("
+    ]
+  },
+  {
+    "query": "equest logger with config",
+    "expected": [
+      "equestLoggerWithConfig(",
+      "iddleware\n.equestLoggerWithConfig("
+    ]
+  }
+]
