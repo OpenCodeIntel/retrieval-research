@@ -1,0 +1,127 @@
+{
+  "codebase": "gorm",
+  "type": "human_queries",
+  "description": "Real-world natural language queries for GORM ORM",
+  "queries": [
+    {
+      "query": "open database connection",
+      "expected": ["gorm.Open"],
+      "difficulty": "easy",
+      "reasoning": "Direct database initialization"
+    },
+    {
+      "query": "execute raw sql statement",
+      "expected": ["callbacks.RawExec"],
+      "difficulty": "medium",
+      "reasoning": "Raw SQL execution"
+    },
+    {
+      "query": "run a select query",
+      "expected": ["callbacks.Query"],
+      "difficulty": "medium",
+      "reasoning": "Query execution"
+    },
+    {
+      "query": "build sql query string",
+      "expected": ["callbacks.BuildQuerySQL"],
+      "difficulty": "medium",
+      "reasoning": "SQL construction"
+    },
+    {
+      "query": "load related data eagerly",
+      "expected": ["callbacks.Preload"],
+      "difficulty": "hard",
+      "reasoning": "Eager loading = preload in ORM terminology"
+    },
+    {
+      "query": "hook before inserting record",
+      "expected": ["callbacks.BeforeCreate"],
+      "difficulty": "medium",
+      "reasoning": "Lifecycle hooks"
+    },
+    {
+      "query": "insert new record into database",
+      "expected": ["callbacks.Create"],
+      "difficulty": "easy",
+      "reasoning": "Create/insert operation"
+    },
+    {
+      "query": "callback after saving record",
+      "expected": ["callbacks.AfterCreate"],
+      "difficulty": "medium",
+      "reasoning": "Post-save hooks"
+    },
+    {
+      "query": "convert struct to insert values",
+      "expected": ["callbacks.ConvertToCreateValues"],
+      "difficulty": "hard",
+      "reasoning": "Data conversion for inserts"
+    },
+    {
+      "query": "create custom logger for sql",
+      "expected": ["logger.New", "logger.NewSlogLogger"],
+      "difficulty": "easy",
+      "reasoning": "Logger initialization"
+    },
+    {
+      "query": "format sql with parameters",
+      "expected": ["logger.ExplainSQL"],
+      "difficulty": "hard",
+      "reasoning": "SQL string formatting with placeholders"
+    },
+    {
+      "query": "use raw expression in query",
+      "expected": ["gorm.Expr"],
+      "difficulty": "medium",
+      "reasoning": "Raw SQL expressions"
+    },
+    {
+      "query": "join tables in query",
+      "expected": ["gorm.joins"],
+      "difficulty": "easy",
+      "reasoning": "Table joins"
+    },
+    {
+      "query": "scan query results into struct",
+      "expected": ["gorm.Scan"],
+      "difficulty": "medium",
+      "reasoning": "Result scanning"
+    },
+    {
+      "query": "scan results into map",
+      "expected": ["gorm.scanIntoMap"],
+      "difficulty": "medium",
+      "reasoning": "Map-based scanning"
+    },
+    {
+      "query": "prepare statements for reuse",
+      "expected": ["gorm.NewPreparedStmtDB"],
+      "difficulty": "hard",
+      "reasoning": "Prepared statement optimization"
+    },
+    {
+      "query": "initialize callback hooks",
+      "expected": ["gorm.initializeCallbacks"],
+      "difficulty": "hard",
+      "reasoning": "Callback system setup"
+    },
+    {
+      "query": "update record reflection value",
+      "expected": ["callbacks.SetupUpdateReflectValue"],
+      "difficulty": "hard",
+      "reasoning": "Reflection-based updates"
+    },
+    {
+      "query": "check if string is printable",
+      "expected": ["logger.isPrintable"],
+      "difficulty": "easy",
+      "reasoning": "String validation"
+    },
+    {
+      "query": "expand array values for query",
+      "expected": ["gorm.expandValues"],
+      "difficulty": "medium",
+      "reasoning": "Value expansion for IN clauses"
+    }
+  ]
+}
