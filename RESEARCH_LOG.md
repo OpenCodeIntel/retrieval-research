@@ -2740,3 +2740,188 @@ evals/
 *"From 6 codebases to 11. From 2 languages to 3. From 89% to 94% average. The system is production-ready."*
 
 *Logged: December 21, 2025, 12:18 AM CST*
+
+
+---
+
+## Day 6 Part 2: Go Support + 4-Language Coverage Complete
+
+*Date: December 21, 2025, ~1:30 AM CST*
+
+### 🎯 Session Goals
+
+1. Build Go extractor using tree-sitter
+2. Test on 3 Go codebases
+3. Achieve 4-language coverage
+
+---
+
+### 🐹 Part 1: Go Extractor Development
+
+Built a complete Go extractor using tree-sitter-go:
+
+**File:** `src/extractors/go.py` (261 lines)
+
+**Features:**
+- Package-level function extraction
+- Method extraction with receiver types (e.g., `func (r *Router) Get()`)
+- Package-qualified names (e.g., `fiber.Ctx.Cookies`)
+- Doc comment parsing
+- Automatic test file skipping (`*_test.go`)
+- Exported/unexported function detection
+
+**Key implementation:**
+```go
+// Method with receiver becomes: package.ReceiverType.MethodName
+// e.g., fiber.Ctx.JSON, gorm.DB.Create
+```
+
+---
+
+### 🧪 Part 2: Go Codebase Evaluation
+
+#### Fiber (Express-inspired Web Framework)
+| Metric | Value |
+|--------|-------|
+| Functions | 374 |
+| RRF Only | 74% (37/50) |
+| + Rerank | **92%** (46/50) |
+| Improvement | +18% |
+
+Failures: All 4 were garbage auto-queries (`nfi`, `sage`, `colors color`)
+
+#### GORM (ORM Library)
+| Metric | Value |
+|--------|-------|
+| Functions | 104 |
+| RRF Only | 82% (41/50) |
+| + Rerank | **100%** ✓ PERFECT |
+| Improvement | +18% |
+
+6th perfect score!
+
+#### Echo (Web Framework)
+| Metric | Value |
+|--------|-------|
+| Functions | 133 |
+| RRF Only | 72% (36/50) |
+| + Rerank | **92%** (46/50) |
+| Improvement | +20% |
+
+Failures: All 4 were garbage (`return`, `s r f`, `o r s`)
+
+**Go Summary:** 3 codebases, **94.7% average accuracy**
+
+---
+
+### 📊 Final Scoreboard (14 Codebases, 4 Languages)
+
+| Codebase | Language | Functions | RRF Only | + Rerank | Delta |
+|----------|----------|-----------|----------|----------|-------|
+| **Rich** | Python | 910 | 100% | **100%** | +0 |
+| **Zustand** | TypeScript | 33 | 78% | **100%** | +22% |
+| **FastAPI** | Python | 1,341 | 96% | **100%** | +4% |
+| **Retrofit** | Java | 2,224 | 78% | **100%** | +22% |
+| **Gson** | Java | 3,082 | 80% | **100%** | +20% |
+| **GORM** | Go | 104 | 82% | **100%** | +18% |
+| **OkHttp** | Java | 253 | 86% | **98%** | +12% |
+| **Lodash** | JavaScript | 745 | 64% | **96%** | +32% |
+| **Fiber** | Go | 374 | 74% | **92%** | +18% |
+| **Echo** | Go | 133 | 72% | **92%** | +20% |
+| **Express** | JavaScript | 115 | 70% | **88%** | +18% |
+| **Axios** | JavaScript | 41 | 73% | **88%** | +15% |
+| **Requests** | Python | 230 | 84% | **88%** | +4% |
+| **Flask** | Python | 356 | 60% | **72%** | +12% |
+
+---
+
+### 📈 Statistics by Language
+
+| Language | Codebases | Functions | Avg Accuracy |
+|----------|-----------|-----------|--------------|
+| **Java** | 3 | 5,559 | **99.3%** 🏆 |
+| **Go** | 3 | 611 | **94.7%** |
+| **JavaScript/TS** | 4 | 934 | 93% |
+| **Python** | 5 | 3,837 | 90% |
+
+### Overall Statistics
+
+| Metric | Value |
+|--------|-------|
+| **Total Codebases** | 14 |
+| **Total Functions Indexed** | 9,941 |
+| **Languages Supported** | 4 |
+| **Perfect Scores (100%)** | 6 |
+| **Average RRF Only** | 78% |
+| **Average + Rerank** | **94%** |
+| **Average Improvement** | +16% |
+
+---
+
+### 🔍 Test Methodology Discussion
+
+**Current Approach (Auto-generated queries):**
+- Queries generated from function names
+- Split camelCase/snake_case into words
+- Example: `CreateBatchInBatches` → `"create batch in batches"`
+
+**Limitation:**
+This is NOT how humans actually search! Real queries would be:
+- `"bulk insert records"` instead of `"create in batches"`
+- `"paginated query"` instead of `"find in batches"`
+- `"return json response"` instead of `"json"`
+
+**Impact:**
+- Current 94% is on "easy" queries (lexical overlap)
+- Real-world accuracy likely 70-80% with semantic gap
+- But reranking improvement would still apply!
+
+**Next Step:** Create human-written evaluation sets for publication-quality results.
+
+---
+
+### 📁 Files Created/Modified
+
+```
+src/extractors/
+└── go.py                     # NEW: Go tree-sitter extractor
+
+scripts/
+└── evaluate_codebase.py      # Updated: Go support added
+
+results/
+├── fiber_v2_summaries.json   # 374 functions
+├── gorm_v2_summaries.json    # 104 functions
+└── echo_v2_summaries.json    # 133 functions
+
+evals/
+├── fiber_queries.json        # 50 queries
+├── gorm_queries.json         # 50 queries
+└── echo_queries.json         # 50 queries
+```
+
+---
+
+### 🎯 Research Milestones Achieved
+
+1. ✅ **4 programming languages** (Python, JavaScript/TypeScript, Java, Go)
+2. ✅ **14 codebases** across different domains
+3. ✅ **~10,000 functions** indexed and searchable
+4. ✅ **94% average Hit@1** accuracy
+5. ✅ **6 perfect 100% scores**
+6. ✅ **Language-agnostic architecture** validated
+
+---
+
+### 🚀 Next Steps
+
+1. **Human-written evaluation queries** - Real-world validation
+2. **Production API** - FastAPI wrapper for the search engine
+3. **Documentation** - Write up for portfolio/publication
+4. **Edge cases** - Handle monorepos (Next.js, Zod)
+
+---
+
+*"4 languages. 14 codebases. 10,000 functions. 94% accuracy. The architecture works."*
+
+*Logged: December 21, 2025, ~1:30 AM CST*
