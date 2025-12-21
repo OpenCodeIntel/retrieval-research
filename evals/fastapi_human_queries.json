@@ -1,0 +1,107 @@
+{
+  "codebase": "fastapi",
+  "type": "human_queries",
+  "description": "Real-world natural language queries for FastAPI web framework - UPDATED with multiple valid answers",
+  "queries": [
+    {
+      "query": "create a new fastapi application",
+      "expected": ["FastAPI.__init__", "FastAPI"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "define a GET endpoint",
+      "expected": ["FastAPI.get", "APIRouter.get", ".get"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "create POST route handler",
+      "expected": ["FastAPI.post", "APIRouter.post", ".post"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "add PUT method endpoint",
+      "expected": ["FastAPI.put", "APIRouter.put", ".put"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "handle DELETE requests",
+      "expected": ["FastAPI.delete", "APIRouter.delete", ".delete"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "include routes from another router",
+      "expected": ["FastAPI.include_router", "APIRouter.include_router", "include_router"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "add websocket endpoint",
+      "expected": ["FastAPI.websocket", "APIRouter.websocket", "add_api_websocket_route", "websocket"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "register startup or shutdown event",
+      "expected": ["FastAPI.on_event", "APIRouter.on_event", "on_event"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "add custom middleware",
+      "expected": ["FastAPI.middleware", "build_middleware_stack", "middleware"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "handle exceptions globally",
+      "expected": ["exception_handler", "http_exception_handler"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "generate openapi documentation",
+      "expected": ["openapi", "get_openapi"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "get query parameter from request",
+      "expected": ["Query", "request_params_to_args", "query"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "extract path parameter",
+      "expected": ["Path", "get_path_param_names", "path_param"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "read request header",
+      "expected": ["Header", "request_params_to_args"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "get cookie value",
+      "expected": ["Cookie"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "parse json request body",
+      "expected": ["Body", "request_body_to_args"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "handle form data submission",
+      "expected": ["Form", "_extract_form_body", "form"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "handle file upload",
+      "expected": ["File", "UploadFile", "upload"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "run task in background",
+      "expected": ["BackgroundTasks", "add_task"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "return fast json response",
+      "expected": ["UJSONResponse", "ORJSONResponse", "JSONResponse"],
+      "difficulty": "hard"
+    }
+  ]
+}
