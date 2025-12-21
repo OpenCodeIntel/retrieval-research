@@ -1,0 +1,352 @@
+[
+  {
+    "query": "is read only",
+    "expected": [
+      "isReadOnly",
+      "fiber.isReadOnly"
+    ]
+  },
+  {
+    "query": "colors color",
+    "expected": [
+      "colors *Color",
+      "rs is.colors *Color"
+    ]
+  },
+  {
+    "query": "new pre startup message data",
+    "expected": [
+      "newPreStartupMessageData",
+      "fiber.newPreStartupMessageData"
+    ]
+  },
+  {
+    "query": "new post startup message data",
+    "expected": [
+      "newPostStartupMessageData",
+      "fiber.newPostStartupMessageData"
+    ]
+  },
+  {
+    "query": "new hooks",
+    "expected": [
+      "newHooks",
+      "fiber.newHooks"
+    ]
+  },
+  {
+    "query": "header contains value",
+    "expected": [
+      "headerContainsValue",
+      "fiber.headerContainsValue"
+    ]
+  },
+  {
+    "query": "send file content length",
+    "expected": [
+      "sendFileContentLength",
+      "fiber.sendFileContentLength"
+    ]
+  },
+  {
+    "query": "status disallows body",
+    "expected": [
+      "statusDisallowsBody",
+      "fiber.statusDisallowsBody"
+    ]
+  },
+  {
+    "query": "should include charset",
+    "expected": [
+      "shouldIncludeCharset",
+      "fiber.shouldIncludeCharset"
+    ]
+  },
+  {
+    "query": "to fiber handler",
+    "expected": [
+      "toFiberHandler",
+      "fiber.toFiberHandler"
+    ]
+  },
+  {
+    "query": "adapt fiber handler",
+    "expected": [
+      "adaptFiberHandler",
+      "fiber.adaptFiberHandler"
+    ]
+  },
+  {
+    "query": "adapt express handler",
+    "expected": [
+      "adaptExpressHandler",
+      "fiber.adaptExpressHandler"
+    ]
+  },
+  {
+    "query": "adapt h t t p handler",
+    "expected": [
+      "adaptHTTPHandler",
+      "fiber.adaptHTTPHandler"
+    ]
+  },
+  {
+    "query": "adapt fast h t t p handler",
+    "expected": [
+      "adaptFastHTTPHandler",
+      "fiber.adaptFastHTTPHandler"
+    ]
+  },
+  {
+    "query": "wrap h t t p handler",
+    "expected": [
+      "wrapHTTPHandler",
+      "fiber.wrapHTTPHandler"
+    ]
+  },
+  {
+    "query": "collect handlers",
+    "expected": [
+      "collectHandlers",
+      "fiber.collectHandlers"
+    ]
+  },
+  {
+    "query": "t redirect",
+    "expected": [
+      "t() *Redirect {",
+      "(\n\t\"e.t() *Redirect {"
+    ]
+  },
+  {
+    "query": "t r redirect",
+    "expected": [
+      "t(r *Redirect) ",
+      "(\n\t\"e.t(r *Redirect) "
+    ]
+  },
+  {
+    "query": "ler c ctx err erro",
+    "expected": [
+      "ler(c Ctx, err erro",
+      "(\n\t\"b.ler(c Ctx, err erro"
+    ]
+  },
+  {
+    "query": "nfi",
+    "expected": [
+      "nfi",
+      "(\n\t\"b.nfi"
+    ]
+  },
+  {
+    "query": "new ctx func func",
+    "expected": [
+      "(newCtxFunc func",
+      "(\n\t\"b.(newCtxFunc func"
+    ]
+  },
+  {
+    "query": "sage",
+    "expected": [
+      "sage ...",
+      "(\n\t\"b.sage ..."
+    ]
+  },
+  {
+    "query": "ssage",
+    "expected": [
+      "ssage ...",
+      "(\n\t\"b.ssage ..."
+    ]
+  },
+  {
+    "query": "app app de",
+    "expected": [
+      "app *App) *De",
+      "(\n\t\"g.app *App) *De"
+    ]
+  },
+  {
+    "query": "acquire bind",
+    "expected": [
+      "AcquireBind",
+      "fiber.AcquireBind"
+    ]
+  },
+  {
+    "query": "release bind",
+    "expected": [
+      "ReleaseBind",
+      "fiber.ReleaseBind"
+    ]
+  },
+  {
+    "query": "release pooled binder",
+    "expected": [
+      "releasePooledBinder",
+      "fiber.releasePooledBinder"
+    ]
+  },
+  {
+    "query": "merge struct",
+    "expected": [
+      "mergeStruct",
+      "fiber.mergeStruct"
+    ]
+  },
+  {
+    "query": "is zero",
+    "expected": [
+      "isZero",
+      "fiber.isZero"
+    ]
+  },
+  {
+    "query": "init",
+    "expected": [
+      "init",
+      "fiber.init"
+    ]
+  },
+  {
+    "query": "new state",
+    "expected": [
+      "newState",
+      "fiber.newState"
+    ]
+  },
+  {
+    "query": "get state",
+    "expected": [
+      "GetState",
+      "fiber.GetState"
+    ]
+  },
+  {
+    "query": "must get state",
+    "expected": [
+      "MustGetState",
+      "fiber.MustGetState"
+    ]
+  },
+  {
+    "query": "get state with default",
+    "expected": [
+      "GetStateWithDefault",
+      "fiber.GetStateWithDefault"
+    ]
+  },
+  {
+    "query": "get service",
+    "expected": [
+      "GetService",
+      "fiber.GetService"
+    ]
+  },
+  {
+    "query": "must get service",
+    "expected": [
+      "MustGetService",
+      "fiber.MustGetService"
+    ]
+  },
+  {
+    "query": "n net listen",
+    "expected": [
+      "n net.Listen",
+      "(\n\t\"b.n net.Listen"
+    ]
+  },
+  {
+    "query": "io reader f",
+    "expected": [
+      " io.ReaderF",
+      "(\n\t\"b. io.ReaderF"
+    ]
+  },
+  {
+    "query": "ck stack rout",
+    "expected": [
+      "ck(stack []*Rout",
+      "(\n\t\"b.ck(stack []*Rout"
+    ]
+  },
+  {
+    "query": "value string",
+    "expected": [
+      "value string,",
+      "(\n\t\"b.value string,"
+    ]
+  },
+  {
+    "query": "refix path",
+    "expected": [
+      "refix, path ",
+      "(\n\t\"b.refix, path "
+    ]
+  },
+  {
+    "query": "pec offer s",
+    "expected": [
+      "pec, offer s",
+      "(\n\t\"b.pec, offer s"
+    ]
+  },
+  {
+    "query": "e offer basic spec offer s",
+    "expected": [
+      "eOfferBasic(spec, offer s",
+      "(\n\t\"b.eOfferBasic(spec, offer s"
+    ]
+  },
+  {
+    "query": "offer extended spec offer st",
+    "expected": [
+      "OfferExtended(spec, offer st",
+      "(\n\t\"b.OfferExtended(spec, offer st"
+    ]
+  },
+  {
+    "query": "e spec offer typ",
+    "expected": [
+      "e(spec, offerTyp",
+      "(\n\t\"b.e(spec, offerTyp"
+    ]
+  },
+  {
+    "query": "c param str h",
+    "expected": [
+      "cParamStr h",
+      "(\n\t\"b.cParamStr h"
+    ]
+  },
+  {
+    "query": "st header value st",
+    "expected": [
+      "st(headerValue st",
+      "(\n\t\"b.st(headerValue st"
+    ]
+  },
+  {
+    "query": "s headers by",
+    "expected": [
+      "s(headers [][]by",
+      "(\n\t\"b.s(headers [][]by"
+    ]
+  },
+  {
+    "query": "alue v byte b",
+    "expected": [
+      "alue(v []byte) ([]b",
+      "(\n\t\"b.alue(v []byte) ([]b"
+    ]
+  },
+  {
+    "query": "ge header byte",
+    "expected": [
+      "ge(header []byte,",
+      "(\n\t\"b.ge(header []byte,"
+    ]
+  }
+]
