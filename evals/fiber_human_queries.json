@@ -1,0 +1,127 @@
+{
+  "codebase": "fiber",
+  "type": "human_queries",
+  "description": "Real-world natural language queries a developer would ask",
+  "queries": [
+    {
+      "query": "how to send a file to the client",
+      "expected": ["fiber.sendFileContentLength"],
+      "difficulty": "easy",
+      "reasoning": "Direct semantic match"
+    },
+    {
+      "query": "convert express handler to fiber",
+      "expected": ["fiber.adaptExpressHandler"],
+      "difficulty": "medium",
+      "reasoning": "Requires understanding 'convert' = 'adapt'"
+    },
+    {
+      "query": "wrap standard http handler",
+      "expected": ["fiber.wrapHTTPHandler", "fiber.adaptHTTPHandler"],
+      "difficulty": "medium",
+      "reasoning": "Multiple valid answers"
+    },
+    {
+      "query": "check if http status code allows response body",
+      "expected": ["fiber.statusDisallowsBody"],
+      "difficulty": "hard",
+      "reasoning": "Opposite phrasing - 'allows' vs 'disallows'"
+    },
+    {
+      "query": "get request header value",
+      "expected": ["fiber.eqHeader[V G"],
+      "difficulty": "medium",
+      "reasoning": "Generic function name, semantic match needed"
+    },
+    {
+      "query": "retrieve query parameter from request",
+      "expected": ["fiber.y[V G"],
+      "difficulty": "medium", 
+      "reasoning": "Query params extraction"
+    },
+    {
+      "query": "compress response with brotli or gzip",
+      "expected": ["compress.New"],
+      "difficulty": "medium",
+      "reasoning": "Middleware creation for compression"
+    },
+    {
+      "query": "add logging middleware",
+      "expected": ["logger.New"],
+      "difficulty": "easy",
+      "reasoning": "Standard middleware pattern"
+    },
+    {
+      "query": "get color code for http status",
+      "expected": ["logger.statusColor"],
+      "difficulty": "medium",
+      "reasoning": "Terminal coloring for status codes"
+    },
+    {
+      "query": "check if header contains specific value",
+      "expected": ["fiber.headerContainsValue"],
+      "difficulty": "easy",
+      "reasoning": "Direct semantic match"
+    },
+    {
+      "query": "register lifecycle hooks on app startup",
+      "expected": ["fiber.newHooks"],
+      "difficulty": "hard",
+      "reasoning": "Requires understanding lifecycle = hooks"
+    },
+    {
+      "query": "pool object for memory efficiency",
+      "expected": ["fiber.AcquireBind", "fiber.ReleaseBind"],
+      "difficulty": "hard",
+      "reasoning": "Object pooling pattern"
+    },
+    {
+      "query": "store local data in request context",
+      "expected": ["fiber.ls[V a"],
+      "difficulty": "hard",
+      "reasoning": "Context locals pattern"
+    },
+    {
+      "query": "get url path parameters",
+      "expected": ["fiber.ms[V G"],
+      "difficulty": "medium",
+      "reasoning": "Route params extraction"
+    },
+    {
+      "query": "determine mime type charset",
+      "expected": ["fiber.shouldIncludeCharset"],
+      "difficulty": "hard",
+      "reasoning": "Content-type handling"
+    },
+    {
+      "query": "check if running as child process",
+      "expected": ["fiber.IsChild"],
+      "difficulty": "easy",
+      "reasoning": "Prefork child detection"
+    },
+    {
+      "query": "convert any handler to fiber handler",
+      "expected": ["fiber.toFiberHandler", "fiber.adaptFiberHandler"],
+      "difficulty": "medium",
+      "reasoning": "Handler conversion"
+    },
+    {
+      "query": "merge two structs together",
+      "expected": ["fiber.mergeStruct"],
+      "difficulty": "easy",
+      "reasoning": "Direct semantic match"
+    },
+    {
+      "query": "check if value is empty or zero",
+      "expected": ["fiber.isZero"],
+      "difficulty": "easy",
+      "reasoning": "Zero value check"
+    },
+    {
+      "query": "get service from dependency injection container",
+      "expected": ["fiber.GetService", "fiber.MustGetService"],
+      "difficulty": "hard",
+      "reasoning": "DI pattern, state = container"
+    }
+  ]
+}
