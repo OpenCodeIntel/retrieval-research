@@ -1,0 +1,352 @@
+[
+  {
+    "query": "jackson response body converter in JacksonResponseBodyConverter",
+    "expected": [
+      "JacksonResponseBodyConverter",
+      "retrofit2.converter.jackson.JacksonResponseBodyConverter.JacksonResponseBodyConverter"
+    ]
+  },
+  {
+    "query": "convert in JacksonResponseBodyConverter",
+    "expected": [
+      "convert",
+      "retrofit2.converter.jackson.JacksonResponseBodyConverter.convert"
+    ]
+  },
+  {
+    "query": "create in JacksonConverterFactory",
+    "expected": [
+      "create",
+      "retrofit2.converter.jackson.JacksonConverterFactory.create"
+    ]
+  },
+  {
+    "query": "jackson converter factory in JacksonConverterFactory",
+    "expected": [
+      "JacksonConverterFactory",
+      "retrofit2.converter.jackson.JacksonConverterFactory.JacksonConverterFactory"
+    ]
+  },
+  {
+    "query": "with streaming in JacksonConverterFactory",
+    "expected": [
+      "withStreaming",
+      "retrofit2.converter.jackson.JacksonConverterFactory.withStreaming"
+    ]
+  },
+  {
+    "query": "response body converter in JacksonConverterFactory",
+    "expected": [
+      "responseBodyConverter",
+      "retrofit2.converter.jackson.JacksonConverterFactory.responseBodyConverter"
+    ]
+  },
+  {
+    "query": "request body converter in JacksonConverterFactory",
+    "expected": [
+      "requestBodyConverter",
+      "retrofit2.converter.jackson.JacksonConverterFactory.requestBodyConverter"
+    ]
+  },
+  {
+    "query": "jackson streaming request body in JacksonStreamingRequestBody",
+    "expected": [
+      "JacksonStreamingRequestBody",
+      "retrofit2.converter.jackson.JacksonStreamingRequestBody.JacksonStreamingRequestBody"
+    ]
+  },
+  {
+    "query": "content type in JacksonStreamingRequestBody",
+    "expected": [
+      "contentType",
+      "retrofit2.converter.jackson.JacksonStreamingRequestBody.contentType"
+    ]
+  },
+  {
+    "query": "write to in JacksonStreamingRequestBody",
+    "expected": [
+      "writeTo",
+      "retrofit2.converter.jackson.JacksonStreamingRequestBody.writeTo"
+    ]
+  },
+  {
+    "query": "jackson request body converter in JacksonRequestBodyConverter",
+    "expected": [
+      "JacksonRequestBodyConverter",
+      "retrofit2.converter.jackson.JacksonRequestBodyConverter.JacksonRequestBodyConverter"
+    ]
+  },
+  {
+    "query": "get name in AnInterface",
+    "expected": [
+      "getName",
+      "retrofit2.converter.jackson.AnInterface.getName"
+    ]
+  },
+  {
+    "query": "an implementation in AnImplementation",
+    "expected": [
+      "AnImplementation",
+      "retrofit2.converter.jackson.AnImplementation.AnImplementation"
+    ]
+  },
+  {
+    "query": "an interface serializer in AnInterfaceSerializer",
+    "expected": [
+      "AnInterfaceSerializer",
+      "retrofit2.converter.jackson.AnInterfaceSerializer.AnInterfaceSerializer"
+    ]
+  },
+  {
+    "query": "serialize in AnInterfaceSerializer",
+    "expected": [
+      "serialize",
+      "retrofit2.converter.jackson.AnInterfaceSerializer.serialize"
+    ]
+  },
+  {
+    "query": "an interface deserializer in AnInterfaceDeserializer",
+    "expected": [
+      "AnInterfaceDeserializer",
+      "retrofit2.converter.jackson.AnInterfaceDeserializer.AnInterfaceDeserializer"
+    ]
+  },
+  {
+    "query": "deserialize in AnInterfaceDeserializer",
+    "expected": [
+      "deserialize",
+      "retrofit2.converter.jackson.AnInterfaceDeserializer.deserialize"
+    ]
+  },
+  {
+    "query": "erroring value in ErroringValue",
+    "expected": [
+      "ErroringValue",
+      "retrofit2.converter.jackson.ErroringValue.ErroringValue"
+    ]
+  },
+  {
+    "query": "erroring value serializer in ErroringValueSerializer",
+    "expected": [
+      "ErroringValueSerializer",
+      "retrofit2.converter.jackson.ErroringValueSerializer.ErroringValueSerializer"
+    ]
+  },
+  {
+    "query": "an implementation in Service",
+    "expected": [
+      "anImplementation",
+      "retrofit2.converter.jackson.Service.anImplementation"
+    ]
+  },
+  {
+    "query": "an interface in Service",
+    "expected": [
+      "anInterface",
+      "retrofit2.converter.jackson.Service.anInterface"
+    ]
+  },
+  {
+    "query": "erroring value in Service",
+    "expected": [
+      "erroringValue",
+      "retrofit2.converter.jackson.Service.erroringValue"
+    ]
+  },
+  {
+    "query": "jackson converter factory test in JacksonConverterFactoryTest",
+    "expected": [
+      "JacksonConverterFactoryTest",
+      "retrofit2.converter.jackson.JacksonConverterFactoryTest.JacksonConverterFactoryTest"
+    ]
+  },
+  {
+    "query": "serialize is streamed in JacksonConverterFactoryTest",
+    "expected": [
+      "serializeIsStreamed",
+      "retrofit2.converter.jackson.JacksonConverterFactoryTest.serializeIsStreamed"
+    ]
+  },
+  {
+    "query": "int wrapper in IntWrapper",
+    "expected": [
+      "IntWrapper",
+      "retrofit2.converter.jackson.IntWrapper.IntWrapper"
+    ]
+  },
+  {
+    "query": "post in Service",
+    "expected": [
+      "post",
+      "retrofit2.converter.jackson.Service.post"
+    ]
+  },
+  {
+    "query": "set up in JacksonCborConverterFactoryTest",
+    "expected": [
+      "setUp",
+      "retrofit2.converter.jackson.JacksonCborConverterFactoryTest.setUp"
+    ]
+  },
+  {
+    "query": "proto request body converter in ProtoRequestBodyConverter",
+    "expected": [
+      "ProtoRequestBodyConverter",
+      "retrofit2.converter.protobuf.ProtoRequestBodyConverter.ProtoRequestBodyConverter"
+    ]
+  },
+  {
+    "query": "proto response body converter in ProtoResponseBodyConverter",
+    "expected": [
+      "ProtoResponseBodyConverter",
+      "retrofit2.converter.protobuf.ProtoResponseBodyConverter.ProtoResponseBodyConverter"
+    ]
+  },
+  {
+    "query": "create with registry in ProtoConverterFactory",
+    "expected": [
+      "createWithRegistry",
+      "retrofit2.converter.protobuf.ProtoConverterFactory.createWithRegistry"
+    ]
+  },
+  {
+    "query": "proto converter factory in ProtoConverterFactory",
+    "expected": [
+      "ProtoConverterFactory",
+      "retrofit2.converter.protobuf.ProtoConverterFactory.ProtoConverterFactory"
+    ]
+  },
+  {
+    "query": "proto streaming request body in ProtoStreamingRequestBody",
+    "expected": [
+      "ProtoStreamingRequestBody",
+      "retrofit2.converter.protobuf.ProtoStreamingRequestBody.ProtoStreamingRequestBody"
+    ]
+  },
+  {
+    "query": "get in Service",
+    "expected": [
+      "get",
+      "retrofit2.converter.protobuf.Service.get"
+    ]
+  },
+  {
+    "query": "wrong class in Service",
+    "expected": [
+      "wrongClass",
+      "retrofit2.converter.protobuf.Service.wrongClass"
+    ]
+  },
+  {
+    "query": "wrong type in Service",
+    "expected": [
+      "wrongType",
+      "retrofit2.converter.protobuf.Service.wrongType"
+    ]
+  },
+  {
+    "query": "proto converter factory test in ProtoConverterFactoryTest",
+    "expected": [
+      "ProtoConverterFactoryTest",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.ProtoConverterFactoryTest"
+    ]
+  },
+  {
+    "query": "serialize and deserialize in ProtoConverterFactoryTest",
+    "expected": [
+      "serializeAndDeserialize",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.serializeAndDeserialize"
+    ]
+  },
+  {
+    "query": "deserialize empty in ProtoConverterFactoryTest",
+    "expected": [
+      "deserializeEmpty",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.deserializeEmpty"
+    ]
+  },
+  {
+    "query": "deserialize uses registry in ProtoConverterFactoryTest",
+    "expected": [
+      "deserializeUsesRegistry",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.deserializeUsesRegistry"
+    ]
+  },
+  {
+    "query": "deserialize wrong class in ProtoConverterFactoryTest",
+    "expected": [
+      "deserializeWrongClass",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.deserializeWrongClass"
+    ]
+  },
+  {
+    "query": "deserialize wrong type in ProtoConverterFactoryTest",
+    "expected": [
+      "deserializeWrongType",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.deserializeWrongType"
+    ]
+  },
+  {
+    "query": "deserialize wrong value in ProtoConverterFactoryTest",
+    "expected": [
+      "deserializeWrongValue",
+      "retrofit2.converter.protobuf.ProtoConverterFactoryTest.deserializeWrongValue"
+    ]
+  },
+  {
+    "query": "throwing phone in ThrowingPhone",
+    "expected": [
+      "ThrowingPhone",
+      "retrofit2.converter.protobuf.ThrowingPhone.ThrowingPhone"
+    ]
+  },
+  {
+    "query": "get serialized size in ThrowingPhone",
+    "expected": [
+      "getSerializedSize",
+      "retrofit2.converter.protobuf.ThrowingPhone.getSerializedSize"
+    ]
+  },
+  {
+    "query": "get parser for type in ThrowingPhone",
+    "expected": [
+      "getParserForType",
+      "retrofit2.converter.protobuf.ThrowingPhone.getParserForType"
+    ]
+  },
+  {
+    "query": "new builder for type in ThrowingPhone",
+    "expected": [
+      "newBuilderForType",
+      "retrofit2.converter.protobuf.ThrowingPhone.newBuilderForType"
+    ]
+  },
+  {
+    "query": "to builder in ThrowingPhone",
+    "expected": [
+      "toBuilder",
+      "retrofit2.converter.protobuf.ThrowingPhone.toBuilder"
+    ]
+  },
+  {
+    "query": "get default instance for type in ThrowingPhone",
+    "expected": [
+      "getDefaultInstanceForType",
+      "retrofit2.converter.protobuf.ThrowingPhone.getDefaultInstanceForType"
+    ]
+  },
+  {
+    "query": "is initialized in ThrowingPhone",
+    "expected": [
+      "isInitialized",
+      "retrofit2.converter.protobuf.ThrowingPhone.isInitialized"
+    ]
+  },
+  {
+    "query": "converter factory falls back to parser field in FallbackParserFinderTest",
+    "expected": [
+      "converterFactoryFallsBackToParserField",
+      "retrofit2.converter.protobuf.FallbackParserFinderTest.converterFactoryFallsBackToParserField"
+    ]
+  }
+]
