@@ -1,8 +1,10 @@
 # CodeIntel Search Research: The Journey 🚀
 
+> **Note added when this repo was published (October 2026).** This is the working log from December 18 to 21, 2025, kept as written with three light edits: Hindi passages translated to English, profanity removed, and two asides about competitors' funding removed. The unedited text is in this repo's git history. Some conclusions here were overtaken by later days (for example "production ready" on Day 2, "98%" on human queries after relabeling, and "the problem is solved"). The final numbers and their caveats are in [README.md](README.md).
+
 > Building the best semantic code search - one experiment at a time.
 > 
-> "Hum isko best shape mein laayenge. Apne liye bana rahe hain, that's it."
+> "We'll get this into the best shape we can. We're building it for ourselves, that's it."
 
 ---
 
@@ -10,11 +12,11 @@
 
 ### The Beginning
 
-Aaj humne serious research shuru ki. CodeIntel ka search quality improve karna hai - not just incrementally, but significantly.
+Today we started serious research. CodeIntel's search quality has to improve - not just incrementally, but significantly.
 
-**Starting point:** Humara current search 41% accuracy de raha tha. Matlab half the time galat answer. Users ke liye ye frustrating hai.
+**Starting point:** Our current search was at 41% accuracy. That means a wrong answer more than half the time. That is frustrating for users.
 
-**The question we asked:** Kya semantic search alone code search ke liye enough hai?
+**The question we asked:** Is semantic search alone enough for code search?
 
 ---
 
@@ -49,17 +51,17 @@ Aaj humne serious research shuru ki. CodeIntel ka search quality improve karna h
 Model                Hit@1      Hit@3      Avg Score   
 ──────────────────────────────────────────────────────
 openai-small         19.0%      33.3%      0.4444      
-voyage-code-2        14.3%      23.8%      0.8495   ← WTF moment
+voyage-code-2        14.3%      23.8%      0.8495   ← the surprise
 voyage-code-3        33.3%      38.1%      0.6265   ← Winner
 ```
 
 ---
 
-### The WTF Moment 🤯
+### The Surprise
 
 Voyage-code-2 gave **highest confidence scores (0.85)** but **lowest accuracy (14%)**!
 
-Matlab: Bahut confidence se galat jawab de raha tha. 
+Meaning: it was giving wrong answers with high confidence. 
 
 **Lesson learned:** High similarity score ≠ correct answer. Different embedding models have different score distributions. You can't compare scores across models.
 
@@ -71,7 +73,7 @@ Matlab: Bahut confidence se galat jawab de raha tha.
 
 But 33% is still **garbage**. 
 
-Agar 3 mein se 2 baar galat answer de rahe ho, users kaise trust karenge?
+If it gives the wrong answer 2 times out of 3, how will users trust it?
 
 ---
 
@@ -79,9 +81,9 @@ Agar 3 mein se 2 baar galat answer de rahe ho, users kaise trust karenge?
 
 **Pure semantic search alone is NOT enough for code search.**
 
-Ye humari hypothesis thi, aur results ne confirm kar diya.
+This was our hypothesis, and the results confirmed it.
 
-Greptile, Sourcegraph - ye sab hybrid approaches use karte hain for a reason. They've learned this lesson already.
+Greptile, Sourcegraph - they all use hybrid approaches for a reason. They've learned this lesson already.
 
 ---
 
@@ -125,9 +127,9 @@ Tomorrow we try **hybrid approaches**:
 
 ### Vibe Check
 
-Thoda disappointing hai ki semantic search alone kaam nahi kar raha. But this is exactly why we're doing research - to find what actually works, not what we hope works.
+It is a little disappointing that semantic search alone is not working. But this is exactly why we're doing research - to find what actually works, not what we hope works.
 
-The $180M funded competitors (Greptile, etc.) are using hybrid approaches. Ab samajh aa raha hai kyun.
+Competitors like Greptile use hybrid approaches. Now it makes sense why.
 
 **Mood:** Determined. We know what doesn't work. Now let's find what does.
 
@@ -184,7 +186,7 @@ The $180M funded competitors (Greptile, etc.) are using hybrid approaches. Ab sa
 
 Build a code search that developers actually trust. Not 50% accuracy. Not 70%. We want **>85% relevance** on natural language queries.
 
-If Greptile raised $25M at $180M valuation with this problem, there's clearly value here. But we need to solve it right.
+We need to solve it right.
 
 ---
 
@@ -222,7 +224,7 @@ Day 1 showed semantic search at 33% accuracy - not good enough. The plan: try hy
 
 ---
 
-### The First Run - WTF Moment #2
+### The First Run - Surprise #2
 
 Built the hybrid system, ran the experiment, and got... **28% accuracy**. Same as semantic-only. Hybrid made zero difference.
 
@@ -352,7 +354,7 @@ We hit the >60% target. But we also learned semantic-only is 66.7% now. The hybr
 ### Vibe Check
 
 Today was a rollercoaster:
-- Morning: "Hybrid isn't helping, WTF"
+- Morning: "Hybrid isn't helping"
 - Midday: "OH. We don't have the right data"
 - Afternoon: "71% accuracy, 95% Hit@3 - LFG!"
 
@@ -601,7 +603,7 @@ These are valid techniques for REAL accuracy problems. We just didn't have one.
 ### Vibe Check
 
 **Morning:** "Let's try reranking to break 81%!"
-**Afternoon:** "Reranking is making things WORSE. WTF."
+**Afternoon:** "Reranking is making things WORSE."
 **Evening:** "Let me research what industry does..."
 **Night:** "Wait... does `clearStorage` even exist?"
 **Final:** "THE SYSTEM WAS PERFECT ALL ALONG! 🎉"
@@ -3191,7 +3193,7 @@ We discovered why large codebases underperform - and how to fix it!
 | **Fiber** | Go | 374 | **100%** 🏆 |
 | **FastAPI** | Python | 1,341 | **30%** ❌ |
 
-**Initial reaction:** "Shit, FastAPI failed!"
+**Initial reaction:** "FastAPI failed!"
 
 #### Phase 2: Analyzing the "Failures"
 

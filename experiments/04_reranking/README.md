@@ -1,7 +1,10 @@
 # Experiment 04: Reranking Research Plan
+
+> **Note (October 2026):** this is the plan as written. Only `02_bge_reranker.py`, `07_llm_listwise.py` and `07b_llm_full_pipeline.py` exist; the other scripts listed below were never written, and Cohere was never tested. Results are in `RESULTS.md`. The Voyage reranker runs are in `scripts/` (see the repo README).
+
 ## CodeIntel Semantic Search Optimization
 
-**Date:** December 18, 2024  
+**Date:** December 18, 2025  
 **Current Best:** 81% Hit@1 (Triple Fusion: Code + Summary + BM25)  
 **Target:** 90%+ Hit@1  
 
