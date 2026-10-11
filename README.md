@@ -93,6 +93,8 @@ Click and Zod also have query sets in `evals/` from earlier experiments; they ar
 
 The commits are the original ones, December 18 to 21, 2025, with their original dates. Before publishing, an API key (since revoked) and local file paths were removed from every commit with `git filter-repo`; nothing else in the history was changed. The last commit (October 2026) adds this README, the license, pinned requirements and two hand-written query sets that were written on December 21 but never committed.
 
+Work continued after December 21 but is not published here as results. A HyDE trial (December 31) saved no output, so its effect is unmeasured. A 170-query evaluation of a local search API over pandas (January 3 to 4) had its index rebuilt and 10 expected answers edited between runs, so its scores track development, not a fixed benchmark.
+
 What came next is in the main repo: the hybrid retrieval and reranking work went into OpenCodeIntel's search (search v2 and v3, January 2026).
 
 ## License
