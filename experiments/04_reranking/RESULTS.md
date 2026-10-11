@@ -1,6 +1,8 @@
 # Experiment 04: Reranking Results Summary
 
-**Date:** December 18, 2024  
+> **Note (October 2026):** results as written on Day 2. "Near state-of-the-art" and "production-ready" below were overtaken: the comparison used a different metric, and the final pipeline is described in the repo README.
+
+**Date:** December 18, 2025  
 **Researcher:** Devanshu + Claude
 
 ---
