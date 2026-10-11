@@ -1,0 +1,107 @@
+{
+  "codebase": "lodash",
+  "type": "human_queries",
+  "description": "Real-world natural language queries for Lodash utility library",
+  "queries": [
+    {
+      "query": "remove whitespace from beginning and end of string",
+      "expected": ["baseTrim", "trim", "Trim"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "check if value is not a number",
+      "expected": ["baseIsNaN", "isNaN", "NaN"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "calculate average of array values",
+      "expected": ["baseMean", "mean", "Mean"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "add up all numbers in array",
+      "expected": ["baseSum", "sum", "Sum", "m(a"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "loop through each element in array",
+      "expected": ["arrayEach", "forEach", "Each"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "filter array elements by condition",
+      "expected": ["arrayFilter", "filter", "Filter"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "transform array elements with function",
+      "expected": ["arrayMap", "map", "Map"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "check if all elements satisfy condition",
+      "expected": ["arrayEvery", "every", "Every"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "check if any element satisfies condition",
+      "expected": ["arraySome", "some", "Some"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "find index of element in array",
+      "expected": ["baseIndexOf", "indexOf", "Index"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "reduce array to single value",
+      "expected": ["arrayReduce", "baseReduce", "reduce", "Reduce"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "check if array contains value",
+      "expected": ["arrayIncludes", "includes", "Includes"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "get object property by key name",
+      "expected": ["baseProperty", "property", "Property", "getValue"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "convert object to array of key value pairs",
+      "expected": ["baseToPairs", "toPairs", "Pairs"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "get all values from object",
+      "expected": ["baseValues", "values", "Values"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "find key in object by condition",
+      "expected": ["baseFindKey", "findKey", "FindKey"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "check if key exists in hash map",
+      "expected": ["hashHas", "has", "Has"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "convert value to string safely",
+      "expected": ["baseToString", "toString", "String"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "get length of unicode string",
+      "expected": ["stringSize", "size", "Size"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "create rounding function with precision",
+      "expected": ["createRound", "round", "Round"],
+      "difficulty": "hard"
+    }
+  ]
+}

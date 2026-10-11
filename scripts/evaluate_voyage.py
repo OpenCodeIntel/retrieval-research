@@ -10,7 +10,7 @@ This script tests if it closes the gap with OLD system (64%).
     It waits 25 seconds between batches to avoid rate limits.
 
 Usage:
-    cd .
+    cd <repo root>
     
     # First, set your Voyage API key:
     export VOYAGE_API_KEY="your-voyage-api-key"

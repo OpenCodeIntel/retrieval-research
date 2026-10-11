@@ -1,0 +1,107 @@
+{
+  "codebase": "rich",
+  "type": "human_queries", 
+  "description": "Real-world natural language queries for Rich terminal formatting library",
+  "queries": [
+    {
+      "query": "print text to terminal with colors",
+      "expected": ["Console.print", "print", "Console"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "create a progress bar",
+      "expected": ["Progress", "progress", "ProgressBar"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "display a table with rows and columns",
+      "expected": ["Table", "table", "add_row"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "show syntax highlighted code",
+      "expected": ["Syntax", "syntax", "highlight"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "render markdown text",
+      "expected": ["Markdown", "markdown"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "create a tree structure display",
+      "expected": ["Tree", "tree", "add"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "style text with bold or italic",
+      "expected": ["Style", "style", "Text"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "prompt user for input",
+      "expected": ["Prompt", "prompt", "ask"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "show a spinner while loading",
+      "expected": ["Spinner", "spinner", "Status", "status"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "create panel with border around content",
+      "expected": ["Panel", "panel", "box"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "format json data for display",
+      "expected": ["JSON", "json", "Pretty"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "log messages with timestamps",
+      "expected": ["RichHandler", "log", "Handler", "emit", "LogRender"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "get terminal width and height",
+      "expected": ["Console", "size", "width", "height", "terminal"],
+      "difficulty": "medium"
+    },
+    {
+      "query": "create layout with multiple columns",
+      "expected": ["Layout", "layout", "Columns"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "add color to text segment",
+      "expected": ["Color", "color", "Segment", "Style", "Highlight", "highlight"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "measure text width before rendering",
+      "expected": ["Measurement", "measure", "get"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "create custom renderable object",
+      "expected": ["__rich_console__", "rich_console", "Renderable", "Render", "render"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "clear the terminal screen",
+      "expected": ["clear", "Screen", "Console"],
+      "difficulty": "easy"
+    },
+    {
+      "query": "export console output to html",
+      "expected": ["export", "html", "save"],
+      "difficulty": "hard"
+    },
+    {
+      "query": "add emoji or special characters",
+      "expected": ["Emoji", "emoji", "Text"],
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -688,8 +688,8 @@ async def main():
     else:
         # Try to find CodeIntel repo
         possible_paths = [
-            "../opencodeintel-fork-new/backend",
-            "../opencodeintel-fork-new",
+            "../opencodeintel/backend",
+            "../opencodeintel",
             os.getcwd(),
         ]
         

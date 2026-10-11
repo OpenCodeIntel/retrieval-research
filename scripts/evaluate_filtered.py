@@ -153,9 +153,14 @@ def evaluate_filtered(codebase: str, include_paths: list = None, exclude_paths: 
     print(f"❌ Failures: {len(results['failures'])}")
 
 if __name__ == "__main__":
-    # Test FastAPI with only core library (no examples, no tests, no scripts)
-    evaluate_filtered(
-        "fastapi",
-        include_paths=["fastapi/"],  # Only core library
-        exclude_paths=None
-    )
+    import sys
+    codebase = sys.argv[1] if len(sys.argv) > 1 else "fastapi"
+    
+    if codebase == "fastapi":
+        evaluate_filtered(codebase, include_paths=["fastapi/"])
+    elif codebase == "lodash":
+        evaluate_filtered(codebase, exclude_paths=["test/", "vendor/"])
+    elif codebase == "express":
+        evaluate_filtered(codebase, include_paths=["lib/"])
+    else:
+        evaluate_filtered(codebase)
