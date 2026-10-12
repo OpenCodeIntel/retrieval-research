@@ -6,6 +6,7 @@ Read them with these corrections:
 
 - **`FINAL_RESULTS.md`** (Dec 18 to 19) reports 87.5% Hit@1 for JavaScript and 75.8% overall on 8 codebases. That was before the fused pipeline and the Voyage reranker. The 87.5% covers JavaScript codebases only, and the per-codebase numbers differ from the final scoreboard.
 - **`RESEARCH_SUMMARY.md`** and **`DEEP_RESEARCH_FINDINGS.md`** say 81% Hit@1 is "competitive with state-of-the-art". That was one 21-query run on Zustand, compared against published numbers that use a different metric (MRR on CodeSearchNet). It is not a valid comparison.
+- **`RESEARCH_SUMMARY.md`** and **`DEEP_RESEARCH_FINDINGS.md`** also ask whether `clearStorage` exists in Zustand. It does; the extractor missed it. The repo README explains the label audit that followed.
 - **`RESEARCH_PLAN.md`** is the plan written on Day 1, before any results.
 - **`PYTHON_OPTIMIZATION_PLAN.md`** is the plan for closing the Python gap on Day 3.
 - **`ARCHITECTURE.md`** describes how the research harness was meant to connect to the product (Pinecone, Redis, hosting). This repo does not use that stack.
